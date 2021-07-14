@@ -8,13 +8,17 @@ using UnityEngine.EventSystems;
 public class ItemDropHandler : MonoBehaviour, IDropHandler
 {
     // reference to flame particle system
-    public ParticleSystem flame;
+    [SerializeField] private ParticleSystem flame;
+    [SerializeField] private AudioSource flintFlick;
 
-    
+    //tells if flint object has been dropped over bunsen burner
+    public static bool isFlint;
     void Start()
     {
         //no emission of flame particles on wake
         flame.Stop();
+        //isFlint should be false by default.
+        isFlint = false;
     }
 
     /* start emitting after flint is dragged over bunsen burner
@@ -22,12 +26,11 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData data)
     {
         if (data.pointerDrag != null)
-        {
-            Debug.Log ("Dropped object was: "  + data.pointerDrag);
-            if(data.pointerDrag.name == "flint")
+        {      
+            flintFlick.Play();
+            if(data.pointerDrag.name == "flint" && FlameController.isOpened)
             {
-                Debug.Log("hhh");
-                flame.Play();
+                flame.Play();   
             }
         }
     }
