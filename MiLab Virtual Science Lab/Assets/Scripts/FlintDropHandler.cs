@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 
 
-public class ItemDropHandler : MonoBehaviour, IDropHandler
+public class FlintDropHandler : MonoBehaviour, IDropHandler
 {
     // reference to flame particle system
     [SerializeField] private ParticleSystem flame;
@@ -18,7 +18,7 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
         //no emission of flame particles on wake
         flame.Stop();
         //isFlint should be false by default.
-        isFlint = false;
+        
     }
 
     /* start emitting after flint is dragged over bunsen burner
@@ -30,7 +30,8 @@ public class ItemDropHandler : MonoBehaviour, IDropHandler
             flintFlick.Play();
             if(data.pointerDrag.name == "flint" && FlameController.isOpened)
             {
-                flame.Play();   
+                flame.Play();  
+                isFlint = true;
             }
         }
     }

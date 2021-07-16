@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class ItemDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
+public class FlintDragHandler : MonoBehaviour, IDragHandler, IEndDragHandler
 {
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = Input.mousePosition;
-        ItemDropHandler.isFlint = false;
+        FlintDropHandler.isFlint = false;
     }
 
     public void OnEndDrag(PointerEventData eventData)
