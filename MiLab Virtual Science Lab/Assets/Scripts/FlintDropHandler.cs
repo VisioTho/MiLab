@@ -15,10 +15,7 @@ public class FlintDropHandler : MonoBehaviour, IDropHandler
     public static bool isFlint;
     void Start()
     {
-        //no emission of flame particles on wake
-        flame.Stop();
-        //isFlint should be false by default.
-        
+      
     }
 
     /* start emitting after flint is dragged over bunsen burner

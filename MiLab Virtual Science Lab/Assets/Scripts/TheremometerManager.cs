@@ -3,21 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*-----------------------------Script Summary--------------------------------*/
+/* This script controls the theremometer mercury image scaling. Depending on
+size and strength of the flame particle system. Additionally, boiling bubble 
+particle system is controlled by this script
+/*----------------------------------------------------------------------------*/
+
 public class TheremometerManager : MonoBehaviour
 {
-/*-----------------------------Script Summary--------------------------------*/
-/* This script controls the theremometer mercutry image scaling. Depending on
-size and strength of the flame particle system.
-/*----------------------------------------------------------------------------*/
     private Vector2 scaleChange = new Vector2(0.0f, 1.0f);
     private Vector3 temp;
+    //reference to the air holes and gas valve slider in scene
     [SerializeField] private Slider gasValveSlider, airHoleSlider;
+    //reference to flame particle system
     [SerializeField] private ParticleSystem flame;
+    //reference to boiling water particles
+    [SerializeField] private ParticleSystem bubbles;
     // Update is called once per frame
    
+   void Start()
+   {
+       // do not emit particles on wake
+      bubbles.Stop();
+   }
     void Update()
     { 
+        // reference to scale of mercury object 
         temp = transform.localScale;
+        /* this block of if statements controls the rising or falling of the mercury levels 
+        according to strength of the flame (flame particle color)*/
         if(flame.isEmitting && temp.y<=4.6f)
         {
             if(airHoleSlider.value==4f)
@@ -50,16 +64,38 @@ size and strength of the flame particle system.
                     temp.y += V;
                     transform.localScale = temp;
                 }
-            }
+        }
+        //if flame particle system is not emitting
         else 
         {
-            const float V = 0.02f;
+            const float V = 0.002f;
             if(temp.y>=1f)
                 {
                     temp.y -= V;
                     transform.localScale = temp;
                 }
         }
+
+        if(temp.y>=3f)
+        {
+            boilWater();
+        }
+        else
+            {
+                coolWater();
+            } 
         
+    }
+
+    private void boilWater()
+    {
+        if(!bubbles.isEmitting)
+            bubbles.Play(); 
+    }
+
+    private void coolWater()
+    {
+        if(bubbles.isEmitting)
+            bubbles.Stop();
     }
 }

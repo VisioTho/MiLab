@@ -11,6 +11,7 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
     [SerializeField] private ParticleSystem flame;
     private float initialgasSliderValue, initialairHolesSliderValue;
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -54,6 +55,16 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
                 Destroy(tutorialboxes[i]);
         }
 
+    }
+
+    [SerializeField] private GameObject startGamePanel;
+    public static bool isTutorial=true;
+    public void toggleTutorial(bool val)
+    {
+        if(!val)
+        {
+           isTutorial = false;
+        }
     }
 
 }

@@ -10,6 +10,7 @@ public class FlameController : MonoBehaviour
 
     //reference to flame particle system
     public ParticleSystem flame;
+    
     // orange flame color
     Color flameorange = new Color(0.9058824f, 0.5333334f, 0.03529412f);
     // blue flame color
@@ -26,6 +27,9 @@ public class FlameController : MonoBehaviour
         col.enabled = V;
         grad.SetKeys( new GradientColorKey[] { new GradientColorKey(flameorange, 0.0f), new GradientColorKey(flameorange, 1.0f), new GradientColorKey(Color.white, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
         col.color = grad;
+
+        //no emission of flame particles on wake
+        flame.Stop(); 
     } 
     
     //update is called once every frame
