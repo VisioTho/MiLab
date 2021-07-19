@@ -27,6 +27,7 @@ public class HomeUIManager : MonoBehaviour
 
     void Start()
     {
+        Time.timeScale = 1f;
         rectTransform = GetComponent<RectTransform>();
         rectTransform.DOAnchorPosX(0, 0f);
     }

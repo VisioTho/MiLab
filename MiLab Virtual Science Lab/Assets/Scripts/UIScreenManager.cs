@@ -1,18 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UIScreenManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private GameObject confirmationWindow;
+    public void confirmQuit(int val)
     {
-        
+        if(val==0)
+        {
+            confirmationWindow.SetActive(false);
+            Time.timeScale = 1f;
+        }
+        if(val==1)
+            SceneManager.LoadScene("MainMenu");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void showConfirmationWindow() 
     {
-        
+        confirmationWindow.SetActive(true); 
+        Time.timeScale = 0f;
     }
 }

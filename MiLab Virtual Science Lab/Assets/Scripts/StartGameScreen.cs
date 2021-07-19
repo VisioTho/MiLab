@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class StartGameScreen : MonoBehaviour
 {
@@ -14,12 +16,13 @@ public class StartGameScreen : MonoBehaviour
         Time.timeScale = 0f;
     }
 
-    public static bool isPlayed = V1;
+   [SerializeField] private Toggle tutorialOrNot; 
     public void startGame()
     {
         Time.timeScale = 1f;
         startGamePanel.SetActive(false);
-        if(!BunsenBurnerTutorialManager.isTutorial)
+        Debug.Log(tutorialOrNot.isOn);
+        if(!tutorialOrNot.isOn)
         {
              for(int i=0; i<tutorialboxes.Length; i++)
             {
