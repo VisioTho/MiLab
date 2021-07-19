@@ -7,6 +7,6 @@ Developed in the Unity game engine
 Targetted for a Minimum of Android 4.0
 ....................................................................
 
-All our Code is in Assets>Scripts folder
-APK available in root folder of repository
+All our Code is in MiLab Virtual Science Lab>Assets>Scripts folder
+APK available in MiLab Virtual Science Lab>_APK
 
