@@ -42,33 +42,33 @@ public class TheremometerManager : MonoBehaviour
                 }
                 else if(airHoleSlider.value==3f)
                 {
-                    const float V = 0.00002f;
+                    const float V = 0.0002f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
                 else if(airHoleSlider.value==2f)
                 {
-                    const float V = 0.0002f;
+                    const float V = 0.002f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
                 else if(airHoleSlider.value==1f)
                 {
-                    const float V = 0.0002f;
+                    const float V = 0.02f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
                 else if(airHoleSlider.value==0f)
                 {
-                    const float V = 0.002f;
+                    const float V = 0.2f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
         }
-        //if flame particle system is not emitting
+        //if flame particle system is not emitting collapse mercury levels
         else 
         {
-            const float V = 0.002f;
+            const float V = 0.02f;
             if(temp.y>=1f)
                 {
                     temp.y -= V;
