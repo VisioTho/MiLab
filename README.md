@@ -8,5 +8,5 @@ Targetted for a Minimum of Android 4.0
 ....................................................................
 
 All our Code is in MiLab Virtual Science Lab>Assets>Scripts folder
-APK available in MiLab Virtual Science Lab>Assets>_APK
+APK available in MiLab Virtual Science Lab>Milab APK.zip
 
