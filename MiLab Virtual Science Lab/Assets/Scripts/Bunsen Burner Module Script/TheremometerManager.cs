@@ -30,9 +30,10 @@ public class TheremometerManager : MonoBehaviour
     { 
         // reference to scale of mercury object 
         temp = transform.localScale;
+        Debug.Log("Current scale: " +this.transform.localScale.y);
         /* this block of if statements controls the rising or falling of the mercury levels 
         according to strength of the flame (flame particle color)*/
-        if(flame.isEmitting && temp.y<=4.6f)
+        if(flame.isEmitting && this.transform.localScale.y<4.5f)
         {
             if(airHoleSlider.value==4f)
                 {
@@ -60,8 +61,12 @@ public class TheremometerManager : MonoBehaviour
                 }
                 else if(airHoleSlider.value==0f)
                 {
-                    const float V = 0.2f;
-                    temp.y += V;
+                     float V = 0.2f;
+                    if(temp.y==4.5f)
+                    {
+                        V = 0f;
+                    }
+                    temp.y += V*1.4f;
                     transform.localScale = temp;
                 }
         }
