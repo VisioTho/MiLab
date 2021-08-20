@@ -17,5 +17,5 @@ INSTALLATION (DEVELOPER)
 2. Sign in with your Unity ID. If you don't have a unity ID, create one here https://id.unity.com/account/new and then use it to sign in on the unity hub
 3. Go to Installs and click on add. Select unity version 2020.2.16 or above on the unity version. Next, Make sure to check against "Android build support" in the add modules window. 
 4. After Unity is succesfully installed, open your GitHub Desktop and Clone the MiLab Project from the repository (Assuming you are a contributor. If not, contact the contributors to add you)
-
+5. Open the newly cloned project from Unity Hub by going to Projects>add new then selecting the project folder from the file explorer window that opens
 
