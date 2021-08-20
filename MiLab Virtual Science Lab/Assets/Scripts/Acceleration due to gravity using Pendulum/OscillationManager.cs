@@ -9,8 +9,9 @@ public class OscillationManager : MonoBehaviour
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private GameObject clamp, Bob;
     private float initialClampPositiony,initialClampPositionx, initialBobPositionx,initialBobPositiony;
-    [SerializeField] private TMP_Text lengthText;
+    [SerializeField] private TMP_Text lengthText, timerText;
     [SerializeField] private Rigidbody2D bob;
+    private float startTime;
 
     // Start is called before the first frame update
     void Start()
@@ -19,6 +20,7 @@ public class OscillationManager : MonoBehaviour
         initialClampPositionx = clamp.transform.position.x;
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
+        startTime = Time.time;
     }
     private bool isSleeping=true;
     public void Oscillate()
@@ -63,9 +65,17 @@ public class OscillationManager : MonoBehaviour
     int num=0;
     void Update()
     {    
+        #region
+        float t = Time.time - startTime;
+        string min = ((int) t/60).ToString();
+        string sec = t.ToString("f0");
+        timerText.text = sec;
+        
+        #endregion
         if(!isSleeping)
         {
-            if(Bob.transform.position.x==0.392535f)
+            Debug.Log(Bob.transform.position);
+            if(Bob.transform.position.x==-0.1 && Bob.transform.position.y==-2.7)
             {
                 num++;
                 Debug.Log(num);
