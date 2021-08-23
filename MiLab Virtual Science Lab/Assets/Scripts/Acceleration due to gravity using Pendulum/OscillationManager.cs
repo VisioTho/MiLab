@@ -70,16 +70,22 @@ public class OscillationManager : MonoBehaviour
         string min = ((int) t/60).ToString();
         string sec = t.ToString("f0");
         timerText.text = sec;
-        
         #endregion
-        if(!isSleeping)
+        
+    }
+    
+  void FixedUpdate()
+  {
+  
+  }
+
+  void OnCollisionEnter2D(Collision2D col)
+    {
+        Debug.Log("OnCollisionEnter2D " +col.gameObject.name);
+        if(col.gameObject.name=="oscillationpoint")
         {
-            Debug.Log(Bob.transform.position);
-            if(Bob.transform.position.x==-0.1 && Bob.transform.position.y==-2.7)
-            {
-                num++;
-                Debug.Log(num);
-            }
+            num++;
+            Debug.Log(num);
         }
     }
 }

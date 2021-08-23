@@ -22,6 +22,7 @@ public class FlintDropHandler : MonoBehaviour, IDropHandler
     */
     public void OnDrop(PointerEventData data)
     {
+        Debug.Log("dropped");
         if (data.pointerDrag != null)
         {      
             flintFlick.Play();

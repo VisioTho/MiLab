@@ -26,13 +26,19 @@ public class TheremometerManager : MonoBehaviour
        // do not emit particles on wake
       bubbles.Stop();
    }
-    void Update()
+    void FixedUpdate()
     { 
         // reference to scale of mercury object 
         temp = transform.localScale;
-        Debug.Log("Current scale: " +this.transform.localScale.y);
+        
         /* this block of if statements controls the rising or falling of the mercury levels 
         according to strength of the flame (flame particle color)*/
+        if(this.transform.localScale.y>4.5f)
+            {
+                temp.y = 4.5f;
+                transform.localScale = temp;
+            }
+
         if(flame.isEmitting && this.transform.localScale.y<4.5f)
         {
             if(airHoleSlider.value==4f)
@@ -49,24 +55,20 @@ public class TheremometerManager : MonoBehaviour
                 }
                 else if(airHoleSlider.value==2f)
                 {
-                    const float V = 0.002f;
+                    const float V = 0.0002f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
                 else if(airHoleSlider.value==1f)
                 {
-                    const float V = 0.02f;
+                    const float V = 0.002f;
                     temp.y += V;
                     transform.localScale = temp;
                 }
                 else if(airHoleSlider.value==0f)
                 {
-                     float V = 0.2f;
-                    if(temp.y==4.5f)
-                    {
-                        V = 0f;
-                    }
-                    temp.y += V*1.4f;
+                    float V = 0.02f;
+                    temp.y += V;
                     transform.localScale = temp;
                 }
         }

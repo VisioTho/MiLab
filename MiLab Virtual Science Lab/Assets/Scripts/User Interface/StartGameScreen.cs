@@ -14,6 +14,7 @@ public class StartGameScreen : MonoBehaviour
     void Start()
     {
         Time.timeScale = 0f;
+        startGamePanel.SetActive(true);
     }
 
    [SerializeField] private Toggle tutorialOrNot; 
