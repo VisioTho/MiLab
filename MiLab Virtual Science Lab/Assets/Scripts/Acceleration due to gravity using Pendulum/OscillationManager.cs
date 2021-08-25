@@ -18,6 +18,8 @@ public class OscillationManager : MonoBehaviour
 
     [SerializeField] private TMP_Text[] tableValues;
 
+    [SerializeField] private GameObject[] tutorialBoxes;
+
     public class Oscillations
     {
         public float timeTaken, count, length, timeForOneOscillation;
@@ -60,12 +62,17 @@ public class OscillationManager : MonoBehaviour
     #region ..oscillation controls
     private bool isSleeping=true;
     private bool isReset=false;
+    
     public void Oscillate()
     {
-        transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
-        Time.timeScale = 1f;
-        bob.WakeUp();
-        isSleeping=false;  
+        if(isSleeping && stringLength>20)
+        {
+            transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
+            Time.timeScale = 1f;
+            bob.WakeUp();
+            isSleeping=false;
+        }
+          
     }
     public void stopOscillation()
     {
@@ -85,14 +92,14 @@ public class OscillationManager : MonoBehaviour
     #endregion
 
     #region ..string length controls
-    
+  
     public void adjustLength(float val)
     {
 
         if(val==0)
         {
             clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony);
-            lengthText.text = " 20CM";
+            lengthText.text = "Move slider";
             stringLength=20;
         }
         else if(val==1) 
@@ -120,6 +127,7 @@ public class OscillationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
+
         if(!isSleeping)
         {   
             float t = Time.time - startTime;
