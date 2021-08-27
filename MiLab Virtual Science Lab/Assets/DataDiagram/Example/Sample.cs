@@ -72,7 +72,7 @@ public class Sample : MonoBehaviour {
             return;
 
         foreach (GameObject l in lineList) {
-            m_DataDiagram.InputPoint(l, new Vector2(1, 14 * 4f));
+            m_DataDiagram.InputPoint(l, new Vector2(1, Random.value * 4f));
         }
     }
 
