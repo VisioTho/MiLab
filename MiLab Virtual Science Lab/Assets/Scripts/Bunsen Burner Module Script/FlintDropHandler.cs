@@ -15,7 +15,7 @@ public class FlintDropHandler : MonoBehaviour, IDropHandler
     public static bool isFlint;
     void Start()
     {
-      
+
     }
 
     /* start emitting after flint is dragged over bunsen burner
@@ -24,11 +24,11 @@ public class FlintDropHandler : MonoBehaviour, IDropHandler
     {
         Debug.Log("dropped");
         if (data.pointerDrag != null)
-        {      
+        {
             flintFlick.Play();
-            if(data.pointerDrag.name == "flint" && FlameController.isOpened)
+            if (data.pointerDrag.name == "flint" && FlameController.isOpened)
             {
-                flame.Play();  
+                flame.Play();
                 isFlint = true;
             }
         }

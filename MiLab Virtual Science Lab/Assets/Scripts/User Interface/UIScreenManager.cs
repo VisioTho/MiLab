@@ -8,18 +8,18 @@ public class UIScreenManager : MonoBehaviour
     [SerializeField] private GameObject confirmationWindow;
     public void confirmQuit(int val)
     {
-        if(val==0)
+        if (val == 0)
         {
             confirmationWindow.SetActive(false);
             Time.timeScale = 1f;
         }
-        if(val==1)
+        if (val == 1)
             SceneManager.LoadScene("MainMenu");
     }
 
-    public void showConfirmationWindow() 
+    public void showConfirmationWindow()
     {
-        confirmationWindow.SetActive(true); 
+        confirmationWindow.SetActive(true);
         Time.timeScale = 0f;
     }
 }

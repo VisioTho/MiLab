@@ -17,15 +17,15 @@ public class StartGameScreen : MonoBehaviour
         startGamePanel.SetActive(true);
     }
 
-   [SerializeField] private Toggle tutorialOrNot; 
+    [SerializeField] private Toggle tutorialOrNot;
     public void startGame()
     {
         Time.timeScale = 1f;
         startGamePanel.SetActive(false);
         Debug.Log(tutorialOrNot.isOn);
-        if(!tutorialOrNot.isOn)
+        if (!tutorialOrNot.isOn)
         {
-             for(int i=0; i<tutorialboxes.Length; i++)
+            for (int i = 0; i < tutorialboxes.Length; i++)
             {
                 Destroy(tutorialboxes[i]);
             }

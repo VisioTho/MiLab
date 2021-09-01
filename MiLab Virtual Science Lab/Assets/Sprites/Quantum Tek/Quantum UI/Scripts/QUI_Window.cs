@@ -9,6 +9,6 @@ namespace QuantumTek.QuantumUI
     [DisallowMultipleComponent]
     public class QUI_Window : QUI_Element
     {
-        
+
     }
 }
