@@ -18,4 +18,8 @@ public class ScenesManager : MonoBehaviour
     {
         SceneManager.LoadScene("carScene");
     }
+     public void LoadPendulumSimulation()
+    {
+        SceneManager.LoadScene("Pendulum");
+    }
 }
