@@ -3,9 +3,9 @@ using DG.Tweening;
 
 public class HeartBeatAnimation : MonoBehaviour
 {
-    private void FixedUpdate()
+    private void Update()
     {
-        gameObject.GetComponent<RectTransform>().DOScale(5f, 1f).SetLoops(-1);
+        gameObject.GetComponent<RectTransform>().DOScale(10f, 2f).SetLoops(-1);
     }
 
 }
