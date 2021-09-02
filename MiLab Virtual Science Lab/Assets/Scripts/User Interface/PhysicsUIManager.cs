@@ -46,5 +46,10 @@ public class PhysicsUIManager : MonoBehaviour
         Hide();
         HomeUIManager.Instance.Show();
     }
+     public void ShowPhysicsMenu()
+    {
+        Hide();
+        PhysicsModuleManager.Instance.Show();
+    }
 }
 
