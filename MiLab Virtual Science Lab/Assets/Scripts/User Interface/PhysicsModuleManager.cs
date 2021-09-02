@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,32 +6,30 @@ using DG.Tweening;
 using UnityEngine;
 
 [RequireComponent(typeof(RectTransform))]
-public class HomeUIManager : MonoBehaviour
+public class PhysicsModuleManager : MonoBehaviour
 {
     RectTransform rectTransform;
 
     #region Getter
-    static HomeUIManager instance;
-    public static HomeUIManager Instance
+    static PhysicsModuleManager instance;
+    public static PhysicsModuleManager Instance
     {
         get
         {
             if (instance == null)
-                instance = FindObjectOfType<HomeUIManager>();
+                instance = FindObjectOfType<PhysicsModuleManager>();
             if (instance == null)
                 Debug.LogError("HomeUIManager not found");
             return instance;
         }
     }
-    #endregion Getter
+     #endregion Getter
 
     void Start()
     {
-        Time.timeScale = 1f;
         rectTransform = GetComponent<RectTransform>();
-        rectTransform.DOAnchorPosX(0, 0f);
+        rectTransform.DOAnchorPosX(rectTransform.rect.width, 0f);
     }
-
     public void Show(float delay = 0f)
     {
         rectTransform.DOAnchorPosX(0, 0.3f).SetDelay(delay);
@@ -39,23 +37,13 @@ public class HomeUIManager : MonoBehaviour
 
     public void Hide(float delay = 0f)
     {
-        rectTransform.DOAnchorPosX(rectTransform.rect.width * -1, 0.3f).SetDelay(delay);
+        rectTransform.DOAnchorPosX(rectTransform.rect.width, 0.3f).SetDelay(delay);
     }
 
-    public void ShowSettingsMenu()
+    public void ShowHomeScreen()
     {
         Hide();
-        SettingsUIManager.Instance.Show();
-    }
-    public void ShowApparatusMenu()
-    {
-        Hide();
-        ApparatusUIManager.Instance.Show();
-    }
-    public void ShowPhysicsMenu()
-    {
-        Hide();
-        PhysicsModuleManager.Instance.Show();
+        HomeUIManager.Instance.Show();
     }
      public void ShowLinearMotionMenu()
     {
