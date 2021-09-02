@@ -32,7 +32,7 @@ public class TheremometerManager : MonoBehaviour
         temp = transform.localScale;
 
         /* this block of if statements controls the rising or falling of the mercury levels 
-        according to strength of the flame (flame particle color)*/
+        according to strength of the flame as determined by UI sliders*/
         if (this.transform.localScale.y > 4.5f)
         {
             temp.y = 4.5f;
