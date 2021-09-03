@@ -11,6 +11,10 @@ public class RoadSelector : MonoBehaviour
         {
             flatRoad.SetActive(true);
             hillyRoad.SetActive(false);
+<<<<<<< HEAD
+=======
+            finishLineFlag.transform.position = new Vector2(35f, -5.6f);
+>>>>>>> parent of dc69827 (Resized the canvas scaler to 1640 x 720 Pixels for each scene)
         }
         if(val == 1)
         {
