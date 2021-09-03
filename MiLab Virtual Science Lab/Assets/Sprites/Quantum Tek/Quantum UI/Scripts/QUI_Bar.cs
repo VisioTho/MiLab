@@ -26,7 +26,7 @@ namespace QuantumTek.QuantumUI
         public RectTransform fillTransform;
         [Tooltip("The fill image.")]
         public Image fill;
-
+        
         [Header("Bar Variables")]
         [Tooltip("How the bar fills up.")]
         public QUI_BarFillType fillType;
