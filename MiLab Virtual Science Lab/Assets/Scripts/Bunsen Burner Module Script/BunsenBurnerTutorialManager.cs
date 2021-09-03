@@ -40,7 +40,7 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
     //tutorial message to be displayed and the first one hidden
     public void gasOn()
     {
-        if (!flame.isEmitting && gasValveSlider.enabled == false)
+        if(!flame.isEmitting && gasValveSlider.enabled == false)
         {
             tutorialboxes[0].SetActive(false);
             tutorialboxes[1].SetActive(true);
@@ -52,7 +52,7 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
     {
         //enable the sliders if the player chose tutorial to be skipped
         //refer to StartGameScreen.startGame()
-        if (!tutorialOrNot.isOn)
+        if(!tutorialOrNot.isOn)
         {
             gasValveSlider.enabled = true;
             airHolesSlider.enabled = true;
@@ -60,24 +60,24 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
 
         //display the next tutorial message if the player completes the process of dragging and dropping the flint.
         //if gasValve slider is disabled it means tutorial was activated
-        if (FlintDropHandler.isFlint && gasValveSlider.enabled == false && flame.isEmitting == true)
+        if(FlintDropHandler.isFlint && gasValveSlider.enabled == false && flame.isEmitting==true)
         {
             tutorialboxes[1].SetActive(false);
             tutorialboxes[2].SetActive(true);
             //if tutorial was activated, the gasValve slider is enabled at this point
             gasValveSlider.enabled = true;
-        }
+        } 
         //display next tutorial messages
-        if (gasValveSlider.value != initialgasSliderValue && airHolesSlider.enabled == false && flame.isEmitting == true)
+        if(gasValveSlider.value!=initialgasSliderValue && airHolesSlider.enabled == false && flame.isEmitting==true)
         {
             tutorialboxes[2].SetActive(false);
             tutorialboxes[3].SetActive(true);
             airHolesSlider.enabled = true;
         }
         //end of the tutorial, destroy all tutorial objects after the air holes slider value is changed by the player.
-        if (airHolesSlider.value != initialairHolesSliderValue)
+        if(airHolesSlider.value!=initialairHolesSliderValue)
         {
-            for (int i = 0; i < tutorialboxes.Length; i++)
+            for(int i=0; i<tutorialboxes.Length; i++)
                 Destroy(tutorialboxes[i]);
         }
 

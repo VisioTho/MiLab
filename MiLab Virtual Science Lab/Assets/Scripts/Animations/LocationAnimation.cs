@@ -9,10 +9,10 @@ public class LocationAnimation : MonoBehaviour
     {
         LeanTween.scale(gameObject, new Vector3(1, 0.7f, 1), 0.8f).setEaseLinear().setLoopClamp();
     }
-
+  
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 }
