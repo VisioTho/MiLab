@@ -24,7 +24,7 @@ The script also manages end-of-simulation assesment.
     private float totalDistance, totalTime, averageSpeed;
     Vector3 currentEulerAngles; public Rigidbody2D carbody;
     [SerializeField] private GameObject redLight, greenLight, carControls;
-    private float delay = 2f;
+    [SerializeField] private float delay;
     [SerializeField] private TMP_Text lightsText;
 
     #region simulation assesment
@@ -88,7 +88,7 @@ The script also manages end-of-simulation assesment.
             }
             else
             {
-                feedbackText.text = "Not Quite! Lets try it again.";
+                feedbackText.text = "Incorrect! Enter a different number.";
             }
         }
 
@@ -103,7 +103,7 @@ The script also manages end-of-simulation assesment.
             }
             else
             {
-                feedbackText.text = "Not Quite! Lets try it again.";
+                feedbackText.text = "Incorrect. Enter a different number.";
             }
         }
     }
@@ -135,7 +135,7 @@ The script also manages end-of-simulation assesment.
         Destroy(redLight);
         greenLight.SetActive(true);
         carControls.SetActive(true);
-        lightsText.text = "Go!";
+        lightsText.text = "Drive car to finish line";
         startTime = Time.time;
     }
 
