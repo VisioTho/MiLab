@@ -21,7 +21,6 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
     [SerializeField] private ParticleSystem flame;
     //reference to the default values of the sliders (before player's manipulation)
     private float initialgasSliderValue, initialairHolesSliderValue;
-    [SerializeField] private Toggle tutorialOrNot;
 
 
     // Start is called before the first frame update
@@ -52,10 +51,15 @@ public class BunsenBurnerTutorialManager : MonoBehaviour
     {
         //enable the sliders if the player chose tutorial to be skipped
         //refer to StartGameScreen.startGame()
-        if(!tutorialOrNot.isOn)
+        if(!StartGameScreen.isTutorialEnabled)
         {
             gasValveSlider.enabled = true;
             airHolesSlider.enabled = true;
+
+            foreach(GameObject i in tutorialboxes)
+            {
+                Destroy(i);
+            }
         }
 
         //display the next tutorial message if the player completes the process of dragging and dropping the flint.

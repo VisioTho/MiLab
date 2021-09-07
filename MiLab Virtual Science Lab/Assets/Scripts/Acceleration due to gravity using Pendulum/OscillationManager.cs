@@ -7,6 +7,7 @@ using TMPro;
 public class OscillationManager : MonoBehaviour
 {
     [SerializeField] private Slider lengthSlider;
+    [SerializeField] private Button oscillateButton;
     [SerializeField] private GameObject clamp, Bob;
     private float initialClampPositiony,initialClampPositionx, initialBobPositionx,initialBobPositiony;
     [SerializeField] private TMP_Text lengthText, timerText;
@@ -56,7 +57,7 @@ public class OscillationManager : MonoBehaviour
         initialClampPositionx = clamp.transform.position.x;
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
-        startTime = Time.time;
+        oscillateButton.interactable = false;
     }
 
     #region ..oscillation controls
@@ -65,14 +66,15 @@ public class OscillationManager : MonoBehaviour
     
     public void Oscillate()
     {
-        if(isSleeping && stringLength>20)
+        startTime = Time.time;
+        Time.timeScale = 1f;
+        bool v = bob.IsSleeping();
+        if (v && stringLength > 20)
         {
             transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
-            Time.timeScale = 1f;
+            
             bob.WakeUp();
-            isSleeping=false;
-        }
-          
+        }  
     }
     public void stopOscillation()
     {
@@ -82,12 +84,9 @@ public class OscillationManager : MonoBehaviour
 
     public void resetOscillation()
     {
-        Time.timeScale =0f;
         bob.Sleep();
-        startTime = Time.time;
         isReset =true;
-        oscillationCounter=-1;
-        isSleeping=true;
+        oscillationCounter=-1; //reset counter
     }
     #endregion
 
@@ -95,7 +94,8 @@ public class OscillationManager : MonoBehaviour
   
     public void adjustLength(float val)
     {
-
+        Time.timeScale = 0f;
+        oscillateButton.interactable = true;
         if(val==0)
         {
             clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony);
@@ -124,11 +124,16 @@ public class OscillationManager : MonoBehaviour
 
     }
     #endregion
+
+    private void Awake()
+    {
+        bob.Sleep();
+    }
     // Update is called once per frame
     void Update()
     {    
 
-        if(!isSleeping)
+        if(!bob.IsSleeping())
         {   
             float t = Time.time - startTime;
             string sec = t.ToString("f0");
@@ -136,12 +141,12 @@ public class OscillationManager : MonoBehaviour
             timerText.text = sec;
             lengthSlider.enabled = false;
         }  
-        else
+        else if(bob.IsSleeping())
         {
             lengthSlider.enabled=true;
         }
         
-        //Debug.Log(stringLength);
+        //after every 10 oscillations of the bob
         if(oscillationCounter==10)
             {
                 if(stringLength==100)
@@ -169,6 +174,7 @@ public class OscillationManager : MonoBehaviour
                     }
   
                 }
+            oscillationCounter = -1;
             tabulateResults();
             resetOscillation();
             }

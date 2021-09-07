@@ -43,7 +43,7 @@ public class FlameController : MonoBehaviour
     }
 
     /*function controlling the "gas" slider*/
-    public void adjustFlame(float val)
+    public void AdjustFlame(float val)
     {   
         //variable reference for .main flame particle system
         var main = flame.main; 
@@ -52,7 +52,7 @@ public class FlameController : MonoBehaviour
     }
 
     /*function controlling the "air holes" slider*/
-    public void adjustHeat(float val)
+    public void AdjustHeat(float val)
     {
         //local reference to colorOverlifetime of the flame particle system
         var col = flame.colorOverLifetime;

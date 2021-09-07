@@ -1,38 +1,36 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
 public class StartGameScreen : MonoBehaviour
 {
-    private const bool V = true;
-    private const bool V1 = false;
-    [SerializeField] private GameObject[] tutorialboxes;
     [SerializeField] private GameObject startGamePanel;
+    [SerializeField] private Toggle toggleTutorial;
+    public static bool isTutorialEnabled;
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        isTutorialEnabled = true;
+    }
     void Start()
     {
-        Time.timeScale = 0f;
         startGamePanel.SetActive(true);
+        Time.timeScale = 0f;
     }
 
-   [SerializeField] private Toggle tutorialOrNot; 
     public void startGame()
     {
         Time.timeScale = 1f;
         startGamePanel.SetActive(false);
-        Debug.Log(tutorialOrNot.isOn);
-        if(!tutorialOrNot.isOn)
+        if(toggleTutorial.isOn)
         {
-             for(int i=0; i<tutorialboxes.Length; i++)
-            {
-                Destroy(tutorialboxes[i]);
-            }
+            isTutorialEnabled = true;
         }
         else
         {
-            tutorialboxes[0].SetActive(true);
+            isTutorialEnabled = false;
         }
     }
 }
