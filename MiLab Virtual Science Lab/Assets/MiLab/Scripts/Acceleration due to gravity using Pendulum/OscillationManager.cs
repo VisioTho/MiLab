@@ -66,6 +66,7 @@ public class OscillationManager : MonoBehaviour
     
     public void Oscillate()
     {
+
         startTime = Time.time;
         Time.timeScale = 1f;
         bool v = bob.IsSleeping();
@@ -146,16 +147,22 @@ public class OscillationManager : MonoBehaviour
             lengthSlider.enabled=true;
         }
         
-        //after every 10 oscillations of the bob
+        //after every 10 oscillations of the bob, record the values for each length of pendulum
         if(oscillationCounter==10)
             {
                 if(stringLength==100)
                 {
-                    if(_100CM.timeTaken==0 && _100CM.count==-1)
-                        {
-                            _100CM.timeTaken = timer;
-                            _100CM.count = oscillationCounter;
-                        }
+                if (_100CM.timeTaken == 0 && _100CM.count == -1) //only record values when the object has not been written to
+                {
+                    _100CM.timeTaken = timer;
+                    _100CM.count = oscillationCounter;
+                }
+                else //prevent the oscillation process from happening again if object is already written to
+                {
+                    oscillateButton.interactable = false;
+                    lengthText.text = "Adjust to different length";
+                }
+                    
                 }
                 else if(stringLength==60)
                 {
@@ -164,7 +171,12 @@ public class OscillationManager : MonoBehaviour
                             _60CM.timeTaken = timer;
                             _60CM.count = oscillationCounter;
                         }
-                }
+                    else //prevent the oscillation process from happening again if object is already written to
+                    {
+                        oscillateButton.interactable = false;
+                        lengthText.text = "Adjust to different length";
+                    }
+            }
                 else if(stringLength==40)
                 {
                     if(_40CM.timeTaken==0 && _40CM.count==-1)
@@ -172,8 +184,13 @@ public class OscillationManager : MonoBehaviour
                         _40CM.timeTaken = timer;
                         _40CM.count = oscillationCounter;
                     }
-  
-                }
+                    else //prevent the oscillation process from happening again if object is already written to
+                    {
+                        oscillateButton.interactable = false;
+                        lengthText.text = "Adjust to different length";
+                    }
+
+            }
             oscillationCounter = -1;
             tabulateResults();
             resetOscillation();

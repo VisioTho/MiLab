@@ -18,7 +18,7 @@ public class RoadSelector : MonoBehaviour
         {
             flatRoad.SetActive(false);
             hillyRoad.SetActive(true);
-            finishLineFlag.transform.position = new Vector2(32.7400017f, -0.649999976f);
+            finishLineFlag.transform.position = new Vector2(28.0699997f, -2.52999997f);
         }
     }
 
