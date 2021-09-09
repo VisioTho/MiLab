@@ -66,15 +66,14 @@ public class OscillationManager : MonoBehaviour
     
     public void Oscillate()
     {
-
         startTime = Time.time;
         Time.timeScale = 1f;
         bool v = bob.IsSleeping();
-        if (v && stringLength > 20)
+        if (isReset)
         {
             transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
-            
             bob.WakeUp();
+            oscillateButton.interactable = false;
         }  
     }
     public void stopOscillation()
@@ -88,6 +87,7 @@ public class OscillationManager : MonoBehaviour
         bob.Sleep();
         isReset =true;
         oscillationCounter=-1; //reset counter
+        oscillateButton.interactable = true;
     }
     #endregion
 
@@ -200,16 +200,16 @@ public class OscillationManager : MonoBehaviour
     void tabulateResults()
     {
         tableValues[0].text = _40CM.timeTaken.ToString("f2");
-        tableValues[1].text = _40CM.getTimeForOneOscillation().ToString("f2");
-        tableValues[2].text = _40CM.getTSquared().ToString("f2");
+       // tableValues[1].text = _40CM.getTimeForOneOscillation().ToString("f2");
+       // tableValues[2].text = _40CM.getTSquared().ToString("f2");
     
         tableValues[3].text = _60CM.timeTaken.ToString("f2");
-        tableValues[4].text = _60CM.getTimeForOneOscillation().ToString("f2");
-        tableValues[5].text = _60CM.getTSquared().ToString("f2");
+        //tableValues[4].text = _60CM.getTimeForOneOscillation().ToString("f2");
+       // tableValues[5].text = _60CM.getTSquared().ToString("f2");
 
         tableValues[6].text = _100CM.timeTaken.ToString("f2");
-        tableValues[7].text = _100CM.getTimeForOneOscillation().ToString("f2");
-        tableValues[8].text = _100CM.getTSquared().ToString("f2");
+        //tableValues[7].text = _100CM.getTimeForOneOscillation().ToString("f2");
+        //tableValues[8].text = _100CM.getTSquared().ToString("f2");
     }
     
 
