@@ -17,6 +17,8 @@ public class FlameController : MonoBehaviour
     Color flameblue = new Color(0.1215686f, 0.7823045f,0.9098039f);
     //reference to gas hissing sound audio source
     [SerializeField] private AudioSource gasHiss;
+    public SpriteRenderer spriteRenderer;
+    public Sprite[] bunsenBurnerSprites; //0 for completely closed sprite
 
     //Start is called before the first frame
     void Start()
@@ -31,6 +33,11 @@ public class FlameController : MonoBehaviour
         //no emission of flame particles on wake
         flame.Stop(); 
     } 
+
+    void ChangeBunsenBurnerSprite(int n)
+    {
+        spriteRenderer.sprite = bunsenBurnerSprites[n];
+    }
     
     //update is called once every frame
     void Update()
@@ -63,23 +70,28 @@ public class FlameController : MonoBehaviour
         Gradient grad = new Gradient();
 
         // if "air holes" slider position is at n then assign gradient values xyz as the new colorOverLifetime values
+        //3 is the weakest flame and 0 is the strongest
         if(val==3)
         {
+            ChangeBunsenBurnerSprite(0);
             grad.SetKeys( new GradientColorKey[] { new GradientColorKey(flameorange, 0.0f), new GradientColorKey(flameorange, 1.0f), new GradientColorKey(Color.white, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
         }
 
         if(val==2)
         {
+            ChangeBunsenBurnerSprite(1);
             grad.SetKeys( new GradientColorKey[] { new GradientColorKey(flameblue, 0.0f), new GradientColorKey(Color.red, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f), new GradientAlphaKey(0.0f, 1.0f)} );
         }
 
         if(val==1)
         {
+            ChangeBunsenBurnerSprite(2);
             grad.SetKeys( new GradientColorKey[] { new GradientColorKey(flameblue, 0.0f), new GradientColorKey(Color.black, 1.0f) }, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 1.0f) } );
         }
         
         if(val == 0)
         {
+            ChangeBunsenBurnerSprite(3);
             grad.SetKeys( new GradientColorKey[] { new GradientColorKey(flameblue, 0.0f), new GradientColorKey(Color.black, 1.0f), new GradientColorKey(flameblue, 0.0f)}, new GradientAlphaKey[] { new GradientAlphaKey(1.0f, 0.0f), new GradientAlphaKey(0.0f, 0.8f), new GradientAlphaKey(0.0f, 0.0f) } );   
         }  
 
