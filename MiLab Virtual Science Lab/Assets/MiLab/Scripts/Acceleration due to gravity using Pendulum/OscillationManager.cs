@@ -7,12 +7,12 @@ using TMPro;
 public class OscillationManager : MonoBehaviour
 {
     [SerializeField] private Slider lengthSlider;
-    [SerializeField] private Button oscillateButton;
+    [SerializeField] private Button oscillateButton, stopOscillationButton;
     [SerializeField] private GameObject clamp, Bob;
     private float initialClampPositiony,initialClampPositionx, initialBobPositionx,initialBobPositiony;
     [SerializeField] private TMP_Text lengthText, timerText;
     [SerializeField] private Rigidbody2D bob;
-    private float startTime;
+    private float startTime=0f;
     int oscillationCounter=-1; //integer storing oscillation count 
     private float timer;
     private int stringLength;
@@ -20,6 +20,8 @@ public class OscillationManager : MonoBehaviour
     [SerializeField] private TMP_Text[] tableValues;
 
     [SerializeField] private GameObject[] tutorialBoxes;
+
+    [SerializeField] private GameObject[] checkmarks;
 
     public class Oscillations
     {
@@ -76,6 +78,7 @@ public class OscillationManager : MonoBehaviour
             oscillateButton.interactable = false;
         }  
     }
+
     public void stopOscillation()
     {
         bob.Sleep();  
@@ -133,18 +136,23 @@ public class OscillationManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {    
-
+        //start stopwatch counter when the bob is activated i.e starts oscillating
         if(!bob.IsSleeping())
         {   
-            float t = Time.time - startTime;
-            string sec = t.ToString("f0");
-            timer = t;
-            timerText.text = sec;
+            if(Time.timeScale!=0f)
+            {
+                float t = Time.time - startTime;
+                string sec = t.ToString("f0");
+                timer = t;
+                timerText.text = sec;
+            }
+            stopOscillationButton.interactable = true;
             lengthSlider.enabled = false;
         }  
         else if(bob.IsSleeping())
         {
             lengthSlider.enabled=true;
+            stopOscillationButton.interactable = false;
         }
         
         //after every 10 oscillations of the bob, record the values for each length of pendulum
@@ -156,6 +164,7 @@ public class OscillationManager : MonoBehaviour
                 {
                     _100CM.timeTaken = timer;
                     _100CM.count = oscillationCounter;
+                    checkmarks[2].SetActive(true);
                 }
                 else //prevent the oscillation process from happening again if object is already written to
                 {
@@ -170,7 +179,8 @@ public class OscillationManager : MonoBehaviour
                         {
                             _60CM.timeTaken = timer;
                             _60CM.count = oscillationCounter;
-                        }
+                            checkmarks[1].SetActive(true);
+                }
                     else //prevent the oscillation process from happening again if object is already written to
                     {
                         oscillateButton.interactable = false;
@@ -183,7 +193,8 @@ public class OscillationManager : MonoBehaviour
                     {
                         _40CM.timeTaken = timer;
                         _40CM.count = oscillationCounter;
-                    }
+                        checkmarks[0].SetActive(true);
+                }
                     else //prevent the oscillation process from happening again if object is already written to
                     {
                         oscillateButton.interactable = false;

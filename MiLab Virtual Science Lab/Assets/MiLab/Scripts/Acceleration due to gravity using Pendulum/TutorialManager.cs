@@ -9,7 +9,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject[] tutorialBoxes;
     public Slider lengthSLider;
     public Button oscillateButton;
-    int tutorialStep = 0;
+    int tutorialStep = 0; //keeps track of which step in the tutorial we are at
     // Start is called before the first frame update
     void Start()
     {
@@ -31,13 +31,16 @@ public class TutorialManager : MonoBehaviour
                 Destroy(i);
             }
         }
-
-       
         
         if(!tutorialBoxes[2].activeSelf && tutorialStep>0)
         {
             tutorialBoxes[3].SetActive(true);
             tutorialStep = 0;
+        }
+        if(!tutorialBoxes[3])
+        {
+            Destroy(tutorialBoxes[3]);
+            Destroy(tutorialBoxes[4]);
         }
     }
 
