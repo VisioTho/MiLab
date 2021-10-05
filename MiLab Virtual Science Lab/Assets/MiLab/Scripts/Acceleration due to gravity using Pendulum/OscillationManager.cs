@@ -12,10 +12,13 @@ public class OscillationManager : MonoBehaviour
     private float initialClampPositiony,initialClampPositionx, initialBobPositionx,initialBobPositiony;
     [SerializeField] private TMP_Text lengthText, timerText;
     [SerializeField] private Rigidbody2D bob;
-    private float startTime=0f;
+    private float startTime = 0f, stopWatchTime;
     int oscillationCounter=-1; //integer storing oscillation count 
     private float timer;
     private int stringLength;
+    public Slider gravityScaleSlider;
+  
+    public GameObject handGlowSprite, handNoGlowSprite;
 
     [SerializeField] private TMP_Text[] tableValues;
 
@@ -54,100 +57,109 @@ public class OscillationManager : MonoBehaviour
     void Start()
     {
         lengthSlider.enabled = true;
-        Time.timeScale = 0f;
         initialClampPositiony = clamp.transform.position.y;
         initialClampPositionx = clamp.transform.position.x;
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
         oscillateButton.interactable = false;
+        watchStopped = true;
     }
 
-    #region ..oscillation controls
-    private bool isSleeping=true;
-    private bool isReset=false;
-    
-    public void Oscillate()
-    {
-        startTime = Time.time;
-        Time.timeScale = 1f;
-        bool v = bob.IsSleeping();
-        if (isReset)
-        {
-            transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
-            bob.WakeUp();
-            oscillateButton.interactable = false;
-        }  
-    }
-
-    public void stopOscillation()
-    {
-        bob.Sleep();  
-        //Bob.transform.position = new Vector2(initialBobPositionx, initialBobPositiony);
-    }
-
-    public void resetOscillation()
-    {
-        bob.Sleep();
-        isReset =true;
-        oscillationCounter=-1; //reset counter
-        oscillateButton.interactable = true;
-    }
-    #endregion
-
-    #region ..string length controls
   
-    public void adjustLength(float val)
-    {
-        Time.timeScale = 0f;
-        oscillateButton.interactable = true;
-        if(val==0)
-        {
-            clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony);
-            lengthText.text = "Move slider";
-            stringLength=20;
-        }
-        else if(val==1) 
-        {
-            clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony+1.0f);
-            lengthText.text = " 40CM";
-            stringLength=40;
-        }
+    private bool isReset=false;
 
-        else if(val==2) 
-        {
-            clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony+2.0f);
-            lengthText.text = " 60CM";
-            stringLength=60;
-        }
-        else if(val==3)
-        {
-             clamp.transform.position = new Vector2(initialClampPositionx, initialClampPositiony+4.0f);
-             lengthText.text = " 100CM";
-             stringLength=100;
-        }
-
+    public void ResetPendulum()
+    { 
+        Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
+        bob.Sleep();
     }
-    #endregion
+   
+    private Vector2 currentBobPosition;
+
+    private bool watchReset = true;
+    private bool watchStopped = true;
+    public void StopWatch()
+    {
+        watchStopped = true;
+    }
+
+    public void ResetWatch()
+    {
+        watchReset = true;
+    }
+
+    public void StartWatch()
+    {
+        watchReset = false;
+        watchStopped = false;
+    }
 
     private void Awake()
     {
         bob.Sleep();
     }
+    private void FixedUpdate()
+    {
+        if(!watchReset)
+        {
+            if (!watchStopped)
+                stopWatchTime += 1*Time.deltaTime;
+            string sec = stopWatchTime.ToString("f2");
+            timer = stopWatchTime;
+            timerText.text = sec;
+        }
+        else
+        {
+            stopWatchTime = 0f;
+            timerText.text = "0.00";
+        }
+       
+    }
+
+    public void ChangeLength(float value)
+    {
+        Debug.Log("adjusted");
+        Bob.transform.position = new Vector2(currentBobPosition.x, value);
+    }
+    public void AdjustGravity(float val)
+    {
+        bob.gravityScale = val;
+        Debug.Log("adjust");
+    }
+    public void SelectGravityScale(int val)
+    {
+        float gravity = 0f;
+        if (val == 0)
+        {
+            gravity = 5;
+            bob.gravityScale = gravity;
+        }
+        if (val == 1)
+        {
+            gravity = 0;
+            bob.gravityScale = gravity;
+        }
+        if (val == 2)
+        {
+            gravity = 10;
+            bob.gravityScale = gravity;
+        }
+        gravityScaleSlider.value = gravity;
+    }
+    
     // Update is called once per frame
     void Update()
-    {    
+    {
+        currentBobPosition = Bob.transform.position;
         //start stopwatch counter when the bob is activated i.e starts oscillating
         if(!bob.IsSleeping())
         {   
             if(Time.timeScale!=0f)
             {
-                float t = Time.time - startTime;
-                string sec = t.ToString("f0");
-                timer = t;
-                timerText.text = sec;
+                
             }
             stopOscillationButton.interactable = true;
-            lengthSlider.enabled = false;
+            //lengthSlider.enabled = false;
         }  
         else if(bob.IsSleeping())
         {
@@ -204,8 +216,9 @@ public class OscillationManager : MonoBehaviour
             }
             oscillationCounter = -1;
             tabulateResults();
-            resetOscillation();
+            
             }
+
     }
 
     void tabulateResults()
@@ -222,9 +235,14 @@ public class OscillationManager : MonoBehaviour
         //tableValues[7].text = _100CM.getTimeForOneOscillation().ToString("f2");
         //tableValues[8].text = _100CM.getTSquared().ToString("f2");
     }
-    
 
-  [SerializeField] private TMP_Text oscillationText;
+  void glowHandSprite()
+    {
+        handGlowSprite.SetActive(true);
+        handNoGlowSprite.SetActive(false);
+    }
+
+    [SerializeField] private TMP_Text oscillationText;
   void OnTriggerEnter2D(Collider2D col)
     {
         if(col.gameObject.name=="oscillationpoint")

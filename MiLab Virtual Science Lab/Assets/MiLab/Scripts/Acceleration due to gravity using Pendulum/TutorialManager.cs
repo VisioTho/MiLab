@@ -24,35 +24,48 @@ public class TutorialManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(!StartGameScreen.isTutorialEnabled)
-        {
-            foreach(GameObject i in tutorialBoxes)
-            {
-                Destroy(i);
-            }
-        }
-        
-        if(!tutorialBoxes[2].activeSelf && tutorialStep>0)
-        {
-            tutorialBoxes[3].SetActive(true);
-            tutorialStep = 0;
-        }
-        if(!tutorialBoxes[3])
-        {
-            Destroy(tutorialBoxes[3]);
-            Destroy(tutorialBoxes[4]);
-        }
+        RunTutorial();
     }
 
+    //step 1 tutorial - length adjusted
     public void AdjustSlider()
     {
         Destroy(tutorialBoxes[0]);
         tutorialBoxes[1].SetActive(true);
+        tutorialStep = 1;
     }
+
+    //step 2 tutorial - bob activated
     void TaskOnClick()
     {
         Destroy(tutorialBoxes[1]);
         tutorialBoxes[2].SetActive(true);
-        tutorialStep++;
+        tutorialStep = 2;
     }
+    private void RunTutorial()
+    {
+        if (!StartGameScreen.isTutorialEnabled)
+        {
+            foreach (GameObject i in tutorialBoxes)
+            {
+                Destroy(i);
+            }
+        }
+
+        //step 3 tutorial - instruct the user to record findings
+        if (!tutorialBoxes[2].activeSelf && tutorialStep == 2)
+        {
+            tutorialBoxes[3].SetActive(true);
+            Destroy(tutorialBoxes[2]);
+            tutorialStep = 3;
+        }
+        if (!tutorialBoxes[3].activeSelf && tutorialStep == 3)
+        {
+            Destroy(tutorialBoxes[3]);
+            tutorialBoxes[4].SetActive(true);
+            tutorialStep = 4;
+        }
+    }
+
+   
 }
