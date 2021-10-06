@@ -9,15 +9,16 @@ public class OscillationManager : MonoBehaviour
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private Button oscillateButton, stopOscillationButton;
     [SerializeField] private GameObject clamp, Bob;
-    private float initialClampPositiony,initialClampPositionx, initialBobPositionx,initialBobPositiony;
+    private float initialClampPositiony, initialClampPositionx, initialBobPositionx, initialBobPositiony;
     [SerializeField] private TMP_Text lengthText, timerText;
     [SerializeField] private Rigidbody2D bob;
     private float startTime = 0f, stopWatchTime;
-    int oscillationCounter=-1; //integer storing oscillation count 
+    int oscillationCounter = -1; //integer storing oscillation count 
     private float timer;
     private int stringLength;
     public Slider gravityScaleSlider;
-  
+    public TMP_Dropdown gravityScaleSelector;
+
     public GameObject handGlowSprite, handNoGlowSprite;
 
     [SerializeField] private TMP_Text[] tableValues;
@@ -32,18 +33,18 @@ public class OscillationManager : MonoBehaviour
 
         public Oscillations()
         {
-            timeTaken=0;
+            timeTaken = 0;
             count = -1;
-            length=0;
+            length = 0;
         }
 
         public float getTimeForOneOscillation()
         {
-            return 0.1f*this.timeTaken;
+            return 0.1f * this.timeTaken;
         }
         public float getTSquared()
         {
-            return (0.1f*this.timeTaken)*(0.1f*this.timeTaken);
+            return (0.1f * this.timeTaken) * (0.1f * this.timeTaken);
         }
     }
 
@@ -62,58 +63,24 @@ public class OscillationManager : MonoBehaviour
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
         oscillateButton.interactable = false;
-        watchStopped = true;
+    
     }
 
-  
-    private bool isReset=false;
+
+    private bool isReset = false;
 
     public void ResetPendulum()
-    { 
+    {
         Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
         bob.Sleep();
     }
-   
+
     private Vector2 currentBobPosition;
+    
 
-    private bool watchReset = true;
-    private bool watchStopped = true;
-    public void StopWatch()
-    {
-        watchStopped = true;
-    }
-
-    public void ResetWatch()
-    {
-        watchReset = true;
-    }
-
-    public void StartWatch()
-    {
-        watchReset = false;
-        watchStopped = false;
-    }
-
-    private void Awake()
-    {
-        bob.Sleep();
-    }
     private void FixedUpdate()
     {
-        if(!watchReset)
-        {
-            if (!watchStopped)
-                stopWatchTime += 1*Time.deltaTime;
-            string sec = stopWatchTime.ToString("f2");
-            timer = stopWatchTime;
-            timerText.text = sec;
-        }
-        else
-        {
-            stopWatchTime = 0f;
-            timerText.text = "0.00";
-        }
-       
+      
     }
 
     public void ChangeLength(float value)
@@ -124,11 +91,13 @@ public class OscillationManager : MonoBehaviour
     public void AdjustGravity(float val)
     {
         bob.gravityScale = val;
+        if (val != 5 && val != 10 && val!=0)
+            gravityScaleSelector.value = 3;
         Debug.Log("adjust");
     }
     public void SelectGravityScale(int val)
     {
-        float gravity = 0f;
+        float gravity = 0;
         if (val == 0)
         {
             gravity = 5;
@@ -143,6 +112,10 @@ public class OscillationManager : MonoBehaviour
         {
             gravity = 10;
             bob.gravityScale = gravity;
+        }
+        if (val == 3)
+        {
+            gravity = gravityScaleSlider.value;
         }
         gravityScaleSlider.value = gravity;
     }
