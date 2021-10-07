@@ -88,6 +88,14 @@ public class OscillationManager : MonoBehaviour
         Debug.Log("adjusted");
         Bob.transform.position = new Vector2(currentBobPosition.x, value);
     }
+    public void IncreaseLength()
+    {
+        lengthSlider.value -= 0.1f;
+    }
+    public void DecreaseLength()
+    {
+        lengthSlider.value += 0.1f;
+    }
     public void AdjustGravity(float val)
     {
         bob.gravityScale = val;
