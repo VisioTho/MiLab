@@ -34,15 +34,17 @@ public class StepsUIManager : MonoBehaviour
     private int stepsCounter = 0;
     Steps StepOne;
     Steps StepTwo;
+    Steps StepThree;
    
     private void Start()
     { 
         StepOne = new Steps(objectsAtStepOne);
         StepTwo = new Steps(objectsAtStepTwo);
-        Steps StepThree = new Steps(objectsAtStepThree);
+        StepThree = new Steps(objectsAtStepThree);
         Steps StepFour = new Steps(objectsAtStepFour);
 
         StepTwo.HideObjects();
+        StepThree.HideObjects();
         progressBar.maxValue = numberOfSteps;
     }
 
@@ -54,6 +56,12 @@ public class StepsUIManager : MonoBehaviour
             StepTwo.ShowObjects();
             stepsCounter++;
         }
+        else if(stepsCounter == 1)
+        {
+            StepTwo.HideObjects();
+            StepThree.ShowObjects();
+            stepsCounter++;
+        }
     }
 
     public void PreviousStep()
@@ -62,6 +70,12 @@ public class StepsUIManager : MonoBehaviour
         {
             StepOne.ShowObjects();
             StepTwo.HideObjects();
+            stepsCounter--;
+        }
+        if(stepsCounter==2)
+        {
+            StepThree.HideObjects();
+            StepTwo.ShowObjects();
             stepsCounter--;
         }
     }

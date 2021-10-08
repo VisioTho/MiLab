@@ -9,29 +9,23 @@ public class PendulumController : MonoBehaviour
     [SerializeField] private Slider lengthSlider;
     [SerializeField] private Button oscillateButton, stopOscillationButton;
     [SerializeField] private GameObject clamp, Bob;
-    private float initialClampPositiony, initialClampPositionx, initialBobPositionx, initialBobPositiony;
+    private float initialBobPositionx, initialBobPositiony;
     [SerializeField] private TMP_Text lengthText, timerText;
     [SerializeField] private Rigidbody2D bob;
-    public Slider gravityScaleSlider;
+    public Slider gravityScaleSlider, massAdjustSlider;
     public TMP_Dropdown gravityScaleSelector;
-
-    [SerializeField] private TMP_Text[] tableValues;
-
-    [SerializeField] private GameObject[] tutorialBoxes;
-
-    [SerializeField] private GameObject[] checkmarks;
-
+    public TMP_Text massLabel;
 
     // Start is called before the first frame update
     void Start()
     {
         lengthSlider.enabled = true;
-        initialClampPositiony = clamp.transform.position.y;
-        initialClampPositionx = clamp.transform.position.x;
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
         oscillateButton.interactable = false;
-
+        massAdjustSlider.maxValue = Bob.transform.localScale.x;
+        massAdjustSlider.minValue = Bob.transform.localScale.x-0.5f;
+        Debug.Log(Bob.transform.localScale.x);
     }
 
     private bool isReset = false;
@@ -43,12 +37,6 @@ public class PendulumController : MonoBehaviour
     }
 
     private Vector2 currentBobPosition;
-
-
-    private void FixedUpdate()
-    {
-
-    }
 
     public void ChangeLength(float value)
     {
@@ -68,7 +56,6 @@ public class PendulumController : MonoBehaviour
         bob.gravityScale = val;
         if (val != 5 && val != 10 && val != 0)
             gravityScaleSelector.value = 3;
-        Debug.Log("adjust");
     }
     public void SelectGravityScale(int val)
     {
@@ -93,6 +80,12 @@ public class PendulumController : MonoBehaviour
             gravity = gravityScaleSlider.value;
         }
         gravityScaleSlider.value = gravity;
+    }
+
+    public void AdjustMass(float val)
+    {
+        bob.mass = val;
+        Bob.transform.localScale = new Vector2(val, val);
     }
 
     // Update is called once per frame
