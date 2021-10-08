@@ -1,10 +1,13 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ScenesManager : MonoBehaviour
 {
+
+ //   [SerializeField] private GameObject confirmationPrompt = null;
+    
     public void LoadBunsenBurnerScene()
     {
         SceneManager.LoadScene("Burner");
@@ -21,5 +24,5 @@ public class ScenesManager : MonoBehaviour
      public void LoadPendulumSimulation()
     {
         SceneManager.LoadScene("Pendulum");
-    }
+    }    
 }
