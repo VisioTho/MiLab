@@ -1,11 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class LoadPrefs : MonoBehaviour
-{ 
+{
     [Header("General Setting")]
     [SerializeField] private bool canUse = false;
     [SerializeField] private UIPopUpController UIPopUpController;

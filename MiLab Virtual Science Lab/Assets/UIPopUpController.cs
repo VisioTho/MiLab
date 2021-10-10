@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using TMPro;
 
 public class UIPopUpController : MonoBehaviour
 {
@@ -12,7 +9,7 @@ public class UIPopUpController : MonoBehaviour
     [SerializeField] private TMP_Text volumeTextValue = null;
     [SerializeField] private Slider volumeSlider = null;
     [SerializeField] private float defaultVolume = 1.0f;
-  
+
     public void setVolume(float volume)
     {
         AudioListener.volume = volume;
@@ -34,7 +31,8 @@ public class UIPopUpController : MonoBehaviour
             VolumeApply();
         }
     }
-    public void ExitButton(){
+    public void ExitButton()
+    {
         Application.Quit();
     }
 }

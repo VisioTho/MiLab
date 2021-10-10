@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Video;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class VideoPlayerManager : MonoBehaviour
 {
@@ -22,12 +20,12 @@ public class VideoPlayerManager : MonoBehaviour
         if (!videoPlayer.isPlaying)
             videoPlayer.Play();
         else
-            videoPlayer.Pause();  
+            videoPlayer.Pause();
     }
 
     public void PlayVideo()
     {
-        if(!videoPlayer.isPlaying)
+        if (!videoPlayer.isPlaying)
             videoPlayer.Play();
     }
 
@@ -39,7 +37,7 @@ public class VideoPlayerManager : MonoBehaviour
 
     private void TrackVideo()
     {
-         videoLengthSlider.value = (float)videoPlayer.time;
+        videoLengthSlider.value = (float)videoPlayer.time;
     }
 
     //}

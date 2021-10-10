@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CarLaser : MonoBehaviour
@@ -17,10 +15,10 @@ public class CarLaser : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
-       hitPoint.position = hit.point;
-       Line.SetPosition(0, transform.position);
-       Line.SetPosition(1, hitPoint.position);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, transform.up);
+        hitPoint.position = hit.point;
+        Line.SetPosition(0, transform.position);
+        Line.SetPosition(1, hitPoint.position);
 
     }
 }

@@ -1,98 +1,102 @@
-using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class PendulumController : MonoBehaviour
 {
-    [SerializeField] private Slider lengthSlider;
-    [SerializeField] private Button oscillateButton, stopOscillationButton;
-    [SerializeField] private GameObject clamp, Bob;
-    private float initialBobPositionx, initialBobPositiony;
-    [SerializeField] private TMP_Text lengthText, timerText;
-    [SerializeField] private Rigidbody2D bob;
+    public Slider lengthSlider;
+    public Button oscillateButton;
+
+    public GameObject Bob;
+
+    float initialBobPositionx, initialBobPositiony;
+    public TMP_Text lengthText, timerText;
+
+    public Rigidbody2D bobRigidBody;
+
     public Slider gravityScaleSlider, massAdjustSlider;
     public TMP_Dropdown gravityScaleSelector;
+
     public TMP_Text massLabel;
 
-    // Start is called before the first frame update
+    private Vector2 currentBobPosition;
+
     void Start()
     {
-        lengthSlider.enabled = true;
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
-        oscillateButton.interactable = false;
-        massAdjustSlider.maxValue = Bob.transform.localScale.x;
-        massAdjustSlider.minValue = Bob.transform.localScale.x-0.5f;
-        Debug.Log(Bob.transform.localScale.x);
+
+        massAdjustSlider.maxValue = Bob.transform.localScale.x; //Max value of mass slider becomes the initial scale (along x axis) of the bob.
+
+        massAdjustSlider.minValue = Bob.transform.localScale.x - 0.5f;
     }
 
-    private bool isReset = false;
 
     public void ResetPendulum()
     {
         Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
-        bob.Sleep();
+        bobRigidBody.Sleep();
     }
 
-    private Vector2 currentBobPosition;
 
-    public void ChangeLength(float value)
-    {
-        Debug.Log("adjusted");
-        Bob.transform.position = new Vector2(currentBobPosition.x, value);
-    }
-    public void IncreaseLength()
-    {
-        lengthSlider.value -= 0.1f;
-    }
-    public void DecreaseLength()
-    {
-        lengthSlider.value += 0.1f;
-    }
+    //"changing length" is moving the bob through a series of positions along y axis. 
+    public void ChangeLength(float value) => Bob.transform.position = new Vector2(currentBobPosition.x,value);
+
+
+    public void IncreaseLength() => lengthSlider.value -= 0.1f; //Increase length by 0.1f everytime a button is pressed
+
+
+    public void DecreaseLength() => lengthSlider.value += 0.1f; //decrease length by 0.1f everytime a button is pressed
+
+
     public void AdjustGravity(float val)
     {
-        bob.gravityScale = val;
+        bobRigidBody.gravityScale = val;
+
         if (val != 5 && val != 10 && val != 0)
             gravityScaleSelector.value = 3;
     }
+
+
     public void SelectGravityScale(int val)
     {
-        float gravity = 0;
+        var gravity = 0f;
+
         if (val == 0)
         {
             gravity = 5;
-            bob.gravityScale = gravity;
+            bobRigidBody.gravityScale = gravity;
         }
-        if (val == 1)
+        else if (val == 1)
         {
             gravity = 0;
-            bob.gravityScale = gravity;
+            bobRigidBody.gravityScale = gravity;
         }
-        if (val == 2)
+        else if (val == 2)
         {
             gravity = 10;
-            bob.gravityScale = gravity;
+            bobRigidBody.gravityScale = gravity;
         }
-        if (val == 3)
+        else if (val == 3)
         {
             gravity = gravityScaleSlider.value;
         }
+
         gravityScaleSlider.value = gravity;
     }
 
+
     public void AdjustMass(float val)
     {
-        bob.mass = val;
+        bobRigidBody.mass = val;
         Bob.transform.localScale = new Vector2(val, val);
     }
+
 
     // Update is called once per frame
     void Update()
     {
         currentBobPosition = Bob.transform.position;
-
     }
 }
 
