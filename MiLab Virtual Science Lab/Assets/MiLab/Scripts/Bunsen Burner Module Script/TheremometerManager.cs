@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TheremometerManager : MonoBehaviour
+public class TheremometerManager : MonoBehaviour, IMercury<float>
 {
     private Vector2 scaleChange = new Vector2(0.0f, 1.0f);
     private Vector3 temp;
@@ -22,6 +22,23 @@ public class TheremometerManager : MonoBehaviour
         ControlTemperatureLevels();
     }
 
+    public void RiseMercuryLevels(float speed)
+    {
+        Vector3 tempScale = transform.localScale;
+        var V = speed;
+        tempScale.y += V;
+        transform.localScale = tempScale;
+    }
+    public void CollapseMercuryLevels(float speed)
+    {
+        Vector3 tempScale = transform.localScale;
+        var V = speed;
+        if (tempScale.y >= 1f)
+        {
+            tempScale.y -= V;
+            transform.localScale = tempScale;
+        }
+    }
     private void ControlTemperatureLevels()
     {
         // local reference to scale of mercury object 
@@ -40,41 +57,31 @@ public class TheremometerManager : MonoBehaviour
             {
                 case 4f:
                     {
-                        const float V = 0.00002f;
-                        temp.y += V;
-                        transform.localScale = temp;
+                        RiseMercuryLevels(0.00002f);
                         break;
                     }
 
                 case 3f:
                     {
-                        const float V = 0.0002f;
-                        temp.y += V;
-                        transform.localScale = temp;
+                        RiseMercuryLevels(0.0002f);
                         break;
                     }
 
                 case 2f:
                     {
-                        const float V = 0.0002f;
-                        temp.y += V;
-                        transform.localScale = temp;
+                        RiseMercuryLevels(0.0002f);
                         break;
                     }
 
                 case 1f:
                     {
-                        const float V = 0.002f;
-                        temp.y += V;
-                        transform.localScale = temp;
+                        RiseMercuryLevels(0.002f);
                         break;
                     }
 
                 case 0f:
                     {
-                        float V = 0.02f;
-                        temp.y += V;
-                        transform.localScale = temp;
+                        RiseMercuryLevels(0.02f);
                         break;
                     }
             }
@@ -82,12 +89,7 @@ public class TheremometerManager : MonoBehaviour
         //if flame particle system is not emitting collapse mercury levels
         else
         {
-            const float V = 0.02f;
-            if (temp.y >= 1f)
-            {
-                temp.y -= V;
-                transform.localScale = temp;
-            }
+            CollapseMercuryLevels(0.002f);
         }
 
         if (temp.y >= 3f)
