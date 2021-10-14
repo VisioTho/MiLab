@@ -3,9 +3,9 @@ using UnityEngine.EventSystems;
 
 public class Draggables : MonoBehaviour, IDragHandler, IDropHandler
 {
-    public bool shouldSnapBack;
+    public bool shouldSnapBack, limitMovement; // set modifiable motion characteristics in inspector
     private Vector3 initialposition;
-    public bool moveAlongX, moveAlongY;
+    public float maxPosY, minPosY, maxPosX, minPosX; 
    
 
     private void Start()
@@ -23,14 +23,26 @@ public class Draggables : MonoBehaviour, IDragHandler, IDropHandler
 
     private void DragToNewPosition()
     {
-        if (moveAlongX && moveAlongY)
-            transform.position = Input.mousePosition;
+        transform.position = Input.mousePosition;
+        if (limitMovement)
+        {
+            LimitMovement();
+        }   
+    }
 
-        else if (moveAlongX && !moveAlongY)
-            transform.position = new Vector3(Input.mousePosition.x, initialposition.y,initialposition.z);
+    private void LimitMovement()
+    {
+        if (transform.localPosition.y > maxPosY)
+            transform.LeanMoveLocalY(-2f, 1f);
 
-        else if (!moveAlongX && moveAlongY)
-            transform.position = new Vector3(initialposition.x, Input.mousePosition.y, initialposition.z);
+        if (transform.localPosition.y < minPosY)
+            transform.LeanMoveLocalY(2f, 1f);
+
+        if (transform.localPosition.x > maxPosX)
+            transform.LeanMoveLocalX(-2f, 1f);
+
+        if (transform.localPosition.x < minPosX)
+            transform.LeanMoveLocalX(2f, 1f);
     }
 
     public void OnDrop(PointerEventData eventdata)

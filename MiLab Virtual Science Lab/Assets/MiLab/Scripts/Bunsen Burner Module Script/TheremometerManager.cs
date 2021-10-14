@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class TheremometerManager : MonoBehaviour, IMercury<float>
+public class TheremometerManager : MonoBehaviour, IMercury
 {
     private Vector2 scaleChange = new Vector2(0.0f, 1.0f);
     private Vector3 temp;
@@ -22,14 +22,14 @@ public class TheremometerManager : MonoBehaviour, IMercury<float>
         ControlTemperatureLevels();
     }
 
-    public void RiseMercuryLevels(float speed)
+    public void RiseMercuryLevels(float speed, float riseBy)
     {
         Vector3 tempScale = transform.localScale;
         var V = speed;
         tempScale.y += V;
         transform.localScale = tempScale;
     }
-    public void CollapseMercuryLevels(float speed)
+    public void CollapseMercuryLevels(float speed, float dropBy)
     {
         Vector3 tempScale = transform.localScale;
         var V = speed;
@@ -57,31 +57,31 @@ public class TheremometerManager : MonoBehaviour, IMercury<float>
             {
                 case 4f:
                     {
-                        RiseMercuryLevels(0.00002f);
+                        RiseMercuryLevels(0.00002f, 4.5f);
                         break;
                     }
 
                 case 3f:
                     {
-                        RiseMercuryLevels(0.0002f);
+                        RiseMercuryLevels(0.0002f, 4.5f);
                         break;
                     }
 
                 case 2f:
                     {
-                        RiseMercuryLevels(0.0002f);
+                        RiseMercuryLevels(0.0002f, 4.5f);
                         break;
                     }
 
                 case 1f:
                     {
-                        RiseMercuryLevels(0.002f);
+                        RiseMercuryLevels(0.002f, 4.5f);
                         break;
                     }
 
                 case 0f:
                     {
-                        RiseMercuryLevels(0.02f);
+                        RiseMercuryLevels(0.02f, 4.5f);
                         break;
                     }
             }
@@ -89,7 +89,7 @@ public class TheremometerManager : MonoBehaviour, IMercury<float>
         //if flame particle system is not emitting collapse mercury levels
         else
         {
-            CollapseMercuryLevels(0.002f);
+            CollapseMercuryLevels(0.002f, 1f);
         }
 
         if (temp.y >= 3f)
