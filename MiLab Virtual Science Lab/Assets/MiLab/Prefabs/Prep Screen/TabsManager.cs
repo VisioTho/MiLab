@@ -1,16 +1,13 @@
 using UnityEngine;
-
-public class TabsManager : MonoBehaviour
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
+public class TabsManager : MonoBehaviour, ISelectHandler
 {
-    public GameObject tabContent;
-    public GameObject tabLabel;
-    private Vector3 initialTabLabelScale;
-    // Start is called before the first frame update
-    void Start()
+    private Button butn;
+    private void Start()
     {
-        initialTabLabelScale = tabLabel.transform.localScale;
+        butn = gameObject.GetComponent<Button>();
     }
-
     // Update is called once per frame
     void Update()
     {
@@ -20,20 +17,17 @@ public class TabsManager : MonoBehaviour
 
     private void OnActive()
     {
-        if (tabContent.activeSelf)
-        {
-            Debug.Log("show");
-            tabLabel.transform.localScale = new Vector3(1.20f, 1.20f, 1);
-        }
+        
+    }
 
+    public void OnSelect(BaseEventData eventData)
+    {
+        gameObject.LeanScaleX(2f, 1.2f);
+        gameObject.LeanScaleY(2f, 1.2f);
     }
 
     private void OnInActive()
     {
-        if (tabContent.activeSelf == false)
-        {
-            Debug.Log("working");
-            tabLabel.transform.localScale = initialTabLabelScale;
-        }
+        
     }
 }

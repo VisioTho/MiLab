@@ -13,6 +13,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     public TMP_Text tempReading;
     public GameObject[] iceCubes;
     public GameObject iceCube;
+    public GameObject water;
     float iceEndPoint;
     float pottasiumEndPointA,pottasiumEndPointB, pottasiumEndPointC;
     Vector3 initialIceCubeScale;
@@ -47,8 +48,9 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         pottasiumEndPointC = Random.Range(0.3f, 0.5f);
         foreach(GameObject i in iceCubes)
         {
-            
+            i.transform.localScale = new Vector3(1f,1f,1f);
         }
+        water.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
     // Update is called once per frame
