@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG;
+using UnityEngine.UI;
 
 public class TemperatureReaction : ThermometerBehaviour, IMercury
 {
@@ -12,11 +13,12 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     public float temperatureDropRate;
     public TMP_Text tempReading;
     public GameObject[] iceCubes;
+    public GameObject sodiumPelletes;
+    public GameObject[] pellets;
     public GameObject iceCube;
     public GameObject water;
     float iceEndPoint;
-    float pottasiumEndPointA,pottasiumEndPointB, pottasiumEndPointC;
-    Vector3 initialIceCubeScale;
+    float pottasiumEndPointA,pottasiumEndPointB, pottasiumEndPointC; //randomized final temperature value after reaction for each substance
 
     private void Start()
     {
@@ -24,14 +26,13 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         pottasiumEndPointA = Random.Range(0.9f, 0.8f);
         pottasiumEndPointB = Random.Range(0.6f, 0.7f);
         pottasiumEndPointC = Random.Range(0.3f, 0.5f);
-        initialIceCubeScale = iceCubes[0].transform.lossyScale;
-        
+        transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.1f));
     }
 
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
     public void CountStirTime()
     {
-        if(emissionTime>1f || iceCube.activeSelf)
+        if(emissionTime>1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
             stirTime += Time.deltaTime * 1f;
     }
     public void resetStirTime()
@@ -39,18 +40,29 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         stirTime = 0f;
     }
     public void ResetTemperature()
-    {   
+    {
         emissionTime = 0f;
+        resetStirTime();
+
         transform.localScale = new Vector2(transform.localScale.x, 1f);
+        transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.1f));
         iceEndPoint = Random.Range(0.4f, 0.2f);
         pottasiumEndPointA = Random.Range(0.9f, 0.8f);
         pottasiumEndPointB = Random.Range(0.6f, 0.7f);
         pottasiumEndPointC = Random.Range(0.3f, 0.5f);
-        foreach(GameObject i in iceCubes)
-        {
-            i.transform.localScale = new Vector3(1f,1f,1f);
-        }
+        ResetSizeAndPosition(iceCubes);
+        ResetSizeAndPosition(pellets);
         water.transform.localScale = new Vector3(1f, 1f, 1f);
+    }
+
+    private void ResetSizeAndPosition(GameObject[] objects)
+    {
+        foreach (GameObject i in objects)
+        {
+            i.transform.LeanScaleY(1f, 1f);
+            i.transform.LeanScaleX(1f, 0f);
+            i.transform.LeanMoveLocalY(1f, 0.5f);
+        }
     }
 
     // Update is called once per frame
@@ -60,6 +72,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         PottasiumNitrateReaction();
         GetThermometerReading();
         IceReaction();
+        SodiumHydroxideReaction();
     }
 
     private void GetThermometerReading()
@@ -67,7 +80,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         tempReading.text = CalculateTemperature().ToString("f0");
     }
 
-    // collapse or rise mercury levels
+    //how temperature changes when potassium reacts with the water
     private void PottasiumNitrateReaction()
     {
         if (stirTime > 0.4f)
@@ -85,45 +98,48 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             {
                 CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointC);
             }
-
         }
     }
 
- 
+    //how temperature changes when ice reacts with liquid water
     private void IceReaction()
     {
         if(iceCube.activeSelf==true) // if at least the first ice cube is active
         {
-            Debug.Log("ice active");
             if(stirTime>0.4f)
             {
-     
                 CollapseMercuryLevels(temperatureDropRate, iceEndPoint);
+                MeltIceCubes();
             }
             else
             {
-                CollapseMercuryLevels(0.0002f, 0.4f);
-                foreach(GameObject i in iceCubes)
-                {
-                    i.LeanScaleX(0f, 60f);
-                    i.LeanScaleY(0f, 60f);
-                }
- 
+                CollapseMercuryLevels(0.00002f, iceEndPoint);
             }
         }
     }
 
-    public void MeltIceCubes()
+    private void SodiumHydroxideReaction()
+    {
+        if (sodiumPelletes.activeSelf == true) 
+        {
+            if (stirTime > 0.4f)
+            {
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f,1.5f));
+            }
+        }
+    }
+
+    //melt ice cubes gradually
+    void MeltIceCubes()
     {
         if (iceCube.activeSelf)
         {
             for (int i = 0; i < iceCubes.Length; i++)
             {
-                iceCubes[i].LeanScaleX(0f, 20f);
-                iceCubes[i].LeanScaleY(0f, 20f);
+                iceCubes[i].LeanScaleX(0f, 1f);
+                iceCubes[i].LeanScaleY(0f, 1f);
             }
-        }
-        
+        } 
     }
 
     //keep track of how long the poweder particles have been emitting

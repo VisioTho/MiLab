@@ -4,30 +4,56 @@ using UnityEngine.UI;
 using UnityEngine;
 using TMPro;
 
+
 public class ChemicalFormulaDisplay : MonoBehaviour
 {
-    public TMP_Dropdown substanceSelector;
-    public GameObject[] formulaTiles;
+    //set public fields in inspector
+    public GameObject[] reactionSetA, reactionSetB, reactionSetC;
+    public GameObject substanceA, substanceB, substanceC;
     
-    public void DisplayFormula(int val)
+
+    private void Update()
     {
-        if(val == 0)
+        DisplayFormula();
+    }
+    //display chemical formula according to ToggleGroup selection
+    void DisplayFormula()
+    {
+        if (substanceA.activeSelf)
         {
-            formulaTiles[0].SetActive(true);
-            formulaTiles[1].SetActive(true);
-            formulaTiles[2].SetActive(true);
-            formulaTiles[3].SetActive(true);
-            formulaTiles[4].SetActive(false);
+            ShowChemicalFormula(reactionSetA);
+            HideChemicalFormula(reactionSetC);
+            HideChemicalFormula(reactionSetB);
         }
-        else if(val == 1)
+        else if (substanceB.activeSelf)
         {
-            for(int i=0; i<formulaTiles.Length; i++)
-            {
-                if (i == 3 || i==4)
-                    formulaTiles[i].SetActive(true);
-                else
-                    formulaTiles[i].SetActive(false);
-            }
+            ShowChemicalFormula(reactionSetB);
+            HideChemicalFormula(reactionSetC);
+            HideChemicalFormula(reactionSetA);
+        }
+        else if (substanceC.activeSelf)
+        {
+            ShowChemicalFormula(reactionSetC);
+            HideChemicalFormula(reactionSetB);
+            HideChemicalFormula(reactionSetA);
+        }
+    }
+
+    //show selected formula
+    private void ShowChemicalFormula(GameObject[] array)
+    {
+        foreach (GameObject i in array)
+        {
+            i.SetActive(true);
+        }
+    }
+
+    //hide selected formula
+    private void HideChemicalFormula(GameObject[] array)
+    {
+        foreach (GameObject i in array)
+        {
+            i.SetActive(false);
         }
     }
 }
