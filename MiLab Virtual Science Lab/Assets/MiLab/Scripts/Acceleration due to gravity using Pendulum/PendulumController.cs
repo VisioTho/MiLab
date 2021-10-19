@@ -20,15 +20,14 @@ public class PendulumController : MonoBehaviour
     public TMP_Text massLabel;
 
     private Vector2 currentBobPosition;
-
+    private void Awake()
+    {
+        //lengthSlider.maxValue = Bob.transform.position.y;
+    }
     void Start()
     {
         initialBobPositionx = Bob.transform.position.x;
         initialBobPositiony = Bob.transform.position.y;
-
-        massAdjustSlider.maxValue = Bob.transform.localScale.x; //Max value of mass slider becomes the initial scale (along x axis) of the bob.
-
-        massAdjustSlider.minValue = Bob.transform.localScale.x - 0.5f;
     }
 
 
@@ -97,6 +96,7 @@ public class PendulumController : MonoBehaviour
     void Update()
     {
         currentBobPosition = Bob.transform.position;
+        Debug.Log(Bob.transform.localScale);
     }
 }
 

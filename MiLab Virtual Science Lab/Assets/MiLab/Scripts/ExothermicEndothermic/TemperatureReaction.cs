@@ -59,9 +59,9 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     {
         foreach (GameObject i in objects)
         {
-            i.transform.LeanScaleY(1f, 1f);
-            i.transform.LeanScaleX(1f, 0f);
-            i.transform.LeanMoveLocalY(1f, 0.5f);
+            //i.transform.LeanScaleY(1f, 1f);
+            //i.transform.LeanScaleX(1f, 0f);
+            //i.transform.LeanMoveLocalY(1f, 0.5f);
         }
     }
 
@@ -109,7 +109,6 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             if(stirTime>0.4f)
             {
                 CollapseMercuryLevels(temperatureDropRate, iceEndPoint);
-                MeltIceCubes();
             }
             else
             {
@@ -136,8 +135,8 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         {
             for (int i = 0; i < iceCubes.Length; i++)
             {
-                iceCubes[i].LeanScaleX(0f, 1f);
-                iceCubes[i].LeanScaleY(0f, 1f);
+                iceCubes[i].LeanScaleX(0.2f, 20f);
+                iceCubes[i].LeanScaleY(0.2f, 20f);
             }
         } 
     }
