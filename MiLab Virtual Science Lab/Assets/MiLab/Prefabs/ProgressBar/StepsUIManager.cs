@@ -23,7 +23,7 @@ public partial class StepsUIManager : MonoBehaviour
         StepThree = new Steps(objectsAtStepThree);
         StepTwo.HideObjects();
         StepThree.HideObjects();
-        progressBar.maxValue = numberOfSteps;
+        progressBar.maxValue = numberOfSteps-1;
     }
 
     public void GoToNextStep()
@@ -66,9 +66,25 @@ public partial class StepsUIManager : MonoBehaviour
         }
     }
 
+    public Button finishButton, nxtButton;
+    void Finish()
+    {
+        if(stepsCounter == numberOfSteps-1)
+        {
+            finishButton.gameObject.SetActive(true);
+            nxtButton.gameObject.SetActive(false);
+        }
+        else
+        {
+            finishButton.gameObject.SetActive(false);
+            nxtButton.gameObject.SetActive(true);
+        }
+    }
+
     private void FixedUpdate()
     {
         ProgressBar();
+        Finish();
     }
 
     private void ProgressBar() => progressBar.value = stepsCounter;

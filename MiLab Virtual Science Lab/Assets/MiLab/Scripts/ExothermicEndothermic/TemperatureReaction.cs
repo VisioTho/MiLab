@@ -19,7 +19,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     public GameObject water;
     float iceEndPoint;
     float pottasiumEndPointA,pottasiumEndPointB, pottasiumEndPointC; //randomized final temperature value after reaction for each substance
-
+    public ParticleSystem EnergyTraceEndothermic, energyTraceExothermic;
     private void Start()
     {
         iceEndPoint = Random.Range(0.4f, 0.2f);
@@ -32,7 +32,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
     public void CountStirTime()
     {
-        if(emissionTime>1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
+        if (emissionTime > 1f || iceCube.activeSelf || pellets[0].activeSelf)
             stirTime += Time.deltaTime * 1f;
     }
     public void resetStirTime()
@@ -73,6 +73,8 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         GetThermometerReading();
         IceReaction();
         SodiumHydroxideReaction();
+        Debug.Log(energyTraceExothermic.isEmitting);
+        //energyTraceExothermic.Play();
     }
 
     private void GetThermometerReading()
@@ -85,17 +87,21 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     {
         if (stirTime > 0.4f)
         {
+            
             if (emissionTime > 1f && emissionTime < 4f)
             {
+                EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointA);
             }
 
             else if (emissionTime > 4f && emissionTime < 8f)
             {
+                EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointB);
             }
             else if(emissionTime > 8f)
             {
+                EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointC);
             }
         }
@@ -109,6 +115,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             if(stirTime>0.4f)
             {
                 CollapseMercuryLevels(temperatureDropRate, iceEndPoint);
+                EnergyTraceEndothermic.Emit(5);
             }
             else
             {
@@ -120,11 +127,18 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     private void SodiumHydroxideReaction()
     {
         if (sodiumPelletes.activeSelf == true) 
-        {
-            if (stirTime > 0.4f)
+        {   
+            var particles = energyTraceExothermic.main;
+            if (stirTime > 0.4f && pellets[0].activeSelf)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f,1.5f));
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f, 1.5f));
+
+                //particles.playOnAwake = true;
+                energyTraceExothermic.Emit(5);
             }
+            else
+                particles.playOnAwake = false;
+                
         }
     }
 
