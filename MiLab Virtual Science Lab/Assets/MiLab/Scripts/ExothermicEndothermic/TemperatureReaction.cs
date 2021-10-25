@@ -18,15 +18,24 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     public GameObject iceCube;
     public GameObject water;
     float iceEndPoint;
-    float pottasiumEndPointA,pottasiumEndPointB, pottasiumEndPointC; //randomized final temperature value after reaction for each substance
+ 
     public ParticleSystem EnergyTraceEndothermic, energyTraceExothermic;
+    Vector2 temperatureLevels;
+    
+    public class Substances
+    {
+        public Vector2 thermometerLevels;
+        public float changeInTemperature;
+    }
+
+    Substances potassiumNitrate = new Substances();
+    Substances ice = new Substances();
+    Substances sodiumHydroxide = new Substances();
     private void Start()
     {
-        iceEndPoint = Random.Range(0.4f, 0.2f);
-        pottasiumEndPointA = Random.Range(0.9f, 0.8f);
-        pottasiumEndPointB = Random.Range(0.6f, 0.7f);
-        pottasiumEndPointC = Random.Range(0.3f, 0.5f);
-        transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.1f));
+        ice.changeInTemperature = Random.Range(0.4f, 0.2f);
+        sodiumHydroxide.changeInTemperature = Random.Range(1.3f, 1.55f);
+        transform.localScale = new Vector2(1f, Random.Range(0.8f, 1.0f));
     }
 
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
@@ -47,21 +56,33 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         transform.localScale = new Vector2(transform.localScale.x, 1f);
         transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.1f));
         iceEndPoint = Random.Range(0.4f, 0.2f);
-        pottasiumEndPointA = Random.Range(0.9f, 0.8f);
-        pottasiumEndPointB = Random.Range(0.6f, 0.7f);
-        pottasiumEndPointC = Random.Range(0.3f, 0.5f);
         ResetSizeAndPosition(iceCubes);
-        ResetSizeAndPosition(pellets);
+        foreach (GameObject i in pellets)
+        { 
+            i.SetActive(false);
+            if(!sodiumPelletes.activeSelf)
+            {   
+                i.transform.LeanScaleX(0.03776602f, 0.5f);
+                i.transform.LeanScaleY(0.03039036f, 0.5f);
+                //i.transform.localPosition = new Vector2(-521.9f, -311.9f);
+                //i.transform.LeanSetPosY(-311.9f);
+
+            }
+            
+        }
         water.transform.localScale = new Vector3(1f, 1f, 1f);
     }
+
 
     private void ResetSizeAndPosition(GameObject[] objects)
     {
         foreach (GameObject i in objects)
         {
-            //i.transform.LeanScaleY(1f, 1f);
-            //i.transform.LeanScaleX(1f, 0f);
-            //i.transform.LeanMoveLocalY(1f, 0.5f);
+            i.transform.LeanScaleX(0.02776602f, 0.5f);
+            i.transform.LeanScaleY(0.03039036f, 0.5f);
+            
+            //i.transform.LeanScaleX(1f, 0.5f);
+            i.transform.LeanMoveLocalY(0.02f, 0.5f);
         }
     }
 
@@ -73,8 +94,7 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         GetThermometerReading();
         IceReaction();
         SodiumHydroxideReaction();
-        Debug.Log(energyTraceExothermic.isEmitting);
-        //energyTraceExothermic.Play();
+        Debug.Log(pellets[0].transform.localPosition);
     }
 
     private void GetThermometerReading()
@@ -90,37 +110,46 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             
             if (emissionTime > 1f && emissionTime < 4f)
             {
+                var tempChange = Random.Range(0.9f, 0.8f);
+                potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointA);
+                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
             }
 
             else if (emissionTime > 4f && emissionTime < 8f)
             {
+                var tempChange = Random.Range(0.6f, 0.7f);
+                potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointB);
+                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
             }
             else if(emissionTime > 8f)
             {
+                var tempChange = Random.Range(0.3f, 0.5f);
+                potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, pottasiumEndPointC);
+                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
             }
         }
+        
     }
 
     //how temperature changes when ice reacts with liquid water
     private void IceReaction()
     {
         if(iceCube.activeSelf==true) // if at least the first ice cube is active
-        {
-            if(stirTime>0.4f)
+        {     
+            if(stirTime>0.6f)
             {
-                CollapseMercuryLevels(temperatureDropRate, iceEndPoint);
+                CollapseMercuryLevels(temperatureDropRate, ice.changeInTemperature);
                 EnergyTraceEndothermic.Emit(5);
+                MeltIceCubes(0.00002f);
             }
             else
             {
-                CollapseMercuryLevels(0.00002f, iceEndPoint);
-            }
+                CollapseMercuryLevels(0.00002f, ice.changeInTemperature);
+                MeltIceCubes(0.000002f);
+            }  
         }
     }
 
@@ -131,28 +160,74 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             var particles = energyTraceExothermic.main;
             if (stirTime > 0.4f && pellets[0].activeSelf)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f, 1.5f));
-
-                //particles.playOnAwake = true;
-                energyTraceExothermic.Emit(5);
+                if(pellets[0].activeSelf)
+                {
+                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f, 1.35f));
+                    MeltSodiumHydroxide(0.00002f);
+                    energyTraceExothermic.Emit(5);
+                }
+                else if(pellets[1].activeSelf)
+                {
+                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.36f, 1.45f));
+                    MeltSodiumHydroxide(0.00002f);
+                    energyTraceExothermic.Emit(5);
+                }
+                else if(pellets[2])
+                {
+                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.46f, 1.65f));
+                    MeltSodiumHydroxide(0.00002f);
+                    energyTraceExothermic.Emit(5);
+                }
+               
             }
             else
                 particles.playOnAwake = false;
-                
+           
         }
     }
 
     //melt ice cubes gradually
-    void MeltIceCubes()
+    int stopper = 0; // prevents update from being called more than once on this function
+    void MeltIceCubes(float meltSpeed)
     {
-        if (iceCube.activeSelf)
+        if (iceCube.activeSelf && stopper==0)
         {
             for (int i = 0; i < iceCubes.Length; i++)
             {
-                iceCubes[i].LeanScaleX(0.2f, 20f);
-                iceCubes[i].LeanScaleY(0.2f, 20f);
+                Vector2 tempScale = iceCubes[i].transform.localScale;
+                var V = meltSpeed;
+                if (tempScale.y > 0.01 && tempScale.x>0.01)
+                {
+                    tempScale.y -= V; 
+                    tempScale.x -= V;
+                    iceCubes[i].transform.localScale = tempScale;
+                }
             }
+            
         } 
+    }
+
+    void MeltSodiumHydroxide(float meltSpeed)
+    {
+        if (pellets[0].activeSelf && stopper == 0)
+        {
+            for (int i = 0; i < pellets.Length; i++)
+            {
+                if(pellets[i].activeSelf)
+                {
+                    Vector2 tempScale = pellets[i].transform.localScale;
+                    var V = meltSpeed;
+                    if (tempScale.y > 0.01 && tempScale.x > 0.01)
+                    {
+                        tempScale.y -= V;
+                        tempScale.x -= V;
+                    
+                        pellets[i].transform.localScale = tempScale;
+                    }
+                }  
+            }
+
+        }
     }
 
     //keep track of how long the poweder particles have been emitting
