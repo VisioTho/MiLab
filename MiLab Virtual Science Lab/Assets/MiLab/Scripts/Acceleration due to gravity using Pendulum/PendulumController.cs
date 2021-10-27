@@ -33,8 +33,14 @@ public class PendulumController : MonoBehaviour
 
     public void ResetPendulum()
     {
-        Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
+       // Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
+        transform.LeanMoveLocalX(initialBobPositionx, 0.4f);
         bobRigidBody.Sleep();
+    }
+
+    public void StopPendulum()
+    {
+        transform.LeanMoveLocalX(-1.76f, 0.4f);
     }
 
     //"changing length" is moving the bob through a series of positions along y axis. 
