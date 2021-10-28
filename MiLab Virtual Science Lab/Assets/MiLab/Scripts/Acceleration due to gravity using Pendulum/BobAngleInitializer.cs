@@ -3,7 +3,19 @@ using UnityEngine;
 public class BobAngleInitializer : MonoBehaviour
 {
 
-    private Vector3 screenPoint;
+    private Vector3 offset; void OnMouseDown()
+    {
+        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
+     }
+    void OnMouseDrag()
+    {
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        transform.position = curPosition;
+
+        Debug.Log(transform.position.y);
+    }
+    /*private Vector3 screenPoint;
     private Vector3 offset;
 
     void OnMouseDown()

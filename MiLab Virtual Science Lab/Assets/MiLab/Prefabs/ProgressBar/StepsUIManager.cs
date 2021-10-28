@@ -31,6 +31,7 @@ public partial class StepsUIManager : MonoBehaviour
         switch (stepsCounter)
         {
             case 0:
+                
                 StepOne.HideObjects();
 
                 StepTwo.ShowObjects();

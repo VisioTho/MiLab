@@ -11,6 +11,7 @@ public class QuizHandler : MonoBehaviour
 
     public void HandleResponse()
     {
+        Debug.Log("in");
         int correctResponseCount = 0;
         GetResponses();
 
