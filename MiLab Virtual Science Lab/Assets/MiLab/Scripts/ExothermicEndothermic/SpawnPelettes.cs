@@ -7,7 +7,6 @@ public class SpawnPelettes : MonoBehaviour
     [SerializeField] private GameObject[] pelettes;
     int peletteCount;
 
-
     public void Spawn()
     {
         peletteCount = 0;

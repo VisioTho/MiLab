@@ -5,11 +5,11 @@ using TMPro;
 using DG;
 using UnityEngine.UI;
 
-public class TemperatureReaction : ThermometerBehaviour, IMercury
+public class TemperatureReaction : ThermometerBehaviour//, IMercury
 {
     public ParticleSystem powderParticles;
     private float emissionTime;
-    private float stirTime;
+    public static float stirTime;
     public float temperatureDropRate;
     public TMP_Text tempReading;
     public GameObject[] iceCubes;
@@ -18,6 +18,8 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     public GameObject iceCube;
     public GameObject water;
     float iceEndPoint;
+    Vector3 initialPosition;
+    Vector3 initialScale;
  
     public ParticleSystem EnergyTraceEndothermic, energyTraceExothermic;
     Vector2 temperatureLevels;
@@ -36,12 +38,16 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         ice.changeInTemperature = Random.Range(0.4f, 0.2f);
         sodiumHydroxide.changeInTemperature = Random.Range(1.3f, 1.55f);
         transform.localScale = new Vector2(1f, Random.Range(0.8f, 1.0f));
+
+        initialPosition = pellets[0].transform.position;
+        initialScale = pellets[0].transform.localScale;
+        
     }
 
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
     public void CountStirTime()
     {
-        if (emissionTime > 1f || iceCube.activeSelf || pellets[0].activeSelf)
+        if (emissionTime > 1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
             stirTime += Time.deltaTime * 1f;
     }
     public void resetStirTime()
@@ -54,22 +60,18 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
         resetStirTime();
 
         transform.localScale = new Vector2(transform.localScale.x, 1f);
-        transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.1f));
+        transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.0f));
         iceEndPoint = Random.Range(0.4f, 0.2f);
         ResetSizeAndPosition(iceCubes);
-        foreach (GameObject i in pellets)
-        { 
-            i.SetActive(false);
-            if(!sodiumPelletes.activeSelf)
-            {   
-                i.transform.LeanScaleX(0.03776602f, 0.5f);
-                i.transform.LeanScaleY(0.03039036f, 0.5f);
-                //i.transform.localPosition = new Vector2(-521.9f, -311.9f);
-                //i.transform.LeanSetPosY(-311.9f);
-
-            }
-            
+        for (int i = 0; i < pellets.Length; i++)
+        {
+            pellets[i].transform.position =  initialPosition;
+            pellets[i].transform.localScale = initialScale;
+            pellets[i].GetComponent<Rigidbody2D>().simulated = true;
         }
+        pellets[0].transform.position = initialPosition;
+        SodiumHydroxideReaction.counter = 0;
+
         water.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
@@ -87,14 +89,55 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
     }
 
     // Update is called once per frame
+    float lowTempRise;
+    float lowerMidTempRise;
+    float higherMidTempRise;
+    float highTempRise;
     void Update()
     {
         CountEmissionTime();
         PottasiumNitrateReaction();
         GetThermometerReading();
         IceReaction();
-        SodiumHydroxideReaction();
-        Debug.Log(pellets[0].transform.localPosition);
+        //SodiumHydroxideReaction();
+
+        //var particles = energyTraceExothermic.main;
+        //Debug.Log("stir time be" +stirTime);
+        if (stirTime > 0.4f)
+        {
+            if (SodiumHydroxideReaction.counter == 1)
+            {
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.1f, 1.15f));
+                //MeltSodiumHydroxide(0.00002f);
+                //energyTraceExothermic.Emit(5);
+                //stirTime = 0f;
+            }
+            else if (SodiumHydroxideReaction.counter == 2)
+            {
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.16f, 1.2f));
+               //MeltSodiumHydroxide(0.00002f);
+                //energyTraceExothermic.Emit(5);
+                Debug.Log("Should be 2");
+            }
+            else if(SodiumHydroxideReaction.counter == 3)
+            {
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.21f, 1.24f));
+                //MeltSodiumHydroxide(0.00002f);
+                //energyTraceExothermic.Emit(5);
+                Debug.Log("Should be 2");
+            }
+            else if (SodiumHydroxideReaction.counter >= 4)
+            {
+                RiseMercuryLevels(temperatureDropRate, Random.Range(1.46f, 1.65f));
+                //MeltSodiumHydroxide(0.00002f);
+                //energyTraceExothermic.Emit(5);
+                Debug.Log("Should be 3");
+            }
+
+        }
+        //else
+        //particles.playOnAwake = false;
+    
     }
 
     private void GetThermometerReading()
@@ -148,12 +191,12 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
             else
             {
                 CollapseMercuryLevels(0.00002f, ice.changeInTemperature);
-                MeltIceCubes(0.000002f);
+                MeltIceCubes(0.0000002f);
             }  
         }
     }
 
-    private void SodiumHydroxideReaction()
+   /* private void SodiumHydroxideReaction()
     {
         if (sodiumPelletes.activeSelf == true) 
         {   
@@ -185,10 +228,11 @@ public class TemperatureReaction : ThermometerBehaviour, IMercury
            
         }
     }
+   */
 
     //melt ice cubes gradually
     int stopper = 0; // prevents update from being called more than once on this function
-    void MeltIceCubes(float meltSpeed)
+    public void MeltIceCubes(float meltSpeed)
     {
         if (iceCube.activeSelf && stopper==0)
         {
