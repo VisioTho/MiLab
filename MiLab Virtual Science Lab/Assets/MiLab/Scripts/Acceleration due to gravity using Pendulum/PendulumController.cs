@@ -33,8 +33,10 @@ public class PendulumController : MonoBehaviour
 
     public void ResetPendulum()
     {
-       // Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
+        // Bob.transform.position = new Vector2(initialBobPositionx, Bob.transform.position.y);
         transform.LeanMoveLocalX(initialBobPositionx, 0.4f);
+        transform.LeanMoveLocalY(transform.position.y + 0.3f, 0.4f);
+        transform.GetComponent<DistanceJoint2D>().distance = lengthSlider.value;
         bobRigidBody.Sleep();
     }
 
@@ -44,7 +46,7 @@ public class PendulumController : MonoBehaviour
     }
 
     //"changing length" is moving the bob through a series of positions along y axis. 
-    public void ChangeLength(float value) => transform.position = new Vector2(currentBobPosition.x,value);
+    public void ChangeLength(float value) => transform.GetComponent<DistanceJoint2D>().distance = value; //transform.position = new Vector2(currentBobPosition.x,value);
 
 
     public void IncreaseLength() => lengthSlider.value -= 0.1f; //Increase length by 0.1f everytime a button is pressed

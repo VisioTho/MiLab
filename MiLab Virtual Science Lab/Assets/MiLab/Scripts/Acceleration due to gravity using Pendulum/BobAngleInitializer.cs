@@ -1,19 +1,41 @@
 using UnityEngine;
 
-public class BobAngleInitializer : MonoBehaviour
+public class BobAngleInitializer : PendulumController
 {
 
-    private Vector3 offset; void OnMouseDown()
+    float clampedPosY;
+    private Vector3 offset;
+    DistanceJoint2D distanceJoint2D;
+    float distance;
+
+    private void Start()
+    {
+        distanceJoint2D = transform.GetComponent<DistanceJoint2D>();
+    }
+  
+    void OnMouseDown()
     {
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
-     }
+        distance = distanceJoint2D.distance;    
+    }
     void OnMouseDrag()
     {
+
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
+
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+
+        //curPosition.x = Mathf.Clamp(curPosition.x, -3f, 0f);
+       // curPosition.y = curPosition.y + 0.1f;
+        
         transform.position = curPosition;
 
-        Debug.Log(transform.position.y);
+    }
+
+    private void Update()
+    {
+        Debug.Log("the distance is " +distanceJoint2D.distance +" Y position is " +transform.position.y);
+
     }
     /*private Vector3 screenPoint;
     private Vector3 offset;
