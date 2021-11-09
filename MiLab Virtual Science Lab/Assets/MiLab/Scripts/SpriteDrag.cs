@@ -8,11 +8,12 @@ public class SpriteDrag : MonoBehaviour
     private Vector3 offset;
     private Vector3 initialPos;
 
-    private bool hasCollided;
+    private bool hasCollided= false;
 
     private void Start()
     {
         initialPos = transform.position;
+        hasCollided = false;
     }
 
     void OnMouseDown()
@@ -42,16 +43,19 @@ public class SpriteDrag : MonoBehaviour
             transform.position = initialPos;
         if (collision.gameObject.name == "BaseCollider")
             this.hasCollided = true;
+        if (collision.gameObject.name == "PetriDish" || collision.gameObject.name == "Capsule")
+            this.hasCollided = false;
+        
     }
 
     void Update()
     {
-        if (TemperatureReaction.stirTime > 0.6f && this.hasCollided == true)
+        if (TemperatureReaction.stirTime > 1.2f && this.hasCollided == true)
 
         {
             Vector2 tempScale = transform.localScale;
             var V = 0.0002f;
-            if (tempScale.y > 0.01 && tempScale.x > 0.01)
+            if (tempScale.y > 0.001 && tempScale.x > 0.001)
             {
                 tempScale.y -= V;
                 tempScale.x -= V;
@@ -59,7 +63,11 @@ public class SpriteDrag : MonoBehaviour
                 transform.localScale = tempScale;
                 
             }
-            //this.hasCollided = false;
+           
+        }
+        if(transform.localScale.y <=0.001f)
+        {
+            this.hasCollided = false;
         }
     }
 }

@@ -20,6 +20,9 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     float iceEndPoint;
     Vector3 initialPosition;
     Vector3 initialScale;
+
+    public Button removeSoluteButton;
+    public TMP_Text chemicalDisplay;
  
     public ParticleSystem EnergyTraceEndothermic, energyTraceExothermic;
     Vector2 temperatureLevels;
@@ -56,9 +59,10 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     }
     public void ResetTemperature()
     {
+        chemicalDisplay.text = "Water";
         emissionTime = 0f;
         resetStirTime();
-
+        removeSoluteButton.interactable = false;
         transform.localScale = new Vector2(transform.localScale.x, 1f);
         transform.localScale = new Vector2(1f, Random.Range(0.9f, 1.0f));
         iceEndPoint = Random.Range(0.4f, 0.2f);
@@ -101,55 +105,64 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
         IceReaction();
         //SodiumHydroxideReaction();
 
-        //var particles = energyTraceExothermic.main;
+        var particles = energyTraceExothermic.main;
         //Debug.Log("stir time be" +stirTime);
-        if (stirTime > 0.4f)
+        if (stirTime > 1.2f)
         {
             if (SodiumHydroxideReaction.counter == 1)
             {
                 RiseMercuryLevels(temperatureDropRate, Random.Range(1.1f, 1.15f));
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Sodium Hydroxide";
                 //MeltSodiumHydroxide(0.00002f);
-                //energyTraceExothermic.Emit(5);
+                energyTraceExothermic.Emit(5);
                 //stirTime = 0f;
             }
             else if (SodiumHydroxideReaction.counter == 2)
             {
                 RiseMercuryLevels(temperatureDropRate, Random.Range(1.16f, 1.2f));
-               //MeltSodiumHydroxide(0.00002f);
-                //energyTraceExothermic.Emit(5);
+                //MeltSodiumHydroxide(0.00002f);
+                energyTraceExothermic.Emit(5);
                 Debug.Log("Should be 2");
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Sodium Hydroxide";
             }
             else if(SodiumHydroxideReaction.counter == 3)
             {
                 RiseMercuryLevels(temperatureDropRate, Random.Range(1.21f, 1.24f));
                 //MeltSodiumHydroxide(0.00002f);
-                //energyTraceExothermic.Emit(5);
+                energyTraceExothermic.Emit(5);
                 Debug.Log("Should be 2");
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Sodium Hydroxide";
             }
             else if (SodiumHydroxideReaction.counter >= 4)
             {
                 RiseMercuryLevels(temperatureDropRate, Random.Range(1.46f, 1.65f));
                 //MeltSodiumHydroxide(0.00002f);
-                //energyTraceExothermic.Emit(5);
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Sodium Hydroxide";
+                energyTraceExothermic.Emit(5);
                 Debug.Log("Should be 3");
             }
 
         }
-        //else
-        //particles.playOnAwake = false;
+        else
+            particles.playOnAwake = false;
     
     }
 
     private void GetThermometerReading()
     {
-        tempReading.text = CalculateTemperature().ToString("f0");
+        tempReading.text = CalculateTemperature().ToString("f1");
     }
 
     //how temperature changes when potassium reacts with the water
     private void PottasiumNitrateReaction()
     {
-        if (stirTime > 0.4f)
+        if (stirTime > 1.2f)
         {
+            
             
             if (emissionTime > 1f && emissionTime < 4f)
             {
@@ -157,6 +170,8 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
                 potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Pottasium Nitrate";
             }
 
             else if (emissionTime > 4f && emissionTime < 8f)
@@ -165,6 +180,8 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
                 potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Pottasium Nitrate";
             }
             else if(emissionTime > 8f)
             {
@@ -172,6 +189,8 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
                 potassiumNitrate.changeInTemperature = tempChange;
                 EnergyTraceEndothermic.Emit(5);
                 CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Pottasium Nitrate";
             }
         }
         
@@ -182,11 +201,13 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     {
         if(iceCube.activeSelf==true) // if at least the first ice cube is active
         {     
-            if(stirTime>0.6f)
+            if(stirTime>1.2f)
             {
                 CollapseMercuryLevels(temperatureDropRate, ice.changeInTemperature);
                 EnergyTraceEndothermic.Emit(5);
                 MeltIceCubes(0.00002f);
+                removeSoluteButton.interactable = true;
+                chemicalDisplay.text = "Water + Ice";
             }
             else
             {

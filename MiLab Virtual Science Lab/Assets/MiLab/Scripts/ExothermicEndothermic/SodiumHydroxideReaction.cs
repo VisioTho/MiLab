@@ -6,6 +6,10 @@ public class SodiumHydroxideReaction : ThermometerBehaviour
 {
     public static int counter;
 
+    private void Start()
+    {
+        counter = 0;
+    }
     private void Update()
     {
         Debug.Log("counter is " + counter);
