@@ -72,6 +72,8 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
             pellets[i].transform.position =  initialPosition;
             pellets[i].transform.localScale = initialScale;
             pellets[i].GetComponent<Rigidbody2D>().simulated = true;
+            pellets[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+            pellets[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         pellets[0].transform.position = initialPosition;
         SodiumHydroxideReaction.counter = 0;

@@ -21,7 +21,8 @@ public class SodiumHydroxideReaction : ThermometerBehaviour
         Debug.Log("triggered");
         if (collision.gameObject.name == "Capsule")
         {
-            collision.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             switch (counter)
             {
                 case 0:

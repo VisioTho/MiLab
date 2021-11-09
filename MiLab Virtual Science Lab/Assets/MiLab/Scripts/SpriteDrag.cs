@@ -10,6 +10,10 @@ public class SpriteDrag : MonoBehaviour
 
     private bool hasCollided= false;
 
+    private void FixedUpdate()
+    {
+        
+    }
     private void Start()
     {
         initialPos = transform.position;
@@ -30,11 +34,13 @@ public class SpriteDrag : MonoBehaviour
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
+        transform.gameObject.GetComponent<Rigidbody2D>().simulated = false;
     }
 
     private void OnMouseUp()
     {
         transform.GetChild(0).gameObject.SetActive(false);
+        transform.gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -69,5 +75,7 @@ public class SpriteDrag : MonoBehaviour
         {
             this.hasCollided = false;
         }
+
+        
     }
 }
