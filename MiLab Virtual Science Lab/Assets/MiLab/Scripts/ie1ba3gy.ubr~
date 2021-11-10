@@ -31,7 +31,7 @@ public class SpriteDrag : MonoBehaviour
     void OnMouseDrag()
     {
         
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, transform.position.y+260f, -Camera.main.transform.position.z);
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, transform.position.y+400f, -Camera.main.transform.position.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
         transform.gameObject.GetComponent<Rigidbody2D>().simulated = false;
