@@ -17,7 +17,6 @@ public class scaling_controller : MonoBehaviour
     {
         _massSlider.onValueChanged.AddListener((v) =>
         {
-
             update_position();
         });
         }

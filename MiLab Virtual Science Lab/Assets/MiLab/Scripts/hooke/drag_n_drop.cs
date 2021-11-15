@@ -69,9 +69,11 @@ public class drag_n_drop : MonoBehaviour
     {
         if (isDragged)
         {
-            transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
+           transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
            if ((gameObject.tag == "load") || (gameObject.tag == "load_100") || (gameObject.tag == "load_200") || (gameObject.tag == "load_300") || (gameObject.tag == "load_400") || (gameObject.tag == "load_500") || (gameObject.tag == "load_600") || (gameObject.tag == "load_700") || (gameObject.tag == "load_800") || (gameObject.tag == "load_custom"))
             {
+              
+                
                 if ((gameObject.transform.position.y > -0.1627356f)&& (gameObject.transform.position.x > -1.59f)&&(gameObject.transform.position.x < 0.417f))
                 {
                     gameObject.transform.position = new Vector2(-0.56f, gameObject.transform.position.y);//v.x is hardcoded deliberately to force the object only make movement on y axis
@@ -98,6 +100,8 @@ public class drag_n_drop : MonoBehaviour
 
     private void OnMouseUp()
     {
+      //  spring_target.SetActive(false);
+
         isDragged = false;
         if ((gameObject.GetComponent<SpringJoint2D>()==null) && (gameObject.transform.position.x>-2.14f) && (gameObject.tag!="ruler"))
         {
