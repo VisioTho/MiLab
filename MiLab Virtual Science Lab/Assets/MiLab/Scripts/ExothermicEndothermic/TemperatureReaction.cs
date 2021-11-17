@@ -16,7 +16,7 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     public GameObject sodiumPelletes;
     public GameObject[] pellets;
     public GameObject iceCube;
-    public GameObject water;
+    //public GameObject water;
     float iceEndPoint;
     Vector3 initialPosition;
     Vector3 initialScale;
@@ -78,7 +78,7 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
         pellets[0].transform.position = initialPosition;
         SodiumHydroxideReaction.counter = 0;
 
-        water.transform.localScale = new Vector3(1f, 1f, 1f);
+        //water.transform.localScale = new Vector3(1f, 1f, 1f);
     }
 
 
