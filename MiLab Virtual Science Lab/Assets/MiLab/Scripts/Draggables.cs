@@ -33,16 +33,16 @@ public class Draggables : MonoBehaviour, IDragHandler, IDropHandler
     private void LimitMovement()
     {
         if (transform.localPosition.y > maxPosY)
-            transform.LeanMoveLocalY(-2f, 1f);
+            transform.LeanMoveLocalY(-0.1f, 0.3f);
 
         if (transform.localPosition.y < minPosY)
-            transform.LeanMoveLocalY(2f, 1f);
+            transform.LeanMoveLocalY(0.1f, 0.3f);
 
         if (transform.localPosition.x > maxPosX)
-            transform.LeanMoveLocalX(-2f, 1f);
+            transform.LeanMoveLocalX(-0.1f, 0.3f);
 
         if (transform.localPosition.x < minPosX)
-            transform.LeanMoveLocalX(2f, 1f);
+            transform.LeanMoveLocalX(0.1f, 0.3f);
     }
 
     public void OnDrop(PointerEventData eventdata)
