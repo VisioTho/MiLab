@@ -18114,12 +18114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a75b8991ff7d44fadc8a7db8b694e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  substanceA:
-  - {fileID: 1930436594}
-  - {fileID: 1975888035}
-  - {fileID: 875246655}
-  substanceB: []
-  toggleGroup: {fileID: 376901233}
 --- !u!4 &684308082
 Transform:
   m_ObjectHideFlags: 0
@@ -18158,20 +18152,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ffb14ef8dc549a4d8ce0a38684d8a05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  reactionSetA:
-  - {fileID: 2074107213}
-  - {fileID: 1360401942}
-  - {fileID: 477254715}
-  reactionSetB:
-  - {fileID: 1708170900}
-  - {fileID: 624905937}
-  reactionSetC:
-  - {fileID: 2075535149}
-  - {fileID: 1855127899}
-  - {fileID: 753922237}
-  substanceA: {fileID: 1930436594}
-  substanceB: {fileID: 1975888035}
-  substanceC: {fileID: 875246655}
 --- !u!114 &684308085
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18184,10 +18164,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 221507e70d237c644aac26f84eb255f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pelettes:
-  - {fileID: 1178219357}
-  - {fileID: 393873708}
-  - {fileID: 2096565591}
 --- !u!114 &684308086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18200,11 +18176,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 110babe6959187e44bc55e6009c88d3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  potassiumNitrateQuest: {fileID: 567924885}
-  iceQuest: {fileID: 1414531820}
-  sodiumHydroxideQuest: {fileID: 903406564}
-  congratsPanel: {fileID: 1822760510}
-  tryAgainPanel: {fileID: 7585277411150437960}
 --- !u!114 &684308087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21912,25 +21883,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 40da476c3a7d42c4aa5ba98b2fe063a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  powderParticles: {fileID: 1692353529}
-  temperatureDropRate: 0.0009
-  tempReading: {fileID: 533223125}
-  iceCubes:
-  - {fileID: 971915491}
-  - {fileID: 157707112}
-  - {fileID: 1124991420}
-  sodiumPelletes: {fileID: 875246655}
-  pellets:
-  - {fileID: 1178219357}
-  - {fileID: 1069798441}
-  - {fileID: 2096565591}
-  - {fileID: 393873708}
-  iceCube: {fileID: 1975888035}
-  water: {fileID: 761148634}
-  removeSoluteButton: {fileID: 114131513}
-  chemicalDisplay: {fileID: 495616362}
-  EnergyTraceEndothermic: {fileID: 414158236}
-  energyTraceExothermic: {fileID: 352622052}
 --- !u!1 &1146791341
 GameObject:
   m_ObjectHideFlags: 0
@@ -22190,12 +22142,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1159691818}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55e6b7d5deaf114f981b70e44934ef5, type: 3}
+  m_Script: {fileID: 11500000, guid: 0ed86b507657968488744725ebeb59aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   shouldSnapBack: 0
+  limitMovement: 1
+  maxPosY: 0
+  minPosY: 0
+  maxPosX: 100
   minPosX: -100
-  maxPosX: 50
 --- !u!114 &1159691824
 MonoBehaviour:
   m_ObjectHideFlags: 0
