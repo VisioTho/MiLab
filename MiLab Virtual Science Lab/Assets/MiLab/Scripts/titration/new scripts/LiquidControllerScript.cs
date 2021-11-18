@@ -169,10 +169,10 @@ public class LiquidControllerScript : MonoBehaviour
     }
     IEnumerator LiquidFill()
     {
-        stream.SetActive(true);
 
         do
         {
+            stream.SetActive(true);
             fill.CurrentVal++;
             yield return new WaitForSeconds(0.3f);
         } while (fill.CurrentVal >= 0);
