@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class DestroyDrops : MonoBehaviour
 {
     public GameObject conicalflaskliquid;
-    void OnCollisionEnter(Collision hit)
+    public void OnCollisionEnter(Collision hit)
     {
         Destroy(hit.gameObject);
         conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 105, 180, 255);

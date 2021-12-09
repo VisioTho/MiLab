@@ -34,7 +34,7 @@ public class BobAngleInitializer : PendulumController
 
     private void Update()
     {
-        Debug.Log("the distance is " +distanceJoint2D.distance +" Y position is " +transform.position.y +"Length slider: " +lengthSlider.value);
+        //Debug.Log("the distance is " +distanceJoint2D.distance +" Y position is " +transform.position.y +"Length slider: " +lengthSlider.value);
         gameObject.GetComponent<DistanceJoint2D>().distance = Mathf.Clamp(gameObject.GetComponent<DistanceJoint2D>().distance, lengthSlider.value, lengthSlider.value);
 
     }

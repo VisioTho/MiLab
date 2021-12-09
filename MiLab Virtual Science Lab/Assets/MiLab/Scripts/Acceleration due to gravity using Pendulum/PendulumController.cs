@@ -42,7 +42,7 @@ public class PendulumController : MonoBehaviour
 
     public void StopPendulum()
     {
-        transform.LeanMoveLocalX(-1.76f, 0.4f);
+        transform.LeanMoveLocalX(-0.36f, 0.4f);
     }
 
     //"changing length" is moving the bob through a series of positions along y axis. 
@@ -104,7 +104,7 @@ public class PendulumController : MonoBehaviour
     void Update()
     {
         currentBobPosition = Bob.transform.position;
-        Debug.Log("Scale is " +Bob.transform.localScale);
+        //Debug.Log("Scale is " +Bob.transform.localScale);
     }
 }
 

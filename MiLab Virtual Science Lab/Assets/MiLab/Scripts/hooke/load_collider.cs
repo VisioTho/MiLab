@@ -71,7 +71,8 @@ public class load_collider : MonoBehaviour
                 spj.connectedBody = nl_rb;
                 fj.connectedBody = ml_rb;
                 spj.anchor = new Vector2(-1.700165e-07f, 2.5f);
-                spj.connectedAnchor = new Vector2(-0.0772457f, 11.75946f);
+                float connAnchorx = -0.0772457f, connAnchory = 11.75946f;
+                spj.connectedAnchor = new Vector2(Mathf.Clamp(connAnchorx, -0.0772457f, -0.0772457f), Mathf.Clamp(connAnchorx, 11.75946f, 11.75946f));
                 /*-----------------------------------------------------------------------
                   Setting the gravity scale depending on the mass of the load attached
                  ----------------------------------------------------------------------*/

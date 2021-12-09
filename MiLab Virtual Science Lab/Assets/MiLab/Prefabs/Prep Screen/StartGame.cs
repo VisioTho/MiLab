@@ -10,7 +10,7 @@ public class StartGame : MonoBehaviour
 
     private void Awake()
     {
-        isTutorialEnabled = true;
+        isTutorialEnabled = false;
     }
 
     void Start()

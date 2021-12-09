@@ -23,11 +23,12 @@ public class StirRod : MonoBehaviour,IDragHandler, IDropHandler
         
         if(transform.localPosition.x < minPosX)
         {
-           transform.LeanMoveLocalX(-0.2f, 0.5f);
+            //transform.LeanMoveLocalX(-0.2f, 0.5f);
+            transform.localPosition = new Vector2(minPosX, transform.localPosition.y);
         }
         else if(transform.localPosition.x > maxPosX)
         {
-            transform.LeanMoveLocalX(0.2f, 0.5f);
+            transform.localPosition = new Vector2(maxPosX, transform.localPosition.y);
         }
     }
 
