@@ -24,14 +24,14 @@ public class positions_controller : MonoBehaviour
         load_400_dp = load_400.transform.position;
        // load_500_dp = load_500.transform.position;
        // load_600_dp = load_600.transform.position;
-        //load_700_dp = load_700.transform.position;
+       // load_700_dp = load_700.transform.position;
        // load_800_dp = load_800.transform.position;
         load_custom_dp = load_custom.transform.position;
-        gte_500_lt_600_dp = new Vector2(0.9274998f, -2.19f);
-        gte_350_lt_400_dp = new Vector2(0.9274998f, -2.28f);
-        gte_250_lt_300_dp = new Vector2(0.9274998f, -2.41f);
-        gte_100_lt_200_dp = new Vector2(0.9274998f, -2.46f);
-        eq_400_dp = new Vector2(0.9274998f, -2.24f);
+        gte_500_lt_600_dp = new Vector2(-0.5f, -2.2f);
+        gte_350_lt_400_dp = new Vector2(-0.5f, -2.2f);
+        gte_250_lt_300_dp = new Vector2(-0.5f, -2.2f);
+        gte_100_lt_200_dp = new Vector2(-0.5f, -2.4f);
+        eq_400_dp = new Vector2(-0.5f, -2.2f);
     }
 
     // Update is called once per frame

@@ -38,21 +38,21 @@ public class drag_n_drop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //drag_detached = load_collider.drag_detached;  //accessing variable from load_colliders class
+        //drag_detached = load_collider.drag_detached;  //accessing variable from load_collider class
         current_hanged_mass = load_collider.current_hanged_mass;
 
         if (current_hanged_mass != null) {
              for (int i = 1; i <= loads.Count; i++)
                {
-                   if (current_hanged_mass ==(string) loads[i]) { continue; }
-                   GameObject.FindWithTag((string)loads[i]).GetComponent<PolygonCollider2D>().enabled=false;//Disabling collider for drug 'n' drop
+                   if (current_hanged_mass ==(string) loads[i]) { continue; } //skip if the current mass being checked is the one already hanged
+                   GameObject.FindWithTag((string)loads[i]).GetComponent<PolygonCollider2D>().enabled=false; //Disabling collider for drug 'n' drop
             }
         }
         else
         {
             for (int i = 1; i <= loads.Count; i++)
             {
-                GameObject.FindWithTag((string)loads[i]).GetComponent<PolygonCollider2D>().enabled = true;//Enabling collider for drug 'n' drop
+                GameObject.FindWithTag((string)loads[i]).GetComponent<PolygonCollider2D>().enabled = true; //Enabling collider for drug 'n' drop on all mass objects
             }
         }
         
@@ -69,6 +69,8 @@ public class drag_n_drop : MonoBehaviour
     {
         if (isDragged)
         {
+            Vibration.Vibrate(55); //Vibration
+
            transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
            if ((gameObject.tag == "load") || (gameObject.tag == "load_100") || (gameObject.tag == "load_200") || (gameObject.tag == "load_300") || (gameObject.tag == "load_400") || (gameObject.tag == "load_500") || (gameObject.tag == "load_600") || (gameObject.tag == "load_700") || (gameObject.tag == "load_800") || (gameObject.tag == "load_custom"))
             {

@@ -24,6 +24,7 @@ public class scaling_controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       // Debug.Log(_load_custom.transform.position);
         gte_100_lt_200_dp = positions_controller.gte_100_lt_200_dp;
         gte_500_lt_600_dp = positions_controller.gte_500_lt_600_dp;
         gte_250_lt_300_dp = positions_controller.gte_250_lt_300_dp;
@@ -53,23 +54,28 @@ public class scaling_controller : MonoBehaviour
         //well positioning depending on size
         if ((_massValue >= 100f) && (_massValue <= 200f))
         {
-            _load_custom.transform.position = gte_100_lt_200_dp;
+          //  _load_custom.transform.position = gte_100_lt_200_dp;
+            _load_custom.transform.position = new Vector2(-0.5f, -2.4f);
         }
         if ((_massValue >= 500f) && (_massValue <= 600f))
         {
-            _load_custom.transform.position = gte_500_lt_600_dp;
+            //   _load_custom.transform.position = gte_500_lt_600_dp;
+            _load_custom.transform.position = new Vector2(-0.5f, -2.2f);
         }
         if ((_massValue >= 250f) && (_massValue <= 300f))
         {
-            _load_custom.transform.position = gte_250_lt_300_dp;
+            // _load_custom.transform.position = gte_250_lt_300_dp;
+            _load_custom.transform.position = new Vector2(-0.5f, -2.2f);
         }
         if ((_massValue >= 350f) && (_massValue <= 400f))
         {
-            _load_custom.transform.position = gte_350_lt_400_dp;
+            // _load_custom.transform.position = gte_350_lt_400_dp;
+            _load_custom.transform.position = new Vector2(-0.5f, -2.2f);
         }
         if (_massValue == 400f)
         {
-            _load_custom.transform.position = eq_400_dp;
+            //_load_custom.transform.position = eq_400_dp;
+            _load_custom.transform.position = new Vector2(-0.5f, -2.2f);
         }
     }
 }
