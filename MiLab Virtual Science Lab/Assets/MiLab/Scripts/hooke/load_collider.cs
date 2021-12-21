@@ -63,7 +63,7 @@ public class load_collider : MonoBehaviour
         {
             if ((gameObject.GetComponent<SpringJoint2D>() == null) && (gameObject.GetComponent<FixedJoint2D>() == null))//collidee
             {
-                Vibration.Vibrate(300);//vibration on mass attached
+                Vibration.Vibrate(60);//vibration on mass attached
 
                 gameObject.AddComponent<SpringJoint2D>();//collidee
                 gameObject.AddComponent<FixedJoint2D>();
