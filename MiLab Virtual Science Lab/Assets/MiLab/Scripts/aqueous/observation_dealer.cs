@@ -22,7 +22,10 @@ public class observation_dealer : MonoBehaviour
     //Start is called before the first frame update
     void Start()
     {
-         
+        attracted_negative_ions.SetActive(false);  
+        attracted_positive_ions.SetActive(false);
+        negative_ions_Particle_system.SetActive(false);
+        positive_ions_Particle_system.SetActive(false);
        // Debug.Log("tryposTopMost: " + tryposTopMost.transform.position);
        // Debug.Log("tryposBottomMost: " + tryposBottomMost.transform.position);
        // Debug.Log("tryposLeftMost: " + tryposLeftMost.transform.position);

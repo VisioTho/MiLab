@@ -10,10 +10,12 @@ public class dragNdropAqueous : MonoBehaviour
     public GameObject anode_hand, cathode_hand;
     public static bool isHandAnodeDragged = false;
     public static bool isHandCathodeDragged = false;
+    Vector3 initAnodePos, initCathodePos;
     // Start is called before the first frame update
     void Start()
     {
-        
+        initAnodePos = GameObject.FindWithTag("anode").transform.position;
+        initCathodePos = GameObject.FindWithTag("cathode").transform.position;
     }
 
     // Update is called once per frame
@@ -62,18 +64,18 @@ public class dragNdropAqueous : MonoBehaviour
 
             if (gameObject.tag=="anode"){
                 isHandAnodeDragged = true;
-                GameObject.FindWithTag("cathode").transform.position = new Vector2(1.099679f, 0.048533f);//taking cathode to its original position
+                GameObject.FindWithTag("cathode").transform.position = initCathodePos;//taking cathode to its original position
 
-                gameObject.transform.position = new Vector2(gameObject.transform.position.x,  0.048533f);
+                gameObject.transform.position = new Vector2(gameObject.transform.position.x,  initAnodePos.y);
                 //restricting the anode from going to the far left
                if (gameObject.transform.position.x < -0.3903209f)
                 {
-                    gameObject.transform.position = new Vector2(-0.3903209f, 0.048533f);
+                    gameObject.transform.position = new Vector2(-0.3903209f, gameObject.transform.position.y);
                 }
                 //restricting the anode from going to the far right
                 if (gameObject.transform.position.x >  0.8829727f)
                 {
-                    gameObject.transform.position = new Vector2(0.8829727f, 0.048533f);
+                    gameObject.transform.position = new Vector2(0.8829727f, gameObject.transform.position.y);
                 }
 
             }
@@ -81,18 +83,18 @@ public class dragNdropAqueous : MonoBehaviour
           if(gameObject.tag=="cathode"){
                 isHandCathodeDragged = true;
 
-                 GameObject.FindWithTag("anode").transform.position = new Vector2(-0.3903209f, 0.048533f);//taking anode to its original position
+                GameObject.FindWithTag("anode").transform.position = initAnodePos;//taking anode to its original position
 
-                gameObject.transform.position = new Vector2(gameObject.transform.position.x, 0.048533f);
+                gameObject.transform.position = new Vector2(gameObject.transform.position.x, initCathodePos.y);
                 //restricting the cathode from going to the far left
                 if (gameObject.transform.position.x < -0.1736131f)
                 {
-                    gameObject.transform.position = new Vector2(-0.1736131f, 0.048533f);
+                    gameObject.transform.position = new Vector2(-0.1736131f, transform.position.y);
                 }
                 //restricting the cathode from going to the far right
                 if (gameObject.transform.position.x > 1.099679f)
                 {
-                    gameObject.transform.position = new Vector2(1.099679f, 0.048533f);
+                    gameObject.transform.position = new Vector2(1.099679f, transform.position.y);
                 }
               
             } 

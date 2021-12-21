@@ -27,11 +27,13 @@ public class solutionsDropdown : MonoBehaviour
     public static float ammeter_final_readingA;
 
     //to be used by the observation_dealer
-    public static float should_restart_observation = 0;
+    public static float should_restart_observation;
 
     // Start is called before the first frame update
     void Start()
     {
+        should_restart_observation = 0;
+
          solutions_dd.onValueChanged.AddListener(delegate {
         valueHasChanged(solutions_dd);
         });
