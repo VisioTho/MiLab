@@ -60,7 +60,7 @@ public class drag_n_drop : MonoBehaviour
     }
     //drag 'n' drop
     private void OnMouseDown()
-    {
+    {   Vibration.Vibrate(30); //Vibration
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.localPosition;
@@ -69,7 +69,7 @@ public class drag_n_drop : MonoBehaviour
     {
         if (isDragged)
         {
-            Vibration.Vibrate(55); //Vibration
+         
 
            transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
            if ((gameObject.tag == "load") || (gameObject.tag == "load_100") || (gameObject.tag == "load_200") || (gameObject.tag == "load_300") || (gameObject.tag == "load_400") || (gameObject.tag == "load_500") || (gameObject.tag == "load_600") || (gameObject.tag == "load_700") || (gameObject.tag == "load_800") || (gameObject.tag == "load_custom"))

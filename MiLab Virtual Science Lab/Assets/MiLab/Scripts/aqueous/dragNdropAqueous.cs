@@ -44,6 +44,7 @@ public class dragNdropAqueous : MonoBehaviour
     }
      private void OnMouseDown()
     {
+        Vibration.Vibrate(30); //vibration
         isDragged = true;
         mouseDragStartPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         spriteDragStartPosition = transform.localPosition;
@@ -57,7 +58,6 @@ public class dragNdropAqueous : MonoBehaviour
         if (isDragged)
         {
            
-            Vibration.Vibrate(55); //vibration
 
            transform.localPosition = spriteDragStartPosition + (Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseDragStartPosition);
 
