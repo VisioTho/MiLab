@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LiquidControllerScript : MonoBehaviour
 {
@@ -9,9 +10,11 @@ public class LiquidControllerScript : MonoBehaviour
     [SerializeField]
     private Stat fill;
 
-    public GameObject liquidFlowParticle, conicalflaskliquid, stream, flowStream;
+    public GameObject liquidFlowParticle, stream; //flowStream;
 
     public ParticleSystem DropParticle;
+
+    public DestroyDrops destroyDrops;
     IEnumerator enumerator;
     IEnumerator flowController;
     IEnumerator fillBurette;
@@ -23,33 +26,26 @@ public class LiquidControllerScript : MonoBehaviour
     public static bool pipetteDrop;
     private float valueHolder;
 
+    public TMP_Text analyteNotation;
+    public TMP_Dropdown titrantVariation, analyteVariation;
 
-
-
-    // public bool isFilled = false;
     private void Awake()
     {
         fill.Initialize();
         enumerator = LiquidDrop();
         fillBurette = LiquidFill();
         flowController = LiquidFlow();
-        // toggle = GetComponent<Toggle>();
-
-        // handlePosition = uiHandleRectTransform.anchoredPosition;
-        // toggle.onValueChanged.AddListener(OnSwitch);
-
-        // if (toggle.isOn)
-        //     OnSwitch(true);
 
     }
-
-    // bool toggleisOn;
 
     void Start()
     {
         sliderInstance.minValue = 0;
         sliderInstance.maxValue = 2;
         sliderInstance.wholeNumbers = true;
+
+        fill.CurrentVal = 0;
+        content.fillAmount = 0;
         //sliderInstance.value = 1;
     }
     void Update()
@@ -70,69 +66,285 @@ public class LiquidControllerScript : MonoBehaviour
         }
 
         var fillDifference = valueHolder - fill.CurrentVal;
-        if (fillDifference == 8)
+        if (titrantVariation.value == 0 && analyteVariation.value == 0)
         {
-            if (LiquidControllerScript.pipetteDrop)
+            if (fillDifference == 3)
             {
-                Debug.Log("checked");
-                conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 155, 202, 255);
-                Debug.Log("color change1");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("start reaction");
+                    analyteNotation.text = "sulphuric acid + Sodium Hydroxide";
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
             }
-            else
+            if (fillDifference == 8)
             {
-                Debug.Log("pepani");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 155, 202, 255);
+                    Debug.Log("color change1");
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
+            }
+
+            if (fillDifference == 10)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 152, 203, 255);
+                    Debug.Log("color change2");
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
+            }
+            if (fillDifference == 12)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 207, 248, 255);
+                    Debug.Log("color change3");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fillDifference == 15)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
+                    Debug.Log("color change4");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fill.CurrentVal == 0)
+            {
+                var localReftoParticle = DropParticle.main;
+                localReftoParticle.playOnAwake = false;
             }
         }
-        if (fillDifference == 10)
+        else if (titrantVariation.value == 1 && analyteVariation.value == 0)
         {
-            if (LiquidControllerScript.pipetteDrop)
+            if (fillDifference == 3)
             {
-                Debug.Log("checked");
-                conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 152, 203, 255);
-                Debug.Log("color change2");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("start reaction");
+                    analyteNotation.text = "Hydrochloric acid + Sodium Hydroxide";
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
             }
-            else
+            if (fillDifference == 6)
             {
-                Debug.Log("pepani");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 155, 202, 255);
+                    Debug.Log("color change1");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+
+            if (fillDifference == 10)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 152, 203, 255);
+                    Debug.Log("color change2");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+
+            if (fillDifference == 12)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
+                    Debug.Log("color change4");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fill.CurrentVal == 0)
+            {
+                var localReftoParticle = DropParticle.main;
+                localReftoParticle.playOnAwake = false;
             }
         }
-        if (fillDifference == 12)
+        else if (titrantVariation.value == 0 && analyteVariation.value == 1)
         {
-            if (LiquidControllerScript.pipetteDrop)
+            if (fillDifference == 3)
             {
-                Debug.Log("checked");
-                conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 207, 248, 255);
-                Debug.Log("color change3");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("start reaction");
+                    analyteNotation.text = "Sulphuric acid + Calcium Hydroxide";
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
             }
-            else
+            if (fillDifference == 10)
             {
-                Debug.Log("pepani");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 155, 202, 255);
+                    Debug.Log("color change1");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+
+            if (fillDifference == 12)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 152, 203, 255);
+                    Debug.Log("color change2");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fillDifference == 15)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 207, 248, 255);
+                    Debug.Log("color change3");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fillDifference == 20)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
+                    Debug.Log("color change4");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+            if (fill.CurrentVal == 0)
+            {
+                var localReftoParticle = DropParticle.main;
+                localReftoParticle.playOnAwake = false;
             }
         }
-        if (fillDifference == 15)
+        else if (titrantVariation.value == 1 && analyteVariation.value == 1)
         {
-            if (LiquidControllerScript.pipetteDrop)
+            if (fillDifference == 3)
             {
-                Debug.Log("checked");
-                conicalflaskliquid.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
-                Debug.Log("color change4");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("start reaction");
+                    analyteNotation.text = "Hydrochloric acid + Calcium Hydroxide";
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
             }
-            else
+            if (fillDifference == 5)
             {
-                Debug.Log("pepani");
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 155, 202, 255);
+                    Debug.Log("color change1");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+
+            if (fillDifference == 8)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 152, 203, 255);
+                    Debug.Log("color change2");
+                }
+                else
+                {
+                    Debug.Log("pepani");
+                }
+            }
+
+            if (fillDifference == 11)
+            {
+                if (LiquidControllerScript.pipetteDrop)
+                {
+                    Debug.Log("checked");
+                    destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
+                    Debug.Log("color change4");
+                }
+                else
+                {
+                    Debug.Log("oops");
+                }
+            }
+            if (fill.CurrentVal == 0)
+            {
+                var localReftoParticle = DropParticle.main;
+                localReftoParticle.playOnAwake = false;
             }
         }
-        if (fill.CurrentVal == 0)
+        else
         {
-            var localReftoParticle = DropParticle.main;
-            localReftoParticle.playOnAwake = false;
+            Debug.Log("oops! something went wrong");
         }
+
+
     }
 
     // slider that controls the titration liquid flow 
     public void OnValueChanged(float value)
     {
-        //Debug.Log("New value " + value);
         if (sliderInstance.value == 1)
         {
             if (fill.CurrentVal == 0)
@@ -143,12 +355,14 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else
             {
+                Vibration.Vibrate(60);
                 DropParticle.gameObject.SetActive(true);
                 var localReftoParticle = DropParticle.main;
                 localReftoParticle.playOnAwake = true;
                 liquidFlowParticle.SetActive(false);
                 StopCoroutine(flowController);
                 StartCoroutine(enumerator);
+                analyteVariation.enabled = false;
             }
 
         }
@@ -160,9 +374,11 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else
             {
+                Vibration.Vibrate(60);
+                analyteVariation.enabled = false;
                 var localReftoParticle = DropParticle.main;
                 localReftoParticle.playOnAwake = false;
-                
+
 
                 liquidFlowParticle.SetActive(true);
 
@@ -180,16 +396,48 @@ public class LiquidControllerScript : MonoBehaviour
 
             liquidFlowParticle.SetActive(false);
             StopCoroutine(enumerator);
+            analyteVariation.enabled = true;
         }
     }
-   
-    //destroying object on collision
-    public void OnCollisionEnter(Collision hit)
+
+    // Titrant Variation DropDown
+    public void handleTitrantVariation()
     {
-        LiquidControllerScript.pipetteDrop = true;
-        Destroy(hit.gameObject);
-        conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 105, 180, 255);
-        Debug.Log("collision detected");
+        if (titrantVariation.value == 0)
+        {
+            Debug.Log("option selected");
+            content.GetComponent<Image>().color = new Color32(212, 203, 100, 85);
+            fill.CurrentVal = 0;
+            sliderInstance.value = 0;
+        }
+        if (titrantVariation.value == 1)
+        {
+            Debug.Log("option 2 selected");
+            content.GetComponent<Image>().color = new Color32(234, 234, 234, 60);
+            fill.CurrentVal = 0;
+            sliderInstance.value = 0;
+
+        }
+    }
+
+    // analyte Variation DropDown
+    public void handleAnalyteVariation()
+    {
+        if (analyteVariation.value == 0)
+        {
+            Debug.Log("option selected");
+            analyteNotation.text = "15ml NaOH";
+            destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 150);
+
+
+        }
+        if (analyteVariation.value == 1)
+        {
+            Debug.Log("option 2 selected");
+            analyteNotation.text = "15ml CaOH";
+            destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 205);
+
+        }
     }
 
     public void fillUp()
@@ -201,11 +449,13 @@ public class LiquidControllerScript : MonoBehaviour
 
         do
         {
-            if(fill.currentVal == fill.MaxVal)
+            // titrantVariation.enabled = false;
+            if (fill.currentVal == fill.MaxVal)
             {
                 stopButton.gameObject.SetActive(false);
                 stream.SetActive(false);
                 sliderInstance.enabled = true;
+                titrantVariation.enabled = true;
                 Debug.Log("maximum reached");
                 stopFlow();
 
@@ -214,7 +464,17 @@ public class LiquidControllerScript : MonoBehaviour
             {
                 sliderInstance.value = 0;
                 sliderInstance.enabled = false;
-                stream.SetActive(true);
+                titrantVariation.enabled = false;
+                if (titrantVariation.value == 0)
+                {
+                    stream.SetActive(true);
+                    stream.GetComponent<Image>().color = new Color32(212, 203, 100, 85);
+                }
+                else
+                {
+                    stream.GetComponent<Image>().color = new Color32(234, 234, 234, 60);
+                }
+
             }
             //stream.SetActive(true);
             fill.CurrentVal++;
@@ -232,7 +492,7 @@ public class LiquidControllerScript : MonoBehaviour
         while (fill.CurrentVal > 0)
         {
             fill.CurrentVal--;
-            if(fill.currentVal == 0)
+            if (fill.currentVal == 0)
             {
                 var localReftoParticle = DropParticle.main;
                 localReftoParticle.playOnAwake = false;
@@ -263,11 +523,13 @@ public class LiquidControllerScript : MonoBehaviour
     public void stopFlow()
     {
         sliderInstance.enabled = true;
+        titrantVariation.enabled = true;
+        analyteVariation.enabled = true;
         StopCoroutine(flowController);
         StopCoroutine(enumerator);
         StopCoroutine(fillBurette);
         stream.SetActive(false);
-        flowStream.SetActive(false);
+        //  flowStream.SetActive(false);
 
         valueHolder = fill.CurrentVal;
     }

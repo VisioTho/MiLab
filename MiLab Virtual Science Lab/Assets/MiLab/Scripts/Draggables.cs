@@ -14,11 +14,11 @@ public class Draggables : MonoBehaviour, IDragHandler, IDropHandler
     }
     void OnMouseDown()
     {
-        
+        Vibration.Vibrate(60);
     }
     public void OnDrag(PointerEventData eventdata)
     {
-        DragToNewPosition();
+        DragToNewPosition();   
     }
 
     private void DragToNewPosition()

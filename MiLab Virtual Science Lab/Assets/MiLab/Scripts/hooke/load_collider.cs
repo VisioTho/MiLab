@@ -110,7 +110,7 @@ public class load_collider : MonoBehaviour
     {
         if (drag_detached) {
 
-            Vibration.Vibrate(80);//vibration
+            Vibration.Vibrate(60);//vibration
 
             Rigidbody2D rb2d = gameObject.GetComponent<Rigidbody2D>();
             rb2d.gravityScale = 0;

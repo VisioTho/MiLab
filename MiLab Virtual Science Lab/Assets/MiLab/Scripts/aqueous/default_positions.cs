@@ -12,4 +12,10 @@ public class default_positions : MonoBehaviour
         anode_pos = anode.transform.position;
         cathode_pos = cathode.transform.position;
     }
+
+    void Update()
+    {
+     //   Debug.Log("anode_pos" +  anode.transform.position);
+       // Debug.Log("cathode_pos" + cathode.transform.position);
+    }
 }

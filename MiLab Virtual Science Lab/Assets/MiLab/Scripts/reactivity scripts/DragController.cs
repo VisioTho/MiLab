@@ -14,6 +14,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        Vibration.Vibrate(60);
         currentPossition = currentTransform.position;
         mainContent = currentTransform.parent.gameObject;
         totalChild = mainContent.transform.childCount;
@@ -29,7 +30,7 @@ public class DragController : MonoBehaviour, IPointerDownHandler, IDragHandler, 
             if (i != currentTransform.GetSiblingIndex())
             {
                 Transform otherTransform = mainContent.transform.GetChild(i);
-                int distance = (int) Vector3.Distance(currentTransform.position,
+                int distance = (int)Vector3.Distance(currentTransform.position,
                     otherTransform.position);
                 if (distance <= 10)
                 {

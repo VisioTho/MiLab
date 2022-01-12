@@ -199,7 +199,7 @@ public class MetalReaction : MonoBehaviour
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "copper sulphate + copper";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 1 && zincReaction.counter == 1)
         {
@@ -228,7 +228,7 @@ public class MetalReaction : MonoBehaviour
             sulphateDrop.enabled = false;
             changeMagnesiumColor.ColorChanged();
             Invoke("copperSulphateIV", 4);
-            Invoke("stopReaction", 2);
+            Invoke("stopReaction", 35);
             solutionNotation.text = "copper sulphate + magnesium";
             reactionNotation.text = "remove solute";
         }
@@ -245,13 +245,13 @@ public class MetalReaction : MonoBehaviour
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "zinc sulphate + copper";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 2 && zincReaction.counter == 1)
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "zinc sulphate + zinc";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 2 && ironReaction.counter == 1)
         {
@@ -298,7 +298,7 @@ public class MetalReaction : MonoBehaviour
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "iron sulphate + iron";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 3 && magnesiumReaction.counter == 1)
         {
@@ -323,25 +323,25 @@ public class MetalReaction : MonoBehaviour
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "magnesium sulphate + copper";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 4 && zincReaction.counter == 1)
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "magnesium sulphate + zinc";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 4 && ironReaction.counter == 1)
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "magnesium sulphate + iron";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
         if (sulphateDrop.value == 4 && magnesiumReaction.counter == 1)
         {
             sulphateDrop.enabled = false;
             solutionNotation.text = "magnesium sulphate + magnesium";
-            reactionNotation.text = "remove solute";
+            reactionNotation.text = "remove metal";
         }
     }
 

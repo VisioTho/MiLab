@@ -5,11 +5,20 @@ using UnityEngine.UI;
 
 public class DestroyDrops : MonoBehaviour
 {
-    public GameObject conicalflaskliquid;
-    public void OnCollisionEnter(Collision hit)
+    public GameObject titrant1;
+    public LiquidControllerScript liquidControllerScript;
+    public void OnCollisionEnter(Collision collision)
     {
-        Destroy(hit.gameObject);
-        conicalflaskliquid.GetComponent<Image>().color = new Color32(255, 105, 180, 255);
 
+        Debug.Log("collision detected");
+        if (collision.gameObject)
+        {
+            Destroy(collision.gameObject);
+            titrant1.GetComponent<Image>().color = new Color32(233, 85, 188, 150);
+            liquidControllerScript.analyteVariation.enabled = false;
+            LiquidControllerScript.pipetteDrop = true;
+            Destroy(collision.gameObject);
+            titrant1.GetComponent<Image>().color = new Color32(233, 85, 188, 150);
+        }
     }
 }
