@@ -31,12 +31,13 @@ public class MassHanger : MonoBehaviour
                 massHungL = gameObject;
                 hungMassL = true;
                 gameObject.AddComponent<HingeJoint2D>();
+               
                 //gameObject.GetComponent<SpriteDragBase>().enabled = false;
                 HingeJoint2D hingeJoint2D = gameObject.GetComponent<HingeJoint2D>();
                 hingeJoint2D.autoConfigureConnectedAnchor = false;
                 hingeJoint2D.connectedBody = ruler.GetComponent<Rigidbody2D>();
                 float convertedAnchorPointx = (transform.position.x / 3.63f) * 11.09f;
-                hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -5.326633f);
+                hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
                 collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
 
@@ -56,7 +57,7 @@ public class MassHanger : MonoBehaviour
                 hingeJoint2D.autoConfigureConnectedAnchor = false;
                 hingeJoint2D.connectedBody = ruler.GetComponent<Rigidbody2D>();
                 float convertedAnchorPointx = (transform.position.x / 3.63f) * 11.09f;
-                hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -5.326633f);
+                hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
                 collision.gameObject.GetComponent<BoxCollider2D>().enabled = false;
                 collision.gameObject.GetComponent<SpriteRenderer>().enabled = false;
             }
@@ -197,7 +198,7 @@ public class MassHanger : MonoBehaviour
             HingeJoint2D hingeJoint2D = gameObject.GetComponent<HingeJoint2D>();
             //convert transform.position into connected ancor point coordinates on the ruler
             float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
-            hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -5.326633f);
+            hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
             ruler.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
             if (convertedAnchorPointx < -20.96431f || convertedAnchorPointx > 20.96431f)

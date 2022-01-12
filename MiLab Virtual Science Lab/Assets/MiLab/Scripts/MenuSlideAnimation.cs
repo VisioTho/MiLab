@@ -21,7 +21,7 @@ public class MenuSlideAnimation : MonoBehaviour
 
     void SlideIn()
     {
-        gameObject.transform.LeanMoveLocalX(0f, 0.3f);
+        gameObject.transform.LeanMoveLocalY(0f, 0.3f);
     }
 
     void SlideOut()

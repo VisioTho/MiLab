@@ -14,6 +14,8 @@ public class SimulationTimer : MonoBehaviour
         StartTime = Time.time;
     }
 
+    public void ResetTimer() => StartTime = Time.time;
+
     // Update is called once per frame
     void Update()
     {

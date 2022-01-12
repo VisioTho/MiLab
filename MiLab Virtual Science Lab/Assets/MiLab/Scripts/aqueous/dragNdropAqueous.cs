@@ -73,9 +73,9 @@ public class dragNdropAqueous : MonoBehaviour
                     gameObject.transform.position = new Vector2(-0.3903209f, gameObject.transform.position.y);
                 }
                 //restricting the anode from going to the far right
-                if (gameObject.transform.position.x >  0.8829727f)
+                if (gameObject.transform.position.x >  0.80f)
                 {
-                    gameObject.transform.position = new Vector2(0.8829727f, gameObject.transform.position.y);
+                    gameObject.transform.position = new Vector2(0.80f, gameObject.transform.position.y);
                 }
 
             }
@@ -87,14 +87,14 @@ public class dragNdropAqueous : MonoBehaviour
 
                 gameObject.transform.position = new Vector2(gameObject.transform.position.x, initCathodePos.y);
                 //restricting the cathode from going to the far left
-                if (gameObject.transform.position.x < -0.1736131f)
+                if (gameObject.transform.position.x < -0.2f)
                 {
-                    gameObject.transform.position = new Vector2(-0.1736131f, transform.position.y);
+                    gameObject.transform.position = new Vector2(-0.2f, transform.position.y);
                 }
                 //restricting the cathode from going to the far right
-                if (gameObject.transform.position.x > 1.099679f)
+                if (gameObject.transform.position.x > 0.91f)
                 {
-                    gameObject.transform.position = new Vector2(1.099679f, transform.position.y);
+                    gameObject.transform.position = new Vector2(0.91f, transform.position.y);
                 }
               
             } 
