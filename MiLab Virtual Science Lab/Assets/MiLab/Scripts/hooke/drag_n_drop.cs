@@ -27,11 +27,7 @@ public class drag_n_drop : MonoBehaviour
         load_200_dp = positions_controller.load_200_dp;
         load_300_dp = positions_controller.load_300_dp;
         load_400_dp = positions_controller.load_400_dp;
-        //load_500_dp = positions_controller.load_500_dp;
-       //load_600_dp = positions_controller.load_600_dp;
-       //load_700_dp = positions_controller.load_700_dp;
-       //load_800_dp = positions_controller.load_800_dp;
-       load_custom_dp = positions_controller.load_custom_dp;
+        load_custom_dp = positions_controller.load_custom_dp;
         
     }
 
@@ -82,21 +78,6 @@ public class drag_n_drop : MonoBehaviour
                 }
             }
 
-            //zoom ruler
-            if (gameObject.tag == "ruler")
-            {
-               /* if (gameObject.transform.position.x > -6.34f)
-                {
-                     gameObject.transform.localScale = new Vector3(0.7024579f, 0.7024579f, 0.7024579f);
-                  //gameObject.transform.localRotation = Quaternion.Euler(0f, 0f,0f);
-                }
-                else
-                {
-                     gameObject.transform.localScale = new Vector3(0.2866328f, 0.2866328f, 0.2866328f);
-                   //gameObject.transform.localRotation = Quaternion.Euler(79.392f, -26.231f, -48.73f);
-                   
-                }*/
-            }
         }
     }
 
@@ -112,11 +93,7 @@ public class drag_n_drop : MonoBehaviour
             if (gameObject.tag == "load_200") gameObject.transform.position = load_200_dp;
             if (gameObject.tag == "load_300") gameObject.transform.position = load_300_dp;
             if (gameObject.tag == "load_400") gameObject.transform.position = load_400_dp;
-           //if (gameObject.tag == "load_500") gameObject.transform.position = load_500_dp;
-           //if (gameObject.tag == "load_600") gameObject.transform.position = load_600_dp;
-           //if (gameObject.tag == "load_700") gameObject.transform.position = load_700_dp;
-          // if (gameObject.tag == "load_800") gameObject.transform.position = load_800_dp;
-          if (gameObject.tag == "load_custom") gameObject.transform.position = load_custom_dp;
+            if (gameObject.tag == "load_custom") gameObject.transform.position = load_custom_dp;
    
         }
     }

@@ -20,7 +20,7 @@ public class solutionsDropdown : MonoBehaviour
     public static bool acidified_water;
     public static bool lemon_juice;
     public static bool salt_solution;
-    //from switch controller
+    //from switch_controller class
     public static bool switch_is_on;
     //from _node_collider
     public static bool isCollided=false;
@@ -45,7 +45,7 @@ public class solutionsDropdown : MonoBehaviour
     void Update()
     {
         isCollided = __node_collider_controller.isCollided;
-        //accessing from conductivityStatuses
+        //-----accessing from conductivityStatuses---------//
         sugar_solution = conductivityStatuses.sugar_solution;
         sodium_chloride = conductivityStatuses.sodium_chloride;
         concentrated_sulphuric_acid = conductivityStatuses.concentrated_sulphuric_acid;
@@ -55,9 +55,9 @@ public class solutionsDropdown : MonoBehaviour
         lemon_juice = conductivityStatuses.lemon_juice;
         salt_solution = conductivityStatuses.salt_solution;
 
-        //
+        //---------------------------------------------//
          switch_is_on = switch_controller.switch_is_on;
-        //
+        //--------------------------------------------//
 
 
         ////enabling and disabling remove solution button, somehow redanducy
@@ -69,7 +69,7 @@ public class solutionsDropdown : MonoBehaviour
         {
             removeSolution.interactable=true;
         }
-        ///ending
+        ///end
 
         if (solutions_dd.value==1 && (sugar_solution || isCollided) && switch_is_on) {
             bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
@@ -151,73 +151,63 @@ public class solutionsDropdown : MonoBehaviour
                 {
                     solid_water.SetActive(false);
                     solution_name.text = "";
-
-            should_restart_observation = 0;
+                    should_restart_observation = 0;
         }
 
         if (sender.value == 1)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(204, 98, 22, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(204, 98, 22, 200);
             solution_name.text = "Sugar solution";
-
             should_restart_observation = 0;
         }
         if (sender.value == 2)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(191, 158, 134, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(191, 158, 134, 200);
             solution_name.text = "Sodium Chloride solution";
-
             should_restart_observation = 1f;
         }
         if (sender.value == 3)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(217, 216, 216, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(217, 216, 216, 200);
             solution_name.text = "Concentrated Sulphuric acid solution";
-
             should_restart_observation = 2f;
         }
         if (sender.value == 4)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 200);
             solution_name.text = "Copper Sulphate solution";
-
             should_restart_observation = 3f;
         }
         if (sender.value == 5)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(225, 225, 225, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(225, 225, 225, 200);
             solution_name.text = "Pure water";
-
             should_restart_observation = 0f;
         }
         if (sender.value == 6)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(90, 114, 123, 188);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(90, 114, 123, 200);
             solution_name.text = "Acidified water";
-
             should_restart_observation = 4f;
         }
         if (sender.value == 7)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(227, 225, 0, 170);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(227, 225, 0, 200);
             solution_name.text = "Lemon juice";
-
             should_restart_observation = 5f;
         }
         if (sender.value == 8)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(189, 193, 158, 168);
-            solution_name.text = "Salt solution";
-
-            should_restart_observation = 6f;
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(189, 193, 158, 200);
+            solution_name.text = "Salt solution";should_restart_observation = 6f;
         }
     }
 }

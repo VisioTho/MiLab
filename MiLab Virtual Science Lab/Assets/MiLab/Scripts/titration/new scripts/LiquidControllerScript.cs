@@ -29,6 +29,8 @@ public class LiquidControllerScript : MonoBehaviour
     public TMP_Text analyteNotation;
     public TMP_Dropdown titrantVariation, analyteVariation;
 
+    private bool isTransformed;
+
     private void Awake()
     {
         fill.Initialize();
@@ -40,6 +42,7 @@ public class LiquidControllerScript : MonoBehaviour
 
     void Start()
     {
+        isTransformed = false;
         sliderInstance.minValue = 0;
         sliderInstance.maxValue = 2;
         sliderInstance.wholeNumbers = true;
@@ -66,7 +69,10 @@ public class LiquidControllerScript : MonoBehaviour
         }
 
         var fillDifference = valueHolder - fill.CurrentVal;
-        if (titrantVariation.value == 0 && analyteVariation.value == 0)
+        Debug.Log("fillDifference" + fillDifference);
+        Debug.Log("current Value" + fill.CurrentVal);
+        Debug.Log("valueHolder" + valueHolder);
+        if (titrantVariation.value == 0 && analyteVariation.value == 0 && !isTransformed)
         {
             if (fillDifference == 3)
             {
@@ -114,6 +120,7 @@ public class LiquidControllerScript : MonoBehaviour
                     Debug.Log("checked");
                     destroyDrops.titrant1.GetComponent<Image>().color = new Color32(255, 207, 248, 255);
                     Debug.Log("color change3");
+                    // isTransformed = true;
                 }
                 else
                 {
@@ -127,6 +134,7 @@ public class LiquidControllerScript : MonoBehaviour
                     Debug.Log("checked");
                     destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
                     Debug.Log("color change4");
+                    isTransformed = true;
                 }
                 else
                 {
@@ -139,7 +147,7 @@ public class LiquidControllerScript : MonoBehaviour
                 localReftoParticle.playOnAwake = false;
             }
         }
-        else if (titrantVariation.value == 1 && analyteVariation.value == 0)
+        else if (titrantVariation.value == 1 && analyteVariation.value == 0 && !isTransformed)
         {
             if (fillDifference == 3)
             {
@@ -188,6 +196,7 @@ public class LiquidControllerScript : MonoBehaviour
                     Debug.Log("checked");
                     destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
                     Debug.Log("color change4");
+                    isTransformed = true;
                 }
                 else
                 {
@@ -200,7 +209,7 @@ public class LiquidControllerScript : MonoBehaviour
                 localReftoParticle.playOnAwake = false;
             }
         }
-        else if (titrantVariation.value == 0 && analyteVariation.value == 1)
+        else if (titrantVariation.value == 0 && analyteVariation.value == 1 && !isTransformed)
         {
             if (fillDifference == 3)
             {
@@ -261,6 +270,7 @@ public class LiquidControllerScript : MonoBehaviour
                     Debug.Log("checked");
                     destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
                     Debug.Log("color change4");
+                    isTransformed = true;
                 }
                 else
                 {
@@ -273,7 +283,7 @@ public class LiquidControllerScript : MonoBehaviour
                 localReftoParticle.playOnAwake = false;
             }
         }
-        else if (titrantVariation.value == 1 && analyteVariation.value == 1)
+        else if (titrantVariation.value == 1 && analyteVariation.value == 1 && !isTransformed)
         {
             if (fillDifference == 3)
             {
@@ -322,6 +332,7 @@ public class LiquidControllerScript : MonoBehaviour
                     Debug.Log("checked");
                     destroyDrops.titrant1.GetComponent<Image>().color = new Color32(234, 234, 234, 109);
                     Debug.Log("color change4");
+                    isTransformed = true;
                 }
                 else
                 {
@@ -472,6 +483,7 @@ public class LiquidControllerScript : MonoBehaviour
                 }
                 else
                 {
+                    stream.SetActive(true);
                     stream.GetComponent<Image>().color = new Color32(234, 234, 234, 60);
                 }
 
@@ -512,9 +524,13 @@ public class LiquidControllerScript : MonoBehaviour
         while (fill.CurrentVal > 0)
         {
             fill.CurrentVal--;
+            DropParticle.Stop();
             if (fill.currentVal == 0)
             {
                 liquidFlowParticle.SetActive(false);
+                var localReftoParticle = DropParticle.main;
+                localReftoParticle.playOnAwake = false;
+                DropParticle.Stop();
             }
             yield return new WaitForSeconds(2f);
         }
@@ -523,8 +539,8 @@ public class LiquidControllerScript : MonoBehaviour
     public void stopFlow()
     {
         sliderInstance.enabled = true;
-        titrantVariation.enabled = true;
-        analyteVariation.enabled = true;
+        //titrantVariation.enabled = true;
+        analyteVariation.enabled = false;
         StopCoroutine(flowController);
         StopCoroutine(enumerator);
         StopCoroutine(fillBurette);

@@ -7,19 +7,6 @@ using UnityEngine.UI;
 public class __node_collider_controller : MonoBehaviour
 {
     public static bool isCollided = false;
-  
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    // switch_is_on = switch_controller.switch_is_on;
-    }
-
     void OnTriggerEnter2D(Collider2D collision)
     {
       

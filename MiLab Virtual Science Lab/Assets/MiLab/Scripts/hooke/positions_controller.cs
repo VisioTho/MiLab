@@ -22,10 +22,10 @@ public class positions_controller : MonoBehaviour
         load_200_dp = load_200.transform.position;
         load_300_dp = load_300.transform.position;
         load_400_dp = load_400.transform.position;
-       // load_500_dp = load_500.transform.position;
-       // load_600_dp = load_600.transform.position;
-       // load_700_dp = load_700.transform.position;
-       // load_800_dp = load_800.transform.position;
+        // load_500_dp = load_500.transform.position;
+        // load_600_dp = load_600.transform.position;
+        // load_700_dp = load_700.transform.position;
+        // load_800_dp = load_800.transform.position;
         load_custom_dp = load_custom.transform.position;
         gte_500_lt_600_dp = new Vector2(-0.5f, -2.2f);
         gte_350_lt_400_dp = new Vector2(-0.5f, -2.2f);
