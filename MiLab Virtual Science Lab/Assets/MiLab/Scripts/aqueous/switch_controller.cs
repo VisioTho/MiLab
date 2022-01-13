@@ -6,7 +6,7 @@ using TMPro;
 public class switch_controller : MonoBehaviour
 {
   public Sprite switch_on, switch_off;
-  public GameObject bulb;
+  public GameObject bulb, switcher;
   public static bool switch_is_on=false;
   public Light bulb_light;
   public TMP_Dropdown solutions_dd;
@@ -35,13 +35,9 @@ public class switch_controller : MonoBehaviour
 
         
         if (switch_is_on){
-          gameObject.GetComponent<SpriteRenderer>().sprite=switch_on;
-      /*  bulb.GetComponent<SpriteRenderer>().color = new Color(225,225,225);
-        bulb_light.range=4f;*/
+        switcher.GetComponent<SpriteRenderer>().sprite=switch_on;
       } else{
-          gameObject.GetComponent<SpriteRenderer>().sprite=switch_off;
-         /* bulb.GetComponent<SpriteRenderer>().color = new Color32(156,122,122,255);
-          bulb_light.range=0f;*/
+        switcher.GetComponent<SpriteRenderer>().sprite=switch_off;
       }
    }
  }

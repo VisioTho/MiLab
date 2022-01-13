@@ -82,16 +82,9 @@ public class load_collider : MonoBehaviour
                 if (gameObject.tag == "load_200") rb2d.gravityScale=2f;
                 if (gameObject.tag == "load_300") rb2d.gravityScale=3f;
                 if (gameObject.tag == "load_400") rb2d.gravityScale=4f;
-                //if (gameObject.tag == "load_500") rb2d.gravityScale=5f;
-                //if (gameObject.tag == "load_600") rb2d.gravityScale=6f;
-                //if (gameObject.tag == "load_700") rb2d.gravityScale=7f;
-                // if (gameObject.tag == "load_800") rb2d.gravityScale=8f;
                 if (gameObject.tag == "load_custom") { 
                 rb2d.gravityScale = gravitymultiplier*current_slider_mass_value;
                 }
-               
-                
-
                 /*------------------------------------------------
                                       ending
                  * ---------------------------------------------*/

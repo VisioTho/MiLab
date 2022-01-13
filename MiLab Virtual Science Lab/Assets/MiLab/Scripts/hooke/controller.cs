@@ -28,23 +28,10 @@ public class controller : MonoBehaviour
         loads.Add(2, "load_200");
         loads.Add(3, "load_300");
         loads.Add(4, "load_400");
-        // loads.Add(5, "load_500");
-        // loads.Add(6, "load_600");
-        // loads.Add(7, "load_700");
-        //loads.Add(8, "load_800");
         loads.Add(5, "load_custom");
-
-        /*ml_render = ml.GetComponent<SpriteRenderer>();
-        el_render = el.GetComponent<SpriteRenderer>();
-        nl_render = nl.GetComponent<SpriteRenderer>();*/
-
         ml_render.enabled = false;
         el_render.enabled = false;
         nl_render.enabled = false;
-        //initial_load_pos = positions_controller.load_dp;
-       
-
-        //load.GetComponent<SpringJoint2D>().frequency = 1000000f;
 
     }
 
@@ -53,15 +40,6 @@ public class controller : MonoBehaviour
         _massSlider.onValueChanged.AddListener((v) =>
         {
 
-            //forcing a slider to fall on a number an interval of 100
-            /*  if ((v > 0f) && (v < 75f))
-              {
-                  _massSlider.value = 50;
-                  // currentMass.text = mass_overlay_value.text = v.ToString("0") + " (g)";
-                  currentMass.text = mass_overlay_value.text = "50 (g)";
-                  //  if (load.GetComponent<SpringJoint2D>() != null)load.GetComponent<Rigidbody2D>().gravityScale = 100f * gravitymultiplier;
-
-              }*/
             if ((v > 0f) && (v < 125f))
             {
                 _massSlider.value = 100;
@@ -130,28 +108,6 @@ public class controller : MonoBehaviour
             }
 
 
-
-            //currentMass.text = mass_overlay_value.text= v.ToString("0")+" (g)";
-
-            //scale load
-            if ((v * 0.00075f) > 0.3836432f)
-            {
-                //load.GetComponent<Rigidbody2D>().gravityScale = 0f;
-                // load.GetComponent<Rigidbody2D>().mass=0.0001f;
-                // Destroy(load.GetComponent<SpringJoint2D>());
-
-                //load.transform.localScale = new Vector3(v*0.00075f,0.3711f, 0.7422f);
-                // load.AddComponent<SpringJoint2D>();
-                // SpringJoint2D spj = load.GetComponent<SpringJoint2D>();
-                //spj.connectedBody = nl_rb;
-                // spj.anchor = new Vector2(-1.700165e-07f, 2.5f);
-                // spj.connectedAnchor = new Vector2(-0.0772457f, 11.75946f);
-                //load.GetComponent<Rigidbody2D>().mass = 500f;//1
-                //load.transform.position = new Vector2(-0.56f, 0.2928663f); //2
-                //load.GetComponent<Rigidbody2D>().mass = 600f;//4
-                // load.GetComponent<Rigidbody2D>().gravityScale = v*gravitymultiplier;//4
-                // load.GetComponent<SpringJoint2D>().frequency = 1f;
-            }
         });
     }
 
@@ -160,21 +116,7 @@ public class controller : MonoBehaviour
     {
         HandleCustomMass();
         current_slider_mass_value = _massSlider.value;
-       // isDragged = drag_n_drop.isDragged;
-      /*  if (load.GetComponent<SpringJoint2D>() != null)
-        {
-            load.GetComponent<Rigidbody2D>().gravityScale = _massSlider.value * 0.01f;
-        }
-        else
-        {
-            load.GetComponent<Rigidbody2D>().gravityScale = 0;
-            
-            if (!isDragged)
-            {
-                load.transform.position = initial_load_pos;
-               // Debug.Log("is not dragged");
-            }
-        }*/
+   
         //toggle mass slider
         if (custom_mass_toggler.isOn)
         {

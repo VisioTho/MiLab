@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TUtorialController : MonoBehaviour
+public class DisplacementTutorial : MonoBehaviour
 {
+
     public GameObject[] tutorialElements;
     public GameObject[] initialParents;
     public GameObject fader;
@@ -22,7 +23,7 @@ public class TUtorialController : MonoBehaviour
 
     public void FinishTutorial()
     {
-        tutorialElements[7].transform.SetParent(initialParents[0].transform);
+        tutorialElements[4].transform.SetParent(initialParents[0].transform);
         StartGame.isTutorialEnabled = false;
         //fader.transform.DetachChildren();
         Destroy(fader);
@@ -57,18 +58,8 @@ public class TUtorialController : MonoBehaviour
                     tutorialElements[3].transform.SetParent(initialParents[0].transform);
                     tutorialElements[4].transform.SetParent(fader.transform);
                     break;
-                case 5:
-                    tutorialElements[4].transform.SetParent(initialParents[0].transform);
-                    tutorialElements[5].transform.SetParent(fader.transform);
-                    break;
-                case 6:
-                    tutorialElements[5].transform.SetParent(initialParents[0].transform);
-                    tutorialElements[6].transform.SetParent(fader.transform);
-                    break;
-                case 7:
-                    tutorialElements[6].transform.SetParent(initialParents[0].transform);
-                    tutorialElements[7].transform.SetParent(fader.transform);
-                    break;
+
+
             }
         }
         else
@@ -78,4 +69,3 @@ public class TUtorialController : MonoBehaviour
 
     }
 }
-
