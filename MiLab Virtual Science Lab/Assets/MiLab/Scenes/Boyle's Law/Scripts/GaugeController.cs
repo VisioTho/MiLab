@@ -5,8 +5,8 @@ using UnityEngine;
 public class GaugeController : MonoBehaviour
 {
     public GameObject oil;
-    private const float MAX_ANGLE = -70f;
-    private const float MIN_ANGLE = 105f;
+    private const float MAX_ANGLE = -20f;
+    private const float MIN_ANGLE = 90f;
 
     private float oilScale, maxOilScale;
 
