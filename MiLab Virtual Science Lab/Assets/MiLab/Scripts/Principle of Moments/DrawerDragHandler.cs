@@ -15,11 +15,11 @@ public class DrawerDragHandler : MonoBehaviour
     public void DragOut()
     {
         transform.position = new Vector3(transform.position.x, initialPosY+3f, transform.position.z);;
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
+        //gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 1);
     }
     public void DragIn()
     {
         transform.position = new Vector3(transform.position.x, initialPosY, transform.position.z);
-        gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.8f);
+       // gameObject.GetComponent<Image>().color = new Color(1, 1, 1, 0.8f);
     }
 }

@@ -12,13 +12,14 @@ public class ScrollViewHorizontalController : MonoBehaviour
     void Start()
     {
         scroll = gameObject.GetComponent<CustomScrollRect>().horizontalScrollbar;
+        scroll.value = 0f;
     }
 
     // Update is called once per frame
     void Update()
     {
         Debug.Log(gameObject.GetComponent<CustomScrollRect>().horizontalScrollbar.value);
-        if (scroll.value <= 0)
+        if (scroll.value <= 0.1f)
         {
             Fader.SetActive(true);
         }
