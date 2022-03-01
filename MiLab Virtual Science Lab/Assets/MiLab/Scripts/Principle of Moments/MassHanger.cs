@@ -19,6 +19,7 @@ public class MassHanger : MonoBehaviour
     private void Start()
     {
         this.initialPos = transform.position;
+        
         this.initialMass = gameObject.GetComponent<Rigidbody2D>().mass;
         StopBalance();
     }

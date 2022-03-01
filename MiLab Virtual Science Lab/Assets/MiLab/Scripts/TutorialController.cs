@@ -57,13 +57,15 @@ public class TutorialController : MonoBehaviour
                     tutorialElements[3].transform.SetParent(initialParents[0].transform);
                     tutorialElements[4].transform.SetParent(fader.transform);
                     break;
-
-
+                case 5:
+                    tutorialElements[4].transform.SetParent(initialParents[0].transform);
+                    tutorialElements[5].transform.SetParent(fader.transform);
+                    break;
             }
         }
         else
         {
-
+            
         }
         
     }
