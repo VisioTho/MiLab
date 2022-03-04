@@ -15567,12 +15567,12 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.2825902
+  m_Mass: 0.6262657
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 5
   m_Material: {fileID: 0}
-  m_Interpolate: 1
+  m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
@@ -15589,9 +15589,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.00000042574746}
+  m_Offset: {x: -0.06619777, y: 0.1894508}
   serializedVersion: 2
-  m_Radius: 4.2845535
+  m_Radius: 6.37832
 --- !u!212 &1046747331
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -15668,15 +15668,15 @@ DistanceJoint2D:
   m_GameObject: {fileID: 1046747328}
   m_Enabled: 1
   serializedVersion: 4
-  m_EnableCollision: 1
+  m_EnableCollision: 0
   m_ConnectedRigidBody: {fileID: 1298282417}
   m_BreakForce: Infinity
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 0
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.00000009061344, y: -0.0000002794107}
+  m_ConnectedAnchor: {x: 0, y: 0}
   m_AutoConfigureDistance: 1
-  m_Distance: 1.1857274
+  m_Distance: 1.1857275
   m_MaxDistanceOnly: 0
 --- !u!114 &1046747334
 MonoBehaviour:
@@ -17719,6 +17719,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Color.r
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50.080017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65.01999
       objectReference: {fileID: 0}
     - target: {fileID: 5781942509284912089, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
         type: 3}

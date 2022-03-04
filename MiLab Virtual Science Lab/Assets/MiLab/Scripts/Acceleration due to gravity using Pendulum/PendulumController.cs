@@ -70,7 +70,7 @@ public class PendulumController : MonoBehaviour
 
         if (val == 0)
         {
-            gravity = 5;
+            gravity = 4f;
             bobRigidBody.gravityScale = gravity;
         }
         else if (val == 1)
@@ -80,7 +80,7 @@ public class PendulumController : MonoBehaviour
         }
         else if (val == 2)
         {
-            gravity = 10;
+            gravity = 8f;
             bobRigidBody.gravityScale = gravity;
         }
         else if (val == 3)

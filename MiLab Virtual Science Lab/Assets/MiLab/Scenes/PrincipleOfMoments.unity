@@ -1591,8 +1591,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 16.43, y: 30.797}
-  m_SizeDelta: {x: 1770.934, y: 896.907}
+  m_AnchoredPosition: {x: 16.43, y: 7.565}
+  m_SizeDelta: {x: 1770.934, y: 943.371}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &153284780
 MonoBehaviour:
@@ -6144,9 +6144,9 @@ GameObject:
   m_Component:
   - component: {fileID: 498889823}
   - component: {fileID: 498889822}
+  - component: {fileID: 498889824}
   - component: {fileID: 498889821}
   - component: {fileID: 498889820}
-  - component: {fileID: 498889824}
   - component: {fileID: 498889819}
   m_Layer: 0
   m_Name: ruler
@@ -6168,7 +6168,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.033241272, y: 0.12033808}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -6179,7 +6179,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 43.022995, y: 2.3692248}
+  m_Size: {x: 43.03, y: 2.437246}
   m_EdgeRadius: 0
 --- !u!233 &498889820
 HingeJoint2D:
@@ -6197,14 +6197,14 @@ HingeJoint2D:
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
   m_ConnectedAnchor: {x: 0.1188, y: 2.73}
-  m_UseMotor: 0
+  m_UseMotor: 1
   m_Motor:
-    m_MotorSpeed: 0
-    m_MaximumMotorForce: 10000
-  m_UseLimits: 0
+    m_MotorSpeed: -300
+    m_MaximumMotorForce: 0
+  m_UseLimits: 1
   m_AngleLimits:
-    m_LowerAngle: 167.6
-    m_UpperAngle: 369.2
+    m_LowerAngle: -48.3
+    m_UpperAngle: 13.98
 --- !u!50 &498889821
 Rigidbody2D:
   serializedVersion: 4
@@ -6220,8 +6220,8 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
-  m_Material: {fileID: 6200000, guid: f4773c246a278b74bbb58a8aec299f93, type: 2}
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -20920,7 +20920,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577198794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.048, y: -2.1, z: 0}
+  m_LocalPosition: {x: -6, y: -2.07, z: 0}
   m_LocalScale: {x: 0.007939406, y: 0.007939406, z: 0}
   m_Children:
   - {fileID: 163974275}
@@ -22313,7 +22313,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 498889821}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
         m_MethodName: set_simulated
         m_Mode: 6
@@ -26527,8 +26527,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 0.00002670288, y: -687}
-  m_SizeDelta: {x: 1240.611, y: 330.039}
+  m_AnchoredPosition: {x: 2.338, y: -687}
+  m_SizeDelta: {x: 1235.936, y: 330.039}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1909648599
 MonoBehaviour:
@@ -26543,7 +26543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0.06666667}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -27931,7 +27931,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 498889821}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UnityEngine.Rigidbody2D, UnityEngine
         m_MethodName: set_simulated
         m_Mode: 6
@@ -28105,6 +28105,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 50.080017
+      objectReference: {fileID: 0}
+    - target: {fileID: 2396557882214528044, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -65.01999
       objectReference: {fileID: 0}
     - target: {fileID: 5781942509284912089, guid: 86d04b7f217d5e947bfa70afb2cfe5b7,
         type: 3}
