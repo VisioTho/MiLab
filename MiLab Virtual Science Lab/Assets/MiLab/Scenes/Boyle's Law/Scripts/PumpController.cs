@@ -7,71 +7,78 @@ public class PumpController : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPos;
-    private float posAtTimeOfTouch;
-    public static float offsetAfterRelease;
     public static bool isDragged;
+    public static bool isPumped;
+    private bool canPump;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         initialPos = transform.position;
+        isPumped = false;
+        canPump = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnMouseDown()
     {
-        Debug.Log("Offset " +offsetAfterRelease +" Pointoftouch " +posAtTimeOfTouch +"current pos: " +transform.position.y);
-        offsetAfterRelease = posAtTimeOfTouch - transform.position.y;
-       
-    }
-
-    void OnMouseDown()
-    {
-        //offsetAfterRelease = 0f;
-        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(initialPos.x, Input.mousePosition.y, -Camera.main.transform.position.z));
-        posAtTimeOfTouch = transform.position.y;
+        offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, screenPoint.z));
+        Vector2 posOnTouch = transform.position;
+        transform.position = posOnTouch; ;
     }
     void OnMouseDrag()
     {
-        //Debug.Log(transform.position.y);
-        Vector3 curScreenPoint = new Vector3(initialPos.x, Input.mousePosition.y, -Camera.main.transform.position.z);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint); //+ offset;
+        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
-        RestrictPosition();
+
+        ClampPumpPosition();
         isDragged = true;
-       
+        Pump();
     }
 
-    private void RestrictPosition()
+    //limit the position of the pump
+    private void ClampPumpPosition()
     {
-        if (transform.position.x < initialPos.x)
+        if (transform.position.x != initialPos.x)
         {
-            transform.position = new Vector2(-4.52f, transform.position.y);
+            transform.position = new Vector2(initialPos.x, transform.position.y);
         }
-        else if (transform.localPosition.x > initialPos.x)
+        if (transform.position.y < initialPos.y)
         {
-            transform.position = new Vector2(-4.52f, transform.position.y);
+            transform.position = new Vector2(transform.position.x, initialPos.y);
         }
-
-        if (transform.position.y > initialPos.y)
+        if (transform.position.y > 1.3f)
         {
-            transform.position = new Vector2(initialPos.x, initialPos.y);
-        }
-        else if (transform.localPosition.y < 1.2f)
-        {
-            transform.position = new Vector2(-4.52f, 1.2f);
+            transform.position = new Vector2(transform.position.x, 1.2f);
         }
     }
 
-    private void OnMouseUp()
+    //read pumping action by user
+    private void Pump()
     {
-        
-        //offsetAfterRelease = posAtTimeOfTouch - posAtTimeOfRelease;
-        isDragged = false;
-        offsetAfterRelease = 0f;
-        if (posAtTimeOfTouch >= 1.2f || posAtTimeOfTouch<=1.3f)
+        if (transform.position.y > 0.8f)
         {
-            transform.position = new Vector2(transform.position.x, 1.4f);
+            canPump = true;
+        }
+        if (transform.position.y < 0.6f && canPump)
+        {
+            isPumped = true;
+        }
+        if (isPumped && canPump)
+        {
+            StartCoroutine(PumpCoroutine());
         }
     }
-}
+
+    //wait some seconds before the next pump
+    IEnumerator PumpCoroutine()
+    {    
+        yield return new WaitForSeconds(0.1f);
+        canPump = false;
+        isPumped = false;
+    }
+
+    
+    
+    }
+    
+    

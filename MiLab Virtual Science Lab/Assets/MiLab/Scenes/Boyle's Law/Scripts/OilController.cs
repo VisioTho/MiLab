@@ -15,16 +15,16 @@ public class OilController : ThermometerBehaviour
     }
     private void Update()
     {
-        float offsetAfterRelease = PumpController.offsetAfterRelease;
+       
         bool isDragged = PumpController.isDragged;
         
 
-        if (offsetAfterRelease > 0f && isDragged)
-            RiseMercuryLevels(0.02f, maxHeight);
+        if (PumpController.isPumped)
+            RiseMercuryLevels(0.02f, 8f);
 
         if(gasTap.transform.position.x < 1.276372f)
         {
-            CollapseMercuryLevels(0.002f, initialScale.y);
+            CollapseMercuryLevels(0.009f, initialScale.y);
         }
     }
 }

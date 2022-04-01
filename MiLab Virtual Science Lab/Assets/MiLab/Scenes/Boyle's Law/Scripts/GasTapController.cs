@@ -50,12 +50,4 @@ public class GasTapController : MonoBehaviour
      
     }
 
-    private void Update()
-    {
-        
-    }
-    private void OnMouseUp()
-    {
-       
-    }
 }
