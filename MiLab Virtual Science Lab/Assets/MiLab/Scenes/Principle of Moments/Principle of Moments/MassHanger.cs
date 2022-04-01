@@ -253,27 +253,32 @@ public class MassHanger : MonoBehaviour
         {
             if (posOffset > 1.2f)
             {
-                ReleaseMass(gameObject.GetComponent<HingeJoint2D>());
-
-                if (gameObject == MassManager.massHungOnLeft)
-                {
-                    Debug.Log("released mass is on left side");
-                    MassManager.lMassIsReleased = true;
-                    HandleMassDetachment();
-                    MassManager.massHungOnLeft = null;
-                }
-                else if (gameObject == MassManager.massHungOnRight)
-                {
-                    Debug.Log("released mass is on right side");
-                    MassManager.RMassIsReleased = true;
-                    HandleMassDetachment();
-                    MassManager.massHungOnRight = null;
-                }
+                RegisterMassDetachment();
 
             }
-              
+
         }
         
+    }
+
+    private void RegisterMassDetachment()
+    {
+        ReleaseMass(gameObject.GetComponent<HingeJoint2D>());
+
+        if (gameObject == MassManager.massHungOnLeft)
+        {
+            Debug.Log("released mass is on left side");
+            MassManager.lMassIsReleased = true;
+            HandleMassDetachment();
+            MassManager.massHungOnLeft = null;
+        }
+        else if (gameObject == MassManager.massHungOnRight)
+        {
+            Debug.Log("released mass is on right side");
+            MassManager.RMassIsReleased = true;
+            HandleMassDetachment();
+            MassManager.massHungOnRight = null;
+        }
     }
 
     private void HandleMassDetachment()
@@ -364,6 +369,7 @@ public class MassHanger : MonoBehaviour
         }
     }
 
+    
     private void OnMouseDrag()
     {
         if (gameObject.GetComponent<HingeJoint2D>()!=null)
@@ -373,13 +379,21 @@ public class MassHanger : MonoBehaviour
             Debug.Log("position: " + transform.position.x);
             //convert transform.position into connected ancor point coordinates on the ruler
             float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
+            if(transform.position == hangPointL[0].transform.position)
+            {
+                hingeJoint2D.connectedAnchor = new Vector2(-19.3f, -2.7f);
+            }
             //hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
             ruler.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
 
             if (convertedAnchorPointx < -22.0f || convertedAnchorPointx > 22.0f)
             {
-                ReleaseMass(hingeJoint2D);
+                RegisterMassDetachment();
             }
+        }
+        else if(gameObject.GetComponent<HingeJoint2D>() == null)
+        {
+            //Destroy(gameObject.GetComponent<HingeJoint2D>());
         }
         
     }
