@@ -8,11 +8,16 @@ public class GasTapController : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPos;
+    public LineRenderer lineRenderer;
+    private Color startColor;
+    private Color endColor;
 
 
     private void Start()
     {
         initialPos = transform.position;
+        startColor = new Color(1f, 0.0f, 0.0f);
+        endColor = new Color(1f, 0.1f, 0.1f);
     }
 
     void OnMouseDown()
@@ -48,6 +53,21 @@ public class GasTapController : MonoBehaviour
             transform.position = new Vector2(initialPos.x, initialPos.y);
         }
      
+    }
+
+    private void Update()
+    {
+        if (transform.position.x <= 1)
+        {
+            transform.position = new Vector2(1f, initialPos.y);
+            lineRenderer.startColor = startColor;
+            lineRenderer.endColor = endColor;
+        }
+        else
+        {
+            lineRenderer.startColor = new Color(0.0f, 0.0f, 0.0f); 
+            lineRenderer.endColor = new Color(0.0f, 0.0f, 0.0f);
+        }
     }
 
 }

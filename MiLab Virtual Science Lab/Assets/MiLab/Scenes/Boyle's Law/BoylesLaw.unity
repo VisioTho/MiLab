@@ -10651,8 +10651,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1802294649}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -2, z: 0}
-  m_LocalScale: {x: 0.429, y: 2.42658, z: 1}
+  m_LocalPosition: {x: -1.9327, y: -2, z: 0}
+  m_LocalScale: {x: 0.974215, y: 0.8307203, z: 1}
   m_Children:
   - {fileID: 383342261}
   m_Father: {fileID: 32472226}
@@ -10671,18 +10671,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00000023841858, y: -0.013426572}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 1.12, y: 3.6}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.8089314, y: 1.1745462}
+  m_Size: {x: 1.12, y: 3.6}
   m_EdgeRadius: 0
 --- !u!114 &1802294652
 MonoBehaviour:
@@ -10696,6 +10696,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f68c06caaf1e61943b78ee27bd193b86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lineRenderer: {fileID: 1910228930}
 --- !u!212 &1802294653
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10736,9 +10737,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7,
-    type: 3}
-  m_Color: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
+  m_Sprite: {fileID: 21300000, guid: e3ca7e6eea701e041906f7524b008c3f, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -11263,7 +11263,7 @@ GameObject:
   - component: {fileID: 1910228932}
   - component: {fileID: 1910228930}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Line Renderer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11300,7 +11300,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 239378781582670930, guid: dbd587f68cdc8c24faf50ce3993b8659, type: 3}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11344,8 +11344,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
-      key1: {r: 0.4528302, g: 0.031612657, b: 0.031612657, a: 1}
+      key0: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
+      key1: {r: 0.23529413, g: 0.23529413, b: 0.23529413, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}

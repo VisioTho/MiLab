@@ -247,15 +247,16 @@ public class MassHanger : MonoBehaviour
     private void Update()
     {
         
-        Debug.Log("Ruler rotation is: " + ruler.transform.rotation);
+       // Debug.Log("Ruler rotation is: " + ruler.transform.rotation);
 
         if (gameObject.GetComponent<HingeJoint2D>()!=null)
         {
-            if (posOffset > 1.2f)
+            if (posOffsetY > 1.2f)
             {
                 RegisterMassDetachment();
-
             }
+            
+            
 
         }
         
@@ -338,7 +339,8 @@ public class MassHanger : MonoBehaviour
         }
     }
 
-    float posOnMouseDown, posOffset;
+    float posOffsetY, posOffsetX;
+    Vector2 posOnMouseDown;
     private void OnMouseDown()
     {
         foreach(GameObject a in hangPointL)
@@ -352,9 +354,14 @@ public class MassHanger : MonoBehaviour
         }
         
         
-        posOffset = 0f;
+        posOffsetY = 0f;
+        posOffsetX = 0f;
         if(gameObject.GetComponent<HingeJoint2D>()!=null)
-            posOnMouseDown = transform.position.y;
+        {
+            posOnMouseDown.y = transform.position.y;
+            posOnMouseDown.x = transform.position.x;
+        }
+            
 
     }
     private void OnMouseUp()
@@ -374,17 +381,23 @@ public class MassHanger : MonoBehaviour
     {
         if (gameObject.GetComponent<HingeJoint2D>()!=null)
         {
-            posOffset = posOnMouseDown - transform.position.y;
+            Debug.Log("Offset x: " + posOffsetX);
+            float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
+            posOffsetY = posOnMouseDown.y - transform.position.y;
+            posOffsetX = posOnMouseDown.x - transform.position.x;
+   
+            //RegisterMassDetachment();
+            /*
             HingeJoint2D hingeJoint2D = gameObject.GetComponent<HingeJoint2D>();
             Debug.Log("position: " + transform.position.x);
             //convert transform.position into connected ancor point coordinates on the ruler
-            float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
+            
             if(transform.position == hangPointL[0].transform.position)
             {
                 hingeJoint2D.connectedAnchor = new Vector2(-19.3f, -2.7f);
             }
             //hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
-            ruler.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+            ruler.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;*/
 
             if (convertedAnchorPointx < -22.0f || convertedAnchorPointx > 22.0f)
             {
