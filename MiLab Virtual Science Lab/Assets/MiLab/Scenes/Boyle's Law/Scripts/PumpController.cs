@@ -26,13 +26,19 @@ public class PumpController : MonoBehaviour
     }
     void OnMouseDrag()
     {
+        Debug.Log("Y position is:" +transform.position.y);
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
+        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);// + offset;
         transform.position = curPosition;
 
-        ClampPumpPosition();
+       
         isDragged = true;
         Pump();
+    }
+
+    private void Update()
+    {
+         ClampPumpPosition();
     }
 
     //limit the position of the pump
@@ -40,26 +46,26 @@ public class PumpController : MonoBehaviour
     {
         if (transform.position.x != initialPos.x)
         {
-            transform.position = new Vector2(initialPos.x, transform.position.y);
+           transform.position = new Vector2(initialPos.x, transform.position.y);
         }
         if (transform.position.y < initialPos.y)
         {
             transform.position = new Vector2(transform.position.x, initialPos.y);
         }
-        if (transform.position.y > 1.3f)
+        if (transform.position.y >= 3.0f)
         {
-            transform.position = new Vector2(transform.position.x, 1.2f);
+           transform.position = new Vector2(transform.position.x, 3.0f);
         }
     }
 
-    //read pumping action by user
+    //read pumping action by user using bool variables to check whether the pump has gone past certain points
     private void Pump()
     {
-        if (transform.position.y > 0.8f)
+        if (transform.position.y > 1.8f)
         {
             canPump = true;
         }
-        if (transform.position.y < 0.6f && canPump)
+        if (transform.position.y < 1.6f && canPump)
         {
             isPumped = true;
         }

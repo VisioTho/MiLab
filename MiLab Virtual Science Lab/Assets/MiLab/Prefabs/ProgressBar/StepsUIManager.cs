@@ -3,13 +3,9 @@ using UnityEngine.UI;
 
 public partial class StepsUIManager : MonoBehaviour
 {
-    public int numberOfSteps;
-
-    public Slider progressBar;
 
     //group the objects contained in each step respectively.
-    public GameObject[] objectsAtStepOne, objectsAtStepTwo, objectsAtStepThree, objectsAtStepFour, objectsAtStepFive;
-
+    public GameObject[] simulationUI, conclusionUI, graphUI;
     private int stepsCounter = 0;
 
     Steps StepOne; //from Steps partial Class
@@ -18,75 +14,71 @@ public partial class StepsUIManager : MonoBehaviour
 
     private void Start()
     {
-        StepOne = new Steps(objectsAtStepOne);
-        StepTwo = new Steps(objectsAtStepTwo);
-        StepThree = new Steps(objectsAtStepThree);
+        StepOne = new Steps(simulationUI);
+        StepTwo = new Steps(conclusionUI);
+        StepThree = new Steps(graphUI);
         StepTwo.HideObjects();
         StepThree.HideObjects();
-        progressBar.maxValue = numberOfSteps-1;
+    
     }
 
     public void GoToNextStep()
     {
-        switch (stepsCounter)
-        {
-            case 0:
-                
-                StepOne.HideObjects();
-
-                StepTwo.ShowObjects();
-                stepsCounter++;
-                break;
-            case 1:
-                StepTwo.HideObjects();
-
-                StepThree.ShowObjects();
-
-                stepsCounter++;
-                break;
-        }
+       
     }
 
-    public void PreviousStep()
+    public void GoToSimulationScreen()
     {
-
-        switch (stepsCounter)
+        foreach(GameObject a in simulationUI)
         {
-            case 1:
-                StepOne.ShowObjects();
+            a.SetActive(true);
+        }
 
-                StepTwo.HideObjects();
-                stepsCounter--;
-                break;
-            case 2:
-                StepThree.HideObjects();
-                StepTwo.ShowObjects();
-
-                stepsCounter--;
-                break;
+        foreach(GameObject a in conclusionUI)
+        {
+            a.SetActive(false);
+        }
+        
+        foreach(GameObject a in graphUI)
+        {
+            a.SetActive(false);
         }
     }
-
-    public Button finishButton, nxtButton;
-    void Finish()
+    public void GoToGraphUI()
     {
-        if(stepsCounter == numberOfSteps-1)
+        foreach(GameObject a in simulationUI)
         {
-            finishButton.gameObject.SetActive(true);
-            nxtButton.gameObject.SetActive(false);
+            a.SetActive(false);
         }
-        else
+
+        foreach(GameObject a in conclusionUI)
         {
-            finishButton.gameObject.SetActive(false);
-            nxtButton.gameObject.SetActive(true);
+            a.SetActive(false);
+        }
+        
+        foreach(GameObject a in graphUI)
+        {
+            a.SetActive(true);
         }
     }
 
-    private void FixedUpdate()
+    public void ConclusionUI()
     {
-        ProgressBar();
-        Finish();
+        foreach(GameObject a in simulationUI)
+        {
+            a.SetActive(false);
+        }
+
+        foreach(GameObject a in conclusionUI)
+        {
+            a.SetActive(true);
+        }
+        
+        foreach(GameObject a in graphUI)
+        {
+            a.SetActive(false);
+        }
     }
 
-    private void ProgressBar() => progressBar.value = stepsCounter;
+    
 }
