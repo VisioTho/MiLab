@@ -1,27 +1,27 @@
 ﻿using UnityEngine;
 
-public partial class StepsUIManager
+public partial class BottomNavController
 {
-    public class Steps
+    public class Tabs
     {
-        public GameObject[] stepObjects;
+        public GameObject[] TabObjects;
         public void HideObjects()
         {
-            foreach (GameObject i in stepObjects)
+            foreach (GameObject i in TabObjects)
             {
                 i.SetActive(false);
             }
         }
         public void ShowObjects()
         {
-            foreach (GameObject i in stepObjects)
+            foreach (GameObject i in TabObjects)
             {
                 i.SetActive(true);
             }
         }
-        public Steps(GameObject[] stepObjects)
+        public Tabs(GameObject[] objectsInTab)
         {
-            this.stepObjects = stepObjects;
+            this.TabObjects = objectsInTab;
         }
     }
 }

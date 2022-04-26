@@ -12,7 +12,6 @@ public class TutorialController : MonoBehaviour
     private void Start()
     {
         fader.SetActive(false);
-
     }
     public void AdvanceToNextStep()
     {

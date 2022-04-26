@@ -3,8 +3,7 @@ using UnityEngine.UI;
 
 public class StartGame : MonoBehaviour
 {
-    public GameObject prepScreen;
-    public Toggle toggleTutorial; //play with or without tutorial
+    private Toggle tutorialToggle;
     public static bool isTutorialEnabled; //classes implementing the tutorial can access the value
    
 
@@ -15,24 +14,28 @@ public class StartGame : MonoBehaviour
 
     void Start()
     {
-        prepScreen.SetActive(true);
-
-        Time.timeScale = 0f;
+        isTutorialEnabled = true;
+        tutorialToggle = this.gameObject.GetComponent<Toggle>();
+        //Time.timeScale = 0f;
     }
 
     public void startGame()
     {
-        Time.timeScale = 1f;
-
-        prepScreen.SetActive(false);
-
-        if (toggleTutorial.isOn)
+        if(isTutorialEnabled)
+        {
+            isTutorialEnabled = false;
+        }
+        else if(!isTutorialEnabled)
+        {
+            isTutorialEnabled = true;
+        }
+        /*if (tutorialToggle.isOn)
         {
             isTutorialEnabled = true;
         }
         else
         {
             isTutorialEnabled = false;
-        }
+        }*/
     }
 }

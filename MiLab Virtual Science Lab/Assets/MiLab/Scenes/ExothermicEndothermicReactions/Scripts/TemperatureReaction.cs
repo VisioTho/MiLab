@@ -8,14 +8,14 @@ using UnityEngine.UI;
 public class TemperatureReaction : ThermometerBehaviour//, IMercury
 {
     public ParticleSystem powderParticles;
-    private float emissionTime;
+    public static float emissionTime;
     public static float stirTime;
     public float temperatureDropRate;
     public TMP_Text tempReading;
     public GameObject[] iceCubes;
-    public GameObject sodiumPelletes;
+    public static GameObject sodiumPelletes;
     public GameObject[] pellets;
-    public GameObject iceCube;
+    public static GameObject iceCube;
     //public GameObject water;
     float iceEndPoint;
     Vector3 initialPosition;
@@ -51,7 +51,7 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     }
 
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
-    public void CountStirTime()
+    public static void CountStirTime()
     {
         if (emissionTime > 1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
             stirTime += Time.deltaTime * 1f;
