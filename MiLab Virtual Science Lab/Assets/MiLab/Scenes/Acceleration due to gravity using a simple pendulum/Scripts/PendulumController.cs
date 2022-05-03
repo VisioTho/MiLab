@@ -46,7 +46,7 @@ public class PendulumController : MonoBehaviour
     }
 
     //"changing length" is moving the bob through a series of positions along y axis. 
-    public void ChangeLength(float value) => transform.GetComponent<DistanceJoint2D>().distance = value; //transform.position = new Vector2(currentBobPosition.x,value);
+    public void ChangeLength(float value) => transform.GetComponent<DistanceJoint2D>().distance = value; 
 
 
     public void IncreaseLength() => lengthSlider.value -= 0.1f; //Increase length by 0.1f everytime a button is pressed
@@ -95,8 +95,24 @@ public class PendulumController : MonoBehaviour
     public TMP_Text bobMass;
     public void AdjustMass(float val)
     {
-        Bob.transform.localScale = new Vector2(val, val);
-        bobMass.text = bobRigidBody.mass.ToString("f2") +" Kgs";
+        if(val==1)
+        {
+            ChangeMass(0.07f, "30");
+        }
+        if(val==2)
+        {
+            ChangeMass(0.074f, "35");
+        }
+        if(val==3)
+        {
+            ChangeMass(0.078f, "40");
+        }
+
+        void ChangeMass(float val, string weight)
+        {
+            Bob.transform.localScale = new Vector2(val, val);
+            bobMass.text = weight + " g";
+        }
     }
 
 

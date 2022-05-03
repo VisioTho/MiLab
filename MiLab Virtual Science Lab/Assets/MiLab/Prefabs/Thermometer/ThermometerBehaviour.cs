@@ -28,7 +28,7 @@ public class ThermometerBehaviour: MonoBehaviour
     //calculate temperature from room temperature (24)
     public float CalculateTemperature()
     {
-        float temperatureReading = (gameObject.transform.localScale.y / 1f) * 24f;
+        float temperatureReading = (gameObject.transform.localScale.y / 2.17f) * 25f;
         return temperatureReading;
     }
 }

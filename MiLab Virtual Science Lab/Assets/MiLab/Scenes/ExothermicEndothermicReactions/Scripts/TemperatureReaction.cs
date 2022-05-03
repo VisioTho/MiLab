@@ -5,7 +5,7 @@ using TMPro;
 using DG;
 using UnityEngine.UI;
 
-public class TemperatureReaction : ThermometerBehaviour//, IMercury
+public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
 {
     public ParticleSystem powderParticles;
     public static float emissionTime;
@@ -15,16 +15,16 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     public GameObject[] iceCubes;
     public static GameObject sodiumPelletes;
     public GameObject[] pellets;
-    public static GameObject iceCube;
+    public GameObject iceCube;
     //public GameObject water;
     float iceEndPoint;
     Vector3 initialPosition;
     Vector3 initialScale;
 
     public Button removeSoluteButton;
-    public TMP_Text chemicalDisplay;
+    public TMP_Text chemicalDisplay, chemicalProduct1, chemicalProduct2;
  
-    public ParticleSystem EnergyTraceEndothermic, energyTraceExothermic;
+    
     Vector3 initialTemperatureLevels;
     private float initialTemperature;
     
@@ -40,9 +40,10 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     Substances sodiumHydroxide = new Substances();
     private void Start()
     {
+        counter = 0;
         ice.changeInTemperature = Random.Range(0.4f, 0.2f);
         sodiumHydroxide.changeInTemperature = Random.Range(1.3f, 1.55f);
-        transform.localScale = new Vector2(1f, Random.Range(0.8f, 1.0f));
+        transform.localScale = new Vector2(transform.localScale.x, Random.Range(2.0f, 2.2f));
         initialTemperatureLevels = transform.localScale;
 
         initialPosition = pellets[0].transform.position;
@@ -51,25 +52,37 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     }
 
     //keep track of how long the theremometer rod is being moved in 'stiring' fashion
-    public static void CountStirTime()
+   /*private void CountStirTime()
     {
+        stirTime += Time.deltaTime * 1f;
         if (emissionTime > 1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
-            stirTime += Time.deltaTime * 1f;
-    }
-    public void resetStirTime()
+        {
+            if(StirRod.isStirring)
+            {
+                stirTime += Time.deltaTime * 1f;
+            }
+
+        }
+            
+    }*/
+    private void resetStirTime()
     {
         stirTime = 0f;
     }
+
+    private void ResetTemp()
+    {
+        //transform.localScale = new Vector2(transform.localScale.x, 5f);
+        transform.localScale = initialTemperatureLevels;
+    }
     public void ResetTemperature()
     {
-        chemicalDisplay.text = "Water";
+        Debug.Log("Has been reset" +stirTime);
+        chemicalDisplay.text = "";
         emissionTime = 0f;
         resetStirTime();
         removeSoluteButton.interactable = false;
-        transform.localScale = new Vector2(transform.localScale.x, 1f);
-        transform.localScale = initialTemperatureLevels;
-        //initialTemperatureLevels = transform.localScale;
-        //initialTemperature = CalculateTemperature();
+        ResetTemp();
         iceEndPoint = Random.Range(0.4f, 0.2f);
         ResetSizeAndPosition(iceCubes);
         for (int i = 0; i < pellets.Length; i++)
@@ -81,7 +94,7 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
             pellets[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         pellets[0].transform.position = initialPosition;
-        SodiumHydroxideReaction.counter = 0;
+        counter = 0;
 
         //water.transform.localScale = new Vector3(1f, 1f, 1f);
         
@@ -101,220 +114,27 @@ public class TemperatureReaction : ThermometerBehaviour//, IMercury
     }
 
     // Update is called once per frame
-    float lowTempRise;
-    float lowerMidTempRise;
-    float higherMidTempRise;
-    float highTempRise;
     void Update()
     {
         CountEmissionTime();
         PottasiumNitrateReaction();
         GetThermometerReading();
         IceReaction();
+        //CountStirTime();
         //SodiumHydroxideReaction();
 
-        Debug.Log("initial temperature is: " +initialTemperatureLevels.y +" Current temperature: " +transform.localScale.y);
+        Debug.Log("initial temperature is: " + initialTemperatureLevels.y + " Current temperature: " + transform.localScale.y);
+
+
         
-        
-        var particles = energyTraceExothermic;
-        //Debug.Log("stir time be" +stirTime);
-        if(SodiumHydroxideReaction.counter>=1)
-        {
-            removeSoluteButton.interactable = true;
-            chemicalDisplay.text = "Water + Sodium Hydroxide";
-        }
-        if (stirTime > 1.2f)
-        {
-            if (transform.localScale.y > initialTemperatureLevels.y)
-            {
-                energyTraceExothermic.Play();
-            }
+        //Debug.Log("stir time be" + stirTime);
+        SodiumHydroxideReaction();
 
-            if (SodiumHydroxideReaction.counter == 1)
-            {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.1f, 1.15f));
-                //MeltSodiumHydroxide(0.00002f);
-
-                //stirTime = 0f;
-            }
-            else if (SodiumHydroxideReaction.counter == 2)
-            {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.16f, 1.2f));
-                //MeltSodiumHydroxide(0.00002f);
-                
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
-            }
-            else if(SodiumHydroxideReaction.counter == 3)
-            {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.21f, 1.24f));
-                //MeltSodiumHydroxide(0.00002f);
-                
-                //removeSoluteButton.interactable = true;
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
-            }
-            else if (SodiumHydroxideReaction.counter >= 4)
-            {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(1.46f, 1.65f));
-                //MeltSodiumHydroxide(0.00002f);
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
-                
-            }
-
-        }
-        else
-        {
-
-        }
-           
-    
     }
 
     private void GetThermometerReading()
     {
-        tempReading.text = CalculateTemperature().ToString("f1");
-    }
-
-    //how temperature changes when potassium reacts with the water
-    private void PottasiumNitrateReaction()
-    {
-        if(emissionTime>=1.5f)
-        {
-            removeSoluteButton.interactable = true;
-            chemicalDisplay.text = "Water + Pottasium Nitrate";
-        }
-        if (stirTime > 1.2f)
-        {
-            
-            
-            if (emissionTime > 1f && emissionTime < 4f)
-            {
-                var tempChange = Random.Range(0.9f, 0.8f);
-                potassiumNitrate.changeInTemperature = tempChange;
-                EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
-                //removeSoluteButton.interactable = true;
-                
-            }
-
-            else if (emissionTime > 4f && emissionTime < 8f)
-            {
-                var tempChange = Random.Range(0.6f, 0.7f);
-                potassiumNitrate.changeInTemperature = tempChange;
-                EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
-                //removeSoluteButton.interactable = true;
-                //chemicalDisplay.text = "Water + Pottasium Nitrate";
-            }
-            else if(emissionTime > 8f)
-            {
-                var tempChange = Random.Range(0.3f, 0.5f);
-                potassiumNitrate.changeInTemperature = tempChange;
-                EnergyTraceEndothermic.Emit(5);
-                CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
-                //removeSoluteButton.interactable = true;
-                //chemicalDisplay.text = "Water + Pottasium Nitrate";
-            }
-        }
-        
-    }
-
-    //how temperature changes when ice reacts with liquid water
-    private void IceReaction()
-    {
-        if(iceCube.activeSelf==true) // if at least the first ice cube is active
-        {     
-            if(stirTime>1.2f)
-            {
-                CollapseMercuryLevels(temperatureDropRate, ice.changeInTemperature);
-                EnergyTraceEndothermic.Emit(5);
-                MeltIceCubes(0.00002f);
-                removeSoluteButton.interactable = true;
-                chemicalDisplay.text = "Water + Ice";
-            }
-            else
-            {
-                CollapseMercuryLevels(0.00002f, ice.changeInTemperature);
-                MeltIceCubes(0.0000002f);
-            }  
-        }
-    }
-
-   /* private void SodiumHydroxideReaction()
-    {
-        if (sodiumPelletes.activeSelf == true) 
-        {   
-            var particles = energyTraceExothermic.main;
-            if (stirTime > 0.4f && pellets[0].activeSelf)
-            {
-                if(pellets[0].activeSelf)
-                {
-                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.3f, 1.35f));
-                    MeltSodiumHydroxide(0.00002f);
-                    energyTraceExothermic.Emit(5);
-                }
-                else if(pellets[1].activeSelf)
-                {
-                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.36f, 1.45f));
-                    MeltSodiumHydroxide(0.00002f);
-                    energyTraceExothermic.Emit(5);
-                }
-                else if(pellets[2])
-                {
-                    RiseMercuryLevels(temperatureDropRate, Random.Range(1.46f, 1.65f));
-                    MeltSodiumHydroxide(0.00002f);
-                    energyTraceExothermic.Emit(5);
-                }
-               
-            }
-            else
-                particles.playOnAwake = false;
-           
-        }
-    }
-   */
-
-    //melt ice cubes gradually
-    int stopper = 0; // prevents update from being called more than once on this function
-    public void MeltIceCubes(float meltSpeed)
-    {
-        if (iceCube.activeSelf && stopper==0)
-        {
-            for (int i = 0; i < iceCubes.Length; i++)
-            {
-                Vector2 tempScale = iceCubes[i].transform.localScale;
-                var V = meltSpeed;
-                if (tempScale.y > 0.01 && tempScale.x>0.01)
-                {
-                    tempScale.y -= V; 
-                    tempScale.x -= V;
-                    iceCubes[i].transform.localScale = tempScale;
-                }
-            }
-            
-        } 
-    }
-
-    void MeltSodiumHydroxide(float meltSpeed)
-    {
-        if (pellets[0].activeSelf && stopper == 0)
-        {
-            for (int i = 0; i < pellets.Length; i++)
-            {
-                if(pellets[i].activeSelf)
-                {
-                    Vector2 tempScale = pellets[i].transform.localScale;
-                    var V = meltSpeed;
-                    if (tempScale.y > 0.01 && tempScale.x > 0.01)
-                    {
-                        tempScale.y -= V;
-                        tempScale.x -= V;
-                    
-                        pellets[i].transform.localScale = tempScale;
-                    }
-                }  
-            }
-
-        }
+        tempReading.text = CalculateTemperature().ToString("f0");
     }
 
     //keep track of how long the poweder particles have been emitting
