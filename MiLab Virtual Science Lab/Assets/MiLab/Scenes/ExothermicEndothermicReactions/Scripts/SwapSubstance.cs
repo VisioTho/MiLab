@@ -10,7 +10,11 @@ public class SwapSubstance : MonoBehaviour
     public ToggleGroup toggleGroup;
     private Toggle activeToggle;
 
-    //handle selection from dropdown list
+
+    private void Start()
+    {
+        //ShowSubstance(Random.Range(0, 2));
+    }
     private void Update()
     {
         SwapSubstanceA();

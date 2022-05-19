@@ -7,17 +7,17 @@ public class SpriteDrag : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPos;
+    float distanceFromCamera;
+    public Camera mainCamera;
 
     private bool hasCollided= false;
 
-    private void FixedUpdate()
-    {
-        
-    }
+  
     private void Start()
     {
         initialPos = transform.position;
         hasCollided = false;
+        distanceFromCamera = Vector3.Distance(gameObject.transform.position, mainCamera.transform.position);
     }
 
     void OnMouseDown()
@@ -30,11 +30,21 @@ public class SpriteDrag : MonoBehaviour
 
     void OnMouseDrag()
     {
-        
-        Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, transform.position.y+650f, -Camera.main.transform.position.z);
+
+        /*Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
-        transform.gameObject.GetComponent<Rigidbody2D>().simulated = false;
+        transform.gameObject.GetComponent<Rigidbody2D>().simulated = false;*/
+
+        
+        
+        Vector3 pos = Input.mousePosition;
+        pos.z = distanceFromCamera;
+        pos = mainCamera.ScreenToWorldPoint(pos);
+        gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
+
+        //if (transform.position.y < initialPos.y)
+           // transform.position = new Vector3(transform.position.x, initialPos.y);
     }
 
     private void OnMouseUp()
@@ -48,11 +58,16 @@ public class SpriteDrag : MonoBehaviour
         if (collision.gameObject.tag != "Collidable")
             transform.position = initialPos;
         if (collision.gameObject.name == "BaseCollider")
+        {
             this.hasCollided = true;
+        }
+            
         if (collision.gameObject.name == "PetriDish" || collision.gameObject.name == "Capsule")
             this.hasCollided = false;
         
     }
+
+   
 
     void Update()
     {

@@ -8,7 +8,7 @@ public partial class TemperatureReaction
          Debug.Log("Should start collapsing");
         if (iceCube.activeSelf == true) // if at least the first ice cube is active
         {
-           
+
             if (stirTime > 1.2f)
             {  
                 CollapseMercuryLevels(temperatureDropRate, ice.changeInTemperature);

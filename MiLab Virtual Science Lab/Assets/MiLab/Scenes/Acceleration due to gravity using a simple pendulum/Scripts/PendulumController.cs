@@ -57,10 +57,35 @@ public class PendulumController : MonoBehaviour
 
     public void AdjustGravity(float val)
     {
-        bobRigidBody.gravityScale = val;
-
-        if (val != 5 && val != 10 && val != 0)
+        //bobRigidBody.gravityScale = val;
+        var gravity = 0f;
+        if (val==5)
+        {
+            gravity = 5;
+            bobRigidBody.gravityScale = gravity;
+            gravityScaleSelector.value = 0;
+        }
+        else if (val == 0)
+        {
+            gravity = 0;
+            bobRigidBody.gravityScale = gravity;
+            gravityScaleSelector.value = 1;
+        }
+        else if (val == 10)
+        {
+            gravity = 10;
+            bobRigidBody.gravityScale = gravity;
+            gravityScaleSelector.value = 2;
+        }
+        else
+        {
+            gravity = val;
+            bobRigidBody.gravityScale = gravity;
             gravityScaleSelector.value = 3;
+        }
+
+        //if (val != 5 && val != 10 && val != 0)
+        //gravityScaleSelector.value = 3;
     }
 
 

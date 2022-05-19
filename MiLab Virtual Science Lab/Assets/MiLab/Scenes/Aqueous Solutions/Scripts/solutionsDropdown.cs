@@ -7,7 +7,7 @@ using TMPro;
 public class solutionsDropdown : MonoBehaviour
 {
     public TMP_Dropdown solutions_dd;
-    public GameObject solid_water, bulb, bulb_light_emu;
+    public GameObject solid_water, bulb, bulb_light_emu, anode, cathode;
     public TextMeshProUGUI solution_name;
     public Light bulb_light;
     public Button removeSolution;
@@ -25,6 +25,7 @@ public class solutionsDropdown : MonoBehaviour
     //from _node_collider
     public static bool isCollided=false;
     public static float ammeter_final_readingA;
+    public Color buld_on_color = new Color(225, 225, 225);
 
     //to be used by the observation_dealer
     public static float should_restart_observation;
@@ -64,64 +65,69 @@ public class solutionsDropdown : MonoBehaviour
         if(solutions_dd.value == 0)
         {
             removeSolution.interactable=false;
+            anode.GetComponent<BoxCollider2D>().enabled = true;
+            cathode.GetComponent<BoxCollider2D>().enabled = true;
+
         }
         else
         {
             removeSolution.interactable=true;
+            anode.GetComponent<BoxCollider2D>().enabled = false;
+            cathode.GetComponent<BoxCollider2D>().enabled = false;
         }
         ///end
 
         if (solutions_dd.value==1 && (sugar_solution || isCollided) && switch_is_on) {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 4.56f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 2 && (sodium_chloride || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 4.79f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 3 && (concentrated_sulphuric_acid || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 6.34f;
             bulb_light.range = 6f;
         }
         else if (solutions_dd.value == 4 && (copper_sulphate || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 3.59f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 5 && (pure_water || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 3.00f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 6 && (acidified_water || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 7.64f;
             bulb_light.range = 8f;
         }
         else if (solutions_dd.value == 7 && (lemon_juice || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 6.24f;
             bulb_light.range = 6f;
         }
         else if (solutions_dd.value == 8 && (salt_solution || isCollided) && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 5.64f;
             bulb_light.range = 5f;
@@ -136,7 +142,7 @@ public class solutionsDropdown : MonoBehaviour
      //if the _nodes (anode and cathode) collide
         if (isCollided && switch_is_on)
         {
-            bulb.GetComponent<SpriteRenderer>().color = new Color(225, 225, 225);
+            bulb.GetComponent<SpriteRenderer>().color =buld_on_color;
             bulb_light_emu.SetActive(true);
             ammeter_final_readingA = 8.50f;
             bulb_light.range = 8f;
@@ -146,7 +152,11 @@ public class solutionsDropdown : MonoBehaviour
 
     ///----------------------------------------------------///
     public void valueHasChanged(TMP_Dropdown sender){
-        Debug.Log(sender.value);
+       // Debug.Log(sender.value);
+
+
+
+
             if(sender.value ==0)
                 {
                     solid_water.SetActive(false);

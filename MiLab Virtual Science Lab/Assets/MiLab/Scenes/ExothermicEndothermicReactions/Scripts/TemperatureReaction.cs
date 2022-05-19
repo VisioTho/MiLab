@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
 {
     public ParticleSystem powderParticles;
+    public ParticleSystem exothermicTrace, endothermicTrace;
     public static float emissionTime;
     public static float stirTime;
     public float temperatureDropRate;
@@ -27,6 +28,8 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     
     Vector3 initialTemperatureLevels;
     private float initialTemperature;
+
+    public static GameObject[] pelletsToMelt;
     
     
     public class Substances
@@ -41,30 +44,28 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     private void Start()
     {
         counter = 0;
+        stirTime = 0f;
         ice.changeInTemperature = Random.Range(0.4f, 0.2f);
         sodiumHydroxide.changeInTemperature = Random.Range(1.3f, 1.55f);
         transform.localScale = new Vector2(transform.localScale.x, Random.Range(2.0f, 2.2f));
         initialTemperatureLevels = transform.localScale;
+        initialTemperature = CalculateTemperature();
+
+        if(exothermicTrace.isPlaying)
+        {
+            exothermicTrace.Stop();
+        }
+
+        if(endothermicTrace.isPlaying)
+        {
+            endothermicTrace.Stop();
+        }
 
         initialPosition = pellets[0].transform.position;
         initialScale = pellets[0].transform.localScale;
         
     }
 
-    //keep track of how long the theremometer rod is being moved in 'stiring' fashion
-   /*private void CountStirTime()
-    {
-        stirTime += Time.deltaTime * 1f;
-        if (emissionTime > 1f || iceCube.activeSelf || sodiumPelletes.activeSelf)
-        {
-            if(StirRod.isStirring)
-            {
-                stirTime += Time.deltaTime * 1f;
-            }
-
-        }
-            
-    }*/
     private void resetStirTime()
     {
         stirTime = 0f;
@@ -77,8 +78,9 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     }
     public void ResetTemperature()
     {
-        Debug.Log("Has been reset" +stirTime);
         chemicalDisplay.text = "";
+        chemicalProduct1.text = "";
+        chemicalProduct2.text = "";
         emissionTime = 0f;
         resetStirTime();
         removeSoluteButton.interactable = false;
@@ -120,18 +122,44 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
         PottasiumNitrateReaction();
         GetThermometerReading();
         IceReaction();
-        //CountStirTime();
-        //SodiumHydroxideReaction();
-
-        Debug.Log("initial temperature is: " + initialTemperatureLevels.y + " Current temperature: " + transform.localScale.y);
-
-
-        
-        //Debug.Log("stir time be" + stirTime);
         SodiumHydroxideReaction();
+        ToggleEnergyTrace();
 
     }
 
+    // Play or stop the energy trace particle based on temperature readings
+    private void ToggleEnergyTrace()
+    {
+        var currTemp = float.Parse(CalculateTemperature().ToString("F0"));
+        var initialTemp = float.Parse(initialTemperature.ToString("f0"));
+        if (currTemp < initialTemp)
+        {
+            if (!endothermicTrace.isPlaying)
+                endothermicTrace.Play();
+        }
+        else if (currTemp > initialTemp)
+        {
+            if (!exothermicTrace.isPlaying)
+                exothermicTrace.Play();
+        }
+        else
+        {
+            exothermicTrace.Stop();
+            endothermicTrace.Stop();
+        }
+
+        Debug.Log("initial temp: " + initialTemp + " current temp " + currTemp);
+        
+    }
+
+    public void PlayEnergyTrace(ParticleSystem particleSystem)
+    {
+        if (!particleSystem.isPlaying)
+            particleSystem.Play();
+
+        if (particleSystem.isPlaying)
+            particleSystem.Stop();
+    }
     private void GetThermometerReading()
     {
         tempReading.text = CalculateTemperature().ToString("f0");

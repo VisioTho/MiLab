@@ -28,6 +28,10 @@ public class StirRod : MonoBehaviour
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
     }
 
+    private void OnMouseUp()
+    {
+        TemperatureReaction.stirTime = 0f;
+    }
     void OnMouseDrag()
     {
         isStirring = true;

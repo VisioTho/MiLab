@@ -10,12 +10,11 @@ public partial class TemperatureReaction
             removeSoluteButton.interactable = true;
             chemicalDisplay.text = "KNO3 (Pottasium Nitrate)";
             chemicalProduct1.text = "K+ (Pottasium ions)";
-            chemicalProduct2.text = "NO3- (Nitrate)";
+            chemicalProduct2.text = "NO3- (Nitrate)"; 
         }
         if (stirTime > 1.2f)
         {
 
-            Debug.Log("Hello what happened?");
             if (emissionTime > 1f && emissionTime < 4f)
             {
                 var tempChange = Random.Range(1.7f, 1.8f);
@@ -44,6 +43,13 @@ public partial class TemperatureReaction
                 //removeSoluteButton.interactable = true;
                 //chemicalDisplay.text = "Water + Pottasium Nitrate";
             }
+
+           
+        }
+
+        else
+        {
+           
         }
 
     }
