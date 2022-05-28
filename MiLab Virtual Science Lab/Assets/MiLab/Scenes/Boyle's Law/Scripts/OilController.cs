@@ -20,7 +20,7 @@ public class OilController : ThermometerBehaviour
         
 
         if (PumpController.isPumped)
-            RiseMercuryLevels(0.02f, 8f);
+            //RiseMercuryLevels(0.01f, 7f);
 
         if(gasTap.transform.position.x < 1.276372f)
         {

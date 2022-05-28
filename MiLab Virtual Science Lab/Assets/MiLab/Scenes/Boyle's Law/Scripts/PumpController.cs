@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.UI;
 using UnityEngine;
+using TMPro;
 
 public class PumpController : MonoBehaviour
 {
@@ -26,7 +28,7 @@ public class PumpController : MonoBehaviour
     }
     void OnMouseDrag()
     {
-        Debug.Log("Y position is:" +transform.position.y);
+        
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint);// + offset;
         transform.position = curPosition;
@@ -58,9 +60,11 @@ public class PumpController : MonoBehaviour
         }
     }
 
+   
     //read pumping action by user using bool variables to check whether the pump has gone past certain points
     private void Pump()
     {
+        //button.onClick.Invoke();
         if (transform.position.y > 1.8f)
         {
             canPump = true;
