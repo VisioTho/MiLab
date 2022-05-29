@@ -24,7 +24,7 @@ public class OilController : ThermometerBehaviour
 
         if(gasTap.transform.position.x < 1.276372f)
         {
-            CollapseMercuryLevels(0.009f, initialScale.y);
+            //CollapseMercuryLevels(0.009f, initialScale.y);
         }
     }
 }
