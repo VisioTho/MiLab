@@ -17,4 +17,15 @@ public class SceneLoaderScript : MonoBehaviour
     {
         SceneManager.LoadScene(nextSceneToLoad);
     }
+    
+    void Update()
+    {
+     
+       // Check if Back was pressed this frame
+       if (Input.GetKeyDown(KeyCode.Escape))
+       {
+            SceneManager.LoadScene("MainMenu");
+       }
+        
+    }
 }

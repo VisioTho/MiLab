@@ -5,6 +5,7 @@ using UnityEngine;
 public class MenuSlideAnimation : MonoBehaviour
 {
     Vector2 initialPos;
+    public float moveTo;
     private void Start()
     {
         initialPos = gameObject.transform.position;
@@ -21,7 +22,7 @@ public class MenuSlideAnimation : MonoBehaviour
 
     void SlideIn()
     {
-        gameObject.transform.LeanMoveLocalY(0f, 0.3f);
+        gameObject.transform.LeanMoveLocalY(moveTo, 0.3f);
     }
 
     void SlideOut()

@@ -16,8 +16,10 @@ public class MassHanger : MonoBehaviour
     private float initialMass;
     public GameObject pointOfSuspensionL, pointOfSuspensionR;
     public LineRenderer lLine, rLine;
-    public float massRotationValue; //adds rotation to the ruler based on which mass is attached.
+    public float massRotationValue; //adds rotation to the ruler based on which mass is attached. Assigned in the inspector
     int hungMassCount;
+    private float leftMassRotation, rightMassRotation;
+    private float anchorPointX;
     
 
     private void Start()
@@ -33,7 +35,7 @@ public class MassHanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        Debug.Log("Touched something...");
+        //Debug.Log("Touched something...");
         HandleMassAttachment(col);
     }
 
@@ -44,112 +46,132 @@ public class MassHanger : MonoBehaviour
         {
             AttachRightMass(4.26f);
             RotateRuler(-1.0f - massRotationValue);
-
+            
         }
         else if (collision.gameObject.name == "ConnPointR1")
         {
             AttachRightMass(2.16f);
             RotateRuler(-1.0f - massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPointR3")
         {
             AttachRightMass(6.45f);
             RotateRuler(-1.0f - massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPointR4")
         {
             AttachRightMass(8.58f);
             RotateRuler(-2.0f - massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPointR5")
         {
             AttachRightMass(10.7f);
             RotateRuler(-2.0f - massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPointR6")
         {
             AttachRightMass(12.80f);
             RotateRuler(-3.0f - massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPointR7")
         {
             AttachRightMass(15.02f);
             RotateRuler(-3.0f - massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPointR8")
         {
             AttachRightMass(17.08f);
             RotateRuler(-4.0f - massRotationValue);
+           
         }
         else if (collision.gameObject.name == "ConnPointR9")
         {
             AttachRightMass(19.33f);
             RotateRuler(-4.0f - massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPointR10")
         {
             AttachRightMass(21.46f);
             RotateRuler(-4.0f - massRotationValue);
+            
         }
 
         else if (collision.gameObject.name == "ConnPoint9")
         {
             AttachLeftMass(-2.16f);
             RotateRuler(1.0f + massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPoint8")
         {
             AttachLeftMass(-4.29f);
             RotateRuler(1.0f + massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPoint7")
         {
             AttachLeftMass(-6.46f);
             RotateRuler(1.0f + massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPoint6")
         {
             AttachLeftMass(-8.58f);
             RotateRuler(2.0f + massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPoint5")
         {
             AttachLeftMass(-10.75f);
             RotateRuler(1.0f + massRotationValue);
+            
 
         }
         else if (collision.gameObject.name == "ConnPoint4")
         {
             AttachLeftMass(-12.87f);
             RotateRuler(3.0f + massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPoint3")
         {
             AttachLeftMass(-15.05f);
             RotateRuler(3.0f + massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPoint2")
         {
             AttachLeftMass(-17.08f);
             RotateRuler(4.0f + massRotationValue);
+            
         }
         else if (collision.gameObject.name == "ConnPoint1")
         {
             AttachLeftMass(-19.3f);
             RotateRuler(4.0f + massRotationValue);
+            
         }
-
+       
         else
         {
             //if(gameObject.GetComponent<HingeJoint2D>()!=null)
             //gameObject.GetComponent<HingeJoint2D>().enabled = false;
             Destroy(gameObject.GetComponent<HingeJoint2D>());
-        }
+        } 
+        
+       
     }
 
     private void RotateRuler(float d)
@@ -169,6 +191,7 @@ public class MassHanger : MonoBehaviour
     {
         MassManager.massHungOnLeft = gameObject;
         MassManager.lMassIsReleased = false;
+        
         if (gameObject.GetComponent<HingeJoint2D>() == null)
         {
             gameObject.AddComponent<HingeJoint2D>();
@@ -176,6 +199,9 @@ public class MassHanger : MonoBehaviour
             hingeJoint2D.autoConfigureConnectedAnchor = false;
             hingeJoint2D.connectedBody = ruler.GetComponent<Rigidbody2D>();
             hingeJoint2D.connectedAnchor = new Vector2(f, -2.7f);
+            this.anchorPointX = f;
+            if(leftMassRotation == 0)
+                leftMassRotation = ruler.transform.rotation.z;
         }
         
     }
@@ -184,6 +210,7 @@ public class MassHanger : MonoBehaviour
     {
         MassManager.massHungOnRight = gameObject;
         MassManager.RMassIsReleased = false;
+        
         if (gameObject.GetComponent<HingeJoint2D>() == null)
         {   
             gameObject.AddComponent<HingeJoint2D>();
@@ -191,8 +218,11 @@ public class MassHanger : MonoBehaviour
             hingeJoint2D.autoConfigureConnectedAnchor = false;
             hingeJoint2D.connectedBody = ruler.GetComponent<Rigidbody2D>();
             hingeJoint2D.connectedAnchor = new Vector2(f, -2.7f);
+            this.anchorPointX = f;
+            if(rightMassRotation == 0)
+                rightMassRotation = ruler.transform.rotation.z;
         }
-        
+       
     }
 
     Quaternion target;
@@ -244,14 +274,53 @@ public class MassHanger : MonoBehaviour
         }
     }
     Quaternion rulerRotation;
+    bool hasBothMassesAttached = false;
     private void Update()
     {
-        
-       // Debug.Log("Ruler rotation is: " + ruler.transform.rotation);
 
+        
+        // Debug.Log("Ruler rotation is: " + ruler.transform.rotation);
+        //Debug.Log("Right Mass" + MassManager.massHungOnRight + " Left Mass " + MassManager.massHungOnLeft);
+        //Debug.Log("both attached? " + MassManager.hasHadBothMassesAttached);
+        Debug.Log("ROtation for left: " + MassManager.rotationByLeftMass + " Rotation for right " + MassManager.rotationByRightMass);
+
+        if(MassManager.massHungOnLeft!=null && MassManager.massHungOnRight==null && !MassManager.hasHadBothMassesAttached)
+        {
+            
+            MassManager.rotationByLeftMass = ruler.transform.eulerAngles.z;
+        }
+        else if(MassManager.massHungOnLeft == null && MassManager.massHungOnRight != null && !MassManager.hasHadBothMassesAttached)
+        {
+           
+            MassManager.rotationByRightMass = ruler.transform.eulerAngles.z;
+        }
+        else if(MassManager.massHungOnLeft != null && MassManager.massHungOnRight == null && MassManager.hasHadBothMassesAttached)
+        {
+            
+            MassManager.rotationByLeftMass = ruler.transform.eulerAngles.z - MassManager.rotationByLeftMass;
+        }
+        else if(MassManager.massHungOnLeft == null && MassManager.massHungOnRight != null && MassManager.hasHadBothMassesAttached)
+        {
+            
+            MassManager.rotationByRightMass = ruler.transform.eulerAngles.z - MassManager.rotationByLeftMass;
+        }
+
+
+        if(MassManager.massHungOnLeft == null && MassManager.massHungOnRight == null)
+        {
+            MassManager.hasHadBothMassesAttached = false;
+        }
+        else if(MassManager.massHungOnLeft != null && MassManager.massHungOnRight != null)
+        {
+            MassManager.hasHadBothMassesAttached = true;
+            MassManager.rotationByLeftMass = 0f;
+            MassManager.rotationByRightMass = 0f;
+        }
+
+        //Debug.Log("Connected anchor " + anchorPointX);
         if (gameObject.GetComponent<HingeJoint2D>()!=null)
         {
-            if (posOffsetY > 1.2f)
+            if (posOffsetY > 0.5f)
             {
                 RegisterMassDetachment();
             }
@@ -268,26 +337,42 @@ public class MassHanger : MonoBehaviour
 
         if (gameObject == MassManager.massHungOnLeft)
         {
-            Debug.Log("released mass is on left side");
+            //Debug.Log("released mass is on left side");
             MassManager.lMassIsReleased = true;
             HandleMassDetachment();
             MassManager.massHungOnLeft = null;
+            //ruler.transform.Rotate(0.0f, 0.0f, leftMassRotation, Space.Self);
         }
         else if (gameObject == MassManager.massHungOnRight)
         {
-            Debug.Log("released mass is on right side");
+            //Debug.Log("released mass is on right side");
             MassManager.RMassIsReleased = true;
             HandleMassDetachment();
             MassManager.massHungOnRight = null;
+            //ruler.transform.Rotate(0.0f, 0.0f, rightMassRotation, Space.Self);
         }
     }
 
+    
     private void HandleMassDetachment()
     {
+        
+        if(anchorPointX == 4.26f)
+        {
+            Debug.Log("We know your anchor point");
+            //RotateRuler(-1.0f + massRotationValue);
+
+        }
+        else if(anchorPointX == -4.29f)
+        {
+            Debug.Log("We Still know your anchor point");
+        }
+
         if(!(MassManager.lMassIsReleased && MassManager.RMassIsReleased))
         {
-            Debug.Log("Handling..");
-            if (gameObject.name == "Mass100g")
+            
+            //Debug.Log("Handling..");
+            /*if (gameObject.name == "Mass100g")
             {
                 if (gameObject.transform.position.x < 0)
                 {
@@ -325,17 +410,19 @@ public class MassHanger : MonoBehaviour
                 }
                 else
                      RotateRuler(2f);
-            }
+            }*/
         } 
         else if(MassManager.lMassIsReleased && MassManager.RMassIsReleased)
         {
             
             // Rotate the cube by converting the angles into a quaternion.
             Quaternion target = Quaternion.Euler(0, 0, 0.0f);
+            MassManager.rotationByLeftMass = 0f;
+            MassManager.rotationByRightMass = 0f;
 
             // Dampen towards the target rotation
             ruler.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * 2.0f);
-            Debug.Log("Should rotate..");
+           //Debug.Log("Should rotate..");
         }
     }
 
@@ -381,10 +468,11 @@ public class MassHanger : MonoBehaviour
     {
         if (gameObject.GetComponent<HingeJoint2D>()!=null)
         {
-            Debug.Log("Offset x: " + posOffsetX);
+           
             float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
             posOffsetY = posOnMouseDown.y - transform.position.y;
-            posOffsetX = posOnMouseDown.x - transform.position.x;
+            posOffsetX = posOnMouseDown.x - transform.position.x; 
+            //Debug.Log("Offset y: " + posOffsetY);
    
             //RegisterMassDetachment();
             /*

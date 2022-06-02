@@ -8,6 +8,9 @@ public class MassManager : MonoBehaviour
     public static bool RMassIsReleased = true;
     public static GameObject massHungOnLeft;
     public static GameObject massHungOnRight;
+    public GameObject ruler;
+    public static float rotationByLeftMass, rotationByRightMass;
+    public static bool hasHadBothMassesAttached = false;
     // Start is called before the first frame update
     void Start()
     {
