@@ -1606,6 +1606,8 @@ GameObject:
   - component: {fileID: 157707115}
   - component: {fileID: 157707114}
   - component: {fileID: 157707113}
+  - component: {fileID: 157707117}
+  - component: {fileID: 157707118}
   m_Layer: 0
   m_Name: IceCube (2)
   m_TagString: Untagged
@@ -1624,7 +1626,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -1725,6 +1727,38 @@ Transform:
   m_Father: {fileID: 1975888036}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &157707117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157707112}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b7210d5effc2141b14a73dbd59ec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSlider: {fileID: 1885081019}
+--- !u!253 &157707118
+BuoyancyEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 157707112}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SurfaceLevel: 0
+  m_Density: 2
+  m_LinearDrag: 5
+  m_AngularDrag: 5
+  m_FlowAngle: 0
+  m_FlowMagnitude: 0
+  m_FlowVariation: 0
 --- !u!1 &169305949
 GameObject:
   m_ObjectHideFlags: 0
@@ -15964,6 +15998,8 @@ GameObject:
   - component: {fileID: 971915492}
   - component: {fileID: 971915495}
   - component: {fileID: 971915494}
+  - component: {fileID: 971915496}
+  - component: {fileID: 971915497}
   m_Layer: 0
   m_Name: IceCube
   m_TagString: Untagged
@@ -16047,7 +16083,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -16083,6 +16119,38 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &971915496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971915491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b7210d5effc2141b14a73dbd59ec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSlider: {fileID: 1885081019}
+--- !u!253 &971915497
+BuoyancyEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 971915491}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SurfaceLevel: 0
+  m_Density: 2
+  m_LinearDrag: 5
+  m_AngularDrag: 5
+  m_FlowAngle: 0
+  m_FlowMagnitude: 0
+  m_FlowVariation: 0
 --- !u!1 &977805221
 GameObject:
   m_ObjectHideFlags: 0
@@ -17228,6 +17296,8 @@ GameObject:
   - component: {fileID: 1124991423}
   - component: {fileID: 1124991422}
   - component: {fileID: 1124991421}
+  - component: {fileID: 1124991425}
+  - component: {fileID: 1124991426}
   m_Layer: 0
   m_Name: IceCube (1)
   m_TagString: Untagged
@@ -17246,7 +17316,7 @@ BoxCollider2D:
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
@@ -17347,6 +17417,38 @@ Transform:
   m_Father: {fileID: 1975888036}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1124991425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124991420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6b7210d5effc2141b14a73dbd59ec0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterSlider: {fileID: 1885081019}
+--- !u!253 &1124991426
+BuoyancyEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124991420}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_SurfaceLevel: 0
+  m_Density: 2
+  m_LinearDrag: 5
+  m_AngularDrag: 5
+  m_FlowAngle: 0
+  m_FlowMagnitude: 0
+  m_FlowVariation: 0
 --- !u!1 &1127662300
 GameObject:
   m_ObjectHideFlags: 0
@@ -40667,7 +40769,7 @@ MonoBehaviour:
   textSliderValue: {fileID: 1984467938}
   inputVolume: {fileID: 0}
   min: 0.9958987
-  max: 4
+  max: 2
   Unit: 2
 --- !u!114 &1885081019
 MonoBehaviour:
@@ -40714,9 +40816,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1871818538}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 4
+  m_MaxValue: 2
   m_WholeNumbers: 0
-  m_Value: 0.9958987
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -45756,7 +45858,7 @@ MonoBehaviour:
   textSliderValue: {fileID: 1984467938}
   inputVolume: {fileID: 0}
   min: 0.4039811
-  max: 4
+  max: 2
   Unit: 2
 --- !u!1 &3930922316407210564
 GameObject:
@@ -45942,7 +46044,7 @@ MonoBehaviour:
   textSliderValue: {fileID: 1984467938}
   inputVolume: {fileID: 0}
   min: 0.4039811
-  max: 4
+  max: 2
   Unit: 2
 --- !u!212 &3930922317359433985
 SpriteRenderer:
