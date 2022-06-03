@@ -35,7 +35,7 @@ public partial class TemperatureReaction
             {
                 Vector2 tempScale = iceCubes[i].transform.localScale;
                 var V = meltSpeed;
-                if (tempScale.y > 0.01 && tempScale.x > 0.01)
+                if (tempScale.y > 0.001 && tempScale.x > 0.001)
                 {
                     tempScale.y -= V;
                     tempScale.x -= V;
