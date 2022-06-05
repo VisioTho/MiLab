@@ -15,6 +15,7 @@ public class MetalReaction : MonoBehaviour
     public GameObject[] metals, metalsB, metalsC, metalsD;
     public GameObject sulphate, sulphate2, sulphate3, sulphate4;
     public GameObject particles, zincParticles, bubbleParticles;
+
     Vector3 initialPosition;
     Vector3 initialScale;
     public Button removeMetalButton;
@@ -75,7 +76,7 @@ public class MetalReaction : MonoBehaviour
             metals[i].transform.position = initialPosition;
             metals[i].GetComponent<Rigidbody2D>().simulated = true;
             metals[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metals[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metals[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metals[0].transform.position = initialPosition;
         copperReaction.counter = 0;
@@ -87,7 +88,7 @@ public class MetalReaction : MonoBehaviour
             zincColor.defaultColor();
             metalsB[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsB[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsB[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsB[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsB[0].transform.position = initialPosition;
         zincReaction.counter = 0;
@@ -99,7 +100,7 @@ public class MetalReaction : MonoBehaviour
             ironColor.defaultColor();
             metalsC[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsC[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsC[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsC[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsC[0].transform.position = initialPosition;
         ironReaction.counter = 0;
@@ -114,7 +115,7 @@ public class MetalReaction : MonoBehaviour
             sulphate3.GetComponent<SpriteRenderer>().color = new Color32(168, 192, 109, 76);
             metalsD[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsD[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsD[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsD[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsD[0].transform.position = initialPosition;
         magnesiumReaction.counter = 0;
@@ -137,7 +138,7 @@ public class MetalReaction : MonoBehaviour
             metals[i].transform.position = initialPosition;
             metals[i].GetComponent<Rigidbody2D>().simulated = true;
             metals[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metals[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metals[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metals[0].transform.position = initialPosition;
         copperReaction.counter = 0;
@@ -149,7 +150,7 @@ public class MetalReaction : MonoBehaviour
             zincColor.defaultColor();
             metalsB[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsB[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsB[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsB[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsB[0].transform.position = initialPosition;
         zincReaction.counter = 0;
@@ -161,7 +162,7 @@ public class MetalReaction : MonoBehaviour
             ironColor.defaultColor();
             metalsC[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsC[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsC[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsC[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsC[0].transform.position = initialPosition;
         ironReaction.counter = 0;
@@ -176,7 +177,7 @@ public class MetalReaction : MonoBehaviour
             sulphate3.GetComponent<SpriteRenderer>().color = new Color32(168, 192, 109, 76);
             metalsD[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsD[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-            metalsD[i].gameObject.GetComponent<PolygonCollider2D>().enabled = true;
+            metalsD[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         metalsD[0].transform.position = initialPosition;
         magnesiumReaction.counter = 0;
@@ -257,7 +258,7 @@ public class MetalReaction : MonoBehaviour
             StartCoroutine(copperSulphateColorTransition2());
             Invoke("stopReaction", 150);
             solutionNotation.text = "copper sulphate + iron";
-   
+
         }
         if (sulphateDrop.value == 1 && magnesiumReaction.counter == 1)
         {

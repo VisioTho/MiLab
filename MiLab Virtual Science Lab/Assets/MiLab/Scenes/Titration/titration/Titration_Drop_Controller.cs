@@ -51,6 +51,12 @@ public class Titration_Drop_Controller : MonoBehaviour
                     liquidControllerScript.pipetteDrop = true;
                     liquidControllerScript.resetButton.interactable = true;
                 }
+                else if (sodium_hydroxide_drops > 0 && (liquidControllerScript.indicatorVariation.value == 0 || liquidControllerScript.indicatorVariation.value == 1))
+                {
+                    liquidControllerScript.resetButton.interactable = true;
+                    liquidControllerScript.indicatorVariation.interactable = false;
+                    liquidControllerScript.analyteVariation.interactable = false;
+                }
             }
 
         }

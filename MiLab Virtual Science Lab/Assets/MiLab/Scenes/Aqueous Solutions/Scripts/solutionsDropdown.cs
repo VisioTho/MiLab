@@ -87,21 +87,21 @@ public class solutionsDropdown : MonoBehaviour
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 4.79f;
+            ammeter_final_readingA = 0.45f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 3 && (concentrated_sulphuric_acid || isCollided) && switch_is_on)
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 6.34f;
+            ammeter_final_readingA = 0.64f;
             bulb_light.range = 6f;
         }
         else if (solutions_dd.value == 4 && (copper_sulphate || isCollided) && switch_is_on)
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 3.59f;
+            ammeter_final_readingA = 0.34f;
             bulb_light.range = 4f;
         }
         else if (solutions_dd.value == 5 && (pure_water || isCollided) && switch_is_on)
@@ -115,21 +115,21 @@ public class solutionsDropdown : MonoBehaviour
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 7.64f;
+            ammeter_final_readingA = 0.75f;
             bulb_light.range = 8f;
         }
         else if (solutions_dd.value == 7 && (lemon_juice || isCollided) && switch_is_on)
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 6.24f;
+            ammeter_final_readingA = 0.61f;
             bulb_light.range = 6f;
         }
         else if (solutions_dd.value == 8 && (salt_solution || isCollided) && switch_is_on)
         {
             bulb.GetComponent<SpriteRenderer>().color = buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 5.64f;
+            ammeter_final_readingA = 0.56f;
             bulb_light.range = 5f;
         }
         else
@@ -144,7 +144,7 @@ public class solutionsDropdown : MonoBehaviour
         {
             bulb.GetComponent<SpriteRenderer>().color =buld_on_color;
             bulb_light_emu.SetActive(true);
-            ammeter_final_readingA = 8.50f;
+            ammeter_final_readingA = 0.56f;
             bulb_light.range = 8f;
         }
     }

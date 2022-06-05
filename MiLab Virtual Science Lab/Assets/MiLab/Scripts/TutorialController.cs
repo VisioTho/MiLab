@@ -6,6 +6,7 @@ public class TutorialController : MonoBehaviour
 {
     public GameObject[] tutorialElements;
     public GameObject[] initialParents;
+    public GameObject simulationScreen; //tutorial starts only when this screen is active
     public GameObject fader;
     private int stepCounter = 0;
 
@@ -31,7 +32,7 @@ public class TutorialController : MonoBehaviour
     private void Update()
     {
         
-        if (StartGame.isTutorialEnabled)
+        if (StartGame.isTutorialEnabled && simulationScreen.activeSelf)
         {
             Time.timeScale = 0f;
             fader.SetActive(true);

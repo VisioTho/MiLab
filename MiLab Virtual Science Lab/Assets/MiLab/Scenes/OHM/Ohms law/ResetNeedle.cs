@@ -7,7 +7,7 @@ public class ResetNeedle : MonoBehaviour
 
     public SwitchController switchControl;
     public VoltmeterController voltmeterController;
-    public AmmeterController ammeterController;
+    //  public AmmeterController ammeterController;
     public Quaternion currentRotation;
     public Quaternion targetRotation;
     public GameObject rotationParent;
@@ -29,7 +29,7 @@ public class ResetNeedle : MonoBehaviour
     {
         if (switchControl.switch_is_on == false)
         {
-            z_rotation_angle = 83.696f;
+            z_rotation_angle = 169.797f;
             targetRotation = Quaternion.Euler(new Vector3(0, 0, z_rotation_angle));
             StartCoroutine(needleRotation(targetRotation));
         }
@@ -37,7 +37,7 @@ public class ResetNeedle : MonoBehaviour
         {
             Debug.Log("switch is back on");
             voltmeterController.UpdateSpeed();
-            ammeterController.UpdateSpeed();
+            //  ammeterController.UpdateSpeed();
         }
     }
 

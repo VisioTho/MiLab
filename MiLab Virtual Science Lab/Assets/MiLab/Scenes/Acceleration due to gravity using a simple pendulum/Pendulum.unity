@@ -819,6 +819,7 @@ MonoBehaviour:
   - {fileID: 255575908}
   initialParents:
   - {fileID: 2076844323}
+  simulationScreen: {fileID: 2076844323}
   fader: {fileID: 1297906173}
 --- !u!1 &54454995
 GameObject:
@@ -3680,7 +3681,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 255575908}
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -7.9112, y: 1.88, z: 0}
+  m_LocalPosition: {x: -9.39, y: 0.95, z: 0}
   m_LocalScale: {x: 0.19582945, y: 0.2116293, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -5599,7 +5600,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Time taken for 20 Oscillations
+  m_text: Time taken for n oscillations
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 3ca7e1a59ef3c2249ae46c2bbb17cc53, type: 2}
   m_sharedMaterial: {fileID: 4713536740404558967, guid: 3ca7e1a59ef3c2249ae46c2bbb17cc53,
@@ -5676,141 +5677,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 420018260}
-  m_CullTransparentMesh: 1
---- !u!1 &421083495
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 421083496}
-  - component: {fileID: 421083498}
-  - component: {fileID: 421083497}
-  m_Layer: 5
-  m_Name: Text (TMP) (2)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &421083496
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421083495}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4016723063167121805}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -223, y: 0}
-  m_SizeDelta: {x: 200, y: 80}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &421083497
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421083495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_text: Time taken for 20 Oscillations
-  m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 3ca7e1a59ef3c2249ae46c2bbb17cc53, type: 2}
-  m_sharedMaterial: {fileID: 4713536740404558967, guid: 3ca7e1a59ef3c2249ae46c2bbb17cc53,
-    type: 2}
-  m_fontSharedMaterials: []
-  m_fontMaterial: {fileID: 0}
-  m_fontMaterials: []
-  m_fontColor32:
-    serializedVersion: 2
-    rgba: 4281874488
-  m_fontColor: {r: 0.21960786, g: 0.21960786, b: 0.21960786, a: 1}
-  m_enableVertexGradient: 0
-  m_colorMode: 3
-  m_fontColorGradient:
-    topLeft: {r: 1, g: 1, b: 1, a: 1}
-    topRight: {r: 1, g: 1, b: 1, a: 1}
-    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
-    bottomRight: {r: 1, g: 1, b: 1, a: 1}
-  m_fontColorGradientPreset: {fileID: 0}
-  m_spriteAsset: {fileID: 0}
-  m_tintAllSprites: 0
-  m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: -1183493901
-  m_overrideHtmlColors: 0
-  m_faceColor:
-    serializedVersion: 2
-    rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
-  m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 18
-  m_fontSizeMax: 72
-  m_fontStyle: 0
-  m_HorizontalAlignment: 2
-  m_VerticalAlignment: 512
-  m_textAlignment: 65535
-  m_characterSpacing: 0
-  m_wordSpacing: 0
-  m_lineSpacing: 0
-  m_lineSpacingMax: 0
-  m_paragraphSpacing: 0
-  m_charWidthMaxAdj: 0
-  m_enableWordWrapping: 1
-  m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
-  m_linkedTextComponent: {fileID: 0}
-  parentLinkedComponent: {fileID: 0}
-  m_enableKerning: 1
-  m_enableExtraPadding: 0
-  checkPaddingRequired: 0
-  m_isRichText: 1
-  m_parseCtrlCharacters: 1
-  m_isOrthographic: 1
-  m_isCullingEnabled: 0
-  m_horizontalMapping: 0
-  m_verticalMapping: 0
-  m_uvLineOffset: 0
-  m_geometrySortingOrder: 0
-  m_IsTextObjectScaleStatic: 0
-  m_VertexBufferAutoSizeReduction: 0
-  m_useMaxVisibleDescender: 1
-  m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0, z: 0, w: 0}
-  m_isUsingLegacyAnimationComponent: 0
-  m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_baseMaterial: {fileID: 0}
-  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!222 &421083498
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 421083495}
   m_CullTransparentMesh: 1
 --- !u!1 &423061411
 GameObject:
@@ -8551,8 +8417,8 @@ RectTransform:
   m_Father: {fileID: 2092446536}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0.29999924, y: -9.3}
   m_SizeDelta: {x: -3.997, y: 52.002}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -15285,6 +15151,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1177032749}
   m_CullTransparentMesh: 1
+--- !u!1 &1191892451 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4433909452692354469, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+    type: 3}
+  m_PrefabInstance: {fileID: 4433909451567898694}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1191967122
 GameObject:
   m_ObjectHideFlags: 0
@@ -16576,6 +16448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialElements: []
   initialParents: []
+  simulationScreen: {fileID: 0}
   fader: {fileID: 0}
 --- !u!1 &1298282413
 GameObject:
@@ -17884,8 +17757,8 @@ RectTransform:
   m_Father: {fileID: 1100060273}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -21104,6 +20977,11 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Pendulum_Graph, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 7759658920884478677, guid: cf66540443f8b2a40a2d853baa870b86,
+        type: 3}
+      propertyPath: m_text
+      value: 'Length (L) '
+      objectReference: {fileID: 0}
     - target: {fileID: 7759658921012042374, guid: cf66540443f8b2a40a2d853baa870b86,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -21148,6 +21026,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: Pendulum_Graph, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7759658921035799383, guid: cf66540443f8b2a40a2d853baa870b86,
+        type: 3}
+      propertyPath: m_text
+      value: "T\xB2"
       objectReference: {fileID: 0}
     - target: {fileID: 7759658921403352265, guid: cf66540443f8b2a40a2d853baa870b86,
         type: 3}
@@ -27029,7 +26912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2076844324
 RectTransform:
   m_ObjectHideFlags: 0
@@ -29118,7 +29001,7 @@ PrefabInstance:
     - target: {fileID: 3126001875759944735, guid: cfcf217f1b48d454f9f53c005edd4e50,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3204357849933979749, guid: cfcf217f1b48d454f9f53c005edd4e50,
         type: 3}
@@ -29337,6 +29220,11 @@ PrefabInstance:
       objectReference: {fileID: 1314880049}
     - target: {fileID: 3922708224779247245, guid: cfcf217f1b48d454f9f53c005edd4e50,
         type: 3}
+      propertyPath: apparatusUI.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922708224779247245, guid: cfcf217f1b48d454f9f53c005edd4e50,
+        type: 3}
       propertyPath: conclusionUI.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -29344,6 +29232,16 @@ PrefabInstance:
         type: 3}
       propertyPath: simulationUI.Array.size
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3922708224779247245, guid: cfcf217f1b48d454f9f53c005edd4e50,
+        type: 3}
+      propertyPath: apparatusUI.Array.data[1]
+      value: 
+      objectReference: {fileID: 1191892451}
+    - target: {fileID: 3922708224779247245, guid: cfcf217f1b48d454f9f53c005edd4e50,
+        type: 3}
+      propertyPath: apparatusUI.Array.data[2]
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3922708224779247245, guid: cfcf217f1b48d454f9f53c005edd4e50,
         type: 3}
@@ -29598,6 +29496,11 @@ PrefabInstance:
     - target: {fileID: 5049318316331918373, guid: cfcf217f1b48d454f9f53c005edd4e50,
         type: 3}
       propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5472985581402008572, guid: cfcf217f1b48d454f9f53c005edd4e50,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7048557586021351241, guid: cfcf217f1b48d454f9f53c005edd4e50,
@@ -33812,7 +33715,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2094318077}
-  - {fileID: 421083496}
   m_Father: {fileID: 4016723063308283161}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -41358,6 +41260,1595 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1001 &4433909451567898694
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4433909451555970896, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 503d109112e34a44b998330505324316,
+        type: 3}
+    - target: {fileID: 4433909451555970897, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.20717917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970897, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.19732349
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970897, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.019
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970897, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.087
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970898, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970898, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.8399992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.20000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.00033569336
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.00012207031
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451555970899, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451662991570, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 144.61
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451689183609, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451772457300, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d325c6f527cc1ef4fadfad6d820eb768,
+        type: 3}
+    - target: {fileID: 4433909451772457303, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.06662796
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451772457303, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.0804156
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451772457303, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.12017518
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451772457303, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0303
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451772457303, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.208
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385280, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385280, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385294, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 400a92b347e273a4c952b4536384985f,
+        type: 3}
+    - target: {fileID: 4433909451794385295, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.02282728
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385295, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.02760208
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385295, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.039752398
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385295, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.002
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451794385295, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.006
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557040, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 35060df9ee6fac64d9ea7e91b27f95bc,
+        type: 3}
+    - target: {fileID: 4433909451800557041, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.18005344
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557041, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15488802
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557041, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.25535503
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557041, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.0106
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557041, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0712
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557042, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557042, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0.00009918213
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557042, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.00020599365
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557042, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557043, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800557043, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451800962394, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451863900296, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451959633571, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451963737194, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451963737194, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909451979153972, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452031545537, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452049039780, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_text
+      value: Retort Stand
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452049039780, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452049039783, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 1.0083
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452049039783, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -196.08441
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633201, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633203, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.059231214
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.076752484
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.8964725
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.2092934
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.80240154
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633212, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 43.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 2.437246
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.20000003
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.x
+      value: -0.0007247925
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.000034749508
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633214, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452124633215, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 400a92b347e273a4c952b4536384985f,
+        type: 3}
+    - target: {fileID: 4433909452183238393, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452183238393, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871600, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.051606417
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871600, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04827872
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871600, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.08583665
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871600, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.018
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871600, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0467
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871602, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871602, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871603, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4207171d88df6c54bb9d4f041f80597c,
+        type: 3}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452191871605, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323680, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323681, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323683, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323694, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4207171d88df6c54bb9d4f041f80597c,
+        type: 3}
+    - target: {fileID: 4433909452222323695, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.037745345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323695, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.03798887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323695, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4957
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452222323695, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.3428
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452252472522, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452309805482, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_text
+      value: Ruler
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452309805484, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452309805485, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.1692
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452309805485, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -115.985466
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452337516301, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452397473916, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452454789786, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452468057631, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452511183759, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_text
+      value: String
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452513790025, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.509
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452527528929, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452532611431, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452532611431, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452539036943, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452539036943, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452586138092, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452594145074, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_text
+      value: Bob
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 448.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 252.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354466, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452692354469, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Name
+      value: ApparatusSetUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452707742448, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452732297442, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.611
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452787154368, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452789514138, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452789514138, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452838094705, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452853940429, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_text
+      value: Stopwatch
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452922147702, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452943157031, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452948884508, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857722, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.7642522
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857722, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.80653965
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857722, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 9.418992
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857722, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857722, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.608
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857724, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857725, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de7713396c6c8fb4da92a999aea1af09,
+        type: 3}
+    - target: {fileID: 4433909452984857726, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909452984857727, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453101575220, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453101575220, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453101575220, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453102261369, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.x
+      value: 2.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560008, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SpriteTilingProperty.oldSize.y
+      value: 1.68
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560009, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560009, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560022, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: de7713396c6c8fb4da92a999aea1af09,
+        type: 3}
+    - target: {fileID: 4433909453137560023, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.31509215
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560023, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.28667668
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560023, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4726275
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560023, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.009
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453137560023, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.095
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453138045195, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453148333557, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453165217820, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453196657572, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453223016908, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 336.0772
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453223016908, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 311.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453223016911, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453276257635, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 317.9864
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453276257635, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.7761
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453285225181, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453306235293, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453306235293, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453319616457, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453406420286, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453415129251, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306409, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306418, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5729506
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306418, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.57074785
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306418, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.5716643
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306418, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2.4055
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306418, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.212
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306420, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306421, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 35060df9ee6fac64d9ea7e91b27f95bc,
+        type: 3}
+    - target: {fileID: 4433909453433306423, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Radius
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306423, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.x
+      value: -0.00005340576
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306423, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Offset.y
+      value: -0.000207901
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453433306423, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453531390726, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453531390726, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453628476901, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655872, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[0]
+      value: "A retort stand, also called a clamp stand, a ring stand, or a support
+        stand is a piece of scientific equipment intended to support other pieces
+        of equipment and glassware \u2014 for instance, burettes, test tubes and
+        flasks.[4]"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[1]
+      value: A simple pendulum consists of a bob suspended at the end of a thread
+        that is so light as to be considered massless.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[2]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[3]
+      value: A string hanging from a fixed spot with a weight (called a bob) at one
+        end that can swing back and forth.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[4]
+      value: A meter rule is used to measure the length of the pendulum
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655873, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: apparatus_descriptions_texts.Array.data[5]
+      value: A stopwatch is a timepiece designed to measure the amount of time that
+        elapses between its activation and deactivation.
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655884, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.17784867
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655884, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.1876895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655884, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2.1923826
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655884, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.3345
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655884, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.5436
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655886, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 3.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655886, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 3.84
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655886, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 0.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655886, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.00031852722
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655886, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Center.y
+      value: -0.00005364418
+      objectReference: {fileID: 0}
+    - target: {fileID: 4433909453646655887, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 503d109112e34a44b998330505324316,
+        type: 3}
+    - target: {fileID: 4433909453651702320, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5143670390966711774, guid: f4c68eb31f7a0254d9ebfaffab04b571,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.057755932
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f4c68eb31f7a0254d9ebfaffab04b571, type: 3}
 --- !u!1001 &5014810426361338455
 PrefabInstance:
   m_ObjectHideFlags: 0

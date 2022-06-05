@@ -7,7 +7,7 @@ public class MetalDrag : MonoBehaviour
     private Vector3 screenPoint;
     private Vector3 offset;
     private Vector3 initialPos;
-    
+
 
     private bool hasCollided = false;
 
@@ -24,7 +24,6 @@ public class MetalDrag : MonoBehaviour
     void OnMouseDown()
     {
         //TemperatureReaction.stirTime = 0f;
-        Debug.Log("tapped");
         Vibration.Vibrate(30);
         transform.GetChild(0).gameObject.SetActive(true);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));

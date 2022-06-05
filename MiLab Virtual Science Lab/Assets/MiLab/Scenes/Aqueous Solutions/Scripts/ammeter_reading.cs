@@ -24,28 +24,28 @@ public class ammeter_reading : MonoBehaviour
     void Update()
     {
         if(ammeter_read_tmp != solutionsDropdown.ammeter_final_readingA) { 
-        ammeter_final_readingA = ammeter_read_tmp= solutionsDropdown.ammeter_final_readingA;
-            if (ammeter_final_readingA == 4.79f)
+        ammeter_final_readingA = ammeter_read_tmp = solutionsDropdown.ammeter_final_readingA;
+            if (ammeter_final_readingA == 0.45f)
             {
                 z_rotation_angle = -36.896f;
             }
-            else if (ammeter_final_readingA == 6.79f)
+            else if (ammeter_final_readingA == 0.64f)
             {
                 z_rotation_angle = -51.7f;
             }
-            else if (ammeter_final_readingA == 3.59f)
+            else if (ammeter_final_readingA == 0.34f)
             {
                 z_rotation_angle = -26.877f;
             }
-            else if (ammeter_final_readingA == 7.64f)
+            else if (ammeter_final_readingA == 0.75f)
             {
                 z_rotation_angle = -61.027f;
             }
-            else if (ammeter_final_readingA == 6.24f)
+            else if (ammeter_final_readingA == 0.61f)
             {
                 z_rotation_angle = -51.022f;
             }
-            else if (ammeter_final_readingA == 5.64f)
+            else if (ammeter_final_readingA == 0.56f)
             {
                 z_rotation_angle = -45.127f;
             }
@@ -53,7 +53,7 @@ public class ammeter_reading : MonoBehaviour
             {
                 z_rotation_angle = -51.7f;
             }
-            else if (ammeter_final_readingA == 8.50f)
+            else if (ammeter_final_readingA == 0.56f)
             {
                 z_rotation_angle = -68.752f;
             }
@@ -81,7 +81,8 @@ public class ammeter_reading : MonoBehaviour
         for(float i=0f; i <= ammeter_final_readingA; i+=0.1f) {
             yield return new WaitForSecondsRealtime(0.01f);
             ammeter_readingT.text = i.ToString("0.00");
-        }    
+        }
+        ammeter_readingT.text = ammeter_final_readingA.ToString("0.00");
      }
 
 

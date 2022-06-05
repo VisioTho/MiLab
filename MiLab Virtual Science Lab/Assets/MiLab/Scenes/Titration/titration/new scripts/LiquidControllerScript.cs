@@ -7,9 +7,10 @@ using TMPro;
 public class LiquidControllerScript : MonoBehaviour
 {
     public Titration_Drop_Controller dropController;
+    public ConicalFlaskVolume ConicalFlaskVolume;
     public Image content;
     [SerializeField]
-    private Stat fill;
+    public Stat fill;
     public GameObject liquidFlowParticle, stream; //flowStream;
     public ParticleSystem DropParticle;
 
@@ -65,11 +66,11 @@ public class LiquidControllerScript : MonoBehaviour
         {
             if (titrantVariation.value == 0 && analyteVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 16)
+                if (fillDifference == 16.5f || fillDifference == 16f)
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(1200));
+                        StartCoroutine(titrationPhenothlaineTransition(4000));
                     }
                 }
                 if (fill.currentVal == 0)
@@ -80,11 +81,11 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 1 && analyteVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 10)
+                if (fillDifference == 10.5f || fillDifference == 10f)
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(1200));
+                        StartCoroutine(titrationPhenothlaineTransition(5600));
                     }
 
                 }
@@ -96,12 +97,12 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 0 && analyteVariation.value == 1 && !isTransformed)
             {
-                if (fillDifference == 12)
+                if (fillDifference == 12.5 || fillDifference == 12)
                 {
                     if (pipetteDrop)
                     {
 
-                        StartCoroutine(titrationPhenothlaineTransition(1200));
+                        StartCoroutine(titrationPhenothlaineTransition(5000));
                     }
 
                 }
@@ -113,7 +114,7 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 1 && analyteVariation.value == 1 && !isTransformed)
             {
-                if (fillDifference == 9)
+                if (fillDifference == 9 || fillDifference == 9.5)
                 {
                     if (pipetteDrop)
                     {
@@ -132,11 +133,11 @@ public class LiquidControllerScript : MonoBehaviour
         {
             if (titrantVariation.value == 0 && analyteVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 11)
+                if (fillDifference == 11 || fillDifference == 11.5)
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1200));
+                        StartCoroutine(titrationMethylOrangeTransition(6000));
                     }
                 }
                 if (fill.currentVal == 0)
@@ -147,11 +148,11 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 1 && analyteVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 13)
+                if (fillDifference == 13 || fillDifference == 13.5)
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1200));
+                        StartCoroutine(titrationMethylOrangeTransition(3500));
                     }
 
                 }
@@ -163,12 +164,12 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 0 && analyteVariation.value == 1 && !isTransformed)
             {
-                if (fillDifference == 10)
+                if (fillDifference == 10 || fillDifference == 10.5)
                 {
                     if (pipetteDrop)
                     {
 
-                        StartCoroutine(titrationMethylOrangeTransition(1300));
+                        StartCoroutine(titrationMethylOrangeTransition(4000));
                     }
 
                 }
@@ -180,11 +181,11 @@ public class LiquidControllerScript : MonoBehaviour
             }
             else if (titrantVariation.value == 1 && analyteVariation.value == 1 && !isTransformed)
             {
-                if (fillDifference == 17)
+                if (fillDifference == 17 || fillDifference == 17.5)
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1000));
+                        StartCoroutine(titrationMethylOrangeTransition(4200));
                     }
                 }
                 if (fill.CurrentVal == 0)
@@ -211,11 +212,14 @@ public class LiquidControllerScript : MonoBehaviour
         dropController.resetDrops();
         titrantVariation.value = 0;
         analyteVariation.value = 0;
+        indicatorVariation.value = 0;
         sliderInstance.value = 0;
         analyteVariation.interactable = true;
         titrantVariation.interactable = true;
         indicatorVariation.interactable = true;
         beakerToggle.interactable = true;
+        ConicalFlaskVolume.volumeSlider.value = 5;
+        ConicalFlaskVolume.volumeSlider.interactable = true;
     }
 
     // slider that controls the titration liquid flow 
@@ -286,7 +290,7 @@ public class LiquidControllerScript : MonoBehaviour
         }
         if (titrantVariation.value == 1)
         {
-            content.GetComponent<Image>().color = new Color32(234, 234, 234, 60);
+            content.GetComponent<Image>().color = new Color32(234, 234, 234, 190);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
 
@@ -299,7 +303,7 @@ public class LiquidControllerScript : MonoBehaviour
         if (analyteVariation.value == 0)
         {
             // analyteNotation.text = "15ml NaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(234, 234, 234, 150);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(234, 234, 234, 190);
 
 
         }
@@ -340,11 +344,11 @@ public class LiquidControllerScript : MonoBehaviour
                 sliderInstance.enabled = false;
                 if (titrantVariation.value == 0)
                 {
-                    stream.GetComponent<Image>().color = new Color32(212, 203, 100, 70);
+                    stream.GetComponent<Image>().color = new Color32(195, 202, 106, 130);
                 }
                 else
                 {
-                    stream.GetComponent<Image>().color = new Color32(234, 234, 234, 60);
+                    stream.GetComponent<Image>().color = new Color32(234, 234, 234, 50);
                 }
 
             }
@@ -366,7 +370,7 @@ public class LiquidControllerScript : MonoBehaviour
             analyteVariation.interactable = false;
             titrantVariation.interactable = false;
             indicatorVariation.interactable = false;
-            fill.CurrentVal--;
+            fill.CurrentVal -= 0.5f;
             if (fill.currentVal == 0)
             {
                 var localReftoParticle = DropParticle.main;
@@ -377,7 +381,7 @@ public class LiquidControllerScript : MonoBehaviour
             {
                 DropParticle.Play();
             }
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(4f);
         }
     }
 
@@ -386,7 +390,7 @@ public class LiquidControllerScript : MonoBehaviour
 
         while (fill.CurrentVal >= 0)
         {
-            fill.CurrentVal--;
+            fill.CurrentVal -= 1f;
             DropParticle.Stop();
             if (fill.currentVal == 0)
             {

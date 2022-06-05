@@ -22,7 +22,7 @@ public class copperReaction : MonoBehaviour
         if (collision.gameObject.name == "copper metal")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             switch (counter)
             {
                 case 0:

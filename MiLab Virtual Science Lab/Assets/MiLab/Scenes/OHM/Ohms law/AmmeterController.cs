@@ -2,69 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 public class AmmeterController : MonoBehaviour
 {
-    public SwitchController switchController;
-    [SerializeField]
-    private GameObject imageNeedle;
-    // [SerializeField]
-    public Slider rheostartSlider;
-    [SerializeField]
-    private TMP_Text amperesReader;
-    private float currentSpeed;
-    private float targetSpeed;
-    private float needleSpeed;
-    private float amperes;
-    // Start is called before the first frame update
-    void Start()
+    public SwitchController switchControl;
+    public VoltmeterController voltmeterController;
+
+    private const float MAX_SPEED_ANGLE = 9f;
+    private const float ZERO_SPEED_ANGLE = 169f;
+    public float rot_angle;
+
+    private Transform needleTranform;
+
+    private float speedMax;
+    private float speed;
+
+    private void Awake()
     {
-        targetSpeed = 0;
-        currentSpeed = 0;
-        needleSpeed = 4.0f;
+        needleTranform = transform.Find("needle");
+
+        speed = 0f;
+        speedMax = 200f;
+        rot_angle = 0f;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        SetSpeedFromSlider();
-        if (targetSpeed != currentSpeed && switchController.switch_is_on)
-        {
-            UpdateSpeed();
-        }
-    }
-    public void sliderEventController()
-    {
-        Vibration.Vibrate(60);
+        HandlePlayerInput();
+
+        //speed += 30f * Time.deltaTime;
+        //if (speed > speedMax) speed = speedMax;
+
+        needleTranform.eulerAngles = new Vector3(0, 0, GetSpeedRotation());
     }
 
-    public void SetSpeedFromSlider()
+    private void HandlePlayerInput()
     {
-        if (switchController.switch_is_on)
+        if (switchControl.switch_is_on)
         {
-            targetSpeed = rheostartSlider.value / 1.5f;
-            amperes = (float)Mathf.Round(targetSpeed * 8f) / 8f;
-            amperesReader.text = amperes.ToString() + " " + "A";
+            if (voltmeterController.rheostartSlider.value == 0)
+            {
+                float acceleration = 0f;
+                speed += acceleration * Time.deltaTime;
+            }
+            if (voltmeterController.rheostartSlider.value == 1)
+            {
+                float acceleration = 20f;
+                speed += acceleration * Time.deltaTime;
+                rot_angle = 168f;
+            }
+            if (voltmeterController.rheostartSlider.value > 0 && switchControl.switch_is_on == false)
+            {
+                float deceleration = 20f;
+                speed -= deceleration * Time.deltaTime;
+            }
+
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                float brakeSpeed = 100f;
+                speed -= brakeSpeed * Time.deltaTime;
+            }
+
+            speed = Mathf.Clamp(speed, 0f, speedMax);
         }
-    }
-    public void UpdateSpeed()
-    {
-        if (targetSpeed > currentSpeed)
+        else
         {
-            currentSpeed += Time.deltaTime * needleSpeed;
-            currentSpeed = Mathf.Clamp(currentSpeed, 0.0f, targetSpeed);
+            needleTranform.eulerAngles = new Vector3(0, 0, rot_angle);
         }
-        else if (targetSpeed < currentSpeed)
-        {
-            currentSpeed -= Time.deltaTime * needleSpeed;
-            currentSpeed = Mathf.Clamp(currentSpeed, targetSpeed, 20.0f);
-        }
-        SetNeedle();
+
     }
 
-    void SetNeedle()
+
+    private float GetSpeedRotation()
     {
-        imageNeedle.transform.localEulerAngles = new Vector3(0, 0, (currentSpeed / 8.0f * 170.334f - 85.167f) * -1.0f);
+        float totalAngleSize = ZERO_SPEED_ANGLE - MAX_SPEED_ANGLE;
+
+        float speedNormalized = speed / speedMax;
+
+        return ZERO_SPEED_ANGLE - speedNormalized * totalAngleSize;
     }
 }

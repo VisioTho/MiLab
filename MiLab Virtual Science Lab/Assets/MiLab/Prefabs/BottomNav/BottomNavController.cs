@@ -22,7 +22,7 @@ public partial class BottomNavController : MonoBehaviour
         TabFour = new Tabs(apparatusUI);
         TabTwo.HideObjects();
         TabThree.HideObjects();
-        TabFour.HideObjects();
+        TabOne.HideObjects();
     
     }
 

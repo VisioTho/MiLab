@@ -23,6 +23,8 @@ public class dragNdropAqueous : MonoBehaviour
     {
         difference_between_nodes = GameObject.FindWithTag("anode").transform.position.x - GameObject.FindWithTag("cathode").transform.position.x;//to be used later
 
+      //  Debug.Log("anode pos: " + GameObject.FindWithTag("anode").transform.position);
+       // Debug.Log("cathode pos: " + GameObject.FindWithTag("cathode").transform.position);
         //showing a hand on top of anode as it is being dragged
         if (isHandAnodeDragged)
         {
@@ -73,9 +75,9 @@ public class dragNdropAqueous : MonoBehaviour
                     gameObject.transform.position = new Vector2(-0.3903209f, gameObject.transform.position.y);
                 }
                 //restricting the anode from going to the far right
-                if (gameObject.transform.position.x >  0.80f)
+                if (gameObject.transform.position.x >  0.52f)
                 {
-                    gameObject.transform.position = new Vector2(0.80f, gameObject.transform.position.y);
+                    gameObject.transform.position = new Vector2(0.52f, gameObject.transform.position.y);
                 }
 
             }
@@ -87,9 +89,9 @@ public class dragNdropAqueous : MonoBehaviour
 
                 gameObject.transform.position = new Vector2(gameObject.transform.position.x, initCathodePos.y);
                 //restricting the cathode from going to the far left
-                if (gameObject.transform.position.x < -0.2f)
+                if (gameObject.transform.position.x < 0.0f)
                 {
-                    gameObject.transform.position = new Vector2(-0.2f, transform.position.y);
+                    gameObject.transform.position = new Vector2(0.0f, transform.position.y);
                 }
                 //restricting the cathode from going to the far right
                 if (gameObject.transform.position.x > 0.91f)

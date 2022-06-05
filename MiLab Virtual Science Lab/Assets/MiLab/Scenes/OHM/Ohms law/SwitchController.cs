@@ -7,6 +7,7 @@ public class SwitchController : MonoBehaviour
 {
     public Sprite switchOn;
     public Sprite switchOff;
+    public MaterialLengthController materialLength;
     public bool switch_is_on = false;
 
     public void OnMouseDown()
@@ -23,7 +24,7 @@ public class SwitchController : MonoBehaviour
     }
     void Start()
     {
- 
+
     }
 
     // Update is called once per frame
@@ -33,11 +34,13 @@ public class SwitchController : MonoBehaviour
         {
             Debug.Log("switch turned on");
             gameObject.GetComponent<Image>().sprite = switchOn;
+            materialLength.wireAdjustLength.interactable = false;
         }
         else
         {
             Debug.Log("Switch turned off");
             gameObject.GetComponent<Image>().sprite = switchOff;
+            materialLength.wireAdjustLength.interactable = true;
         }
     }
 

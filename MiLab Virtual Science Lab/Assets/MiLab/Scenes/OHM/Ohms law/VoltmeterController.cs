@@ -15,7 +15,7 @@ public class VoltmeterController : MonoBehaviour
     private TMP_Text voltsReader;
     private float currentSpeed = 0;
     private float targetSpeed = 0;
-    private float needleSpeed = 2.0f;
+    private float needleSpeed = 0.5f;
     private int volts;
 
     void Start()
@@ -41,7 +41,7 @@ public class VoltmeterController : MonoBehaviour
         if (switchControl.switch_is_on)
         {
             targetSpeed = rheostartSlider.value;
-            volts = (int)Mathf.Round(targetSpeed * 20) / 20;
+            volts = (int)Mathf.Round(targetSpeed * 8) / 8;
             voltsReader.text = volts.ToString() + " " + "V";
         }
 
@@ -65,6 +65,6 @@ public class VoltmeterController : MonoBehaviour
 
     void SetNeedle()
     {
-        imageNeedle.transform.localEulerAngles = new Vector3(0, 0, (currentSpeed / 8.0f * 170.334f - 85.167f) * -1.0f);
+        imageNeedle.transform.localEulerAngles = new Vector3(0, 0, (currentSpeed / 8.0f * 160f - 169.797f) * -1.0f);
     }
 }

@@ -22,7 +22,7 @@ public class ironReaction : MonoBehaviour
         if (collision.gameObject.name == "iron metal")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
-            collision.gameObject.GetComponent<PolygonCollider2D>().enabled = false;
+            collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
             switch (counter)
             {
                 case 0:

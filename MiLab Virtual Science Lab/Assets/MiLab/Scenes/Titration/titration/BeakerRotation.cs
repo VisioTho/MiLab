@@ -19,8 +19,16 @@ public class BeakerRotation : MonoBehaviour
     }
     void OnMouseDown()
     {
-        Debug.Log(" beaker tapped");
-        Invoke("beakerRotation", 1);
+
+        if (liquidControllerScript.fill.currentVal >= liquidControllerScript.fill.MaxVal)
+        {
+            // Invoke("beakerRotation", 0.5f);
+            Debug.Log("oops");
+        }
+        else
+        {
+            Invoke("beakerRotation", 0.5f);
+        }
 
     }
 
@@ -38,7 +46,6 @@ public class BeakerRotation : MonoBehaviour
     private void OnMouseUp()
     {
         CancelInvoke("beakerRotation");
-        Debug.Log("released");
         Invoke("resetBeakerPosition", 1);
     }
 
