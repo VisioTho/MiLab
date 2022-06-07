@@ -70,7 +70,7 @@ public class LiquidControllerScript : MonoBehaviour
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(4000));
+                        StartCoroutine(titrationPhenothlaineTransition(1000));
                     }
                 }
                 if (fill.currentVal == 0)
@@ -85,7 +85,7 @@ public class LiquidControllerScript : MonoBehaviour
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(5600));
+                        StartCoroutine(titrationPhenothlaineTransition(1000));
                     }
 
                 }
@@ -102,7 +102,7 @@ public class LiquidControllerScript : MonoBehaviour
                     if (pipetteDrop)
                     {
 
-                        StartCoroutine(titrationPhenothlaineTransition(5000));
+                        StartCoroutine(titrationPhenothlaineTransition(1050));
                     }
 
                 }
@@ -137,7 +137,7 @@ public class LiquidControllerScript : MonoBehaviour
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(6000));
+                        StartCoroutine(titrationMethylOrangeTransition(1200));
                     }
                 }
                 if (fill.currentVal == 0)
@@ -152,7 +152,7 @@ public class LiquidControllerScript : MonoBehaviour
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(3500));
+                        StartCoroutine(titrationMethylOrangeTransition(1100));
                     }
 
                 }
@@ -169,7 +169,7 @@ public class LiquidControllerScript : MonoBehaviour
                     if (pipetteDrop)
                     {
 
-                        StartCoroutine(titrationMethylOrangeTransition(4000));
+                        StartCoroutine(titrationMethylOrangeTransition(1400));
                     }
 
                 }
@@ -185,7 +185,7 @@ public class LiquidControllerScript : MonoBehaviour
                 {
                     if (pipetteDrop)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(4200));
+                        StartCoroutine(titrationMethylOrangeTransition(1000));
                     }
                 }
                 if (fill.CurrentVal == 0)

@@ -22,7 +22,10 @@ public class TutorialController : MonoBehaviour
 
     public void FinishTutorial()
     {
-        tutorialElements[3].transform.SetParent(initialParents[0].transform);
+        if(tutorialElements[4] != null)
+            tutorialElements[4].transform.SetParent(initialParents[0].transform);
+        else
+            tutorialElements[3].transform.SetParent(initialParents[0].transform);
         StartGame.isTutorialEnabled = false;
         //fader.transform.DetachChildren();
         Destroy(fader);
