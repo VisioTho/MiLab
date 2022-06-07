@@ -30,7 +30,7 @@ public class HookesGraph : MonoBehaviour
     //public TMP_InputField InputField, InputField2, InputField3, InputField4, InputField5;
     // public InputField inputField1, inputField2, inputField3, inputField4, inputField5;
 
-    private float maxEntry = 15;
+    private float maxEntry = 5;
     private float minEntry = 0;
 
     private void Awake()
@@ -164,12 +164,6 @@ public class HookesGraph : MonoBehaviour
         resetGraphButton.interactable = true;
         plotGraphButton.interactable = false;
 
-        Debug.Log(xValue1);
-        Debug.Log(xValue2);
-        Debug.Log(xValue3);
-        Debug.Log(xValue4);
-        Debug.Log(xValue5);
-
     }
     private GameObject CreateCircle(Vector2 anchoredPosition)
     {
@@ -214,9 +208,9 @@ public class HookesGraph : MonoBehaviour
 
         float graphHeight = graphContainer.sizeDelta.y;
         float graphWidth = graphContainer.sizeDelta.x;
-        float xMaximum = 15f;
+        float xMaximum = 5f;
 
-        float yMaximum = 5;
+        float yMaximum = 15;
         float yMinimum = 0;
 
         foreach (float value in valueList)

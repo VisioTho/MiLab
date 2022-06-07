@@ -276,6 +276,7 @@ public class LiquidControllerScript : MonoBehaviour
 
             liquidFlowParticle.SetActive(false);
             StopCoroutine(enumerator);
+            StopCoroutine(flowController);
         }
     }
 
