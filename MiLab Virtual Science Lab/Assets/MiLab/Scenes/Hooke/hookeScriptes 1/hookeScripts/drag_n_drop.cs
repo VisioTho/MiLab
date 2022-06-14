@@ -178,7 +178,7 @@ public class drag_n_drop : MonoBehaviour
             //Debug.Log("ruler "+  gameObject.transform.position);
             //precise measurement
            if(gameObject.transform.position.x > -2.0f && gameObject.transform.position.x < 0.9f){
-                gameObject.transform.position = new Vector2(-1.0f, -1.0f);
+                gameObject.transform.position = new Vector2(-1.1f, -1.08f);
            }
         }
     }
