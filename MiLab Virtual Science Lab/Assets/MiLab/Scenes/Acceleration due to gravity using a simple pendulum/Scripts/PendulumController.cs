@@ -59,9 +59,9 @@ public class PendulumController : MonoBehaviour
     {
         //bobRigidBody.gravityScale = val;
         var gravity = 0f;
-        if (val==5)
+        if (val==10f)
         {
-            gravity = 5;
+            gravity = 9.8f;
             bobRigidBody.gravityScale = gravity;
             gravityScaleSelector.value = 0;
         }
@@ -71,9 +71,9 @@ public class PendulumController : MonoBehaviour
             bobRigidBody.gravityScale = gravity;
             gravityScaleSelector.value = 1;
         }
-        else if (val == 10)
+        else if (val == 20.0f)
         {
-            gravity = 10;
+            gravity = 20.0f;
             bobRigidBody.gravityScale = gravity;
             gravityScaleSelector.value = 2;
         }
@@ -95,7 +95,7 @@ public class PendulumController : MonoBehaviour
 
         if (val == 0)
         {
-            gravity = 7.2f;
+            gravity = 9.8f;
             bobRigidBody.gravityScale = gravity;
         }
         else if (val == 1)
@@ -105,7 +105,7 @@ public class PendulumController : MonoBehaviour
         }
         else if (val == 2)
         {
-            gravity = 15;
+            gravity = 20;
             bobRigidBody.gravityScale = gravity;
         }
         else if (val == 3)
