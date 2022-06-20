@@ -146,8 +146,8 @@ public class drag_n_drop : MonoBehaviour
 
   IEnumerator LerpPositionY(Vector2 targetPos, Vector3 nowPosi, float duration)
           {
-                Lerping_mass = gameObject.tag;
-                float time = 0;
+              Lerping_mass = gameObject.tag;
+              float time = 0;
                while (time < duration)//vertical Lerping
                 {
                     gameObject.transform.position = Vector3.Lerp(nowPosi, new Vector2(nowPosi.x, targetPos.y), time / duration);
@@ -175,7 +175,7 @@ public class drag_n_drop : MonoBehaviour
             if( ruler_current_pos < positions_controller.ruler_dp.x ||  ruler_current_pos > positions_controller.load_400_dp.x){
                 gameObject.transform.position = positions_controller.ruler_dp;
             }
-            //Debug.Log("ruler "+  gameObject.transform.position);
+            Debug.Log("ruler "+  gameObject.transform.position);
             //precise measurement
            if(gameObject.transform.position.x > -2.0f && gameObject.transform.position.x < 0.9f){
                 gameObject.transform.position = new Vector2(-1.1f, -1.08f);
