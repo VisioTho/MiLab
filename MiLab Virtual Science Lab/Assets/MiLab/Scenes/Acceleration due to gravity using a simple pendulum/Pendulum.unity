@@ -878,8 +878,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 47252488}
-  - component: {fileID: 47252487}
-  - component: {fileID: 47252486}
   - component: {fileID: 47252490}
   - component: {fileID: 47252491}
   - component: {fileID: 47252492}
@@ -890,30 +888,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &47252486
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47252485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f03e5419716edb549881a7352a4dbdaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &47252487
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 47252485}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 420a45aa080831d4fad0dd87cf56e4e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &47252488
 Transform:
   m_ObjectHideFlags: 0
@@ -14673,6 +14647,18 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
+        - m_Target: {fileID: 4016723063308283163}
+          m_TargetAssemblyTypeName: Table, Assembly-CSharp
+          m_MethodName: LoadTableData
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &769628650
 GameObject:
   m_ObjectHideFlags: 0
@@ -16300,6 +16286,18 @@ MonoBehaviour:
         - m_Target: {fileID: 1046747334}
           m_TargetAssemblyTypeName: OscillationManager, Assembly-CSharp
           m_MethodName: DecreaseLength
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+        - m_Target: {fileID: 4016723063308283163}
+          m_TargetAssemblyTypeName: Table, Assembly-CSharp
+          m_MethodName: SaveTableData
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -21336,7 +21334,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35bd1689717fce74c9d0ae14a04ec315, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  circleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  circleSprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 3}
   gradientValue: {fileID: 596966942}
   plotGraphButton: {fileID: 1761282734}
   resetGraphButton: {fileID: 1875040623}
@@ -49020,6 +49018,7 @@ GameObject:
   - component: {fileID: 4016723063308283158}
   - component: {fileID: 4016723063308283157}
   - component: {fileID: 4016723063308283156}
+  - component: {fileID: 4016723063308283163}
   m_Layer: 5
   m_Name: table
   m_TagString: Untagged
@@ -49027,6 +49026,61 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4016723063308283163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4016723063308283162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d42b0e27c4f3942489d9a2c490cff0f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cells:
+  - {fileID: 2133411122}
+  - {fileID: 1846716581}
+  - {fileID: 322198010}
+  - {fileID: 948772142}
+  - {fileID: 494081471}
+  - {fileID: 423061413}
+  - {fileID: 4016723062563840415}
+  - {fileID: 4016723062635518654}
+  - {fileID: 4016723063722242820}
+  - {fileID: 4016723064256444064}
+  - {fileID: 4016723063139341483}
+  - {fileID: 4016723064185670635}
+  - {fileID: 4016723063632153902}
+  - {fileID: 4016723062708629890}
+  - {fileID: 4016723063950271645}
+  - {fileID: 4016723062496649200}
+  - {fileID: 4016723063796531445}
+  - {fileID: 4016723062936178203}
+  - {fileID: 4016723063638217885}
+  - {fileID: 4016723063014487336}
+  cellInput:
+  - {fileID: 1460902206}
+  data: 
+  data2: 
+  data3: 
+  data4: 
+  data5: 
+  data6: 
+  data7: 
+  data8: 
+  data9: 
+  data10: 
+  data11: 
+  data12: 
+  data13: 
+  data14: 
+  data15: 
+  data16: 
+  data17: 
+  data18: 
+  data19: 
+  data20: 
 --- !u!224 &4016723063317647904
 RectTransform:
   m_ObjectHideFlags: 0

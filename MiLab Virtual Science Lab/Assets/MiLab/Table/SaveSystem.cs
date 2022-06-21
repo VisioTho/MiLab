@@ -1,16 +1,15 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveSystem 
+public static class SaveSystem 
 {
    public static void SaveTable( Table table)
     {
         BinaryFormatter formatter = new BinaryFormatter();
         string path = GetPath();
-        FileStream stream = new FileStream(path, FileMode.Append);
+        FileStream stream = new FileStream(path, FileMode.Create);
 
         TableData tableData = new TableData(table);
         formatter.Serialize(stream, tableData);
@@ -38,6 +37,7 @@ public class SaveSystem
         }
         else
         {
+            Debug.LogError("File not foun in " + path);
             return null;
         }
     }
