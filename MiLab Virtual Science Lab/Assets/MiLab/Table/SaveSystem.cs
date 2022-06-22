@@ -8,22 +8,28 @@ public static class SaveSystem
    public static void SaveTable( Table table)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = GetPath();
-        FileStream stream = new FileStream(path, FileMode.Create);
 
         TableData tableData = new TableData(table);
+
+        string tempFileName = tableData.fileName;
+        string path = GetPath(tempFileName);
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        
         formatter.Serialize(stream, tableData);
         stream.Close();
     }
 
-    private static string GetPath()
+    //get the name of the file set in inspector 
+    private static string GetPath(string saveFileName)
     {
-        return Application.persistentDataPath + "/tabledata.milab";
+        return Application.persistentDataPath +"/" +saveFileName;
     }
 
-    public static TableData LoadTable()
+    public static TableData LoadTable(Table table)
     {
-        string path = GetPath();
+        TableData tableData = new TableData(table);
+        string path = GetPath(tableData.fileName);
         if(File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -37,7 +43,7 @@ public static class SaveSystem
         }
         else
         {
-            Debug.LogError("File not foun in " + path);
+            Debug.LogError("File not found in " + path);
             return null;
         }
     }
