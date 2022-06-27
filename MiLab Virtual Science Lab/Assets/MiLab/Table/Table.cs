@@ -46,6 +46,7 @@ public class Table : MonoBehaviour
                 for (int i = 0; i < toggles.Length; i++)
                 {
                     checkmarkStates[i] = toggles[i].isOn;
+                    Debug.Log(toggles[i].isOn + "is the state");
                 }
 
             }

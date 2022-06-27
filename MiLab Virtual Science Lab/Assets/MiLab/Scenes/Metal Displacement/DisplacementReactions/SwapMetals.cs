@@ -9,10 +9,10 @@ public class SwapMetals : MonoBehaviour
 {
     // Start is called before the first frame update
     public GameObject[] metalA;
-    public GameObject[] metalB;
+    //  public GameObject[] metalB;
     public ToggleGroup toggleGroup;
     private Toggle activeToggle;
-    [SerializeField] private TMP_Text metalNotation;
+    //  [SerializeField] private TMP_Text metalNotation;
 
 
     // Update is called once per frame
@@ -28,25 +28,25 @@ public class SwapMetals : MonoBehaviour
         if (activeToggle.name == "copper")
         {
             ShowMetal(0);
-            metalNotation.text = "Copper";
+            //  metalNotation.text = "Copper";
 
         }
 
         else if (activeToggle.name == "zinc")
         {
             ShowMetal(1);
-            metalNotation.text = "Zinc";
+            //   metalNotation.text = "Zinc";
         }
 
         else if (activeToggle.name == "iron")
         {
             ShowMetal(2);
-            metalNotation.text = "Iron";
+            //   metalNotation.text = "Iron";
         }
         else if (activeToggle.name == "magnesium")
         {
             ShowMetal(3);
-            metalNotation.text = "Magnesium";
+            //   metalNotation.text = "Magnesium";
         }
     }
 

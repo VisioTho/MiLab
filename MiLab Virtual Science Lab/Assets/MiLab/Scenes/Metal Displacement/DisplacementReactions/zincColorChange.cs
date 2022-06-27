@@ -19,7 +19,7 @@ public class zincColorChange : MonoBehaviour
         {
             // StopCoroutine(changeColors());
             Debug.Log("Coroutine stopped");
-            sprite.color = new Color32(255, 255, 255, 255);
+            sprite.color = new Color32(183, 179, 179, 195);
         }
 
     }
