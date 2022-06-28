@@ -6,7 +6,7 @@ using UnityEngine;
 public class TableData
 {
     public string[] cellData;
-    public bool[] checkmarkStates;
+    public bool[] checkmarkState;
     public string fileName;
 
     // constructor for data collected from Table class
@@ -15,7 +15,7 @@ public class TableData
     {
         cellData = table.data;
         fileName = table.saveFileName;
-        checkmarkStates = table.checkmarkStates;
+        checkmarkState = table.checkmarkStates;
 
     }
 }

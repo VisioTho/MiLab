@@ -19,6 +19,10 @@ public class Table : MonoBehaviour
         LoadTableData();
     }
 
+    private void Update()
+    {
+        Debug.Log("state is " + toggles[0].isOn);
+    }
     //save data from table to file
     public void SaveTableData()
     {
@@ -40,16 +44,18 @@ public class Table : MonoBehaviour
         }
 
         void ExtractDataFromToggles()
-        {
-            if (toggles != null)
+        {  
+            if(toggles != null)
             {
                 for (int i = 0; i < toggles.Length; i++)
                 {
-                    checkmarkStates[i] = toggles[i].isOn;
-                    Debug.Log(toggles[i].isOn + "is the state");
+                    if (!toggles[i].isOn)
+                        checkmarkStates[i] = toggles[i].isOn;
+                    else
+                        checkmarkStates[i] = toggles[i].isOn;
                 }
-
             }
+                
         }
     }
 

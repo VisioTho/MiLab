@@ -5,6 +5,7 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem 
 {
+    //format data from TableData class and create new binary file
    public static void SaveTable( Table table)
     {
         BinaryFormatter formatter = new BinaryFormatter();
