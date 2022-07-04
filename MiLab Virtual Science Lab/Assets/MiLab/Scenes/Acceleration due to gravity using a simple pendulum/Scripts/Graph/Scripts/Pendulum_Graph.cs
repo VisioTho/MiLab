@@ -17,6 +17,7 @@ public class Pendulum_Graph : MonoBehaviour
     private List<GameObject> gameObjectList;
 
     private string xValue1 = "0", xValue2 = "0", xValue3 = "0", xValue4 = "0", xValue5 = "0";
+    private string[] xValues;
     private string yValue1 = "0", yValue2 = "0", yValue3 = "0", yValue4 = "0", yValue5 = "0";
 
     private string x1_num, x2_num;
@@ -57,6 +58,8 @@ public class Pendulum_Graph : MonoBehaviour
 
 
     // X-axis controlling values
+
+   
     public void xAxis1(string x1)
     {
         if (float.Parse(x1) > maxEntry)
@@ -264,7 +267,7 @@ public class Pendulum_Graph : MonoBehaviour
         }
 
         // Y-axis labels
-        int separatorCount = 5;
+        int separatorCount = 10;
         for (int i = 0; i <= separatorCount; i++)
         {
             RectTransform labelY = Instantiate(labelTemplateY);

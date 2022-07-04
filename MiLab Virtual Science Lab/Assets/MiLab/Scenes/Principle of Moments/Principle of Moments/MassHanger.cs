@@ -44,6 +44,7 @@ public class MassHanger : MonoBehaviour
 
         if (collision.gameObject.name == "ConnPointR2")
         {
+            //ruler.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 3f);
             AttachRightMass(4.26f);
             RotateRuler(-1.0f - massRotationValue);
             

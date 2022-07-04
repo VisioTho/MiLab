@@ -89,7 +89,7 @@ public class Table : MonoBehaviour
             {
                 for (int i=0; i < toggles.Length; i++)
                 {
-                    toggles[i].isOn = checkmarkStates[i]; 
+                    toggles[i].isOn = data.checkmarkState[i]; 
                 }
             }
             

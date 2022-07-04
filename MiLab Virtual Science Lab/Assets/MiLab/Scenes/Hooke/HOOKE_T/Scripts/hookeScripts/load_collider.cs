@@ -8,7 +8,6 @@ public class load_collider : MonoBehaviour
 {
     [SerializeField] public Rigidbody2D ml_rb, nl_rb;
     [SerializeField] public Slider _mass_slider, _spring_constant;
-    public Renderer render;
     public static bool drag_detached = false;
     [SerializeField] public GameObject stretchPointA, stretchPointB, spring;
     private float pointAposY, pointBposY, xSpringPos;
@@ -17,6 +16,7 @@ public class load_collider : MonoBehaviour
     public static float current_slider_mass_value; //to be fetched from controller class
     public float gravitymultiplier, connAnchorx, connAnchory, gravityScale1, gravityScale2, gravityScale3, gravityScale4, gravityScale_5, gravityScale_1_5, gravityScale_2_5, gravityScale_3_5;
     public Vector2 connectedAnc, anchorConn;
+    Renderer render;
 
 
     void Start()
@@ -70,11 +70,7 @@ public class load_collider : MonoBehaviour
             //trying to work around the misbehaving stretchPointB and movable line
             ml_rb.transform.position = ml_rb_dp; //resetting the postion of ml line
             stretchPointB.transform.position = stretchPointB_dp; //resetting position of stretchPointB
-        }
-   /*if(_spring_constant.value == 1){
-      Debug.Log(_spring_constant.value+" const");
-    }*/
-       
+        }       
   }
     void OnTriggerEnter2D(Collider2D collision)
     {
@@ -83,7 +79,7 @@ public class load_collider : MonoBehaviour
             if ((gameObject.GetComponent<SpringJoint2D>() == null) && (gameObject.GetComponent<FixedJoint2D>() == null))//collidee
             {
                 Vibration.Vibrate(30);//vibration on mass-attached
-
+                int sc = 4;
                 gameObject.AddComponent<SpringJoint2D>();//collidee
                 gameObject.AddComponent<FixedJoint2D>();
                 SpringJoint2D spj = gameObject.GetComponent<SpringJoint2D>();
@@ -93,57 +89,72 @@ public class load_collider : MonoBehaviour
                 fj.connectedBody = ml_rb;
                 spj.anchor = anchorConn;
                 spj.connectedAnchor = connectedAnc;
+                
 
-                 /*-----------------------------------------------------------------------
-                  Setting the gravity scale depending on the mass of the load attached
-                 ----------------------------------------------------------------------*/
-          
+                /*-----------------------------------------------------------------------
+                 Setting the gravity scale depending on the mass of the load attached
+                ----------------------------------------------------------------------*/
+                float stiff_spring_subtractor = 0.3f;
+                float stiffer_spring_subtractor = 0.45f;
+
+                if (_spring_constant.value == 1)
+                {//loose spring
                 if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1;
                 if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2;
                 if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3;
                 if (gameObject.tag == "load_400") rb2d.gravityScale = gravityScale4;
 
-                if (gameObject.tag == "load_custom") { 
-                if (_mass_slider.value == 50f) rb2d.gravityScale = gravityScale_5;
-                if (_mass_slider.value == 100f) rb2d.gravityScale = gravityScale1;
-                if (_mass_slider.value == 150f) rb2d.gravityScale = gravityScale_1_5;
-                if (_mass_slider.value == 200f) rb2d.gravityScale = gravityScale2;
-                if (_mass_slider.value == 250f) rb2d.gravityScale = gravityScale_2_5;
-                if (_mass_slider.value == 300f) rb2d.gravityScale = gravityScale3;
-                if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5;
-                if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4;
-                }
-         
+                        if (gameObject.tag == "load_custom")
+                        {
+                            if (_mass_slider.value == 50f) rb2d.gravityScale = gravityScale_5;
+                            if (_mass_slider.value == 100f) rb2d.gravityScale = gravityScale1;
+                            if (_mass_slider.value == 150f) rb2d.gravityScale = gravityScale_1_5;
+                            if (_mass_slider.value == 200f) rb2d.gravityScale = gravityScale2;
+                            if (_mass_slider.value == 250f) rb2d.gravityScale = gravityScale_2_5;
+                            if (_mass_slider.value == 300f) rb2d.gravityScale = gravityScale3;
+                            if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5;
+                            if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4;
+                        }
+               }else if (_spring_constant.value == 2){//stiff spring
+                     if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1 - stiff_spring_subtractor;
+                     if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2 - stiff_spring_subtractor;
+                     if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3 - stiff_spring_subtractor;
+                     if (gameObject.tag == "load_400") rb2d.gravityScale = gravityScale4 - stiff_spring_subtractor;
+
+                     if (gameObject.tag == "load_custom")
+                     {
+                         if (_mass_slider.value == 50f) rb2d.gravityScale = gravityScale_5 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 100f) rb2d.gravityScale = gravityScale1 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 150f) rb2d.gravityScale = gravityScale_1_5 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 200f) rb2d.gravityScale = gravityScale2 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 250f) rb2d.gravityScale = gravityScale_2_5 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 300f) rb2d.gravityScale = gravityScale3 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5 - stiff_spring_subtractor;
+                         if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4 - stiff_spring_subtractor;
+                     }
+                 }else {//stiffer spring
+                             if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1 - stiffer_spring_subtractor;
+                             if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2 - stiffer_spring_subtractor;
+                             if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3 - stiffer_spring_subtractor;
+                             if (gameObject.tag == "load_400") rb2d.gravityScale = gravityScale4 - stiffer_spring_subtractor;
+
+                             if (gameObject.tag == "load_custom")
+                             {
+                                 if (_mass_slider.value == 50f) rb2d.gravityScale = gravityScale_5 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 100f) rb2d.gravityScale = gravityScale1 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 150f) rb2d.gravityScale = gravityScale_1_5 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 200f) rb2d.gravityScale = gravityScale2 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 250f) rb2d.gravityScale = gravityScale_2_5 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 300f) rb2d.gravityScale = gravityScale3 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5 - stiffer_spring_subtractor;
+                                 if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4 - stiffer_spring_subtractor;
+                             }
+                 }
+
+
                 /*------------------------------------------------
                                       ending 
-                 * ---------------------------------------------*/ 
-                /* if(_spring_constant.value == 1){
-               
-                 }else if(_spring_constant.value == 2){ 
-                if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1-0.3f;
-                if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2-0.3f;
-                if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3-0.3f;
-                if (gameObject.tag == "load_400") rb2d.gravityScale = gravityScale4-0.3f;
-                if (gameObject.tag == "load_custom") { 
-                 if(_mass_slider.value==50f) rb2d.gravityScale = gravityScale_5-0.3f;
-                 if(_mass_slider.value==150f) rb2d.gravityScale = gravityScale_1_5-0.3f;
-                 if(_mass_slider.value==250f) rb2d.gravityScale = gravityScale_2_5-0.3f;
-                 if(_mass_slider.value==350f) rb2d.gravityScale = gravityScale_3_5-0.3f;
-                }
-                 }
-                 else{
-        
-                if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1-0.45f;
-                if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2-0.45f;
-                if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3-0.45f;
-                if (gameObject.tag == "load_400") rb2d.gravityScale = gravityScale4-0.45f;
-                if (gameObject.tag == "load_custom") { 
-                 if(_mass_slider.value==50f) rb2d.gravityScale = gravityScale_5-0.45f;
-                 if(_mass_slider.value==150f) rb2d.gravityScale = gravityScale_1_5-0.45f;
-                 if(_mass_slider.value==250f) rb2d.gravityScale = gravityScale_2_5-0.45f;
-                 if(_mass_slider.value==350f) rb2d.gravityScale = gravityScale_3_5-0.45f;
-                }
-         }*/
+                 * ---------------------------------------------*/
 
                 render.enabled = true;//showing movable line
                 Destroy(GetComponent<drag_n_drop>());//detaching drag_n_drop script

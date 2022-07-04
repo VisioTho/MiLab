@@ -48,7 +48,7 @@ public class appar_drag : MonoBehaviour
         // offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3)
         position_before_drag = gameObject.transform.position;
 
-        startTime = Time.time;//TAP
+        startTime = Time.time; //TAP
     }
     private void OnMouseDrag()
     {
@@ -93,20 +93,21 @@ public class appar_drag : MonoBehaviour
                 gameObject.transform.position = position_before_drag;
 
 
-                /*-----------------------------------------------------
-                 * CHANGING THE 'ORDER IN LAYER' ON SUPERIMPOSED WIRES
-                 * SO THAT THE ONE THAT HAS ALREADY BEEN DRAGED
-                 * SHOULDN'T GET DRAGGED AGAIN
-                 * ---------------------------------------------------*/
-
-               if(on_legend_apparatus.IndexOf(gameObject) > 5)
+            /*-----------------------------------------------------
+             * CHANGING THE 'ORDER IN LAYER' ON SUPERIMPOSED WIRES
+             * SO THAT THE ONE THAT HAS ALREADY BEEN DRAGED
+             * SHOULDN'T GET DRAGGED AGAIN
+             * ---------------------------------------------------*/
+            if (on_legend_apparatus.Count > 5)
+            {
+                if (on_legend_apparatus.IndexOf(gameObject) > 5)
                 {
-                //gameObject.GetComponent<SpriteRenderer>().enabled = false;
-                   gameObject.transform.position = position_before_drag;
-                   gameObject.SetActive(false);
-                   on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
+                    //gameObject.GetComponent<SpriteRenderer>().enabled = false;
+                    gameObject.transform.position = position_before_drag;
+                    gameObject.SetActive(false);
+                    on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
+                }
             }
-
         }
         else
         {
@@ -180,7 +181,7 @@ public class appar_drag : MonoBehaviour
             gameObject.SetActive(false);
             delete.SetActive(false);
             //toDeleteAfterFingerLift = true;
-            on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
+           on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
         }
     }
 
