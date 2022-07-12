@@ -1076,7 +1076,7 @@ MonoBehaviour:
   initialParents:
   - {fileID: 241723507}
   simulationScreen: {fileID: 0}
-  fader: {fileID: 678711284}
+  TutorialScreen: {fileID: 0}
 --- !u!4 &54978949
 Transform:
   m_ObjectHideFlags: 0
@@ -2611,11 +2611,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 1
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &222773321
@@ -2647,7 +2651,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 8
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -6176,8 +6180,9 @@ GameObject:
   - component: {fileID: 498889823}
   - component: {fileID: 498889822}
   - component: {fileID: 498889824}
-  - component: {fileID: 498889821}
   - component: {fileID: 498889819}
+  - component: {fileID: 498889821}
+  - component: {fileID: 498889820}
   m_Layer: 0
   m_Name: ruler
   m_TagString: Untagged
@@ -6185,7 +6190,60 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!61 &498889819
+--- !u!50 &498889819
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498889818}
+  m_BodyType: 2
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &498889820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 498889818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4fdaad89417f4845b2aceef84e67351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lConnectionPoints:
+  - {fileID: 195714864}
+  - {fileID: 2029663836}
+  - {fileID: 403376772}
+  - {fileID: 1169725560}
+  - {fileID: 594120035}
+  - {fileID: 1375043655}
+  - {fileID: 1717992284}
+  - {fileID: 970901316}
+  - {fileID: 1993125349}
+  rConnectionPoints:
+  - {fileID: 618759677}
+  - {fileID: 2004195477}
+  - {fileID: 1428692575}
+  - {fileID: 47282204}
+  - {fileID: 299196455}
+  - {fileID: 1604866780}
+  - {fileID: 1694746423}
+  - {fileID: 1697261499}
+  - {fileID: 2047525201}
+--- !u!61 &498889821
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -6211,27 +6269,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 43.69, y: 2.4319627}
   m_EdgeRadius: 0
---- !u!50 &498889821
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 498889818}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!212 &498889822
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6329,12 +6366,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 299c01ea9bc86124e8b2dc91548aa7fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruler: {fileID: 498889818}
-  masses:
-  - {fileID: 222773319}
-  - {fileID: 1532340019}
-  - {fileID: 740338737}
-  - {fileID: 1577198794}
 --- !u!1 &529127819
 GameObject:
   m_ObjectHideFlags: 0
@@ -7831,11 +7862,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 0}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 0}
   pointOfSuspensionR: {fileID: 0}
   lLine: {fileID: 0}
   rLine: {fileID: 0}
   massRotationValue: 0
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &608257056
@@ -8448,7 +8483,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6673a8bb0b5f4f74586ec51f9bd96f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruler: {fileID: 498889818}
 --- !u!212 &647450217
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10178,11 +10212,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 1.5
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &740338740
@@ -10214,7 +10252,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 12
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -12674,8 +12712,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debf493f2d2f2f48a5d3156ccb7608e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lMassText: {fileID: 413815113}
-  rMassText: {fileID: 1738181128}
 --- !u!114 &915015864
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12703,11 +12739,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 0
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &915015866
@@ -19803,11 +19843,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 0.5
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &1532340021
@@ -19839,7 +19883,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 4
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -20691,11 +20735,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1577198801}
   - component: {fileID: 1577198800}
-  - component: {fileID: 1577198799}
-  - component: {fileID: 1577198798}
   - component: {fileID: 1577198796}
   - component: {fileID: 1577198795}
   - component: {fileID: 1577198797}
+  - component: {fileID: 1577198799}
+  - component: {fileID: 1577198798}
   m_Layer: 0
   m_Name: Mass400g
   m_TagString: load_300
@@ -20730,11 +20774,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 2
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR:
   - {fileID: 2004195474}
   - {fileID: 47282201}
@@ -20762,28 +20810,7 @@ MonoBehaviour:
   maxY: 0
   minY: 0
   isLimited: 0
---- !u!50 &1577198798
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1577198794}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 16
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
---- !u!60 &1577198799
+--- !u!60 &1577198798
 PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20810,7 +20837,7 @@ PolygonCollider2D:
     m_Paths:
     - - {x: 22.031214, y: -106.00359}
       - {x: 24.799534, y: -105.772896}
-      - {x: 26.740797, y: -106.504234}
+      - {x: 27.221813, y: -105.542206}
       - {x: 31.258947, y: -105.08082}
       - {x: 34.71935, y: -104.61943}
       - {x: 36.910934, y: -104.27339}
@@ -20818,7 +20845,7 @@ PolygonCollider2D:
       - {x: 41.409454, y: -103.465965}
       - {x: 44.062428, y: -102.88923}
       - {x: 48.560947, y: -101.85111}
-      - {x: 47.095776, y: -92.885994}
+      - {x: 51.906002, y: -100.5823}
       - {x: 54.78967, y: -99.198135}
       - {x: 55.82779, y: -98.50606}
       - {x: 57.21195, y: -97.23724}
@@ -20848,7 +20875,7 @@ PolygonCollider2D:
       - {x: 37.256973, y: -17.532694}
       - {x: 31.951027, y: -16.955961}
       - {x: 29.4134, y: -16.725267}
-      - {x: 21.589457, y: -19.996698}
+      - {x: 21.10844, y: -16.148533}
       - {x: 16.26388, y: -15.917841}
       - {x: 13.149521, y: -15.802494}
       - {x: 8.651, y: -15.687147}
@@ -20931,7 +20958,7 @@ PolygonCollider2D:
       - {x: -14.995068, y: -15.917841}
       - {x: -17.532694, y: -16.033188}
       - {x: -21.685173, y: -16.26388}
-      - {x: -25.145575, y: -17.937654}
+      - {x: -25.145575, y: -16.494574}
       - {x: -30.566868, y: -16.955961}
       - {x: -35.872814, y: -17.532694}
       - {x: -41.524803, y: -18.34012}
@@ -20947,7 +20974,6 @@ PolygonCollider2D:
       - {x: -55.251057, y: -41.409454}
       - {x: -56.404522, y: -42.33223}
       - {x: -56.519867, y: -42.67827}
-      - {x: -54.11476, y: -52.02678}
       - {x: -56.519867, y: -58.019375}
       - {x: -56.289177, y: -58.711456}
       - {x: -55.82779, y: -59.518883}
@@ -20962,11 +20988,9 @@ PolygonCollider2D:
       - {x: -55.943134, y: -97.23724}
       - {x: -54.32828, y: -98.62141}
       - {x: -52.25204, y: -99.77487}
-      - {x: -47.94484, y: -98.990524}
       - {x: -49.599068, y: -101.043686}
       - {x: -44.63916, y: -102.54319}
-      - {x: -34.562317, y: -54.38235}
-      - {x: -38.89146, y: -88.0537}
+      - {x: -38.410442, y: -103.92735}
       - {x: -31.720335, y: -104.85012}
       - {x: -29.874788, y: -105.08082}
       - {x: -25.837654, y: -105.542206}
@@ -20976,13 +21000,32 @@ PolygonCollider2D:
       - {x: -15.5718, y: -106.34963}
       - {x: -13.380214, y: -106.46497}
       - {x: -10.727241, y: -106.58032}
-      - {x: 4.3930316, y: -106.69567}
-      - {x: -9.8913555, y: -88.63493}
-      - {x: -2.834178, y: -93.22708}
+      - {x: -7.1514935, y: -106.69567}
       - {x: 8.535654, y: -106.69567}
       - {x: 12.111401, y: -106.58032}
       - {x: 14.764374, y: -106.46497}
       - {x: 16.955961, y: -106.34963}
+--- !u!50 &1577198799
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577198794}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
 --- !u!212 &1577198800
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -21042,7 +21085,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1577198794}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6, y: -2.07, z: 0}
+  m_LocalPosition: {x: -5.91, y: -2.07, z: 0}
   m_LocalScale: {x: 0.007939406, y: 0.007939406, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
@@ -26007,11 +26050,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ruler: {fileID: 498889818}
   toggle: {fileID: 7754259554768675865}
+  massHungR: {fileID: 0}
+  massHungL: {fileID: 0}
   pointOfSuspensionL: {fileID: 1193907325}
   pointOfSuspensionR: {fileID: 81642455}
   lLine: {fileID: 1194754268}
   rLine: {fileID: 1734856923}
   massRotationValue: 0
+  leftMassRotationValue: 0
+  rightMassRotationValue: 0
   hangPointR: []
   hangPointL: []
 --- !u!114 &1865302281
@@ -26249,8 +26296,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8debf493f2d2f2f48a5d3156ccb7608e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lMassText: {fileID: 413815113}
-  rMassText: {fileID: 1738181128}
 --- !u!1 &1875055970
 GameObject:
   m_ObjectHideFlags: 0
@@ -27226,7 +27271,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1927726786}
   - component: {fileID: 1927726785}
-  - component: {fileID: 1927726788}
   - component: {fileID: 1927726787}
   m_Layer: 0
   m_Name: Square
@@ -27293,13 +27337,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1927726784}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1282, y: -3.1531, z: 0}
-  m_LocalScale: {x: 2.1352015, y: 1.4966679, z: 1}
+  m_LocalRotation: {x: 0.5403068, y: -0, z: -0, w: 0.84146804}
+  m_LocalPosition: {x: 0.2098, y: -2.25, z: 0.55}
+  m_LocalScale: {x: 2.754663, y: 1.4966679, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65.409, y: 0, z: 0}
 --- !u!61 &1927726787
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27313,7 +27357,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.8202211}
+  m_Offset: {x: 0, y: -1.518839}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -27324,29 +27368,8 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 12, y: 1.9695574}
+  m_Size: {x: 12, y: 0.57232165}
   m_EdgeRadius: 0
---- !u!50 &1927726788
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1927726784}
-  m_BodyType: 2
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
 --- !u!1 &1948322436
 GameObject:
   m_ObjectHideFlags: 0
@@ -27766,7 +27789,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6673a8bb0b5f4f74586ec51f9bd96f34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruler: {fileID: 498889818}
 --- !u!212 &1961327092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -29214,7 +29236,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: 4256a188be8b33f489b62bd043cb4e76, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3c69d3f73bc92f84c8fcfea8143ed055, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -29233,8 +29255,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010921585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.13, y: 0.71, z: 0}
-  m_LocalScale: {x: 0.93854, y: 1.1778686, z: 1}
+  m_LocalPosition: {x: 0.147, y: 0.82, z: 0}
+  m_LocalScale: {x: 0.36612445, y: 0.45948654, z: 0.3901}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
@@ -30891,17 +30913,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 932f7f57da680b948a9290f85a0f79dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ruler: {fileID: 0}
-  toggle: {fileID: 0}
-  pointOfSuspensionL: {fileID: 0}
-  pointOfSuspensionR: {fileID: 0}
-  lLine: {fileID: 0}
-  rLine: {fileID: 0}
-  massRotationValue: 0
-  hangPointR: []
-  hangPointL: []
-  leftStopper: {fileID: 0}
-  rightStopper: {fileID: 0}
 --- !u!114 &2886118522933671493
 MonoBehaviour:
   m_ObjectHideFlags: 0

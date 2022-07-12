@@ -2,25 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MassManager : MonoBehaviour
+public static class MassManager 
 {
     public static bool lMassIsReleased = true;
     public static bool RMassIsReleased = true;
+    public static Collider2D[] lConnectionPoints, rConnectionPoints;
+
     public static GameObject massHungOnLeft;
     public static GameObject massHungOnRight;
-    public GameObject ruler;
+    public static GameObject ruler;
     public static float rotationByLeftMass, rotationByRightMass;
     public static bool hasHadBothMassesAttached = false;
-    // Start is called before the first frame update
-    void Start()
+    
+    public static void ToggleHangPoints(Collider2D[] colliders, bool v)
     {
-        RMassIsReleased = true;
-        lMassIsReleased = true;
+        foreach(Collider2D col in colliders)
+        {
+            col.enabled = v;
+        }
     }
+    
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    
 }

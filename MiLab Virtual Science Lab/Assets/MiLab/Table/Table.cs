@@ -19,10 +19,6 @@ public class Table : MonoBehaviour
         LoadTableData();
     }
 
-    private void Update()
-    {
-        Debug.Log("state is " + toggles[0].isOn);
-    }
     //save data from table to file
     public void SaveTableData()
     {
@@ -31,6 +27,8 @@ public class Table : MonoBehaviour
 
         SaveSystem.SaveTable(this);
 
+
+        // get input from fields
         void ExtractDataFromTableFields()
         {
             if (cellInput != null)
@@ -43,6 +41,7 @@ public class Table : MonoBehaviour
             }
         }
 
+        //get input from toggles
         void ExtractDataFromToggles()
         {  
             if(toggles != null)
@@ -59,14 +58,7 @@ public class Table : MonoBehaviour
         }
     }
 
-    public void ClearTableContents()
-    {
-        foreach (TMP_InputField a in cellInput)
-        {
-            a.text = "";
-        }
-    }
-
+   
     // load data from file back into the table
     public void LoadTableData()
     {
@@ -74,6 +66,7 @@ public class Table : MonoBehaviour
 
         LoadFileDataIntoCells(data);
 
+        //populate table fields in inspector with last saved information
         void LoadFileDataIntoCells(TableData data)
         {
             if(cellInput != null)
@@ -95,5 +88,13 @@ public class Table : MonoBehaviour
             
         }
 
+    } 
+    
+    public void ClearTableContents()
+    {
+        foreach (TMP_InputField a in cellInput)
+        {
+            a.text = "";
+        }
     }
 }
