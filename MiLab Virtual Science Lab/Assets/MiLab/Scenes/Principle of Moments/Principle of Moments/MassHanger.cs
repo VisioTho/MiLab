@@ -44,9 +44,16 @@ public class MassHanger : MonoBehaviour
     }
 
     private void HandleMassAttachment(Collider2D collision)
-    {
+    {   
+        if (collision.gameObject.name == "ConnPointR1")
+        {
+            AttachRightMass(2.16f);
+            RotateRuler(-0.5f - massRotationValue);
+            SetRightMassRotationValue(0.5f);
 
-        if (collision.gameObject.name == "ConnPointR2")
+        }
+
+        else if (collision.gameObject.name == "ConnPointR2")
         {
             //ruler.GetComponent<Rigidbody2D>().AddForce(Vector2.down * 3f);
             AttachRightMass(4.26f);
@@ -54,18 +61,12 @@ public class MassHanger : MonoBehaviour
             SetRightMassRotationValue(1.0f);
 
         }
-        else if (collision.gameObject.name == "ConnPointR1")
-        {
-            AttachRightMass(2.16f);
-            RotateRuler(-1.0f - massRotationValue);
-            SetRightMassRotationValue(1.0f);
-
-        }
+        
         else if (collision.gameObject.name == "ConnPointR3")
         {
             AttachRightMass(6.45f);
-            RotateRuler(-1.0f - massRotationValue);
-            SetRightMassRotationValue(1.0f);
+            RotateRuler(-1.5f - massRotationValue);
+            SetRightMassRotationValue(1.5f);
 
         }
         else if (collision.gameObject.name == "ConnPointR4")
@@ -77,8 +78,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPointR5")
         {
             AttachRightMass(10.7f);
-            RotateRuler(-2.0f - massRotationValue);
-            SetRightMassRotationValue(2.0f);
+            RotateRuler(-2.5f - massRotationValue);
+            SetRightMassRotationValue(2.5f);
         }
         else if (collision.gameObject.name == "ConnPointR6")
         {
@@ -89,8 +90,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPointR7")
         {
             AttachRightMass(15.02f);
-            RotateRuler(-3.0f - massRotationValue);
-            SetRightMassRotationValue(3.0f);
+            RotateRuler(-3.5f - massRotationValue);
+            SetRightMassRotationValue(3.5f);
         }
         else if (collision.gameObject.name == "ConnPointR8")
         {
@@ -101,21 +102,21 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPointR9")
         {
             AttachRightMass(19.33f);
-            RotateRuler(-4.0f - massRotationValue);
-            SetRightMassRotationValue(4.0f);
+            RotateRuler(-4.5f - massRotationValue);
+            SetRightMassRotationValue(4.5f);
         }
         else if (collision.gameObject.name == "ConnPointR10")
         {
             AttachRightMass(21.46f);
-            RotateRuler(-4.0f - massRotationValue);
-            SetRightMassRotationValue(4.0f);
+            RotateRuler(-5.0f - massRotationValue);
+            SetRightMassRotationValue(5.0f);
         }
 
         else if (collision.gameObject.name == "ConnPoint9")
         {
             AttachLeftMass(-2.16f);
-            RotateRuler(1.0f + massRotationValue);
-            SetLeftMassRotation(1.0f);
+            RotateRuler(0.5f + massRotationValue);
+            SetLeftMassRotation(0.5f);
 
         }
         else if (collision.gameObject.name == "ConnPoint8")
@@ -128,8 +129,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPoint7")
         {
             AttachLeftMass(-6.46f);
-            RotateRuler(1.0f + massRotationValue);
-            SetLeftMassRotation(1.0f);
+            RotateRuler(1.5f + massRotationValue);
+            SetLeftMassRotation(1.5f);
 
         }
         else if (collision.gameObject.name == "ConnPoint6")
@@ -141,8 +142,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPoint5")
         {
             AttachLeftMass(-10.75f);
-            RotateRuler(1.0f + massRotationValue);
-            SetLeftMassRotation(1.0f);
+            RotateRuler(2.5f + massRotationValue);
+            SetLeftMassRotation(2.5f);
 
         }
         else if (collision.gameObject.name == "ConnPoint4")
@@ -154,8 +155,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPoint3")
         {
             AttachLeftMass(-15.05f);
-            RotateRuler(3.0f + massRotationValue);
-            SetLeftMassRotation(3.0f);
+            RotateRuler(3.5f + massRotationValue);
+            SetLeftMassRotation(3.5f);
         }
         else if (collision.gameObject.name == "ConnPoint2")
         {
@@ -166,8 +167,8 @@ public class MassHanger : MonoBehaviour
         else if (collision.gameObject.name == "ConnPoint1")
         {
             AttachLeftMass(-19.3f);
-            RotateRuler(4.0f + massRotationValue);
-            SetLeftMassRotation(4.0f);
+            RotateRuler(4.5f + massRotationValue);
+            SetLeftMassRotation(4.5f);
         }
        
         else
