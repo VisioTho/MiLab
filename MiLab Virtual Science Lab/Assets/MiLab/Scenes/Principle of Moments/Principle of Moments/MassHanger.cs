@@ -187,10 +187,8 @@ public class MassHanger : MonoBehaviour
         }
     }
 
-    private void RotateRuler(float d)
-    {
-        ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + d, Space.Self);   
-    }
+    private void RotateRuler(float d) => ruler.transform.LeanRotateZ(ruler.transform.eulerAngles.z + d, .5f);   
+    
 
     private void AttachLeftMass(float f)
     {
@@ -247,9 +245,10 @@ public class MassHanger : MonoBehaviour
     bool hasBothMassesAttached = false;
     private void Update()
     {
-
+        Debug.Log(ruler.transform.transform.eulerAngles.z + "is the rot");
         MoveMassOutOfBounds();
 
+       
     }
 
     private void MoveMassOutOfBounds()
@@ -299,19 +298,29 @@ public class MassHanger : MonoBehaviour
         if (!(MassManager.lMassIsReleased && MassManager.RMassIsReleased))
         {
             if (MassManager.lMassIsReleased)
+            {
+                //var targetRotation = new Vector3(0.0f, 0.0f, ruler.transform.eulerAngles.z - MassManager.rotationByLeftMass);
+                //ruler.transform.LeanRotate(targetRotation, .5f);
                 ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
 
+            }
+
             if (MassManager.RMassIsReleased)
+            {
+                //var targetRotation = new Vector3(0.0f, 0.0f, ruler.transform.eulerAngles.z + MassManager.rotationByRightMass);
+                //ruler.transform.LeanRotate(targetRotation, .5f);
                 ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+            }
+               
 
         } 
         else if(MassManager.lMassIsReleased && MassManager.RMassIsReleased)
         {
             // Rotate the cube by converting the angles into a quaternion.
-            Quaternion target = Quaternion.Euler(0, 0, 0.0f);
+            Vector3 target = new Vector3(0, 0, 0.0f);
             MassManager.rotationByLeftMass = 0f;
             MassManager.rotationByRightMass = 0f;
-            ruler.transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * 3f);
+            ruler.transform.LeanRotate(target, .5f);
         }
     }
 
