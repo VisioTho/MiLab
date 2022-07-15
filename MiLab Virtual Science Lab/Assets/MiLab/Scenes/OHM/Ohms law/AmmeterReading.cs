@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 
 public class AmmeterReading : MonoBehaviour
@@ -31,7 +32,6 @@ public class AmmeterReading : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         if (switchControl.switch_is_on == true)
         {
             if (materialLengthControl.wireAdjustLength.value == 0)
@@ -214,6 +214,6 @@ public class AmmeterReading : MonoBehaviour
             yield return null;
         }
         rotationParent.transform.rotation = targetRotation;
-       // rot_time = 0;
+        // rot_time = 0;
     }
 }
