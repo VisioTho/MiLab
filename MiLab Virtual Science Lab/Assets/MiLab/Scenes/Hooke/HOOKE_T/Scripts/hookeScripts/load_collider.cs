@@ -17,6 +17,8 @@ public class load_collider : MonoBehaviour
     public float gravitymultiplier, connAnchorx, connAnchory, gravityScale1, gravityScale2, gravityScale3, gravityScale4, gravityScale_5, gravityScale_1_5, gravityScale_2_5, gravityScale_3_5;
     public Vector2 connectedAnc, anchorConn;
     Renderer render;
+    float stiff_spring_subtractor = 0.3f;
+    float stiffer_spring_subtractor = 0.45f;
 
 
     void Start()
@@ -115,7 +117,9 @@ public class load_collider : MonoBehaviour
                             if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5;
                             if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4;
                         }
-               }else if (_spring_constant.value == 2){//stiff spring
+                    spj.dampingRatio = 0.0f; //more up-down movement
+                }
+                else if (_spring_constant.value == 2){//stiff spring
                      if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1 - stiff_spring_subtractor;
                      if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2 - stiff_spring_subtractor;
                      if (gameObject.tag == "load_300") rb2d.gravityScale = gravityScale3 - stiff_spring_subtractor;
@@ -131,7 +135,10 @@ public class load_collider : MonoBehaviour
                          if (_mass_slider.value == 300f) rb2d.gravityScale = gravityScale3 - stiff_spring_subtractor;
                          if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5 - stiff_spring_subtractor;
                          if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4 - stiff_spring_subtractor;
-                     }
+                       
+                    }
+                    
+                    spj.dampingRatio = 0.1f; //less up-down movement
                  }else {//stiffer spring
                              if (gameObject.tag == "load_100") rb2d.gravityScale = gravityScale1 - stiffer_spring_subtractor;
                              if (gameObject.tag == "load_200") rb2d.gravityScale = gravityScale2 - stiffer_spring_subtractor;
@@ -149,6 +156,7 @@ public class load_collider : MonoBehaviour
                                  if (_mass_slider.value == 350f) rb2d.gravityScale = gravityScale_3_5 - stiffer_spring_subtractor;
                                  if (_mass_slider.value == 400f) rb2d.gravityScale = gravityScale4 - stiffer_spring_subtractor;
                              }
+                    spj.dampingRatio = 0.15f; //lesser up-down movement
                  }
 
 
@@ -184,7 +192,7 @@ public class load_collider : MonoBehaviour
             render.enabled = false; //hiding movable line
             ml_rb.transform.position = ml_rb_dp; //resetting the postion of ml line
             stretchPointB.transform.position = stretchPointB_dp; //resetting position of stretchPointB
-            current_hanged_mass = null; //updating current active mass          
+            current_hanged_mass = null; //updating current active mass
         }
    }
 }

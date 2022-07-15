@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class drag_n_drop : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class drag_n_drop : MonoBehaviour
     void Start()
     {
         //track of all the masses
-         loads =controller.loads;
+         loads = controller.loads;
              
         load_dp = positions_controller.load_dp;   //fetching from positions_controller class
 
@@ -33,8 +34,8 @@ public class drag_n_drop : MonoBehaviour
         load_custom_dp = positions_controller.load_custom_dp;
 
 
-        lerpDuration = 0.08f;
-        Lerping_mass =null;
+        lerpDuration = 1f;
+        Lerping_mass = null;
         udrPos = udr.transform.position;
 
     }
@@ -136,13 +137,15 @@ public class drag_n_drop : MonoBehaviour
              //showing the tagert when the object is being dragged
              transform.GetChild(0).gameObject.SetActive(false);
 
-           // StartCoroutine(LerpPositionY(new Vector3(gameObject.transform.position.x, dropper.transform.position.y, 0f), lerpDuration));
-            if (gameObject.tag == "load_100") { StartCoroutine(LerpPositionY(load_100_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_100_dp;
-            if (gameObject.tag == "load_200") { StartCoroutine(LerpPositionY(load_200_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_200_dp;
-            if (gameObject.tag == "load_300") { StartCoroutine(LerpPositionY(load_300_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }// gameObject.transform.position = load_300_dp;
-            if (gameObject.tag == "load_400") { StartCoroutine(LerpPositionY(load_400_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_400_dp;
-            if (gameObject.tag == "load_custom") { StartCoroutine(LerpPositionY(load_custom_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_custom_dp;
-
+            // StartCoroutine(LerpPositionY(new Vector3(gameObject.transform.position.x, dropper.transform.position.y, 0f), lerpDuration));
+          if(current_hanged_mass == null){
+              
+                if (gameObject.tag == "load_100") {  Lerping_mass = gameObject.tag; transform.DOMove(new Vector3(transform.position.x, load_100_dp.y, 0f), lerpDuration).SetEase(Ease.OutCubic).OnComplete(() => { transform.DOMove(load_100_dp, lerpDuration); Lerping_mass = null; }); }//StartCoroutine(LerpPositionY(load_100_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_100_dp;
+                if (gameObject.tag == "load_200") { Lerping_mass = gameObject.tag; transform.DOMove(new Vector3(transform.position.x, load_200_dp.y, 0f), lerpDuration).SetEase(Ease.OutCubic).OnComplete(() => { transform.DOMove(load_200_dp, lerpDuration); Lerping_mass = null; }); }//StartCoroutine(LerpPositionY(load_200_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_200_dp;
+                if (gameObject.tag == "load_300") { Lerping_mass = gameObject.tag; transform.DOMove(new Vector3(transform.position.x, load_300_dp.y, 0f), lerpDuration).SetEase(Ease.OutCirc).OnComplete(() => { transform.DOMove(load_300_dp, lerpDuration); Lerping_mass = null; }); }//StartCoroutine(LerpPositionY(load_300_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }// gameObject.transform.position = load_300_dp;
+                if (gameObject.tag == "load_400") { Lerping_mass = gameObject.tag; transform.DOMove(new Vector3(transform.position.x, load_400_dp.y, 0f), lerpDuration).SetEase(Ease.OutCubic).OnComplete(() => { transform.DOMove(load_400_dp, lerpDuration); Lerping_mass = null; }); }//StartCoroutine(LerpPositionY(load_400_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_400_dp;
+                //if (gameObject.tag == "load_custom") { Lerping_mass = gameObject.tag; transform.DOMove(load_custom_dp, lerpDuration); Lerping_mass = null; } //StartCoroutine(LerpPositionY(load_custom_dp, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, 0f), lerpDuration)); }//gameObject.transform.position = load_custom_dp;
+            }
 
   IEnumerator LerpPositionY(Vector2 targetPos, Vector3 nowPosi, float duration)
           {
@@ -157,7 +160,7 @@ public class drag_n_drop : MonoBehaviour
                 gameObject.transform.position = new Vector3(nowPosi.x, targetPos.y, 0f);
                 time = 0; //reseting
 
-                while (time < duration)//horizontal Lerping
+                while (time < duration) //horizontal Lerping
                 {
                     gameObject.transform.position = Vector3.Lerp(new Vector3(nowPosi.x, targetPos.y, 0f), targetPos, time / duration);
                     time += Time.deltaTime;
@@ -173,7 +176,8 @@ public class drag_n_drop : MonoBehaviour
             //restricting the ruler from going to the extreme left and right
             float ruler_current_pos = gameObject.transform.position.x;
             if( ruler_current_pos < positions_controller.ruler_dp.x ||  ruler_current_pos > positions_controller.load_400_dp.x){
-                gameObject.transform.position = positions_controller.ruler_dp;
+                //gameObject.transform.position = positions_controller.ruler_dp;
+                transform.DOMove(positions_controller.ruler_dp, 1);
             }
             Debug.Log("ruler "+  gameObject.transform.position);
             //precise measurement

@@ -154,6 +154,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1421468816}
+  - {fileID: 1521544307}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -302,7 +303,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &39393168
@@ -349,7 +350,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 39393168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -380,27 +381,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -503,6 +484,7 @@ GameObject:
   - component: {fileID: 89298458}
   - component: {fileID: 89298460}
   - component: {fileID: 89298461}
+  - component: {fileID: 89298462}
   m_Layer: 0
   m_Name: ar_v2
   m_TagString: Untagged
@@ -601,11 +583,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 89298456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &89298461
 Rigidbody2D:
   serializedVersion: 4
@@ -627,6 +609,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &89298462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89298456}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &131534185
 GameObject:
   m_ObjectHideFlags: 0
@@ -807,7 +803,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 150197353}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -838,27 +834,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -1005,7 +981,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 220603577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -1036,27 +1012,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -1199,7 +1155,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &251586247
@@ -1215,6 +1171,7 @@ GameObject:
   - component: {fileID: 251586249}
   - component: {fileID: 251586251}
   - component: {fileID: 251586252}
+  - component: {fileID: 251586253}
   m_Layer: 0
   m_Name: rh_s2
   m_TagString: Untagged
@@ -1313,11 +1270,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 251586247}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &251586252
 Rigidbody2D:
   serializedVersion: 4
@@ -1339,6 +1296,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &251586253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 251586247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &265905591
 GameObject:
   m_ObjectHideFlags: 0
@@ -1597,7 +1568,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 287566148}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -1628,27 +1599,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -1700,6 +1651,7 @@ GameObject:
   - component: {fileID: 311524666}
   - component: {fileID: 311524668}
   - component: {fileID: 311524669}
+  - component: {fileID: 311524670}
   m_Layer: 0
   m_Name: r_c1
   m_TagString: Untagged
@@ -1798,11 +1750,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 311524664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &311524669
 Rigidbody2D:
   serializedVersion: 4
@@ -1824,6 +1776,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &311524670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 311524664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &326383918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1938,8 +1904,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  disconnected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
 --- !u!50 &326383923
 Rigidbody2D:
   serializedVersion: 4
@@ -2054,7 +2028,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 383597056}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -2085,27 +2059,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -2241,6 +2195,7 @@ GameObject:
   - component: {fileID: 407109396}
   - component: {fileID: 407109398}
   - component: {fileID: 407109399}
+  - component: {fileID: 407109400}
   m_Layer: 0
   m_Name: r_c2
   m_TagString: Untagged
@@ -2339,11 +2294,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 407109394}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &407109399
 Rigidbody2D:
   serializedVersion: 4
@@ -2365,6 +2320,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &407109400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 407109394}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &451612612
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,6 +2347,7 @@ GameObject:
   - component: {fileID: 451612614}
   - component: {fileID: 451612616}
   - component: {fileID: 451612617}
+  - component: {fileID: 451612618}
   m_Layer: 0
   m_Name: a_s2
   m_TagString: Untagged
@@ -2476,11 +2446,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 451612612}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.15423554, g: 0.6698113, b: 0.05371129, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &451612617
 Rigidbody2D:
   serializedVersion: 4
@@ -2502,6 +2472,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &451612618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451612612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &466502345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2740,6 +2724,7 @@ GameObject:
   - component: {fileID: 501567434}
   - component: {fileID: 501567436}
   - component: {fileID: 501567437}
+  - component: {fileID: 501567438}
   m_Layer: 0
   m_Name: rc_v1
   m_TagString: Untagged
@@ -2838,11 +2823,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 501567432}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &501567437
 Rigidbody2D:
   serializedVersion: 4
@@ -2864,6 +2849,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &501567438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501567432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3189,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 535206588}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -3221,27 +3220,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -3333,7 +3312,7 @@ SpriteRenderer:
   m_Size: {x: 2.4, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &541902830
@@ -3649,6 +3628,7 @@ GameObject:
   - component: {fileID: 652025977}
   - component: {fileID: 652025979}
   - component: {fileID: 652025980}
+  - component: {fileID: 652025981}
   m_Layer: 0
   m_Name: rh_c1
   m_TagString: Untagged
@@ -3747,11 +3727,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 652025975}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &652025980
 Rigidbody2D:
   serializedVersion: 4
@@ -3773,6 +3753,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &652025981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652025975}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &672124516
 GameObject:
   m_ObjectHideFlags: 0
@@ -4005,6 +3999,7 @@ GameObject:
   - component: {fileID: 687829916}
   - component: {fileID: 687829918}
   - component: {fileID: 687829919}
+  - component: {fileID: 687829920}
   m_Layer: 0
   m_Name: rc_v1
   m_TagString: Untagged
@@ -4103,11 +4098,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 687829914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &687829919
 Rigidbody2D:
   serializedVersion: 4
@@ -4129,6 +4124,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &687829920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 687829914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &699255404
 GameObject:
   m_ObjectHideFlags: 0
@@ -4142,6 +4151,7 @@ GameObject:
   - component: {fileID: 699255406}
   - component: {fileID: 699255408}
   - component: {fileID: 699255409}
+  - component: {fileID: 699255410}
   m_Layer: 0
   m_Name: a_s1
   m_TagString: Untagged
@@ -4240,11 +4250,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 699255404}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &699255409
 Rigidbody2D:
   serializedVersion: 4
@@ -4266,6 +4276,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &699255410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 699255404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &730559769
 GameObject:
   m_ObjectHideFlags: 0
@@ -4428,7 +4452,7 @@ SpriteRenderer:
   m_Size: {x: 3.57, y: 0.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &772765794
@@ -4444,6 +4468,7 @@ GameObject:
   - component: {fileID: 772765796}
   - component: {fileID: 772765798}
   - component: {fileID: 772765799}
+  - component: {fileID: 772765800}
   m_Layer: 0
   m_Name: rh_s1
   m_TagString: Untagged
@@ -4542,11 +4567,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 772765794}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &772765799
 Rigidbody2D:
   serializedVersion: 4
@@ -4568,6 +4593,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &772765800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 772765794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &773492944
 GameObject:
   m_ObjectHideFlags: 0
@@ -4697,7 +4736,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 788366343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -4728,27 +4767,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -4851,6 +4870,7 @@ GameObject:
   - component: {fileID: 793841117}
   - component: {fileID: 793841119}
   - component: {fileID: 793841120}
+  - component: {fileID: 793841121}
   m_Layer: 0
   m_Name: a_r2
   m_TagString: Untagged
@@ -4949,11 +4969,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 793841115}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &793841120
 Rigidbody2D:
   serializedVersion: 4
@@ -4975,6 +4995,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &793841121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793841115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &805012302
 GameObject:
   m_ObjectHideFlags: 0
@@ -5152,7 +5186,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 847842855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -5183,27 +5217,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -5502,7 +5516,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 867967168}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -5533,27 +5547,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -5693,8 +5687,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  disconnected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
 --- !u!50 &871431890
 Rigidbody2D:
   serializedVersion: 4
@@ -5716,6 +5718,79 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &875865923
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 875865924}
+  - component: {fileID: 875865926}
+  - component: {fileID: 875865925}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &875865924
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875865923}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1731796848}
+  m_Father: {fileID: 1521544307}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 25.7, y: -0.000005722}
+  m_SizeDelta: {x: 35.292, y: 29.78}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &875865925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875865923}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 56b5445fb30cc460a8bdf929fc626bf9, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &875865926
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 875865923}
+  m_CullTransparentMesh: 1
 --- !u!1 &876294055
 GameObject:
   m_ObjectHideFlags: 0
@@ -5729,6 +5804,7 @@ GameObject:
   - component: {fileID: 876294057}
   - component: {fileID: 876294059}
   - component: {fileID: 876294060}
+  - component: {fileID: 876294061}
   m_Layer: 0
   m_Name: rh_s2
   m_TagString: Untagged
@@ -5827,11 +5903,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 876294055}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &876294060
 Rigidbody2D:
   serializedVersion: 4
@@ -5853,6 +5929,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &876294061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 876294055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &879611497
 GameObject:
   m_ObjectHideFlags: 0
@@ -5953,6 +6043,7 @@ MonoBehaviour:
   NUMBER_OF_PAIR_CONNECTION_POINTS: 8
   lerpDuration: 0
   percentage_text: {fileID: 1906818120}
+  next_button: {fileID: 1521544306}
 --- !u!1 &882932977
 GameObject:
   m_ObjectHideFlags: 0
@@ -6115,7 +6206,7 @@ SpriteRenderer:
   m_Size: {x: 3.43, y: 0.85}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &934268987
@@ -6188,7 +6279,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 934268987}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -6219,27 +6310,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -6451,6 +6522,7 @@ GameObject:
   - component: {fileID: 963797589}
   - component: {fileID: 963797588}
   - component: {fileID: 963797591}
+  - component: {fileID: 963797592}
   m_Layer: 0
   m_Name: a_r1
   m_TagString: Untagged
@@ -6481,11 +6553,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 963797586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!58 &963797589
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -6575,6 +6647,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &963797592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 963797586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1018786131
 GameObject:
   m_ObjectHideFlags: 0
@@ -6654,7 +6740,7 @@ SpriteRenderer:
   m_Size: {x: 3.57, y: 1.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1031980109
@@ -6784,7 +6870,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1088282095}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -6815,27 +6901,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -6938,6 +7004,7 @@ GameObject:
   - component: {fileID: 1102219013}
   - component: {fileID: 1102219015}
   - component: {fileID: 1102219016}
+  - component: {fileID: 1102219017}
   m_Layer: 0
   m_Name: rc_v2
   m_TagString: Untagged
@@ -7036,11 +7103,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1102219011}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1102219016
 Rigidbody2D:
   serializedVersion: 4
@@ -7062,6 +7129,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1102219017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1102219011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1120865456
 GameObject:
   m_ObjectHideFlags: 0
@@ -7155,7 +7236,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1120865456}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -7186,27 +7267,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -7258,6 +7319,7 @@ GameObject:
   - component: {fileID: 1132698213}
   - component: {fileID: 1132698215}
   - component: {fileID: 1132698216}
+  - component: {fileID: 1132698217}
   m_Layer: 0
   m_Name: ar_v1
   m_TagString: Untagged
@@ -7356,11 +7418,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1132698211}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1132698216
 Rigidbody2D:
   serializedVersion: 4
@@ -7382,6 +7444,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1132698217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1132698211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1192410738
 GameObject:
   m_ObjectHideFlags: 0
@@ -7426,7 +7502,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1192410738}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -7457,27 +7533,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -7564,7 +7620,7 @@ SpriteRenderer:
   m_Size: {x: 1.52, y: 2.97}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1205387586
@@ -7673,7 +7729,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1205387586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -7704,27 +7760,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -7817,7 +7853,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1216664363}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -7848,27 +7884,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -8025,7 +8041,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1236492857}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -8056,27 +8072,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -8329,7 +8325,7 @@ SpriteRenderer:
   m_Size: {x: 2.96, y: 1.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1301474735
@@ -8345,6 +8341,7 @@ GameObject:
   - component: {fileID: 1301474737}
   - component: {fileID: 1301474739}
   - component: {fileID: 1301474740}
+  - component: {fileID: 1301474741}
   m_Layer: 0
   m_Name: r_c2
   m_TagString: Untagged
@@ -8443,11 +8440,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1301474735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1301474740
 Rigidbody2D:
   serializedVersion: 4
@@ -8469,6 +8466,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1301474741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301474735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1370823651
 GameObject:
   m_ObjectHideFlags: 0
@@ -8565,6 +8576,7 @@ GameObject:
   - component: {fileID: 1412262302}
   - component: {fileID: 1412262304}
   - component: {fileID: 1412262305}
+  - component: {fileID: 1412262306}
   m_Layer: 0
   m_Name: ar_v2
   m_TagString: Untagged
@@ -8663,11 +8675,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1412262300}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1412262305
 Rigidbody2D:
   serializedVersion: 4
@@ -8689,6 +8701,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1412262306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1412262300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1421468815
 GameObject:
   m_ObjectHideFlags: 0
@@ -8700,6 +8726,7 @@ GameObject:
   - component: {fileID: 1421468816}
   - component: {fileID: 1421468818}
   - component: {fileID: 1421468817}
+  - component: {fileID: 1421468819}
   m_Layer: 5
   m_Name: APPARATUS_UI2
   m_TagString: Untagged
@@ -8766,6 +8793,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1421468815}
   m_CullTransparentMesh: 1
+--- !u!114 &1421468819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1421468815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1436925255
 GameObject:
   m_ObjectHideFlags: 0
@@ -8812,8 +8853,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
+  disconnected_color:
+    r: 0
+    g: 0
+    b: 0
+    a: 0
 --- !u!58 &1436925258
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -8982,7 +9031,7 @@ SpriteRenderer:
   m_Size: {x: 1.37, y: 1.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1460666957
@@ -8998,6 +9047,7 @@ GameObject:
   - component: {fileID: 1460666959}
   - component: {fileID: 1460666961}
   - component: {fileID: 1460666962}
+  - component: {fileID: 1460666963}
   m_Layer: 0
   m_Name: rh_c2
   m_TagString: Untagged
@@ -9096,11 +9146,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1460666957}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1460666962
 Rigidbody2D:
   serializedVersion: 4
@@ -9122,6 +9172,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1460666963
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1460666957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1479394521
 GameObject:
   m_ObjectHideFlags: 0
@@ -9219,6 +9283,128 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1521544306
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1521544307}
+  - component: {fileID: 1521544310}
+  - component: {fileID: 1521544309}
+  - component: {fileID: 1521544308}
+  m_Layer: 5
+  m_Name: NEXTBUTTON
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1521544307
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521544306}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 1673669458}
+  - {fileID: 875865924}
+  m_Father: {fileID: 10802277}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 399.912, y: -261.164}
+  m_SizeDelta: {x: 99.265, y: 36.929}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1521544308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521544306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1521544309}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1521544309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521544306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.19012094, g: 0.509434, b: 0.1754183, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1521544310
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521544306}
+  m_CullTransparentMesh: 1
 --- !u!1 &1537020100
 GameObject:
   m_ObjectHideFlags: 0
@@ -9276,7 +9462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537020100}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -9307,27 +9493,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -9572,6 +9738,7 @@ GameObject:
   - component: {fileID: 1642463005}
   - component: {fileID: 1642463007}
   - component: {fileID: 1642463008}
+  - component: {fileID: 1642463009}
   m_Layer: 0
   m_Name: rh_s1
   m_TagString: Untagged
@@ -9670,11 +9837,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1642463003}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1642463008
 Rigidbody2D:
   serializedVersion: 4
@@ -9696,6 +9863,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1642463009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642463003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1645714744
 GameObject:
   m_ObjectHideFlags: 0
@@ -9926,6 +10107,7 @@ GameObject:
   - component: {fileID: 1667032411}
   - component: {fileID: 1667032413}
   - component: {fileID: 1667032414}
+  - component: {fileID: 1667032415}
   m_Layer: 0
   m_Name: r_c1
   m_TagString: Untagged
@@ -10024,11 +10206,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1667032409}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1667032414
 Rigidbody2D:
   serializedVersion: 4
@@ -10050,6 +10232,155 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1667032415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1667032409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
+--- !u!1 &1673669457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1673669458}
+  - component: {fileID: 1673669460}
+  - component: {fileID: 1673669459}
+  m_Layer: 5
+  m_Name: Text (TMP)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1673669458
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673669457}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1521544307}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -13.7, y: 0}
+  m_SizeDelta: {x: -32.558, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1673669459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673669457}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: NEXT
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: e6a5785277d17d145be5017de51b4a88, type: 2}
+  m_sharedMaterial: {fileID: 2317962760666004410, guid: e6a5785277d17d145be5017de51b4a88,
+    type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 20
+  m_fontSizeBase: 20
+  m_fontWeight: 400
+  m_enableAutoSizing: 0
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 0
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &1673669460
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1673669457}
+  m_CullTransparentMesh: 1
 --- !u!1 &1684665967
 GameObject:
   m_ObjectHideFlags: 0
@@ -10316,6 +10647,78 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!1 &1731796847
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1731796848}
+  - component: {fileID: 1731796850}
+  - component: {fileID: 1731796849}
+  m_Layer: 5
+  m_Name: Image (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &1731796848
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731796847}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 875865924}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2.3, y: -0.0000038147}
+  m_SizeDelta: {x: 25.589, y: 21.593}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1731796849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731796847}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: 56b5445fb30cc460a8bdf929fc626bf9, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+--- !u!222 &1731796850
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731796847}
+  m_CullTransparentMesh: 1
 --- !u!1 &1741477629
 GameObject:
   m_ObjectHideFlags: 0
@@ -10374,7 +10777,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1741477629}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -10405,27 +10808,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -10816,6 +11199,7 @@ GameObject:
   - component: {fileID: 1827245941}
   - component: {fileID: 1827245943}
   - component: {fileID: 1827245944}
+  - component: {fileID: 1827245945}
   m_Layer: 0
   m_Name: rc_v2
   m_TagString: Untagged
@@ -10914,11 +11298,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1827245939}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1827245944
 Rigidbody2D:
   serializedVersion: 4
@@ -10940,6 +11324,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1827245945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1827245939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1831467722
 GameObject:
   m_ObjectHideFlags: 0
@@ -10953,6 +11351,7 @@ GameObject:
   - component: {fileID: 1831467724}
   - component: {fileID: 1831467726}
   - component: {fileID: 1831467727}
+  - component: {fileID: 1831467728}
   m_Layer: 0
   m_Name: a_s2
   m_TagString: Untagged
@@ -11051,11 +11450,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1831467722}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1831467727
 Rigidbody2D:
   serializedVersion: 4
@@ -11077,6 +11476,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1831467728
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1831467722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1849552668
 GameObject:
   m_ObjectHideFlags: 0
@@ -11090,6 +11503,7 @@ GameObject:
   - component: {fileID: 1849552670}
   - component: {fileID: 1849552672}
   - component: {fileID: 1849552673}
+  - component: {fileID: 1849552674}
   m_Layer: 0
   m_Name: rh_c2
   m_TagString: Untagged
@@ -11188,11 +11602,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1849552668}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &1849552673
 Rigidbody2D:
   serializedVersion: 4
@@ -11214,6 +11628,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1849552674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1849552668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &1855002926
 GameObject:
   m_ObjectHideFlags: 0
@@ -11333,7 +11761,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1855002926}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -11364,27 +11792,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -11441,7 +11849,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1883723950}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -11472,27 +11880,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -11933,7 +12321,7 @@ SpriteRenderer:
   m_Size: {x: 1.52, y: 2.97}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &1927915264
@@ -11945,7 +12333,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1927915261}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -11976,27 +12364,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -12222,7 +12590,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1978039883
@@ -12304,7 +12672,7 @@ SpriteRenderer:
   m_Size: {x: 2.36, y: 0.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1991244074
@@ -12351,7 +12719,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1991244074}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -12382,27 +12750,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -12574,7 +12922,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2014134577}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -12605,27 +12953,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -12768,7 +13096,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2033643589}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -12799,27 +13127,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -12922,6 +13230,7 @@ GameObject:
   - component: {fileID: 2050848015}
   - component: {fileID: 2050848017}
   - component: {fileID: 2050848018}
+  - component: {fileID: 2050848019}
   m_Layer: 0
   m_Name: a_s1
   m_TagString: Untagged
@@ -13020,11 +13329,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2050848013}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &2050848018
 Rigidbody2D:
   serializedVersion: 4
@@ -13046,6 +13355,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2050848019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2050848013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2054943703
 GameObject:
   m_ObjectHideFlags: 0
@@ -13139,7 +13462,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2054943703}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -13170,27 +13493,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -13297,7 +13600,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2058152405}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
+  m_Script: {fileID: 11500000, guid: 06f8d254570f33741a906637cb7e6956, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   in_canvas_apparatus:
@@ -13328,27 +13631,7 @@ MonoBehaviour:
   - {fileID: 1120865456}
   - {fileID: 287566148}
   - {fileID: 847842855}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
+  apparatus_descriptions_texts: []
   x1_bound: {fileID: 1031980109}
   x2_bound: {fileID: 882932977}
   y1_bound: {fileID: 1370823651}
@@ -13598,6 +13881,7 @@ GameObject:
   - component: {fileID: 2096858163}
   - component: {fileID: 2096858165}
   - component: {fileID: 2096858166}
+  - component: {fileID: 2096858167}
   m_Layer: 0
   m_Name: rh_c1
   m_TagString: Untagged
@@ -13696,11 +13980,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 2096858161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connected_color: {r: 0.8784314, g: 0.09411765, b: 1, a: 1}
-  disconnected_color: {r: 0.12941177, g: 0.32156864, b: 0.039215688, a: 1}
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!50 &2096858166
 Rigidbody2D:
   serializedVersion: 4
@@ -13722,6 +14006,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2096858167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096858161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 913eb5ec82d964c4ebfe0c6257c6e34e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  connected_color: {r: 0, g: 0, b: 0, a: 0}
+  disconnected_color: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &2099601660
 GameObject:
   m_ObjectHideFlags: 0

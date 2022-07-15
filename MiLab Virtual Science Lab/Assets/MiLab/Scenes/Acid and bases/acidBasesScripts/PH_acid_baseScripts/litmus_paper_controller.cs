@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class litmus_paper_controller : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class litmus_paper_controller : MonoBehaviour
     public float duration = 6;
     public Toggle litmus_paper_toggler;
     public string currentLitmusColor = "blue";
+    public static string lastDippedInto = "none";
     public string[] liquid_tags = {"hydrochloric_acid", "ethanoic_acid", "vinegar", "milk", "tomato", "ammonium_solution", "sodium_hydroxide", "blood", "bleach"};
    //Start is called before the first frame update
     void Start()
@@ -71,30 +73,46 @@ public class litmus_paper_controller : MonoBehaviour
         if (gOtag == "hydrochloric_acid" || gOtag == "ethanoic_acid" || gOtag == "vinegar" || gOtag == "milk" || gOtag == "tomato")//ACIDS
         {
             collider_onset_stretch_pointB_Y = litmus_stretch_pointB.transform.position.y;
-              isDipped = true;
+            isDipped = true;
             if (currentLitmusColor == "blue")
             {
-                Debug.Log("Acid :: blue->red");
-                litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
-                StartCoroutine(ToRedLitmusColorChangeMode());
+                //Debug.Log("Acid :: blue->red");
+                if (lastDippedInto != gOtag)
+                {
+                    litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
+                    StartCoroutine(ToRedLitmusColorChangeMode());
+                }
+
+                if (currentLitmusColor == "red")
+                {
+                    litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
+                }  // reseting the color of the litmus in case it is already 'dyed'
+               
+                lastDippedInto = gOtag;
             }
-            if (currentLitmusColor == "red") { litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255); } //reseting the color of the litmus in case it is already 'dyed'
         }
 
 
-        if (gOtag == "ammonium_solution" || gOtag == "sodium_hydroxide" || gOtag == "blood" || gOtag == "bleach")//BASES
+        if (gOtag == "ammonium_solution" || gOtag == "sodium_hydroxide" || gOtag == "blood" || gOtag == "bleach") //BASES
         {
             collider_onset_stretch_pointB_Y = litmus_stretch_pointB.transform.position.y;
             isDipped = true;
             if (currentLitmusColor == "red")
             {
-                Debug.Log("Base :: red->blue");
-                litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
-                StartCoroutine(ToBlueLitmusColorChangeMode());   
+                if (lastDippedInto != gOtag)
+                {
+                    // Debug.Log("Base :: red->blue");
+                    litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
+                    StartCoroutine(ToBlueLitmusColorChangeMode());
+                }
+                if (currentLitmusColor == "blue")
+                {
+                    litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
+                } // reseting the color of the litmus in case it is already 'dyed'
+                
+                lastDippedInto = gOtag;
             }
-            if (currentLitmusColor == "blue") { litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255); } //reseting the color of the litmus in case it is already 'dyed'
         }
-
     }
 
     void OnTriggerExit2D(Collider2D collision)
@@ -104,7 +122,7 @@ public class litmus_paper_controller : MonoBehaviour
         {
             //collider_onset_stretch_pointB_Y = (float) null;
             isDipped = false;
-            Debug.Log("undipped");
+            //Debug.Log("undipped");
         }
     }
 

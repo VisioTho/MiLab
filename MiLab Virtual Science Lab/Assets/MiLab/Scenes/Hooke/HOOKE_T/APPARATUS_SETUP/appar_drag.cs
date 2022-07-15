@@ -161,7 +161,7 @@ public class appar_drag : MonoBehaviour
        }
         else
         {
-            Debug.Log("Single tappedddddddddddd");
+            //Debug.Log("Single tappedddddddddddd");
         }
       }
 

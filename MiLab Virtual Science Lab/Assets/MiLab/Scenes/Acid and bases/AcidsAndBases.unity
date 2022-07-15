@@ -910,11 +910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress_bar: {fileID: 162373945}
-  MAXIMUM_X_STRECH: 0
-  current_connected_points: 0
-  NUMBER_OF_PAIR_CONNECTION_POINTS: 5
-  x_stretch: 0
 --- !u!58 &51780831
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1492,67 +1487,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &81551135
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1826,67 +1760,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &85742891
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2200,11 +2073,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress_bar: {fileID: 162373945}
-  MAXIMUM_X_STRECH: 0
-  current_connected_points: 0
-  NUMBER_OF_PAIR_CONNECTION_POINTS: 5
-  x_stretch: 0
 --- !u!58 &100476758
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -4603,67 +4471,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &302371931
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5097,7 +4904,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 525124668}
   toggleTransition: 1
   graphic: {fileID: 0}
@@ -5224,7 +5031,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.11315346}
+  m_Offset: {x: -1.2539818, y: -1.6808863}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5235,7 +5042,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.17, y: 6.9636936}
+  m_Size: {x: 10.732403, y: 8.958994}
   m_EdgeRadius: 0
 --- !u!1 &329750106
 GameObject:
@@ -7808,37 +7615,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &480169878
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -7983,7 +7759,7 @@ SpriteRenderer:
   m_Size: {x: 2.96, y: 1.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &493401307
@@ -8825,7 +8601,7 @@ SpriteRenderer:
   m_Size: {x: 3.57, y: 0.84}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &529556690
@@ -10054,7 +9830,7 @@ SpriteRenderer:
   m_Size: {x: 1.37, y: 1.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &622572637
@@ -12087,7 +11863,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &766364526
 Transform:
   m_ObjectHideFlags: 0
@@ -13283,37 +13059,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &793445091
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -13396,67 +13141,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &797189586
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -13627,37 +13311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &809023444
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -14649,37 +14302,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &874642881
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -16285,7 +15907,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.2663171}
+  m_Offset: {x: -0.6595135, y: -2.0876083}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -16296,7 +15918,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.17, y: 4.6573663}
+  m_Size: {x: 8.607131, y: 9.380508}
   m_EdgeRadius: 0
 --- !u!114 &969685521
 MonoBehaviour:
@@ -19179,7 +18801,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 170043832}
   toggleTransition: 1
   graphic: {fileID: 0}
@@ -19629,7 +19251,7 @@ SpriteRenderer:
   m_Size: {x: 3.43, y: 0.85}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1209223985
@@ -19894,67 +19516,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &1218662561
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -20962,7 +20523,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.3159761}
+  m_Offset: {x: 1.3203585, y: -2.275447}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -20973,7 +20534,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.17, y: 4.5580473}
+  m_Size: {x: 11.529284, y: 9.675221}
   m_EdgeRadius: 0
 --- !u!114 &1293458924
 MonoBehaviour:
@@ -21313,41 +20874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!65 &1317659345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21691,7 +21217,7 @@ SpriteRenderer:
   m_Size: {x: 3.57, y: 1.26}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1337581913
@@ -22083,37 +21609,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &1361263302
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -22419,67 +21914,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &1365321890
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -23504,37 +22938,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &1421632426
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -24629,7 +24032,7 @@ SpriteRenderer:
   m_Size: {x: 2.4, y: 1.14}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1500189274
@@ -25717,11 +25120,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress_bar: {fileID: 162373945}
-  MAXIMUM_X_STRECH: 0
-  current_connected_points: 0
-  NUMBER_OF_PAIR_CONNECTION_POINTS: 5
-  x_stretch: 0
 --- !u!58 &1524730205
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -29333,7 +28731,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 940552808}
   toggleTransition: 1
   graphic: {fileID: 0}
@@ -29806,7 +29204,7 @@ SpriteRenderer:
   m_Size: {x: 2.36, y: 0.82}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1765396875
@@ -30837,7 +30235,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 889177802}
   toggleTransition: 1
   graphic: {fileID: 0}
@@ -31185,37 +30583,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 793445087}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1317659343}
-  apparatus_descriptions_texts:
-  - A beaker is a cylindrical container with a flat bottom used to store, mix and
-    heat liquids in laboratories.
-  - Litmus paper is a paper stained with litmus which is used to indicate the acidity
-    or alkalinity of a substance.
-  - ' A pipette is a small tube that can transfer liquids from one container to another
-    and is a common piece of laboratory equipment.'
-  - The pH scale is the scale that is used to measures how acidic or basic a substance
-    is.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 691895372}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 286877575}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!212 &1897810314
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -32139,37 +31506,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 809023440}
-  - {fileID: 480169875}
-  - {fileID: 1361263299}
-  - {fileID: 1956852842}
-  apparatus_descriptions_texts:
-  - A retort-stand is a piece of scientific equipment intended to support other pieces
-    of equipment. It also called a clamp stand, a ring stand, or a support stand.
-  - A spring is an elastic object that stores mechanical energy, it is a device that
-    returns to its shape or position when pushed or pulled or pressed.
-  - 'A mass is a large body of matter with no definite shape. '
-  - 'Ruler is a straight strip or cylinder of plastic, wood, metal, or other rigid
-    material, typically marked at regular intervals and used to measure distances
-    or draw straight lines . '
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!65 &1956852844
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32744,67 +32080,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &1995819749
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -32879,7 +32154,7 @@ SpriteRenderer:
   m_Size: {x: 1.52, y: 2.97}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1995819751
@@ -33418,67 +32693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  in_canvas_apparatus:
-  - {fileID: 1421632422}
-  - {fileID: 874642878}
-  - {fileID: 1897810311}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  on_legend_apparatus:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 302371928}
-  - {fileID: 0}
-  - {fileID: 1317659343}
-  - {fileID: 0}
-  - {fileID: 1995819747}
-  - {fileID: 81551133}
-  - {fileID: 797189584}
-  - {fileID: 1365321888}
-  - {fileID: 85742889}
-  - {fileID: 2029000779}
-  - {fileID: 1218662558}
-  apparatus_descriptions_texts:
-  - An ammeter is a measuring instrument used to measure the current in a circuit.
-    Electric currents are measured in Amperes, hence the name. The ammeter is usually
-    connected in series with the circuit in which the current is to be measured.
-  - A resistor is a passive two-terminal electrical component that implements electrical
-    resistance as a circuit element. In electronic circuits, resistors are used to
-    reduce current flow, adjust signal levels, to divide voltages, bias active elements,
-    and terminate transmission lines, among other uses
-  - A cell is a single unit device which converts chemical energy into electric energy.
-    A battery usually consists of group of cells. Depending on the types of electrolytes
-    used, a cell is either reserve, wet or dry types
-  - Rheostat, adjustable resistor used in applications that require the adjustment
-    of current or the varying of resistance in an electric circuit. The rheostat
-    can adjust generator characteristics, dim lights, and start or control the speed
-    of motors.
-  - A Switch. An electrical switch serves the purpose of controlling the flow of
-    electrical current within a circuit. It can be used to both inhibit the flow
-    of the current or to initiate it.
-  - A voltmeter is an instrument used for measuring electric potential difference
-    between two points in an electric circuit. It is connected in parallel. It usually
-    has a high resistance so that it takes negligible current from the circuit.
-  x1_bound: {fileID: 886207226}
-  x2_bound: {fileID: 1286855389}
-  y1_bound: {fileID: 1501136703}
-  y2_bound: {fileID: 1825626619}
-  apparatus_description_panel: {fileID: 0}
-  delete: {fileID: 261530255}
-  apparatus_description_text_UI: {fileID: 0}
-  x1_x_pos: 0
-  x2_x_pos: 0
-  y1_y_pos: 0
-  y2_y_pos: 0
-  toDeleteAfterFingerLift: 0
 --- !u!61 &2029000781
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -34829,11 +34043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d064d87f46ddb342b17c657a33da6bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progress_bar: {fileID: 162373945}
-  MAXIMUM_X_STRECH: 0
-  current_connected_points: 0
-  NUMBER_OF_PAIR_CONNECTION_POINTS: 5
-  x_stretch: 0
 --- !u!58 &2088603049
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -35133,7 +34342,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -1.1669976}
+  m_Offset: {x: -0.58078766, y: -2.192835}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -35144,7 +34353,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 14.17, y: 4.8560057}
+  m_Size: {x: 9.668898, y: 9.434488}
   m_EdgeRadius: 0
 --- !u!114 &2133234687
 MonoBehaviour:
