@@ -3,15 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using DG.Tweening;
 
 public class LiquidControllerScript : MonoBehaviour
 {
     public Titration_Drop_Controller dropController;
+    public MolesController molesController;
     public ConicalFlaskVolume ConicalFlaskVolume;
+    // public ShakeEffectHandler ShakeEffectHandler;
     public Image content;
     [SerializeField]
     public Stat fill;
-    public GameObject liquidFlowParticle, stream; //flowStream;
+    public GameObject liquidFlowParticle, stream, phenopthalein, methyl; //flowStream;
     public ParticleSystem DropParticle;
 
     IEnumerator enumerator, flowController, fillBurette;
@@ -24,9 +27,14 @@ public class LiquidControllerScript : MonoBehaviour
     public Button resetButton;
     public Toggle beakerToggle;
 
+    // public float[] molarityVariation;
+
     private bool isTransformed;
     public float time = 0;
     public float duration = 8;
+
+    // public SpriteRenderer mat;
+    public SpriteRenderer indicatorDrop;
 
     private void Awake()
     {
@@ -48,151 +56,2321 @@ public class LiquidControllerScript : MonoBehaviour
     }
     void Update()
     {
+        //  mat.DOColor(new Color32(255, 255, 255, 255), '2');
+        //   mat.transform.DORotate(new Vector3(0, 0, 180), 20);
+        void shakeHandler()
+        {
+            if (ShakeEffectHandler.isShaking)
+            {
+                ColorlessTransition(7);
+            }
+            else
+            {
+                ColorlessTransition(14);
+            }
+        }
         if (content.fillAmount == 0f)
         {
             var localReftoParticle = DropParticle.main;
             localReftoParticle.playOnAwake = false;
             DropParticle.Stop();
 
+            // molesController.BMoles1.interactable = true;
+            // molesController.BMoles2.interactable = true;
         }
         else if (content.fillAmount > 0f)
         {
             var localReftoParticle = DropParticle.main;
             localReftoParticle.playOnAwake = true;
         }
+        if (indicatorVariation.value == 0)
+        {
+            phenopthalein.SetActive(true);
+            methyl.SetActive(false);
+            indicatorDrop.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (indicatorVariation.value == 1)
+        {
+            methyl.SetActive(true);
+            phenopthalein.SetActive(false);
+            indicatorDrop.GetComponent<SpriteRenderer>().color = new Color32(238, 218, 107, 255);
+        }
+
 
         var fillDifference = valueHolder - fill.CurrentVal;
         if (indicatorVariation.value == 0 && (sliderInstance.value == 1 || sliderInstance.value == 2)) // using phenophthlaine as indicator
         {
-            if (titrantVariation.value == 0 && analyteVariation.value == 0 && !isTransformed)
+            if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 16.5f || fillDifference == 16f)
+                if (molesController.burette_moles > 0)
                 {
-                    if (pipetteDrop)
+                    if (molesController.burette_moles == 1)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(1000));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                if (ShakeEffectHandler.isShaking)
+                                {
+                                    ColorlessTransition(7);
+                                }
+                                else
+                                {
+                                    ColorlessTransition(15);
+                                }
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
                     }
-                }
-                if (fill.currentVal == 0)
-                {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 1 && analyteVariation.value == 0 && !isTransformed)
-            {
-                if (fillDifference == 10.5f || fillDifference == 10f)
-                {
-                    if (pipetteDrop)
+                    else if (molesController.burette_moles == 2)
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(1000));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
                     }
 
                 }
-                if (fill.CurrentVal == 0)
+                else if (molesController.conicalFlaskMoles > 0)
                 {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 0 && analyteVariation.value == 1 && !isTransformed)
-            {
-                if (fillDifference == 12.5 || fillDifference == 12)
-                {
-                    if (pipetteDrop)
+                    if (molesController.conicalFlaskMoles == 1)
                     {
-
-                        StartCoroutine(titrationPhenothlaineTransition(1050));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 19.55f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 13f || fillDifference == 13.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 13f || fillDifference == 13.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
                     }
 
                 }
-                if (fill.CurrentVal == 0)
+                else
                 {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 1 && analyteVariation.value == 1 && !isTransformed)
-            {
-                if (fillDifference == 9 || fillDifference == 9.5)
-                {
-                    if (pipetteDrop)
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
                     {
-                        StartCoroutine(titrationPhenothlaineTransition(1200));
+                        if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 10f || fillDifference == 10.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 10f || fillDifference == 10.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 14f || fillDifference == 13.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 14f || fillDifference == 13.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
                     }
                 }
-                if (fill.CurrentVal == 0)
-                {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
 
+            }
+            if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                if (ShakeEffectHandler.isShaking)
+                                {
+                                    ColorlessTransition(7);
+                                }
+                                else
+                                {
+                                    ColorlessTransition(15);
+                                }
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 19.55f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 13f || fillDifference == 13.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            {
+                                ColorlessTransition(5);
+                            }
+                            else if ((fillDifference == 13f || fillDifference == 13.5f) && pipetteDrop)
+                            {
+                                shakeHandler();
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 10f || fillDifference == 10.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 10f || fillDifference == 10.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 14f || fillDifference == 13.5f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                        {
+                            ColorlessTransition(5);
+                        }
+                        else if ((fillDifference == 14f || fillDifference == 13.5f) && pipetteDrop)
+                        {
+                            shakeHandler();
+                        }
+                    }
+                }
+
+            }
+            //base to acid
+            if (analyteVariation.value == 1 && titrantVariation.value == 1 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 3 && titrantVariation.value == 1 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 0 && titrantVariation.value == 2 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                ColorlessTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 2 && titrantVariation.value == 2 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                ColorlessTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                ColorlessTransition(7); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(7); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 1 && titrantVariation.value == 3 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(5); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 3 && titrantVariation.value == 3 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                PhenopthleinToPinkTransition(8);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            ColorlessTransition(8); ;
+                        }
+                    }
+                }
+
+            }
         }
-        else if (indicatorVariation.value == 1 && (sliderInstance.value == 1 || sliderInstance.value == 2)) // using Methyl Orange indicator
+        else if (indicatorVariation.value == 1 && (sliderInstance.value == 1 || sliderInstance.value == 2))
         {
-            if (titrantVariation.value == 0 && analyteVariation.value == 0 && !isTransformed)
+            // acid to base
+            if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
             {
-                if (fillDifference == 11 || fillDifference == 11.5)
+                if (molesController.burette_moles > 0)
                 {
-                    if (pipetteDrop)
+                    if (molesController.burette_moles == 1)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1200));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
                     }
-                }
-                if (fill.currentVal == 0)
-                {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 1 && analyteVariation.value == 0 && !isTransformed)
-            {
-                if (fillDifference == 13 || fillDifference == 13.5)
-                {
-                    if (pipetteDrop)
+                    else if (molesController.burette_moles == 2)
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1100));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
                     }
 
                 }
-                if (fill.CurrentVal == 0)
+                else if (molesController.conicalFlaskMoles > 0)
                 {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 0 && analyteVariation.value == 1 && !isTransformed)
-            {
-                if (fillDifference == 10 || fillDifference == 10.5)
-                {
-                    if (pipetteDrop)
+                    if (molesController.conicalFlaskMoles == 1)
                     {
-
-                        StartCoroutine(titrationMethylOrangeTransition(1400));
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
                     }
 
                 }
-                if (fill.CurrentVal == 0)
+                else
                 {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
-                }
-            }
-            else if (titrantVariation.value == 1 && analyteVariation.value == 1 && !isTransformed)
-            {
-                if (fillDifference == 17 || fillDifference == 17.5)
-                {
-                    if (pipetteDrop)
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
                     {
-                        StartCoroutine(titrationMethylOrangeTransition(1000));
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5); ;
+                        }
                     }
                 }
-                if (fill.CurrentVal == 0)
+
+            }
+            if (analyteVariation.value == 2 && titrantVariation.value == 0 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
                 {
-                    var localReftoParticle = DropParticle.main;
-                    localReftoParticle.playOnAwake = false;
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
+                    }
+
                 }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(5); ;
+                        }
+                    }
+                }
+
+            }
+            //base to acid
+            if (analyteVariation.value == 1 && titrantVariation.value == 1 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 3 && titrantVariation.value == 1 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8); ;
+                        }
+                    }
+                }
+
+            }
+            //acid to base
+            if (analyteVariation.value == 0 && titrantVariation.value == 2 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 2 && titrantVariation.value == 2 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 17.5f || fillDifference == 18f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 2.5f || fillDifference == 3f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5f || fillDifference == 6.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 12.5f || fillDifference == 13f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 19.5f || fillDifference == 20f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(6);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyToRedTransition(7); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyToRedTransition(7); ;
+                        }
+                    }
+                }
+
+            }
+            //base to acid
+            if (analyteVariation.value == 1 && titrantVariation.value == 3 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(5); ;
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(5); ;
+                        }
+                    }
+                }
+
+            }
+            if (analyteVariation.value == 3 && titrantVariation.value == 3 && !isTransformed)
+            {
+                if (molesController.burette_moles > 0)
+                {
+                    if (molesController.burette_moles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 10.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 13.5f || fillDifference == 14f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 18.5f || fillDifference == 19f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.burette_moles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 3.5f || fillDifference == 4f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 5.5f || fillDifference == 6f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 8.5f || fillDifference == 9f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8); ;
+                            }
+                        }
+                    }
+
+                }
+                else if (molesController.conicalFlaskMoles > 0)
+                {
+                    if (molesController.conicalFlaskMoles == 1)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 9.5f || fillDifference == 10f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 14.5f || fillDifference == 15f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 20.5f || fillDifference == 21f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+                    else if (molesController.conicalFlaskMoles == 2)
+                    {
+                        if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                        {
+                            if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                        {
+                            if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                        else if (ConicalFlaskVolume.volumeMin == 20)
+                        {
+                            if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                            {
+                                MethyTYellowTransition(8);
+                            }
+                        }
+                    }
+
+                }
+                else
+                {
+
+                    if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
+                    {
+                        if ((fillDifference == 4.5f || fillDifference == 5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == Random.Range(15, 20))
+                    {
+                        if ((fillDifference == 7f || fillDifference == 7.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8);
+                        }
+                    }
+                    else if (ConicalFlaskVolume.volumeMin == 20)
+                    {
+                        if ((fillDifference == 9f || fillDifference == 9.5f) && pipetteDrop)
+                        {
+                            MethyTYellowTransition(8); ;
+                        }
+                    }
+                }
+
             }
         }
 
@@ -218,8 +2396,12 @@ public class LiquidControllerScript : MonoBehaviour
         titrantVariation.interactable = true;
         indicatorVariation.interactable = true;
         beakerToggle.interactable = true;
-        ConicalFlaskVolume.volumeSlider.value = 5;
+        ConicalFlaskVolume.volumeSlider.value = 10;
         ConicalFlaskVolume.volumeSlider.interactable = true;
+        molesController.burette_moles = molesController.conicalFlaskMoles = 0;
+        ShakeEffectHandler.isShaking = false;
+        // molesController.BMoles1.interactable = true;
+        // molesController.BMoles2.interactable = true;
     }
 
     // slider that controls the titration liquid flow 
@@ -285,34 +2467,55 @@ public class LiquidControllerScript : MonoBehaviour
     {
         if (titrantVariation.value == 0)
         {
-            content.GetComponent<Image>().color = new Color32(212, 203, 100, 85);
+            content.GetComponent<Image>().color = new Color32(176, 142, 142, 129);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
         }
         if (titrantVariation.value == 1)
         {
-            content.GetComponent<Image>().color = new Color32(234, 234, 234, 190);
+            content.GetComponent<Image>().color = new Color32(94, 94, 94, 94);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
-
+        }
+        if (titrantVariation.value == 2)
+        {
+            content.GetComponent<Image>().color = new Color32(255, 255, 255, 94);
+            fill.CurrentVal = 0;
+            sliderInstance.value = 0;
+        }
+        if (titrantVariation.value == 3)
+        {
+            content.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            fill.CurrentVal = 0;
+            sliderInstance.value = 0;
         }
     }
 
     // analyte Variation DropDown
     public void handleAnalyteVariation()
     {
+
         if (analyteVariation.value == 0)
         {
             // analyteNotation.text = "15ml NaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(234, 234, 234, 190);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(94, 94, 94, 94);
 
 
         }
         if (analyteVariation.value == 1)
         {
             // analyteNotation.text = "15ml CaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(234, 234, 234, 205);
-
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(176, 142, 142, 129);
+        }
+        if (analyteVariation.value == 2)
+        {
+            // analyteNotation.text = "15ml CaOH";
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+        }
+        if (analyteVariation.value == 3)
+        {
+            // analyteNotation.text = "15ml CaOH";
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(255, 255, 255, 94);
         }
     }
 
@@ -345,7 +2548,7 @@ public class LiquidControllerScript : MonoBehaviour
                 sliderInstance.enabled = false;
                 if (titrantVariation.value == 0)
                 {
-                    stream.GetComponent<Image>().color = new Color32(195, 202, 106, 130);
+                    stream.GetComponent<Image>().color = new Color32(234, 234, 234, 90);
                 }
                 else
                 {
@@ -413,43 +2616,27 @@ public class LiquidControllerScript : MonoBehaviour
         stream.SetActive(false);
         valueHolder = fill.CurrentVal;
     }
-
-
-    IEnumerator titrationPhenothlaineTransition(float duration)
-    {
-        Color startColor = dropController.sodium_hydroxide.GetComponent<Image>().color;
-        Color endColor = new Color32(234, 234, 234, 109);
-
-        while (time < duration)
-        {
-            dropController.sodium_hydroxide.GetComponent<Image>().color = Color.Lerp(startColor, endColor, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        dropController.sodium_hydroxide.GetComponent<Image>().color = endColor;
-    }
-
-    IEnumerator titrationMethylOrangeTransition(float duration)
-    {
-        Color startColor = dropController.sodium_hydroxide.GetComponent<Image>().color;
-        Color endColor = new Color32(226, 16, 109, 255);
-
-        while (time < duration)
-        {
-            dropController.sodium_hydroxide.GetComponent<Image>().color = Color.Lerp(startColor, endColor, time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        dropController.sodium_hydroxide.GetComponent<Image>().color = endColor;
-    }
-
     public void resetTime()
     {
         time = 0;
         StopAllCoroutines();
     }
 
-
-
+    public void ColorlessTransition(float time_taken)
+    {
+        dropController.sodium_hydroxide.DOColor(new Color32(234, 234, 234, 109), time_taken);
+    }
+    public void PhenopthleinToPinkTransition(float time_taken)
+    {
+        dropController.sodium_hydroxide.DOColor(new Color32(251, 0, 253, 243), time_taken);
+    }
+    public void MethyToRedTransition(float time_taken)
+    {
+        dropController.sodium_hydroxide.DOColor(new Color32(226, 16, 109, 255), time_taken);
+    }
+    public void MethyTYellowTransition(float time_taken)
+    {
+        dropController.sodium_hydroxide.DOColor(new Color32(237, 217, 40, 255), time_taken);
+    }
 
 }

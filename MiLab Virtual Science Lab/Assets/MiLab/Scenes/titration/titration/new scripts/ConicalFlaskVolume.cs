@@ -9,7 +9,7 @@ public class ConicalFlaskVolume : MonoBehaviour
     public LiquidControllerScript liquidControllerScript;
     public Image volume;
     public float volumeMax = 100f;
-    public float volumeMin = 5f;
+    public float volumeMin = 10f;
     public Slider volumeSlider;
     public TMP_Text volumeNotation;
 
@@ -24,19 +24,19 @@ public class ConicalFlaskVolume : MonoBehaviour
     {
         volumeMin = Mathf.RoundToInt(volumeSlider.value);
         volume.fillAmount = volumeMin / volumeMax;
+
         volumeNotation.text = volumeMin.ToString() + " ml";
 
         if (liquidControllerScript.sliderInstance.value == 2 && liquidControllerScript.fill.CurrentVal > 0)
         {
-            volumeSlider.value += 0.0086f;
+            //  volumeSlider.value += 0.0086f;
             volumeSlider.interactable = false;
         }
         else if (liquidControllerScript.sliderInstance.value == 1 && liquidControllerScript.fill.CurrentVal > 0)
         {
-            volumeSlider.value += 0.0022f;
+            //   volumeSlider.value += 0.0022f;
             volumeSlider.interactable = false;
         }
-
 
     }
 }
