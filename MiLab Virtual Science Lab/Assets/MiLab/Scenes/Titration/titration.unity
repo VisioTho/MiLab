@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -13939,8 +13939,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.5856323, y: 0.3163452}
-  m_SizeDelta: {x: 3.9693, y: 2.3113}
+  m_AnchoredPosition: {x: -0.529541, y: 0.2878418}
+  m_SizeDelta: {x: 3.678, y: 2.047}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &425790066
 MonoBehaviour:
@@ -20668,8 +20668,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -821.3024, y: -2.3406067}
-  m_SizeDelta: {x: 2.6703, y: 1.6421}
+  m_AnchoredPosition: {x: -821.33, y: -2.4396973}
+  m_SizeDelta: {x: 2.3917, y: 1.4714}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &626341480
 MonoBehaviour:
@@ -21262,7 +21262,7 @@ MonoBehaviour:
   initialParents:
   - {fileID: 427346056}
   simulationScreen: {fileID: 427346056}
-  TutorialScreen: {fileID: 0}
+  fader: {fileID: 1378205379}
 --- !u!4 &684308082
 Transform:
   m_ObjectHideFlags: 0
@@ -23338,7 +23338,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.83496094, y: 1.126961}
+  m_AnchoredPosition: {x: 0.86260986, y: 1.1406786}
   m_SizeDelta: {x: 0.2675, y: 0.2072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &813856760
@@ -36694,8 +36694,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -59.6, y: -0.50002}
-  m_SizeDelta: {x: 35.8294, y: 47}
+  m_AnchoredPosition: {x: -57.018, y: -0.49996}
+  m_SizeDelta: {x: 46.004, y: 47}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1458902323
 MonoBehaviour:
@@ -48035,7 +48035,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -180}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: -0.87506104, y: 1.1139605}
+  m_AnchoredPosition: {x: -0.8474121, y: 1.1276782}
   m_SizeDelta: {x: 0.2675, y: 0.2072}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1588790526
@@ -67892,6 +67892,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!222 &4433909451609551376
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68456,6 +68498,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!212 &4433909451853842999
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -68664,6 +68760,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!1 &4433909451889677338
 GameObject:
   m_ObjectHideFlags: 0
@@ -68871,6 +69009,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!1 &4433909451950875863
 GameObject:
   m_ObjectHideFlags: 0
@@ -68928,6 +69108,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!1 &4433909451968747699
 GameObject:
   m_ObjectHideFlags: 0
@@ -70156,6 +70378,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909452319561387
 Transform:
   m_ObjectHideFlags: 0
@@ -70526,6 +70796,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!61 &4433909452380986704
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -70749,6 +71061,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!212 &4433909452594237772
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -71288,6 +71642,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909452795960131
 Transform:
   m_ObjectHideFlags: 0
@@ -71404,6 +71806,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909452826456796
 Transform:
   m_ObjectHideFlags: 0
@@ -72084,6 +72528,54 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909453233813090
 Transform:
   m_ObjectHideFlags: 0
@@ -72537,6 +73029,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909453471965372
 Transform:
   m_ObjectHideFlags: 0
@@ -72615,6 +73149,60 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!4 &4433909453478386882
 Transform:
   m_ObjectHideFlags: 0
@@ -73250,6 +73838,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f855174d553e8004e9a39afefbf3a6c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  in_canvas_apparatus:
+  - {fileID: 4433909451889677338}
+  - {fileID: 4433909452826456784}
+  - {fileID: 4433909453656689413}
+  - {fileID: 4433909451968747699}
+  - {fileID: 4433909452594237760}
+  - {fileID: 4433909452380986701}
+  - {fileID: 4433909451950875863}
+  on_legend_apparatus:
+  - {fileID: 4433909453478386887}
+  - {fileID: 4433909452795960135}
+  - {fileID: 4433909452319561391}
+  - {fileID: 4433909453233813094}
+  - {fileID: 4433909453471965360}
+  - {fileID: 4433909451593885944}
+  - {fileID: 4433909451853843019}
+  apparatus_descriptions_texts:
+  - Burette, also spelled buret, laboratory apparatus used in quantitative chemical
+    analysis to measure the volume of a liquid or a gas.
+  - a beaker is generally a cylindrical container with a flat bottom.
+  - "A retort stand, also called a clamp stand, a ring stand, or a support stand,
+    is a piece of scientific equipment intended to support other pieces of equipment
+    and glassware \u2014 for instance, burettes, test tubes and flasks"
+  - afgggh
+  - An eye dropper, also known as a Pasteur pipette, or dropper, is a device used
+    to transfer small quantities of liquids.
+  - A funnel is a tube or pipe that is wide at the top and narrow at the bottom,
+    used for guiding liquid or powder into a small opening.
+  - A white tile can be placed underneath the conical flask to aid with the ease
+    of spotting the end point colour change.
+  x1_bound: {fileID: 4433909453605758038}
+  x2_bound: {fileID: 4433909452103920576}
+  y1_bound: {fileID: 4433909453117858171}
+  y2_bound: {fileID: 4433909452262349270}
+  apparatus_description_panel: {fileID: 4433909451545137404}
+  delete: {fileID: 4433909452361622115}
+  apparatus_description_text_UI: {fileID: 4433909451732677715}
+  x1_x_pos: 0
+  x2_x_pos: 0
+  y1_y_pos: 0
+  y2_y_pos: 0
+  toDeleteAfterFingerLift: 0
 --- !u!61 &4433909453656689416
 BoxCollider2D:
   m_ObjectHideFlags: 0

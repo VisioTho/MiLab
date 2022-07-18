@@ -245,7 +245,7 @@ public class MassHanger : MonoBehaviour
     bool hasBothMassesAttached = false;
     private void Update()
     {
-        Debug.Log(ruler.transform.transform.eulerAngles.z + "is the rot");
+        Debug.Log("posoffset" +posOffsetY);
         MoveMassOutOfBounds();
 
        
@@ -255,9 +255,9 @@ public class MassHanger : MonoBehaviour
     {
         if (gameObject.GetComponent<HingeJoint2D>() != null)
         {
-            if (posOffsetY > 0.4f)
+            if (posOffsetY > 0.01f)
             {
-                RegisterMassDetachment();
+                DetachMass();
             }
 
             if (posOffsetX < 1.0f && posOffsetX > -1.0f)
@@ -268,59 +268,72 @@ public class MassHanger : MonoBehaviour
         }
     }
 
-    private void RegisterMassDetachment()
+    private void DetachMass()
     {
         ReleaseMass(gameObject.GetComponent<HingeJoint2D>());
 
-        if (gameObject == MassManager.massHungOnLeft)
-        {   
-            Debug.Log("released mass is on left side");
-            MassManager.lMassIsReleased = true;
-            HandleMassDetachment();
-            MassManager.massHungOnLeft = null;
-            MassManager.ToggleHangPoints(MassManager.lConnectionPoints, true);
+        RegisterMassDetachment();
 
-        }
-        else if (gameObject == MassManager.massHungOnRight)
+        //remove mass from ruler and return ruler rotation to default
+        void ReleaseMass(HingeJoint2D hingeJoint2D)
         {
-            Debug.Log("released mass is on right side");
-            MassManager.RMassIsReleased = true;
-            HandleMassDetachment();
-            MassManager.massHungOnRight = null;
-            MassManager.ToggleHangPoints(MassManager.rConnectionPoints, true);
+            Destroy(hingeJoint2D);
+
+            if (MassManager.lMassIsReleased && MassManager.RMassIsReleased)
+            {
+                ruler.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+            }
+        }
+
+        //change mass detachment variables based on where the detached mass was 
+        void RegisterMassDetachment()
+        {
+            if (gameObject == MassManager.massHungOnLeft)
+            {
+                MassManager.lMassIsReleased = true;
+                HandleMassDetachment();
+                MassManager.massHungOnLeft = null;
+                MassManager.ToggleHangPoints(MassManager.lConnectionPoints, true);
+
+            }
+            else if (gameObject == MassManager.massHungOnRight)
+            {
+                MassManager.RMassIsReleased = true;
+                HandleMassDetachment();
+                MassManager.massHungOnRight = null;
+                MassManager.ToggleHangPoints(MassManager.rConnectionPoints, true);
+            }
         }
     }
 
-    
+
     private void HandleMassDetachment()
     {
-    
-        if (!(MassManager.lMassIsReleased && MassManager.RMassIsReleased))
+        RotateRulerAfterMassDetachment();
+
+        //subtract current rotation value of the detached mass from the current rotation of the ruler
+        void RotateRulerAfterMassDetachment()
         {
-            if (MassManager.lMassIsReleased)
+            if (!(MassManager.lMassIsReleased && MassManager.RMassIsReleased))
             {
-                //var targetRotation = new Vector3(0.0f, 0.0f, ruler.transform.eulerAngles.z - MassManager.rotationByLeftMass);
-                //ruler.transform.LeanRotate(targetRotation, .5f);
-                ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
+                if (MassManager.lMassIsReleased)
+                {
+                    ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
+                }
+
+                if (MassManager.RMassIsReleased)
+                {
+                    ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+                }
 
             }
-
-            if (MassManager.RMassIsReleased)
+            else if (MassManager.lMassIsReleased && MassManager.RMassIsReleased)
             {
-                //var targetRotation = new Vector3(0.0f, 0.0f, ruler.transform.eulerAngles.z + MassManager.rotationByRightMass);
-                //ruler.transform.LeanRotate(targetRotation, .5f);
-                ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+                Vector3 target = new Vector3(0, 0, 0.0f);
+                MassManager.rotationByLeftMass = 0f;
+                MassManager.rotationByRightMass = 0f;
+                ruler.transform.LeanRotate(target, .5f);
             }
-               
-
-        } 
-        else if(MassManager.lMassIsReleased && MassManager.RMassIsReleased)
-        {
-            // Rotate the cube by converting the angles into a quaternion.
-            Vector3 target = new Vector3(0, 0, 0.0f);
-            MassManager.rotationByLeftMass = 0f;
-            MassManager.rotationByRightMass = 0f;
-            ruler.transform.LeanRotate(target, .5f);
         }
     }
 
@@ -371,24 +384,10 @@ public class MassHanger : MonoBehaviour
             float convertedAnchorPointx = (transform.position.x / 4.88f) * 17.02984f;
             posOffsetY = posOnMouseDown.y - transform.position.y;
             posOffsetX = posOnMouseDown.x - transform.position.x; 
-            //Debug.Log("Offset y: " + posOffsetY);
-   
-            //RegisterMassDetachment();
-            /*
-            HingeJoint2D hingeJoint2D = gameObject.GetComponent<HingeJoint2D>();
-            Debug.Log("position: " + transform.position.x);
-            //convert transform.position into connected ancor point coordinates on the ruler
             
-            if(transform.position == hangPointL[0].transform.position)
-            {
-                hingeJoint2D.connectedAnchor = new Vector2(-19.3f, -2.7f);
-            }
-            //hingeJoint2D.connectedAnchor = new Vector2(convertedAnchorPointx, -3.326633f);
-            ruler.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;*/
-
             if (convertedAnchorPointx < -22.0f || convertedAnchorPointx > 22.0f)
             {
-                RegisterMassDetachment();
+                DetachMass();
             }
         }
         else if(gameObject.GetComponent<HingeJoint2D>() == null)
@@ -398,15 +397,7 @@ public class MassHanger : MonoBehaviour
         
     }
 
-    private void ReleaseMass(HingeJoint2D hingeJoint2D)
-    {
-        Destroy(hingeJoint2D);
-
-        if (MassManager.lMassIsReleased && MassManager.RMassIsReleased)
-        {
-            ruler.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-        }
-    }
+   
 
    
 }

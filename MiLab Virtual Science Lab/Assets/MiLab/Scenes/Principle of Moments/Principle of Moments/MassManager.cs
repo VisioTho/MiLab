@@ -8,6 +8,8 @@ public static class MassManager
     public static bool RMassIsReleased = true;
     public static Collider2D[] lConnectionPoints, rConnectionPoints;
 
+    public static float lPosOnAttachment, rPosOnAttachment;
+
     public static GameObject massHungOnLeft;
     public static GameObject massHungOnRight;
     public static GameObject ruler;

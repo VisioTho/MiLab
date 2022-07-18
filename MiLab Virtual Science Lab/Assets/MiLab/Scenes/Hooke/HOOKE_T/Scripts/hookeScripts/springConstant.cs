@@ -54,11 +54,11 @@ public class springConstant : MonoBehaviour
     {
         if (drag_n_drop.current_hanged_mass != null)
         {
-           gameObject.GetComponent<Slider>().enabled = false;
+           gameObject.GetComponent<Slider>().interactable = false;
         }
         else
         {
-            gameObject.GetComponent<Slider>().enabled = true;
+            gameObject.GetComponent<Slider>().interactable = true;
         }
     }
 }
