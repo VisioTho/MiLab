@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 
 
-public class appar_drag : MonoBehaviour
+public class apparatus_drag : MonoBehaviour
 {
     public static bool isDragged = false;
     private Vector3 mouseDragStartPosition, spriteDragStartPosition, position_before_drag, current_drop_position;

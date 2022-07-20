@@ -10117,7 +10117,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: AdvanceToNextStep
         m_Mode: 1
@@ -10129,7 +10129,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: FinishTutorial
         m_Mode: 1
@@ -16352,7 +16352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &617365514
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18737,7 +18737,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: AdvanceToNextStep
         m_Mode: 1
@@ -32884,7 +32884,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: AdvanceToNextStep
         m_Mode: 1
@@ -32896,7 +32896,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: 
         m_Mode: 1
@@ -47672,7 +47672,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: AdvanceToNextStep
         m_Mode: 1
@@ -49127,7 +49127,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1789011253}
-  - component: {fileID: 1789011252}
   m_Layer: 0
   m_Name: tutorial_controller
   m_TagString: Untagged
@@ -49135,32 +49134,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1789011252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1789011251}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 636b2b93d780b2c4fbcc129d68e78d8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tutorialElements:
-  - {fileID: 324193619}
-  - {fileID: 544780848}
-  - {fileID: 1140642785}
-  - {fileID: 1076395358}
-  - {fileID: 1076395358}
-  initialParents:
-  - {fileID: 1797411801}
-  - {fileID: 1797411801}
-  - {fileID: 1797411801}
-  - {fileID: 1797411801}
-  - {fileID: 1797411801}
-  simulationScreen: {fileID: 1797411801}
-  fader: {fileID: 617365513}
 --- !u!4 &1789011253
 Transform:
   m_ObjectHideFlags: 0
@@ -52370,7 +52343,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
-      - m_Target: {fileID: 1789011252}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: TutorialController, Assembly-CSharp
         m_MethodName: AdvanceToNextStep
         m_Mode: 1
