@@ -8,7 +8,7 @@ public class MolesController : MonoBehaviour
 {
     public LiquidControllerScript liquidControllerScript;
     // Burette dropdowns
-    public int burette_moles = 0;
+    public int burette_moles = 1;
     private int maxMoles = 2;
     private int minMoles = 0;
     public TMP_Text molesValueNotation;
@@ -48,7 +48,7 @@ public class MolesController : MonoBehaviour
         buretteMolesCheck();
         conicalFlaskMolesCheck();
     }
-    void buretteMolesCheck()
+    public void buretteMolesCheck()
     {
         if (burette_moles == 0)
         {
