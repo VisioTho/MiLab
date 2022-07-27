@@ -39,8 +39,8 @@ public class MassHanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //Debug.Log("Touched something...");
-        HandleMassAttachment(col);
+        //if(MassManager.mouseUp)
+            HandleMassAttachment(col);
     }
 
     private void HandleMassAttachment(Collider2D collision)
@@ -241,14 +241,12 @@ public class MassHanger : MonoBehaviour
    
     public GameObject[] hangPointR, hangPointL;
 
-    Quaternion rulerRotation;
-    bool hasBothMassesAttached = false;
+    
     private void Update()
     {
-        Debug.Log("posoffset" +posOffsetY);
+      
         MoveMassOutOfBounds();
 
-       
     }
 
     private void MoveMassOutOfBounds()
@@ -342,7 +340,8 @@ public class MassHanger : MonoBehaviour
     Vector2 posOnMouseDown;
     private void OnMouseDown()
     {
-        foreach(GameObject a in hangPointL)
+        MassManager.mouseUp = false; 
+        foreach (GameObject a in hangPointL)
         {
             a.SetActive(true);
         }
@@ -365,6 +364,7 @@ public class MassHanger : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        MassManager.mouseUp = true;
         if (gameObject.GetComponent<HingeJoint2D>() == null)
         {
             transform.position = initialPos;

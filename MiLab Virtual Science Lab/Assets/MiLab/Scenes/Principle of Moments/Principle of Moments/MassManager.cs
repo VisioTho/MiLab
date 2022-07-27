@@ -6,6 +6,7 @@ public static class MassManager
 {
     public static bool lMassIsReleased = true;
     public static bool RMassIsReleased = true;
+    public static bool mouseUp;
     public static Collider2D[] lConnectionPoints, rConnectionPoints;
 
     public static float lPosOnAttachment, rPosOnAttachment;
