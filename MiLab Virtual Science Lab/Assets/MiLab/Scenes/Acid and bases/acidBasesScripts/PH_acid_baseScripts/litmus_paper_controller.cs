@@ -6,7 +6,7 @@ using DG.Tweening;
 
 public class litmus_paper_controller : MonoBehaviour
 {
-    public bool isDipped = false;
+    public static bool isDipped = false;
     public float collider_onset_stretch_pointB_Y;
     public GameObject litmus_stretch_pointA, litmus_stretch_pointB, litmus_paper_b;
     public float time = 0;
@@ -80,7 +80,15 @@ public class litmus_paper_controller : MonoBehaviour
                 if (lastDippedInto != gOtag)
                 {
                     litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
-                    StartCoroutine(ToRedLitmusColorChangeMode());
+                    //StartCoroutine(ToRedLitmusColorChangeMode());
+                    if (gOtag == "hydrochloric_acid")
+                    {
+                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(255, 0, 0, 255)));
+                    }
+                    if (gOtag == "ethanoic_acid")
+                    {
+                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(247, 82, 36, 255)));
+                    }
                 }
 
                 if (currentLitmusColor == "red")
@@ -101,9 +109,17 @@ public class litmus_paper_controller : MonoBehaviour
             {
                 if (lastDippedInto != gOtag)
                 {
-                    // Debug.Log("Base :: red->blue");
+                    //Debug.Log("Base :: red->blue");
                     litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
-                    StartCoroutine(ToBlueLitmusColorChangeMode());
+                    //StartCoroutine(ToBlueLitmusColorChangeMode());
+                    if (gOtag == "ammonium_solution")
+                    {
+                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(8, 135, 199, 255)));
+                    }
+                    if (gOtag == "sodium_hydroxide")
+                    {
+                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(59, 18, 142, 255)));
+                    }
                 }
                 if (currentLitmusColor == "blue")
                 {
@@ -160,6 +176,22 @@ public class litmus_paper_controller : MonoBehaviour
         resetTime();
         litmus_paper_b.GetComponent<SpriteRenderer>().color = endColor;
         //resetTag(initial_liquid_tag);
+    }
+
+    IEnumerator changeLitmusColor(GameObject spriteToChange, Color toColor)
+    {
+        Color startColor = spriteToChange.GetComponent<SpriteRenderer>().color;
+        Color endColor = toColor;
+
+        while (time < duration)
+        {
+            spriteToChange.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, time / duration);
+            time += Time.deltaTime;
+
+            yield return null;
+        }
+        resetTime();
+        spriteToChange.GetComponent<SpriteRenderer>().color = endColor;
     }
 
     public void resetTime()
