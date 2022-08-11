@@ -23,7 +23,9 @@ public class MassHanger : MonoBehaviour
     private float anchorPointX;
 
     public float leftMassRotationValue, rightMassRotationValue;
-    
+
+    private bool mouseDown, mouseUp;
+
 
     private void Start()
     {
@@ -39,8 +41,7 @@ public class MassHanger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D col)
     {
-        //if(MassManager.mouseUp)
-            HandleMassAttachment(col);
+        HandleMassAttachment(col);
     }
 
     private void HandleMassAttachment(Collider2D collision)
@@ -50,7 +51,7 @@ public class MassHanger : MonoBehaviour
             AttachRightMass(2.16f);
             RotateRuler(-0.5f - massRotationValue);
             SetRightMassRotationValue(0.5f);
-
+            SetConnectionPoints("right");
         }
 
         else if (collision.gameObject.name == "ConnPointR2")
@@ -59,7 +60,7 @@ public class MassHanger : MonoBehaviour
             AttachRightMass(4.26f);
             RotateRuler(-1.0f - massRotationValue);
             SetRightMassRotationValue(1.0f);
-
+            SetConnectionPoints("right");
         }
         
         else if (collision.gameObject.name == "ConnPointR3")
@@ -67,49 +68,56 @@ public class MassHanger : MonoBehaviour
             AttachRightMass(6.45f);
             RotateRuler(-1.5f - massRotationValue);
             SetRightMassRotationValue(1.5f);
-
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR4")
         {
             AttachRightMass(8.58f);
             RotateRuler(-2.0f - massRotationValue);
             SetRightMassRotationValue(2.0f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR5")
         {
             AttachRightMass(10.7f);
             RotateRuler(-2.5f - massRotationValue);
             SetRightMassRotationValue(2.5f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR6")
         {
             AttachRightMass(12.80f);
             RotateRuler(-3.0f - massRotationValue);
             SetRightMassRotationValue(3.0f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR7")
         {
             AttachRightMass(15.02f);
             RotateRuler(-3.5f - massRotationValue);
             SetRightMassRotationValue(3.5f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR8")
         {
             AttachRightMass(17.08f);
             RotateRuler(-4.0f - massRotationValue);
             SetRightMassRotationValue(4.0f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR9")
         {
             AttachRightMass(19.33f);
             RotateRuler(-4.5f - massRotationValue);
             SetRightMassRotationValue(4.5f);
+            SetConnectionPoints("right");
         }
         else if (collision.gameObject.name == "ConnPointR10")
         {
             AttachRightMass(21.46f);
             RotateRuler(-5.0f - massRotationValue);
             SetRightMassRotationValue(5.0f);
+            SetConnectionPoints("right");
         }
 
         else if (collision.gameObject.name == "ConnPoint9")
@@ -117,58 +125,63 @@ public class MassHanger : MonoBehaviour
             AttachLeftMass(-2.16f);
             RotateRuler(0.5f + massRotationValue);
             SetLeftMassRotation(0.5f);
-
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint8")
         {
             AttachLeftMass(-4.29f);
             RotateRuler(1.0f + massRotationValue);
             SetLeftMassRotation(1.0f);
-
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint7")
         {
             AttachLeftMass(-6.46f);
             RotateRuler(1.5f + massRotationValue);
             SetLeftMassRotation(1.5f);
-
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint6")
         {
             AttachLeftMass(-8.58f);
             RotateRuler(2.0f + massRotationValue);
             SetLeftMassRotation(2.0f);
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint5")
         {
             AttachLeftMass(-10.75f);
             RotateRuler(2.5f + massRotationValue);
             SetLeftMassRotation(2.5f);
-
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint4")
         {
             AttachLeftMass(-12.87f);
             RotateRuler(3.0f + massRotationValue);
             SetLeftMassRotation(3.0f);
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint3")
         {
             AttachLeftMass(-15.05f);
             RotateRuler(3.5f + massRotationValue);
             SetLeftMassRotation(3.5f);
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint2")
         {
             AttachLeftMass(-17.08f);
             RotateRuler(4.0f + massRotationValue);
             SetLeftMassRotation(4.0f);
+            SetConnectionPoints("left");
         }
         else if (collision.gameObject.name == "ConnPoint1")
         {
             AttachLeftMass(-19.3f);
             RotateRuler(4.5f + massRotationValue);
             SetLeftMassRotation(4.5f);
+            SetConnectionPoints("left");
         }
        
         else
@@ -185,10 +198,19 @@ public class MassHanger : MonoBehaviour
         {
             MassManager.rotationByLeftMass = massRotationValue + n;
         }
+
+        //location of masses on the ruler. e.g. at 40cm mark
+        void SetConnectionPoints(string side)
+        {
+            if (side == "right")
+                MassManager.hangPointR = collision.gameObject.name;
+
+            else if (side == "left")
+                MassManager.hangPointL = collision.gameObject.name;
+
+        }
     }
 
-    private void RotateRuler(float d) => ruler.transform.LeanRotateZ(ruler.transform.eulerAngles.z + d, .5f);   
-    
 
     private void AttachLeftMass(float f)
     {
@@ -237,14 +259,31 @@ public class MassHanger : MonoBehaviour
 
     }
 
-  
+    private void RotateRuler(float d)
+    {
+        ruler.transform.LeanRotateZ(ruler.transform.eulerAngles.z + d, .5f);
+    }
    
     public GameObject[] hangPointR, hangPointL;
 
     
     private void Update()
     {
-      
+        Debug.Log("Right side is" +MassManager.hangPointR +" and left side is:" +MassManager.hangPointL +"gameobjects: left " +MassManager.massHungOnLeft +" right " +MassManager.massHungOnRight);
+
+        if (MassManager.hangPointL == "ConnPoint2" && MassManager.massHungOnLeft.name == "Mass100g")
+        {
+            
+            if (MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass200g")
+            {  
+                Debug.Log("zikuyenera kutheka" +"mass rotation value" + MassManager.massHungOnLeft.GetComponent<MassHanger>().massRotationValue);
+            }
+        }
+        else
+        {
+           
+        }
+
         MoveMassOutOfBounds();
 
     }
@@ -317,11 +356,14 @@ public class MassHanger : MonoBehaviour
                 if (MassManager.lMassIsReleased)
                 {
                     ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
+                    MassManager.hangPointL = "";
+                    
                 }
 
                 if (MassManager.RMassIsReleased)
                 {
                     ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+                    MassManager.hangPointR = "";
                 }
 
             }
@@ -340,6 +382,7 @@ public class MassHanger : MonoBehaviour
     Vector2 posOnMouseDown;
     private void OnMouseDown()
     {
+        mouseDown = true;
         MassManager.mouseUp = false; 
         foreach (GameObject a in hangPointL)
         {
@@ -364,6 +407,7 @@ public class MassHanger : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        mouseDown = false;
         MassManager.mouseUp = true;
         if (gameObject.GetComponent<HingeJoint2D>() == null)
         {

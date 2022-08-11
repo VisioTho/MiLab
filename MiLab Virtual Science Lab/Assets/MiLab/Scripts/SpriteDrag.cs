@@ -12,9 +12,11 @@ public class SpriteDrag : MonoBehaviour
 
     private bool hasCollided= false;
 
+    public bool canDrag;
   
     private void Start()
     {
+        canDrag = true;
         initialPos = transform.position;
         hasCollided = false;
         distanceFromCamera = Vector3.Distance(gameObject.transform.position, mainCamera.transform.position);
@@ -29,34 +31,31 @@ public class SpriteDrag : MonoBehaviour
     }
 
     void OnMouseDrag()
-    {
-
-        /*Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
-        Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
-        transform.position = curPosition;
-        transform.gameObject.GetComponent<Rigidbody2D>().simulated = false;*/
-
+    {   
+        if(canDrag)
+        {
+            Vector3 pos = Input.mousePosition;
+            pos.z = distanceFromCamera;
+            pos = mainCamera.ScreenToWorldPoint(pos);
+            gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
+        }
         
-        
-        Vector3 pos = Input.mousePosition;
-        pos.z = distanceFromCamera;
-        pos = mainCamera.ScreenToWorldPoint(pos);
-        gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
 
-        //if (transform.position.y < initialPos.y)
-           // transform.position = new Vector3(transform.position.x, initialPos.y);
     }
 
     private void OnMouseUp()
     {
-        transform.GetChild(0).gameObject.SetActive(false);
+        if(transform.GetChild(0).gameObject != null)
+            transform.GetChild(0).gameObject.SetActive(false);
+
         transform.gameObject.GetComponent<Rigidbody2D>().simulated = true;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag != "Collidable")
-            transform.position = initialPos;
+            transform.LeanMoveLocal(initialPos, 0.5f);
+
         if (collision.gameObject.name == "BaseCollider")
         {
             this.hasCollided = true;
