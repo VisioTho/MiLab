@@ -3,29 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using DG.Tweening;
 
 public class AmmeterReading : MonoBehaviour
 {
     public SwitchController switchControl;
     public MaterialLengthController materialLengthControl;
     public VoltmeterController voltmeterController;
-    public Quaternion currentRotation;
-    public Quaternion targetRotation;
-    public GameObject rotationParent;
-    public static float rot_duration;
-    public static float z_rotation_angle;
+    public Image rotationParent;
+
+
+    private float duration = 4;
 
     public TMP_Text ammeterReading;
     void Start()
     {
-        rot_duration = 1f;
-        z_rotation_angle = 0f;
+
     }
 
     private void OnMouseDown()
     {
-        StartCoroutine(needleRotation(targetRotation));
+        //  StartCoroutine(needleRotation(targetRotation));
     }
 
     // Update is called once per frame
@@ -38,182 +36,165 @@ public class AmmeterReading : MonoBehaviour
             {
                 if (voltmeterController.rheostartSlider.value == 0)
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), duration);
                     ammeterReading.text = "0 A";
                 }
                 if (voltmeterController.rheostartSlider.value == 1)
                 {
-                    z_rotation_angle = 145.598f;
+                    transform.DORotate(new Vector3(0, 0, 145.598f), duration);
                     ammeterReading.text = "0.3 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 2)
                 {
-                    z_rotation_angle = 128.346f;
+                    transform.DORotate(new Vector3(0, 0, 128.346f), duration);
                     ammeterReading.text = "0.5 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 3)
                 {
-                    z_rotation_angle = 111.8f;
+                    transform.DORotate(new Vector3(0, 0, 111.8f), duration);
                     ammeterReading.text = "0.7 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 4)
                 {
-                    z_rotation_angle = 95.299f;
+                    transform.DORotate(new Vector3(0, 0, 95.299f), duration);
                     ammeterReading.text = "0.9 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 5)
                 {
-                    z_rotation_angle = 79.367f;
+                    transform.DORotate(new Vector3(0, 0, 79.367f), duration);
                     ammeterReading.text = "1.1 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 6)
                 {
-                    z_rotation_angle = 63.539f;
+                    transform.DORotate(new Vector3(0, 0, 63.539f), duration);
                     ammeterReading.text = "1.3 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 7)
                 {
-                    z_rotation_angle = 48.438f;
+                    transform.DORotate(new Vector3(0, 0, 48.438f), duration);
                     ammeterReading.text = "1.5 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 8)
                 {
-                    z_rotation_angle = 32.133f;
+                    transform.DORotate(new Vector3(0, 0, 32.133f), duration);
                     ammeterReading.text = "1.7 A";
                 }
                 else
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), 5);
                 }
             }
             else if (materialLengthControl.wireAdjustLength.value == 1)
             {
                 if (voltmeterController.rheostartSlider.value == 0)
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), duration);
                     ammeterReading.text = "0 A";
                 }
                 if (voltmeterController.rheostartSlider.value == 1)
                 {
-                    z_rotation_angle = 154.849f;
+                    transform.DORotate(new Vector3(0, 0, 154.849f), duration);
                     ammeterReading.text = "0.2 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 2)
                 {
-                    z_rotation_angle = 136.177f;
+                    transform.DORotate(new Vector3(0, 0, 136.177f), duration);
                     ammeterReading.text = "0.4 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 3)
                 {
-                    z_rotation_angle = 120.495f;
+                    transform.DORotate(new Vector3(0, 0, 120.495f), duration);
                     ammeterReading.text = "0.6 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 4)
                 {
-                    z_rotation_angle = 103.553f;
+                    transform.DORotate(new Vector3(0, 0, 103.553f), duration);
                     ammeterReading.text = "0.8 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 5)
                 {
-                    z_rotation_angle = 87.444f;
+                    transform.DORotate(new Vector3(0, 0, 87.444f), duration);
                     ammeterReading.text = "1 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 6)
                 {
-                    z_rotation_angle = 71.428f;
+                    transform.DORotate(new Vector3(0, 0, 71.428f), duration);
                     ammeterReading.text = "1.2 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 7)
                 {
-                    z_rotation_angle = 56.213f;
+                    transform.DORotate(new Vector3(0, 0, 56.213f), duration);
                     ammeterReading.text = "1.4 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 8)
                 {
-                    z_rotation_angle = 40.057f;
+                    transform.DORotate(new Vector3(0, 0, 40.057f), duration);
                     ammeterReading.text = "1.6 A";
                 }
                 else
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), duration);
                 }
             }
             else if (materialLengthControl.wireAdjustLength.value == 2)
             {
                 if (voltmeterController.rheostartSlider.value == 0)
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), duration);
                     ammeterReading.text = "0 A";
                 }
                 if (voltmeterController.rheostartSlider.value == 1)
                 {
-                    z_rotation_angle = 161.598f;
+                    transform.DORotate(new Vector3(0, 0, 161.598f), duration);
                     ammeterReading.text = "0.1 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 2)
                 {
-                    z_rotation_angle = 154.849f;
+                    transform.DORotate(new Vector3(0, 0, 154.849f), duration);
                     ammeterReading.text = "0.2 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 3)
                 {
-                    z_rotation_angle = 145.598f;
+                    transform.DORotate(new Vector3(0, 0, 145.598f), duration);
                     ammeterReading.text = "0.3 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 4)
                 {
-                    z_rotation_angle = 136.177f;
+                    transform.DORotate(new Vector3(0, 0, 136.177f), duration);
                     ammeterReading.text = "0.4 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 5)
                 {
-                    z_rotation_angle = 128.346f;
+                    transform.DORotate(new Vector3(0, 0, 128.346f), duration);
                     ammeterReading.text = "0.5 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 6)
                 {
-                    z_rotation_angle = 120.495f;
+                    transform.DORotate(new Vector3(0, 0, 120.495f), duration);
                     ammeterReading.text = "0.6 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 7)
                 {
-                    z_rotation_angle = 111.8f;
+                    transform.DORotate(new Vector3(0, 0, 111.8f), duration);
                     ammeterReading.text = "0.7 A";
                 }
                 else if (voltmeterController.rheostartSlider.value == 8)
                 {
-                    z_rotation_angle = 103.553f;
+                    transform.DORotate(new Vector3(0, 0, 103.553f), duration);
                     ammeterReading.text = "0.8 A";
                 }
                 else
                 {
-                    z_rotation_angle = 169.797f;
+                    transform.DORotate(new Vector3(0, 0, 169.797f), duration);
                 }
             }
-
-            targetRotation = Quaternion.Euler(new Vector3(0, 0, z_rotation_angle));
-            StartCoroutine(needleRotation(targetRotation));
         }
         if (switchControl.switch_is_on == false)
         {
-            z_rotation_angle = 169.797f;
-            targetRotation = Quaternion.Euler(new Vector3(0, 0, z_rotation_angle));
-            StartCoroutine(needleRotation(targetRotation));
+            transform.DORotate(new Vector3(0, 0, 169.797f), duration);
             ammeterReading.text = "0 A";
         }
     }
 
-    IEnumerator needleRotation(Quaternion targetRotation)
-    {
-        float rot_time = 0;
-        Quaternion startRotation = rotationParent.transform.rotation;
-        while (rot_time < rot_duration)
-        {
-            rotationParent.transform.rotation = Quaternion.Lerp(startRotation, targetRotation, rot_time / rot_duration);
-            rot_time += Time.deltaTime;
-            yield return null;
-        }
-        rotationParent.transform.rotation = targetRotation;
-       // rot_time = 0;
-    }
+
 }

@@ -56,8 +56,6 @@ public class LiquidControllerScript : MonoBehaviour
     }
     void Update()
     {
-        //  mat.DOColor(new Color32(255, 255, 255, 255), '2');
-        //   mat.transform.DORotate(new Vector3(0, 0, 180), 20);
         void shakeHandler()
         {
             if (ShakeEffectHandler.isShaking)
@@ -2398,10 +2396,9 @@ public class LiquidControllerScript : MonoBehaviour
         beakerToggle.interactable = true;
         ConicalFlaskVolume.volumeSlider.value = 10;
         ConicalFlaskVolume.volumeSlider.interactable = true;
-        molesController.burette_moles = molesController.conicalFlaskMoles = 0;
+        molesController.burette_moles = 1;
+        molesController.conicalFlaskMoles = 0;
         ShakeEffectHandler.isShaking = false;
-        // molesController.BMoles1.interactable = true;
-        // molesController.BMoles2.interactable = true;
     }
 
     // slider that controls the titration liquid flow 
