@@ -188,7 +188,7 @@ public class solutionsDropdown : MonoBehaviour
         if (sender.value == 4)
         {
             solid_water.SetActive(true);
-            solid_water.GetComponent<SpriteRenderer>().color = new Color32(0, 0, 255, 200);
+            solid_water.GetComponent<SpriteRenderer>().color = new Color32(0, 173, 255, 200);
             solution_name.text = "Copper Sulphate solution";
             should_restart_observation = 3f;
         }

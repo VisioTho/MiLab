@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class beaker_switcher : MonoBehaviour
 {
@@ -56,22 +57,22 @@ public class beaker_switcher : MonoBehaviour
 
             if (gameObject.tag == "beaker1_btn") {
                 beaker1_btn_bg.GetComponent<Image>().color = on_color;
-                if(!(beaker2.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { StartCoroutine(targetBeaker1()); }
+                if(!(beaker2.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { targetBeaker1(); }
                 beaker1.SetActive(true);
             }
             if (gameObject.tag == "beaker2_btn") { 
                 beaker2_btn_bg.GetComponent<Image>().color = on_color;
-                if (!(beaker1.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { StartCoroutine(targetBeaker2()); }
+                if (!(beaker1.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { targetBeaker2(); }
                 beaker2.SetActive(true);
             }
             if (gameObject.tag == "beaker3_btn") {
                 beaker3_btn_bg.GetComponent<Image>().color = on_color;
-                if (!(beaker2.activeSelf || beaker2.activeSelf || beaker4.activeSelf)) { StartCoroutine(targetBeaker3()); }
+                if (!(beaker2.activeSelf || beaker2.activeSelf || beaker4.activeSelf)) { targetBeaker3(); }
                 beaker3.SetActive(true);
             }
             if (gameObject.tag == "beaker4_btn") { 
                 beaker4_btn_bg.GetComponent<Image>().color = on_color;
-                if (!(beaker2.activeSelf || beaker3.activeSelf || beaker1.activeSelf)) { StartCoroutine(targetBeaker4()); }
+                if (!(beaker2.activeSelf || beaker3.activeSelf || beaker1.activeSelf)) { targetBeaker4(); }
                 beaker4.SetActive(true);
             }
 
@@ -105,27 +106,27 @@ public class beaker_switcher : MonoBehaviour
     {
         if (hidden_beaker == "beaker1") //target beakers 2, 3, 4
         {
-            if (beaker2.activeSelf) {StartCoroutine(targetBeaker2());}
-            else if (beaker3.activeSelf) { StartCoroutine(targetBeaker3()); }
-            else if (beaker4.activeSelf){ StartCoroutine(targetBeaker4()); }
+            if (beaker2.activeSelf) { targetBeaker2(); }
+            else if (beaker3.activeSelf) { targetBeaker3(); }
+            else if (beaker4.activeSelf){ targetBeaker4(); }
         }
         if (hidden_beaker == "beaker2") //target beakers 1, 3, 4
         {
-            if (beaker1.activeSelf) { StartCoroutine(targetBeaker1()); }
-            else if (beaker3.activeSelf) { StartCoroutine(targetBeaker3()); }
-            else if (beaker4.activeSelf) { StartCoroutine(targetBeaker4()); }
+            if (beaker1.activeSelf) { targetBeaker1(); }
+            else if (beaker3.activeSelf) { targetBeaker3(); }
+            else if (beaker4.activeSelf) { targetBeaker4(); }
         }
         if (hidden_beaker == "beaker3") //target beakers 1, 2, 4
         {
-            if (beaker4.activeSelf) { StartCoroutine(targetBeaker4()); }
-            else if (beaker2.activeSelf) { StartCoroutine(targetBeaker2()); }
-            else if (beaker1.activeSelf) { StartCoroutine(targetBeaker1()); }
+            if (beaker4.activeSelf) { targetBeaker4(); }
+            else if (beaker2.activeSelf) { targetBeaker2(); }
+            else if (beaker1.activeSelf) { targetBeaker1(); }
         }
         if (hidden_beaker == "beaker4") //target beakers 1, 2, 3
         {
-            if (beaker3.activeSelf) { StartCoroutine(targetBeaker3()); }
-            else if (beaker2.activeSelf) { StartCoroutine(targetBeaker2()); }
-            else if (beaker1.activeSelf) { StartCoroutine(targetBeaker1()); }
+            if (beaker3.activeSelf) { targetBeaker3(); }
+            else if (beaker2.activeSelf) { targetBeaker2(); }
+            else if (beaker1.activeSelf) { targetBeaker1(); }
         }
     }
 
@@ -135,86 +136,39 @@ public class beaker_switcher : MonoBehaviour
         litmus.transform.position = new Vector2(litmus.transform.position.x, default_litmus_Y_pos);
     }
 
-    public IEnumerator targetBeaker1()
+    public void targetBeaker1()
     {
         moveLitmusToTopFirst();//
-        float time = 0;
-
-        while (time < duration)
-        {
-           // litmus.transform.position = Vector3.Lerp(litmus.transform.position, new Vector3((bound_hA.transform.position.x + bound_hB.transform.position.x) / 2, litmus.transform.position.y, 0f), time / duration);
-            dropper.transform.position = Vector3.Lerp(dropper.transform.position, new Vector3((bound_hA.transform.position.x-0.7f + bound_hB.transform.position.x) / 2, dropper.transform.position.y, 0f), time / duration);
-            time += Time.deltaTime;
-            yield return null;
-        }
-        //litmus.transform.position = new Vector3((bound_hA.transform.position.x + bound_hB.transform.position.x) / 2, litmus.transform.position.y, 0f);
-        dropper.transform.position = new Vector3((bound_hA.transform.position.x-0.7f + bound_hB.transform.position.x) / 2, dropper.transform.position.y, 0f);
-        time = 0; //resetting
-
+        litmus.transform.DOMove(new Vector3((bound_hA.transform.position.x + bound_hB.transform.position.x) / 2, litmus.transform.position.y, 0f), 1);
+        dropper.transform.DOMove(new Vector3((bound_hA.transform.position.x - 0.7f + bound_hB.transform.position.x) / 2, dropper.transform.position.y, 0f), 1);
         selector.transform.SetParent(beaker1.transform, false);
         selectorNdropper_position_controller.current_selected_beaker = "hydrochloric_acid_beaker";
     }
 
-    public IEnumerator targetBeaker2()
+    public void targetBeaker2()
     {
          moveLitmusToTopFirst();//
-        float time = 0;
-
-        while (time<duration)
-        {
-           // litmus.transform.position = Vector3.Lerp(litmus.transform.position, new Vector3((bound_hB.transform.position.x + bound_hC.transform.position.x) / 2, litmus.transform.position.y, 0f), time / duration);
-            dropper.transform.position = Vector3.Lerp(dropper.transform.position, new Vector3((bound_hB.transform.position.x - 0.7f + bound_hC.transform.position.x) / 2, dropper.transform.position.y, 0f), time / duration);
-
-            time += Time.deltaTime;
-            yield return null;
-        }
-        //litmus.transform.position = new Vector3((bound_hB.transform.position.x + bound_hC.transform.position.x) / 2, litmus.transform.position.y, 0f);
-        dropper.transform.position = new Vector3((bound_hB.transform.position.x - 0.7f + bound_hC.transform.position.x) / 2, dropper.transform.position.y, 0f);
-
-        time = 0; //resetting
+         litmus.transform.DOMove(new Vector3((bound_hB.transform.position.x  + bound_hC.transform.position.x) / 2, litmus.transform.position.y, 0f), 1);
+         dropper.transform.DOMove(new Vector3((bound_hB.transform.position.x - 0.7f + bound_hC.transform.position.x) / 2, dropper.transform.position.y, 0f), 1);
          selector.transform.SetParent(beaker2.transform, false);
          selectorNdropper_position_controller.current_selected_beaker = "ethanoic_acid_beaker";
     }
 
 
-    public IEnumerator targetBeaker3()
+    public void targetBeaker3()
     {
         moveLitmusToTopFirst();//
-        float time = 0;
-
-        while (time < duration)
-        {
-            //litmus.transform.position = Vector3.Lerp(litmus.transform.position, new Vector3((bound_hC.transform.position.x + bound_hD.transform.position.x) / 2, litmus.transform.position.y, 0f), time / duration);
-            dropper.transform.position = Vector3.Lerp(dropper.transform.position, new Vector3((bound_hC.transform.position.x - 0.7f + bound_hD.transform.position.x) / 2, dropper.transform.position.y, 0f), time / duration);
-
-            time += Time.deltaTime;
-            yield return null;
-        }
-        //litmus.transform.position = new Vector3((bound_hC.transform.position.x + bound_hD.transform.position.x) / 2, litmus.transform.position.y, 0f);
-        dropper.transform.position = new Vector3((bound_hC.transform.position.x - 0.7f + bound_hD.transform.position.x) / 2, dropper.transform.position.y, 0f);
-
-        time = 0; //resetting
+        litmus.transform.DOMove(new Vector3((bound_hC.transform.position.x  + bound_hD.transform.position.x) / 2, litmus.transform.position.y, 0f), 1);
+        dropper.transform.DOMove(new Vector3((bound_hC.transform.position.x - 0.7f + bound_hD.transform.position.x) / 2, dropper.transform.position.y, 0f), 1);
         selector.transform.SetParent(beaker3.transform, false);
         selectorNdropper_position_controller.current_selected_beaker = "sodium_hydroxide_beaker";
     }
 
-    public IEnumerator targetBeaker4()
+    public void targetBeaker4()
     {
         moveLitmusToTopFirst();//
-        float time = 0;
-
-        while (time < duration)
-        {
-            //litmus.transform.position = Vector3.Lerp(litmus.transform.position, new Vector3((bound_hD.transform.position.x + bound_hE.transform.position.x) / 2, litmus.transform.position.y, 0f), time / duration);
-            dropper.transform.position = Vector3.Lerp(dropper.transform.position, new Vector3((bound_hD.transform.position.x - 0.7f + bound_hE.transform.position.x) / 2, dropper.transform.position.y, 0f), time / duration);
-
-            time += Time.deltaTime;
-            yield return null;
-        }
-        //litmus.transform.position = new Vector3((bound_hD.transform.position.x + bound_hE.transform.position.x) / 2, litmus.transform.position.y, 0f);
-        dropper.transform.position = new Vector3((bound_hD.transform.position.x - 0.7f + bound_hE.transform.position.x) / 2, dropper.transform.position.y, 0f);
-
-        time = 0; //resetting
+        litmus.transform.DOMove(new Vector3((bound_hD.transform.position.x  + bound_hE.transform.position.x) / 2, litmus.transform.position.y, 0f), 1);
+        dropper.transform.DOMove(new Vector3((bound_hD.transform.position.x - 0.7f + bound_hE.transform.position.x) / 2, dropper.transform.position.y, 0f), 1);
         selector.transform.SetParent(beaker4.transform, false);
         selectorNdropper_position_controller.current_selected_beaker = "ammonium_solution_beaker";
     }

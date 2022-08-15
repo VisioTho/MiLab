@@ -38,6 +38,12 @@ public class MolesController : MonoBehaviour
             BMoles1.interactable = false;
             BMoles2.interactable = false;
         }
+        if (burette_moles > 0 && liquidControllerScript.fill.CurrentVal > 0)
+        {
+            BMoles1.interactable = false;
+            BMoles2.interactable = false;
+        }
+       
         if (burette_moles == 0 && conicalFlaskMoles == 0)
         {
             BMoles1.interactable = true;
@@ -45,6 +51,7 @@ public class MolesController : MonoBehaviour
             CMoles1.interactable = true;
             CMoles2.interactable = true;
         }
+       
         buretteMolesCheck();
         conicalFlaskMolesCheck();
     }

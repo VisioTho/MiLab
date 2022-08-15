@@ -10,6 +10,7 @@ public class apparatus_drag : MonoBehaviour
     public static bool isDragged = false;
     private Vector3 mouseDragStartPosition, spriteDragStartPosition, position_before_drag, current_drop_position;
     Vector3 offset;
+    public bool isOnlegendWire;
     public List<GameObject> in_canvas_apparatus, on_legend_apparatus;
     public List<string> apparatus_descriptions_texts;
     public GameObject x1_bound, x2_bound, y1_bound, y2_bound, apparatus_description_panel, delete;
@@ -81,11 +82,6 @@ public class apparatus_drag : MonoBehaviour
 
         if ((current_drop_position.x > x1_x_pos && current_drop_position.x < x2_x_pos) && (current_drop_position.y < y1_y_pos && current_drop_position.y > y2_y_pos))
         {
-                /*---------------------------------------------
-                 * DISPLAYING IN-CANVAS TOOLS WHEN AN ON-LEGEND
-                 * TOOL HAS BEEN DROPPED AND AT THE SAME 
-                 * TIME POSITIONING IT ON THE SITE OF DROPPING
-                 * ------------------------------------------*/
 
                 in_canvas_apparatus[on_legend_apparatus.IndexOf(gameObject)].SetActive(true);
                 in_canvas_apparatus[on_legend_apparatus.IndexOf(gameObject)].transform.position = current_drop_position;
@@ -93,21 +89,15 @@ public class apparatus_drag : MonoBehaviour
                 gameObject.transform.position = position_before_drag;
 
 
-            /*-----------------------------------------------------
-             * CHANGING THE 'ORDER IN LAYER' ON SUPERIMPOSED WIRES
-             * SO THAT THE ONE THAT HAS ALREADY BEEN DRAGED
-             * SHOULDN'T GET DRAGGED AGAIN
-             * ---------------------------------------------------*/
-            if (on_legend_apparatus.Count > 5)
-            {
-                if (on_legend_apparatus.IndexOf(gameObject) > 5)
+       
+                if (isOnlegendWire)
                 {
                     //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     gameObject.transform.position = position_before_drag;
                     gameObject.SetActive(false);
                     on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
                 }
-            }
+           
         }
         else
         {

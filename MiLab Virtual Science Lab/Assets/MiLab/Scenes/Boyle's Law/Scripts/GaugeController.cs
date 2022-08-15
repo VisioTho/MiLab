@@ -27,17 +27,25 @@ public class GaugeController : MonoBehaviour
         transform.eulerAngles = new Vector3(0, 0, initialAngle);
     }
 
-    float airColumn, hyperbolaFunction;
-    float gaugeAngle;
+    
 
     IEnumerator DrainCoroutine()
     {
         yield return new WaitForSeconds(1.0f);
     }
+
+    public void Depressurize()
+    {
+        oilLevelIndicator.LeanScaleY(-0.05f, 2.9f);
+       
+        transform.eulerAngles = new Vector3(0, 0, 32.0f);
+        oil.transform.LeanScaleY(2.9f, 0.5f);
+        pressureLabel.text = "110";
+    }
     public void DrainGas()
     {
         StartCoroutine(DrainCoroutine());
-        Debug.Log("Clicked now");
+       
         if (transform.eulerAngles.z == 32.0f)
         {
             pressureLabel.text = "110";
@@ -270,78 +278,48 @@ public class GaugeController : MonoBehaviour
 
 
     }
-    private void RotateSpeedometer()
-    {
-        gaugeAngle = transform.eulerAngles.z;
-        //float oilScale;
-        if(PumpController.isPumped)
-        {
-            float v;
-            v = transform.eulerAngles.z - 0.5f;
-            transform.eulerAngles = new Vector3(0, 0, v);
-            //PumpController.isPumped = false;
-        }
-
-        //airColumn = 9.21f - oil.transform.localScale.y;
-
-        //Debug.Log("Pressure is " + airColumn);
-        //hyperbolaFunction = (1.2f / airColumn) * 1.0f;
-        //oilScale = 9.21f - hyperbolaFunction;
-  
-        
-        //oilScale = ((0.8136707f / transform.rotation.z) * 2.9f);
-        //oil.transform.localScale = new Vector2(0.3192797f, oilScale);
-
-        //Debug.Log("Pressure reading is" +(88.84557f / transform.eulerAngles.z) * 200f);
-    }
-    private float GaugeScaleConverter()
-    {
-        float totalAngleSize = MAX_ANGLE - MIN_ANGLE;
-        float oilScaleNormalized = oilScale / maxOilScale;
-       
-
-        return (MIN_ANGLE + totalAngleSize / oilScaleNormalized) * -1;
-    }
-
-    float pressure;
+   
+   
 
     int otherCounter = 0;
     private void Update()
     {
+        DetectPumpEvent(); 
+        DetectDrainEvent();
+        oilScale = oil.transform.localScale.y;
 
-        Debug.Log("Rotation is now at: " + transform.eulerAngles.z);
-        Debug.Log("Other Counter " + otherCounter);
-        
-        if(PumpController.isPumped && counter == 0)
+
+    }
+
+    private void DetectPumpEvent()
+    {
+        if (PumpController.isPumped && counter == 0)
         {
             pumpButton.onClick.Invoke();
             counter++;
         }
 
-        if(PumpController.isPumped == false && counter == 1)
+        if (PumpController.isPumped == false && counter == 1)
         {
             counter = 0;
         }
 
+       
+    }
+
+    private void DetectDrainEvent()
+    {
         if (gasTap.transform.position.x < 1.276372f)
         {
-            if(otherCounter==0)
+            if (otherCounter == 0)
             {
                 drainButton.onClick.Invoke();
-                otherCounter++;    
+                otherCounter++;
             }
         }
-        if(gasTap.transform.position.x >= 1.276372f)
+        if (gasTap.transform.position.x >= 1.276372f)
         {
             otherCounter = 0;
         }
-
-        //pressure = (44.754f / transform.rotation.z) * 6.05f;
-        //pressureDisplayText.text = pressure.ToString("f0");
-        oilScale = oil.transform.localScale.y;
-        //transform.eulerAngles = new Vector3(0, 0, GaugeScaleConverter());     
-        //RotateSpeedometer();
-        
     }
-
 }

@@ -20,8 +20,8 @@ public class switch_litmus : MonoBehaviour
 
     public void ToggleValueChanged()
     {
-
-        if (gameObject.GetComponent<Toggle>().isOn)//red
+        litmus_paper_controller.lastDippedInto = "none"; // resetting the last liquid into which Litmus paper was dipped
+        if (gameObject.GetComponent<Toggle>().isOn) //red
         {
             litmus_paper_a.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
             litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);

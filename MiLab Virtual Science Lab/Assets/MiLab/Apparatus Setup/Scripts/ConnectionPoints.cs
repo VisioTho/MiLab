@@ -13,8 +13,13 @@ public class ConnectionPoints : MonoBehaviour
         connected_color = new Color32(0, 224, 0, 255);
         disconnected_color = new Color32(225, 0, 0, 255);
 
-        GameObject.Find("PROGRESS_BAR_PARENT").transform.localPosition = new Vector3(-0.358f, -0.216f, 0f); //showing progress bar 
-        Debug.Log("progress" + GameObject.Find("PROGRESS_BAR_PARENT").transform.position);
+
+        GameObject.Find("PROGRESS_BAR_PARENT").GetComponent<SpriteRenderer>().enabled = true;
+        GameObject.Find("Prog_insider").GetComponent<SpriteRenderer>().enabled = true;
+        
+
+        //GameObject.Find("PROGRESS_BAR_PARENT").transform.localPosition = new Vector3(-0.358f, -0.216f, 0f); //showing progress bar 
+        //Debug.Log("progress" + GameObject.Find("PROGRESS_BAR_PARENT").transform.position);
     }
     
    

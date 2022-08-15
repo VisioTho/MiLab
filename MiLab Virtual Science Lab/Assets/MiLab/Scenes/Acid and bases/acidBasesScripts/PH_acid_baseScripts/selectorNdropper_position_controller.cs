@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class selectorNdropper_position_controller : MonoBehaviour
 {
@@ -38,15 +39,16 @@ public class selectorNdropper_position_controller : MonoBehaviour
             dropper_tip.SetActive(false);
            current_selected_beaker = gObjTag;
            // Debug.Log(gObjTag);
-           StopAllCoroutines();
-          StartCoroutine(LerpPosition(new Vector3(gameObject.transform.position.x, dropper.transform.position.y, 0f), lerpDuration));
+           //StopAllCoroutines();
+            // StartCoroutine(LerpPosition(new Vector3(gameObject.transform.position.x, dropper.transform.position.y, 0f), lerpDuration));
+            dropper.transform.DOMove(new Vector3(gameObject.transform.position.x - 0.5f, dropper.transform.position.y, 0f), lerpDuration);
            //selector.transform.position = gameObject.transform.position;
            selector.transform.SetParent ( gameObject.transform, false);
         }
        
     }
 
-    public IEnumerator LerpPosition(Vector3 targetPos, float duration)
+  /*  public IEnumerator LerpPosition(Vector3 targetPos, float duration)
     {
         float time = 0;
 
@@ -58,5 +60,5 @@ public class selectorNdropper_position_controller : MonoBehaviour
         }
         dropper.transform.position =new Vector3(targetPos.x-0.5f, targetPos.y, 0f);
         time = 0; //reseting
-    }
+    }*/
 }
