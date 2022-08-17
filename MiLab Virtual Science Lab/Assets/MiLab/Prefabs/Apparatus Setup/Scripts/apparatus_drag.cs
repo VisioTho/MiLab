@@ -10,12 +10,16 @@ public class apparatus_drag : MonoBehaviour
     public static bool isDragged = false;
     private Vector3 mouseDragStartPosition, spriteDragStartPosition, position_before_drag, current_drop_position;
     Vector3 offset;
+    public bool isOnlegendWire;
     public List<GameObject> in_canvas_apparatus, on_legend_apparatus;
     public List<string> apparatus_descriptions_texts;
     public GameObject x1_bound, x2_bound, y1_bound, y2_bound, apparatus_description_panel, delete;
     public TextMeshProUGUI apparatus_description_text_UI;
     public float x1_x_pos, x2_x_pos, y1_y_pos, y2_y_pos;
+   
     public bool toDeleteAfterFingerLift;
+    int numberOfActiveApparatus;
+    public static int numberOfInvisibleApparatus;
 
 
     // VARIABLES FOR TAPPING
@@ -34,7 +38,7 @@ public class apparatus_drag : MonoBehaviour
 
         y1_y_pos = y1_bound.transform.position.y;
         y2_y_pos = y2_bound.transform.position.y;
-
+        numberOfActiveApparatus = 1;//preventing showing "NEXT" button by default
     }
 
 
@@ -98,16 +102,15 @@ public class apparatus_drag : MonoBehaviour
              * SO THAT THE ONE THAT HAS ALREADY BEEN DRAGED
              * SHOULDN'T GET DRAGGED AGAIN
              * ---------------------------------------------------*/
-            if (on_legend_apparatus.Count > 5)
-            {
-                if (on_legend_apparatus.IndexOf(gameObject) > 5)
+            //if (on_legend_apparatus.Count > 5){
+                if (isOnlegendWire)
                 {
                     //gameObject.GetComponent<SpriteRenderer>().enabled = false;
                     gameObject.transform.position = position_before_drag;
                     gameObject.SetActive(false);
                     on_legend_apparatus[in_canvas_apparatus.IndexOf(gameObject)].SetActive(true);
                 }
-            }
+            //}
         }
         else
         {
@@ -119,6 +122,14 @@ public class apparatus_drag : MonoBehaviour
             }
         }
 
+         numberOfActiveApparatus = 0;//reseting
+        foreach(GameObject apparatus in in_canvas_apparatus)
+        {
+            if (apparatus.activeSelf) { 
+            numberOfActiveApparatus+=1;
+           }
+        }
+        numberOfInvisibleApparatus = in_canvas_apparatus.Count - numberOfActiveApparatus;
 
     }
 
