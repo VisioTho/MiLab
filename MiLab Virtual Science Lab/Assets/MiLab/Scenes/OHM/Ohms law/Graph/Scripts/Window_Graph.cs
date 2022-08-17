@@ -18,8 +18,8 @@ public class Window_Graph : MonoBehaviour
     private RectTransform dashTemplateX;
     private List<GameObject> gameObjectList;
 
-    private string xValue1 = "0", xValue2 = "0", xValue3 = "0", xValue4 = "0", xValue5 = "0", xValue6 = "0";
-    private string yValue1 = "0", yValue2 = "0", yValue3 = "0", yValue4 = "0", yValue5 = "0", yValue6 = "0";
+    private string xValue1 = "0", xValue2 = "0", xValue3 = "0", xValue4 = "0", xValue5 = "0";
+    private string yValue1 = "0", yValue2 = "0", yValue3 = "0", yValue4 = "0", yValue5 = "0";
 
     private string x1_num, x2_num;
     private string y1_num, y2_num;
@@ -27,8 +27,7 @@ public class Window_Graph : MonoBehaviour
     public TMP_Text gradientValue;
 
     public Button plotGraphButton, resetGraphButton;
-    //public TMP_InputField InputField, InputField2, InputField3, InputField4, InputField5;
-    // public InputField inputField1, inputField2, inputField3, inputField4, inputField5;
+   
 
     // scale variables
     private float xAxisScale;
@@ -37,14 +36,15 @@ public class Window_Graph : MonoBehaviour
     public TMP_Dropdown scaleX, scaleY;
 
     // Configurable variables
-    public float maxInput = 2;
-    public float minInput = 0;
-
     public float maximumLabelX, maximumLabelY;
-    public float minimumLabelX, mininimumLabelY;
+    public float minimumLabelX, minimumLabelY;
 
     public float[] scaleValuesX = { 0, 0, 0 };
-    public int[] scaleValuesY = { 0, 0, 0 };
+    public float[] scaleValuesY = { 0, 0, 0 };
+
+    public TMP_InputField[] cellInputX;
+    public TMP_InputField[] cellInputY;
+
 
     private float halo;
     private void Awake()
@@ -101,13 +101,13 @@ public class Window_Graph : MonoBehaviour
     public void xAxis1(string x1)
     {
         // xValue1 = x1;
-        if (float.Parse(x1) > maxInput)
+        if (float.Parse(x1) > maximumLabelX)
         {
-            xValue1 = maxInput.ToString();
+            xValue1 = maximumLabelX.ToString();
         }
-        else if (float.Parse(x1) < minInput)
+        else if (float.Parse(x1) < minimumLabelX)
         {
-            xValue1 = minInput.ToString();
+            xValue1 = minimumLabelX.ToString();
         }
         else
         {
@@ -117,13 +117,13 @@ public class Window_Graph : MonoBehaviour
 
     public void xAxis2(string x2)
     {
-        if (float.Parse(x2) > maxInput)
+        if (float.Parse(x2) > maximumLabelX)
         {
-            xValue2 = maxInput.ToString();
+            xValue2 = maximumLabelX.ToString();
         }
-        else if (float.Parse(x2) < minInput)
+        else if (float.Parse(x2) < minimumLabelX)
         {
-            xValue2 = minInput.ToString();
+            xValue2 = minimumLabelX.ToString();
         }
         else
         {
@@ -132,13 +132,13 @@ public class Window_Graph : MonoBehaviour
     }
     public void xAxis3(string x3)
     {
-        if (float.Parse(x3) > maxInput)
+        if (float.Parse(x3) > maximumLabelX)
         {
-            xValue3 = maxInput.ToString();
+            xValue3 = maximumLabelX.ToString();
         }
-        else if (float.Parse(x3) < minInput)
+        else if (float.Parse(x3) < minimumLabelX)
         {
-            xValue3 = minInput.ToString();
+            xValue3 = minimumLabelX.ToString();
         }
         else
         {
@@ -147,13 +147,13 @@ public class Window_Graph : MonoBehaviour
     }
     public void xAxis4(string x4)
     {
-        if (float.Parse(x4) > maxInput)
+        if (float.Parse(x4) > maximumLabelX)
         {
-            xValue4 = maxInput.ToString();
+            xValue4 = maximumLabelX.ToString();
         }
-        else if (float.Parse(x4) < minInput)
+        else if (float.Parse(x4) < minimumLabelX)
         {
-            xValue4 = minInput.ToString();
+            xValue4 = minimumLabelX.ToString();
         }
         else
         {
@@ -162,45 +162,95 @@ public class Window_Graph : MonoBehaviour
     }
     public void xAxis5(string x5)
     {
-        if (float.Parse(x5) > maxInput)
+        if (float.Parse(x5) > maximumLabelX)
         {
-            xValue5 = maxInput.ToString();
+            xValue5 = maximumLabelX.ToString();
         }
-        else if (float.Parse(x5) < minInput)
+        else if (float.Parse(x5) < minimumLabelX)
         {
-            xValue5 = minInput.ToString();
+            xValue5 = minimumLabelX.ToString();
         }
         else
         {
             xValue5 = x5;
         }
     }
+    //Y-axis controlling values
 
-    public void xAxis6(string x6)
+
+    public void yAxis1(string y1)
     {
-        if (float.Parse(x6) > maxInput)
+
+        if (float.Parse(y1) > maximumLabelY)
         {
-            xValue6 = maxInput.ToString();
+            yValue1 = maximumLabelY.ToString();
         }
-        else if (float.Parse(x6) < minInput)
+        else if (float.Parse(y1) < minimumLabelY)
         {
-            xValue6 = minInput.ToString();
-        }
-        else
-        {
-            xValue6 = x6;
+            yValue1 = 10.ToString();
         }
     }
 
-
-
-    //Y-axis controlling values
-    public void yAxis1(string y1) => yValue1 = y1;
-    public void yAxis2(string y2) => yValue2 = y2;
-    public void yAxis3(string y3) => yValue3 = y3;
-    public void yAxis4(string y4) => yValue4 = y4;
-    public void yAxis5(string y5) => yValue5 = y5;
-    public void yAxis6(string y6) => yValue6 = y6;
+    public void yAxis2(string y2)
+    {
+        if (float.Parse(y2) > maximumLabelY)
+        {
+            yValue2 = maximumLabelY.ToString();
+        }
+        else if (float.Parse(y2) < minimumLabelY)
+        {
+            yValue2 = minimumLabelY.ToString();
+        }
+        else
+        {
+            yValue2 = y2;
+        }
+    }
+    public void yAxis3(string y3)
+    {
+        if (float.Parse(y3) > maximumLabelY)
+        {
+            yValue3 = maximumLabelY.ToString();
+        }
+        else if (float.Parse(y3) < minimumLabelY)
+        {
+            yValue3 = minimumLabelY.ToString();
+        }
+        else
+        {
+            yValue3 = y3;
+        }
+    }
+    public void yAxis4(string y4)
+    {
+        if (float.Parse(y4) > maximumLabelY)
+        {
+            yValue4 = maximumLabelY.ToString();
+        }
+        else if (float.Parse(y4) < minimumLabelY)
+        {
+            yValue4 = minimumLabelY.ToString();
+        }
+        else
+        {
+            yValue4 = y4;
+        }
+    }
+    public void yAxis5(string y5)
+    {
+        if (float.Parse(y5) > maximumLabelY)
+        {
+            yValue5 = maximumLabelY.ToString();
+        }
+        else if (float.Parse(y5) > minimumLabelY)
+        {
+            yValue5 = minimumLabelY.ToString();
+        }
+        else
+        {
+            yValue5 = y5;
+        }
+    }
 
 
     public void PlotGraph()
@@ -214,8 +264,8 @@ public class Window_Graph : MonoBehaviour
 
         gameObjectList = new List<GameObject>();
 
-        List<float> valueList = new List<float>() { float.Parse(yValue1), float.Parse(yValue2), float.Parse(yValue3), float.Parse(yValue4), float.Parse(yValue5), float.Parse(yValue6) };
-        ShowGraph(valueList, (float _i) => "" + (_i), (float _f) => "" + Mathf.RoundToInt(_f));
+        List<float> valueList = new List<float>() { float.Parse(yValue1), float.Parse(yValue2), float.Parse(yValue3), float.Parse(yValue4), float.Parse(yValue5) };
+        ShowGraph(valueList, (float _i) => "" + (_i), (float _f) => "" + _f);
 
         resetGraphButton.interactable = true;
         plotGraphButton.interactable = false;
@@ -266,7 +316,7 @@ public class Window_Graph : MonoBehaviour
         float xMaximum = maximumLabelX;
 
         float yMaximum = maximumLabelY;
-        float yMinimum = minimumLabelX;
+        float yMinimum = minimumLabelY;
 
         foreach (float value in valueList)
         {
@@ -283,7 +333,7 @@ public class Window_Graph : MonoBehaviour
         }
 
         //List<float> xValueList = new List<float>() { 0.3f, 0.5f, 0.7f, 0.9f, 1.1f };
-        List<float> xValueList = new List<float>() { float.Parse(xValue1), float.Parse(xValue2), float.Parse(xValue3), float.Parse(xValue4), float.Parse(xValue5), float.Parse(xValue6) };
+        List<float> xValueList = new List<float>() { float.Parse(xValue1), float.Parse(xValue2), float.Parse(xValue3), float.Parse(xValue4), float.Parse(xValue5) };
         // float xSize = 48f;
 
         GameObject lastCircleGameObject = null;
@@ -322,13 +372,13 @@ public class Window_Graph : MonoBehaviour
         }
 
         // Y-axis labels
-        int separatorCount = (int)yAxisScale;
-        for (int i = 0; i <= separatorCount; i++)
+        int ySeparatorCount = (int)yAxisScale;
+        for (int i = 0; i <= ySeparatorCount; i++)
         {
             RectTransform labelY = Instantiate(labelTemplateY);
             labelY.SetParent(graphContainer, false);
             labelY.gameObject.SetActive(true);
-            float normalizedValue = i * 1f / separatorCount;
+            float normalizedValue = i * 1f / ySeparatorCount;
             labelY.anchoredPosition = new Vector2(-7f, normalizedValue * graphHeight);
             labelY.GetComponent<TextMeshProUGUI>().text = getAxisLabelY(yMinimum + (normalizedValue * (yMaximum - yMinimum))); ;
             gameObjectList.Add(labelY.gameObject);

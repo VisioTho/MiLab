@@ -42,6 +42,7 @@ public class LiquidControllerScript : MonoBehaviour
         enumerator = LiquidDrop();
         fillBurette = LiquidFill();
         flowController = LiquidFlow();
+
     }
 
     void Start()
@@ -2387,6 +2388,7 @@ public class LiquidControllerScript : MonoBehaviour
         stream.SetActive(false);
         dropController.resetDrops();
         titrantVariation.value = 0;
+        titrantVariation.interactable = true;
         analyteVariation.value = 0;
         indicatorVariation.value = 0;
         sliderInstance.value = 0;
@@ -2541,6 +2543,7 @@ public class LiquidControllerScript : MonoBehaviour
             else
             {
                 resetButton.interactable = true;
+                titrantVariation.interactable = false;
                 sliderInstance.value = 0;
                 sliderInstance.enabled = false;
                 if (titrantVariation.value == 0)

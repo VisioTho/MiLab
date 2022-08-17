@@ -35,7 +35,6 @@ public class ResetNeedle : MonoBehaviour
         }
         else if (switchControl.switch_is_on == true)
         {
-            Debug.Log("switch is back on");
             voltmeterController.UpdateSpeed();
             //  ammeterController.UpdateSpeed();
         }

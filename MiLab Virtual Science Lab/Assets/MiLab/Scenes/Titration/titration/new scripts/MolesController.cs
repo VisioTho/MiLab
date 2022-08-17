@@ -7,6 +7,7 @@ using TMPro;
 public class MolesController : MonoBehaviour
 {
     public LiquidControllerScript liquidControllerScript;
+    public Stat statScript;
     // Burette dropdowns
     public int burette_moles = 0;
     private int maxMoles = 2;
@@ -16,6 +17,7 @@ public class MolesController : MonoBehaviour
     // Conical flask dropdown 
     public TMP_Text ConicalFlaskmolesValueNotation;
     public int conicalFlaskMoles = 0;
+    public Stat fill;
 
     //Moles Control buttons
     public Button BMoles1, BMoles2, CMoles1, CMoles2;
@@ -24,8 +26,6 @@ public class MolesController : MonoBehaviour
     {
 
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (burette_moles > 0)
@@ -33,17 +33,22 @@ public class MolesController : MonoBehaviour
             CMoles1.interactable = false;
             CMoles2.interactable = false;
         }
-        if (conicalFlaskMoles > 0)
+        else if (conicalFlaskMoles > 0)
         {
             BMoles1.interactable = false;
             BMoles2.interactable = false;
         }
-        if (burette_moles == 0 && conicalFlaskMoles == 0)
+        else if (burette_moles == 0 && conicalFlaskMoles == 0)
         {
             BMoles1.interactable = true;
             BMoles2.interactable = true;
             CMoles1.interactable = true;
             CMoles2.interactable = true;
+        }
+        else
+        {
+            BMoles1.interactable = false;
+
         }
         buretteMolesCheck();
         conicalFlaskMolesCheck();
