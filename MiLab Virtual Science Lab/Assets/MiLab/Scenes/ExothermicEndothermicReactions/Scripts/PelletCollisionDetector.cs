@@ -6,7 +6,7 @@ public class PelletCollisionDetector : MonoBehaviour
 {
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("triggered");
+        
         if (collision.gameObject.name == "Capsule")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

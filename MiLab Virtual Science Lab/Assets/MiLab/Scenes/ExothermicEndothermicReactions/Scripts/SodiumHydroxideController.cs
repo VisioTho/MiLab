@@ -5,6 +5,7 @@ using UnityEngine;
 public partial class TemperatureReaction
 {
     public static int counter;
+    
 
     private void SodiumHydroxideReaction()
     {
@@ -15,49 +16,51 @@ public partial class TemperatureReaction
             chemicalDisplay.text = "NaOH (Sodium Hydroxide)";
             chemicalProduct1.text = "Na+ (Sodium ions)";
             chemicalProduct2.text = "OH+ (Hydroxide ions)";
+
+            if (ThermometerManager.isImmersed)
+            {
+                Debug.Log("sodium is " + sodiumHydroxide.changeInTemperature);
+                RiseMercuryLevels(temperatureDropRate, sodiumHydroxide.changeInTemperature);
+            }
+
+            else
+                CollapseMercuryLevels(temperatureDropRate, initialTemperatureLevels.y);
         }
+
         if (stirTime > 1.2f)
         {
-            if (transform.localScale.y > initialTemperatureLevels.y)
-            {
-
-            }
 
             if (counter == 1)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(2.4f, 2.5f));
-                //MeltSodiumHydroxide(0.00002f);
-
-                //stirTime = 0f;
+                var tempChange = Random.Range(2.4f, 2.5f);
+                sodiumHydroxide.changeInTemperature = tempChange;
+          
             }
             else if (counter == 2)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(2.6f, 2.7f));
-                //MeltSodiumHydroxide(0.00002f);
-
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
+                var tempChange = Random.Range(2.6f, 2.7f);
+                sodiumHydroxide.changeInTemperature = tempChange;
+               
             }
             else if (counter == 3)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(2.8f, 2.9f));
-                //MeltSodiumHydroxide(0.00002f);
-
-                //removeSoluteButton.interactable = true;
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
+                var tempChange = Random.Range(2.8f, 2.9f);
+                sodiumHydroxide.changeInTemperature = tempChange;
             }
             else if (counter >= 4)
             {
-                RiseMercuryLevels(temperatureDropRate, Random.Range(3.0f, 3.1f));
-                //MeltSodiumHydroxide(0.00002f);
-                //chemicalDisplay.text = "Water + Sodium Hydroxide";
-
+                var tempChange = Random.Range(3.0f, 3.1f);
+                sodiumHydroxide.changeInTemperature = tempChange;
             }
 
+            
         }
         else
         {
             
         }
+
+       
     }
 
     void MeltSodiumHydroxide(float meltSpeed)

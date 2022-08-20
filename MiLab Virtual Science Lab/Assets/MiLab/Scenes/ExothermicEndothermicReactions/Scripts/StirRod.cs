@@ -18,7 +18,7 @@ public class StirRod : MonoBehaviour
 
     private void CountStirTime()
     {
-        if (TemperatureReaction.emissionTime > 1f || iceCubes.activeSelf || sodiumPellets.activeSelf)
+        if (TemperatureReaction.numberOfSpoons >= 1 || iceCubes.activeSelf || sodiumPellets.activeSelf)
             TemperatureReaction.stirTime += Time.deltaTime * 1f;
     }
     

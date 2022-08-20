@@ -3,23 +3,35 @@ using UnityEngine;
 
 public partial class TemperatureReaction
 {
+    private float meltSpeed;
     private void IceReaction()
     {
+        
          Debug.Log("Should start collapsing");
         if (iceCube.activeSelf == true) // if at least the first ice cube is active
         {
+            if (ThermometerManager.isImmersed)
+            {
+                CollapseMercuryLevels(meltSpeed, ice.changeInTemperature);
+            }
+            else
+                RiseMercuryLevels(temperatureDropRate, initialTemperatureLevels.y);
 
             if (stirTime > 1.2f)
-            {  
-                CollapseMercuryLevels(temperatureDropRate, ice.changeInTemperature);
-               
+            {
+                var tempChange = Random.Range(0.4f, 0.2f);
+                ice.changeInTemperature = tempChange;
+                meltSpeed = temperatureDropRate;
+
+
                 MeltIceCubes(0.00002f);
                 removeSoluteButton.interactable = true;
                 chemicalDisplay.text = "Water + Ice";
             }
             else
             {
-                CollapseMercuryLevels(0.00002f, ice.changeInTemperature);
+               
+                meltSpeed = 0.00002f;
                 MeltIceCubes(0.0000002f);
             }
         }

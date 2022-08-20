@@ -10,6 +10,7 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     public ParticleSystem powderParticles;
     public ParticleSystem exothermicTrace, endothermicTrace;
     public static float emissionTime;
+    public static int numberOfSpoons;
     public static float stirTime;
     public float temperatureDropRate;
     public TMP_Text tempReading;
@@ -17,15 +18,17 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     public static GameObject sodiumPelletes;
     public GameObject[] pellets;
     public GameObject iceCube;
-    //public GameObject water;
+    public GameObject thermometer;
+    public bool isImmersed;
+    
     float iceEndPoint;
     Vector3 initialPosition;
     Vector3 initialScale;
 
     public Button removeSoluteButton;
     public TMP_Text chemicalDisplay, chemicalProduct1, chemicalProduct2;
- 
-    
+
+    Vector3 initialThermometerPos;
     Vector3 initialTemperatureLevels;
     private float initialTemperature;
 
@@ -45,11 +48,13 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     {
         counter = 0;
         stirTime = 0f;
-        ice.changeInTemperature = Random.Range(0.4f, 0.2f);
-        sodiumHydroxide.changeInTemperature = Random.Range(1.3f, 1.55f);
+
+        numberOfSpoons = 0;
+        
         transform.localScale = new Vector2(transform.localScale.x, Random.Range(2.0f, 2.2f));
         initialTemperatureLevels = transform.localScale;
         initialTemperature = CalculateTemperature();
+        initialThermometerPos = thermometer.transform.position;
 
         if(exothermicTrace.isPlaying)
         {
@@ -82,9 +87,13 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
         chemicalProduct1.text = "";
         chemicalProduct2.text = "";
         emissionTime = 0f;
+        numberOfSpoons = 0;
         resetStirTime();
         removeSoluteButton.interactable = false;
         ResetTemp();
+        thermometer.transform.position = initialThermometerPos;
+        CollapseMercuryLevels(temperatureDropRate, initialTemperatureLevels.y);
+
         iceEndPoint = Random.Range(0.4f, 0.2f);
         ResetSizeAndPosition(iceCubes);
         for (int i = 0; i < pellets.Length; i++)

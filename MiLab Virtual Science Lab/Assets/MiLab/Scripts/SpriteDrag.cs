@@ -24,7 +24,7 @@ public class SpriteDrag : MonoBehaviour
 
     void OnMouseDown()
     {
-        TemperatureReaction.stirTime = 0f;
+        
         Debug.Log("tapped");
         transform.GetChild(0).gameObject.SetActive(true);
         offset = gameObject.transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z));
@@ -56,7 +56,7 @@ public class SpriteDrag : MonoBehaviour
         if (collision.gameObject.tag != "Collidable")
             transform.LeanMoveLocal(initialPos, 0.5f);
 
-        if (collision.gameObject.name == "BaseCollider")
+        if (collision.gameObject.name == "BaseCollider" && gameObject.name == "Capsule")
         {
             this.hasCollided = true;
         }
