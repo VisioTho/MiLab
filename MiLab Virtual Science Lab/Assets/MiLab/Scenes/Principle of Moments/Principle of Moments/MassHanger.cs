@@ -42,6 +42,7 @@ public class MassHanger : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D col)
     {
         HandleMassAttachment(col);
+
     }
 
     private void HandleMassAttachment(Collider2D collision)
@@ -269,23 +270,135 @@ public class MassHanger : MonoBehaviour
     
     private void Update()
     {
-        Debug.Log("Right side is" +MassManager.hangPointR +" and left side is:" +MassManager.hangPointL +"gameobjects: left " +MassManager.massHungOnLeft +" right " +MassManager.massHungOnRight);
-
-        if (MassManager.hangPointL == "ConnPoint2" && MassManager.massHungOnLeft.name == "Mass100g")
-        {
-            
-            if (MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass200g")
-            {  
-                Debug.Log("zikuyenera kutheka" +"mass rotation value" + MassManager.massHungOnLeft.GetComponent<MassHanger>().massRotationValue);
-            }
-        }
-        else
-        {
-           
-        }
+        Debug.Log("Right side is" + MassManager.hangPointR + " and left side is:" + MassManager.hangPointL + "gameobjects: left " + MassManager.massHungOnLeft + " right " + MassManager.massHungOnRight);
+        Debug.Log("rotation by left mass: " + MassManager.rotationByLeftMass + " rotation by right mass: " + MassManager.rotationByRightMass);
+        BalanceRuler();
 
         MoveMassOutOfBounds();
 
+    }
+
+    private void BalanceRuler()
+    {
+        if ((MassManager.hangPointL == "ConnPoint2" && MassManager.massHungOnLeft.name == "Mass50g") || (MassManager.hangPointL == "ConnPoint6" && MassManager.massHungOnLeft.name == "Mass100g"))
+        {
+
+            if ((MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR8" && MassManager.massHungOnRight.name == "Mass50g" && MassManager.canBalance))
+            {
+                Debug.Log("zikuyenera kutheka" + "mass rotation value" + MassManager.massHungOnLeft.GetComponent<MassHanger>().massRotationValue);
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint4" && MassManager.massHungOnLeft.name == "Mass50g") || (MassManager.hangPointL == "ConnPoint7" && MassManager.massHungOnLeft.name == "Mass100g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR3" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR6" && MassManager.massHungOnRight.name == "Mass50g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint6" && MassManager.massHungOnLeft.name == "Mass50g") || (MassManager.hangPointL == "ConnPoint8" && MassManager.massHungOnLeft.name == "Mass100g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR2" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass50g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint8" && MassManager.massHungOnLeft.name == "Mass50g") || (MassManager.hangPointL == "ConnPoint9" && MassManager.massHungOnLeft.name == "Mass100g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR1" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR2" && MassManager.massHungOnRight.name == "Mass50g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint1" && MassManager.massHungOnLeft.name == "Mass50g") || (MassManager.hangPointL == "ConnPoint7" && MassManager.massHungOnLeft.name == "Mass150g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR3" && MassManager.massHungOnRight.name == "Mass150g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR9" && MassManager.massHungOnRight.name == "Mass50g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint1" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint4" && MassManager.massHungOnLeft.name == "Mass150g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR6" && MassManager.massHungOnRight.name == "Mass150g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR9" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint4" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint6" && MassManager.massHungOnLeft.name == "Mass150g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass150g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR6" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+        
+        else if ((MassManager.hangPointL == "ConnPoint7" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint8" && MassManager.massHungOnLeft.name == "Mass150g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR2" && MassManager.massHungOnRight.name == "Mass150g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR3" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        //100g vs 200g
+
+        else if ((MassManager.hangPointL == "ConnPoint2" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint6" && MassManager.massHungOnLeft.name == "Mass200g"))
+        {
+
+            if ((MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass200g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR8" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Debug.Log("zikuyenera kutheka" + "mass rotation value" + MassManager.massHungOnLeft.GetComponent<MassHanger>().massRotationValue);
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint4" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint7" && MassManager.massHungOnLeft.name == "Mass200g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR3" && MassManager.massHungOnRight.name == "Mass200g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR6" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint6" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint8" && MassManager.massHungOnLeft.name == "Mass200g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR2" && MassManager.massHungOnRight.name == "Mass200g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR4" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+        else if ((MassManager.hangPointL == "ConnPoint8" && MassManager.massHungOnLeft.name == "Mass100g") || (MassManager.hangPointL == "ConnPoint9" && MassManager.massHungOnLeft.name == "Mass200g"))
+        {
+            if ((MassManager.hangPointR == "ConnPointR1" && MassManager.massHungOnRight.name == "Mass200g" && MassManager.canBalance) || (MassManager.hangPointR == "ConnPointR2" && MassManager.massHungOnRight.name == "Mass100g" && MassManager.canBalance))
+            {
+                Balance();
+                MassManager.canBalance = false;
+            }
+        }
+
+
+        void Balance()
+        {
+            ruler.transform.LeanRotateZ(0.0f, .5f);
+        }
     }
 
     private void MoveMassOutOfBounds()
@@ -308,6 +421,8 @@ public class MassHanger : MonoBehaviour
     private void DetachMass()
     {
         ReleaseMass(gameObject.GetComponent<HingeJoint2D>());
+
+        MassManager.canBalance = true;
 
         RegisterMassDetachment();
 
@@ -355,14 +470,16 @@ public class MassHanger : MonoBehaviour
             {
                 if (MassManager.lMassIsReleased)
                 {
-                    ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
+                    //ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z - MassManager.rotationByLeftMass, Space.Self);
+                    ruler.transform.LeanRotateZ(-MassManager.rotationByRightMass, .5f);
                     MassManager.hangPointL = "";
                     
                 }
 
                 if (MassManager.RMassIsReleased)
                 {
-                    ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+                    //ruler.transform.Rotate(0.0f, 0.0f, transform.rotation.z + MassManager.rotationByRightMass, Space.Self);
+                    ruler.transform.LeanRotateZ(MassManager.rotationByLeftMass, .5f);
                     MassManager.hangPointR = "";
                 }
 

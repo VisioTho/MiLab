@@ -94,8 +94,9 @@ public class LiquidControllerScript : MonoBehaviour
             indicatorDrop.GetComponent<SpriteRenderer>().color = new Color32(238, 218, 107, 255);
         }
 
-
+        
         var fillDifference = valueHolder - fill.CurrentVal;
+
         if (indicatorVariation.value == 0 && (sliderInstance.value == 1 || sliderInstance.value == 2)) // using phenophthlaine as indicator
         {
             if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
