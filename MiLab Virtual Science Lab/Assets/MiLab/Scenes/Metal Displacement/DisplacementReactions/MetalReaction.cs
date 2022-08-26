@@ -3,21 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using DG;
+using DG.Tweening;
 
 public class MetalReaction : MonoBehaviour
 {
-    public changeColor changeMagnesiumColor;
-    public zincColorChange zincColor;
-
-    // collision scripts
-    // public MetalDrag spriteDrag;
-
-    public IronColorChange ironColor;
     public GameObject copperMetals, zincMetals, ironMetals, magnesiumMetals;
     public GameObject[] metals, metalsB, metalsC, metalsD;
-    public GameObject sulphate, sulphate2, sulphate3, sulphate4;
-    public GameObject mag_copperSulphateParticles, mag_zincSulphateParticles, mag_ironSuphateParticles, zinc_copperSuphateParticles, zinc_ironSuphateParticles;
+    public SpriteRenderer sulphate, sulphate2, sulphate3, sulphate4;
+    public GameObject mag_copperSulphateParticles, mag_zincSulphateParticles, mag_ironSuphateParticles;
 
     Vector3 initialPosition;
     Vector3 initialScale;
@@ -28,7 +21,11 @@ public class MetalReaction : MonoBehaviour
 
     //   public TMP_Dropdown sulphateDrop;
     public float time = 0;
+    public float zincTime = 0;
+    public float ironTime = 0;
     public float duration = 8;
+    public int reactionDuration = 0;
+    public static bool resetMetals = false;
 
     private void Start()
     {
@@ -46,7 +43,7 @@ public class MetalReaction : MonoBehaviour
         copperSulphateReaction();
         ironSulphateReaction();
         zincSulphateReaction();
-        magnesiumSulphateReaction();
+        // magnesiumSulphateReaction();
         if (copperReaction.counter >= 1 || zincReaction.counter >= 1 || ironReaction.counter >= 1 || magnesiumReaction.counter >= 1)
         {
             removeMetalButton.interactable = true;
@@ -54,21 +51,18 @@ public class MetalReaction : MonoBehaviour
             zincMetalToggle.interactable = false;
             ironMetalToggle.interactable = false;
             magnesiumMetalToggle.interactable = false;
+            resetMetals = false;
         }
     }
 
     public void resetEverything()
     {
         resetTime();
-        zincColor.resetTime();
-        ironColor.resetTime();
-        changeMagnesiumColor.resetTime();
         removeMetalButton.interactable = false;
         mag_copperSulphateParticles.SetActive(false);
         mag_zincSulphateParticles.SetActive(false);
         mag_ironSuphateParticles.SetActive(false);
-        zinc_copperSuphateParticles.SetActive(false);
-        zinc_ironSuphateParticles.SetActive(false);
+
         copperMetalToggle.interactable = true;
         zincMetalToggle.interactable = true;
         ironMetalToggle.interactable = true;
@@ -77,6 +71,9 @@ public class MetalReaction : MonoBehaviour
         MetalDrag.zincCollided = false;
         MetalDrag.ironCollided = false;
         MetalDrag.magnesiumCollided = false;
+
+        resetMetals = true;
+
 
         // copper reset loop
         for (int i = 0; i < metals.Length; i++)
@@ -94,7 +91,7 @@ public class MetalReaction : MonoBehaviour
         for (int i = 0; i < metalsB.Length; i++)
         {
             metalsB[i].transform.position = initialPosition;
-            zincColor.defaultColor();
+            // zincColor.defaultColor();
             metalsB[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsB[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             metalsB[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
@@ -106,7 +103,6 @@ public class MetalReaction : MonoBehaviour
         for (int i = 0; i < metalsC.Length; i++)
         {
             metalsC[i].transform.position = initialPosition;
-            ironColor.defaultColor();
             metalsC[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsC[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             metalsC[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
@@ -118,13 +114,14 @@ public class MetalReaction : MonoBehaviour
         for (int i = 0; i < metalsD.Length; i++)
         {
             metalsD[i].transform.position = initialPosition;
-            changeMagnesiumColor.defaultColor();
+            // changeMagnesiumColor.defaultColor();
             sulphate.GetComponent<SpriteRenderer>().color = new Color32(55, 162, 214, 166);
-            sulphate2.GetComponent<SpriteRenderer>().color = new Color32(129, 125, 75, 72);
-            sulphate3.GetComponent<SpriteRenderer>().color = new Color32(168, 192, 109, 76);
+            sulphate2.GetComponent<SpriteRenderer>().color = new Color32(147, 147, 147, 96);
+            sulphate3.GetComponent<SpriteRenderer>().color = new Color32(111, 105, 28, 175);
             metalsD[i].GetComponent<Rigidbody2D>().simulated = true;
             metalsD[i].GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
             metalsD[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
+
         }
         metalsD[0].transform.position = initialPosition;
         magnesiumReaction.counter = 0;
@@ -134,56 +131,38 @@ public class MetalReaction : MonoBehaviour
     {
         if (MetalDrag.copperCollided && copperReaction.counter == 1)
         {
-            //  solutionNotation.text = "copper sulphate + copper";
+
         }
         if (MetalDrag.copperCollided == true && zincReaction.counter >= 1)
         {
-            zinc_copperSuphateParticles.SetActive(true);
-            // zincColor.zincColorChanged();
             StartCoroutine(copperSulphateRColorTransition());
-            Invoke("stopReaction", 170);
+            //sulphate.DOColor(new Color32(123, 149, 152, 105), reactionDuration);
+            Invoke("stopReaction", reactionDuration);
             //  solutionNotation.text = "copper sulphate + zinc";
         }
         if (MetalDrag.copperCollided && ironReaction.counter >= 1)
         {
-            //bubbleParticles.SetActive(true);
             // ironColor.ironColorTransition();
             StartCoroutine(copperSulphateColorTransition2());
-            Invoke("stopReaction", 150);
+            Invoke("stopReaction", reactionDuration);
             //  solutionNotation.text = "copper sulphate + iron";
 
         }
         if (MetalDrag.copperCollided && magnesiumReaction.counter >= 1)
         {
             mag_copperSulphateParticles.SetActive(true);
-            //  changeMagnesiumColor.ColorChanged();
             StartCoroutine(copperSulphateColorTransition3());
-            Invoke("stopReaction", 130);
-            // solutionNotation.text = "copper sulphate + magnesium";
+            Invoke("stopReaction", reactionDuration);
         }
     }
 
     public void zincSulphateReaction()
     {
-        if (MetalDrag.zincCollided && copperReaction.counter >= 1)
-        {
-            // solutionNotation.text = "zinc sulphate + copper";
-        }
-        if (MetalDrag.zincCollided && zincReaction.counter >= 1)
-        {
-            //   solutionNotation.text = "zinc sulphate + zinc";
-        }
-        if (MetalDrag.zincCollided && ironReaction.counter >= 1)
-        {
-            //  solutionNotation.text = "zinc sulphate + iron";
-        }
         if (MetalDrag.zincCollided && magnesiumReaction.counter >= 1)
         {
             mag_zincSulphateParticles.SetActive(true);
-            //S  changeMagnesiumColor.ColorChanged2();
             StartCoroutine(zincSulphateTransition());
-            Invoke("stopReaction", 125);
-            //  solutionNotation.text = "zinc sulphate + magnesium";
+            Invoke("stopReaction", reactionDuration);
         }
     }
 
@@ -191,51 +170,21 @@ public class MetalReaction : MonoBehaviour
     {
         if (MetalDrag.ironCollided && copperReaction.counter >= 1)
         {
-
-            //solutionNotation.text = "iron sulphate + copper";
         }
         if (MetalDrag.ironCollided && zincReaction.counter >= 1)
         {
-            zinc_ironSuphateParticles.SetActive(true);
-            //S  zincColor.zincColorChanged2();
             StartCoroutine(ironSulphateZincTransition());
-            Invoke("stopReaction", 140);
-            //  solutionNotation.text = "iron sulphate + zinc";
+            Invoke("stopReaction", reactionDuration);
         }
         if (MetalDrag.ironCollided && ironReaction.counter >= 1)
         {
-            //   solutionNotation.text = "iron sulphate + iron";
+
         }
         if (MetalDrag.ironCollided && magnesiumReaction.counter >= 1)
         {
             mag_ironSuphateParticles.SetActive(true);
-            //S changeMagnesiumColor.magIronTransition();
             StartCoroutine(ironSulphateMagTransition());
-            Invoke("stopReaction", 130);
-            //  solutionNotation.text = "iron sulphate + magnesium";
-        }
-    }
-
-    public void magnesiumSulphateReaction()
-    {
-        if (magnesiumReaction.counter == 1)
-        {
-        }
-        if (MetalDrag.magnesiumCollided && copperReaction.counter >= 1)
-        {
-            //  solutionNotation.text = "magnesium sulphate + copper";
-        }
-        if (MetalDrag.magnesiumCollided && zincReaction.counter >= 1)
-        {
-            //   solutionNotation.text = "magnesium sulphate + zinc";
-        }
-        if (MetalDrag.magnesiumCollided && ironReaction.counter >= 1)
-        {
-            //   solutionNotation.text = "magnesium sulphate + iron";
-        }
-        if (MetalDrag.magnesiumCollided && magnesiumReaction.counter >= 1)
-        {
-            //  solutionNotation.text = "magnesium sulphate + magnesium";
+            Invoke("stopReaction", reactionDuration);
         }
     }
 
@@ -244,12 +193,13 @@ public class MetalReaction : MonoBehaviour
         mag_copperSulphateParticles.SetActive(false);
         mag_zincSulphateParticles.SetActive(false);
         mag_ironSuphateParticles.SetActive(false);
-        zinc_copperSuphateParticles.SetActive(false);
-        zinc_ironSuphateParticles.SetActive(false);
+
     }
     public void resetTime()
     {
         time = 0;
+        zincTime = 0;
+        ironTime = 0;
         StopAllCoroutines();
     }
 
@@ -297,12 +247,12 @@ public class MetalReaction : MonoBehaviour
     IEnumerator zincSulphateTransition()
     {
         Color startColor = sulphate2.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(147, 147, 147, 96);
+        Color endColor = new Color32(219, 219, 219, 87);
 
-        while (time < duration)
+        while (zincTime < duration)
         {
-            sulphate2.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, time / duration);
-            time += Time.deltaTime;
+            sulphate2.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, zincTime / duration);
+            zincTime += Time.deltaTime;
             yield return null;
         }
         sulphate2.GetComponent<SpriteRenderer>().color = endColor;
@@ -313,10 +263,10 @@ public class MetalReaction : MonoBehaviour
         Color startColor = sulphate3.GetComponent<SpriteRenderer>().color;
         Color endColor = new Color32(129, 125, 75, 45);
 
-        while (time < duration)
+        while (ironTime < duration)
         {
-            sulphate3.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, time / duration);
-            time += Time.deltaTime;
+            sulphate3.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, ironTime / duration);
+            ironTime += Time.deltaTime;
             yield return null;
         }
         sulphate3.GetComponent<SpriteRenderer>().color = endColor;
@@ -327,10 +277,10 @@ public class MetalReaction : MonoBehaviour
         Color startColor = sulphate3.GetComponent<SpriteRenderer>().color;
         Color endColor = new Color32(147, 147, 147, 96);
 
-        while (time < duration)
+        while (ironTime < duration)
         {
-            sulphate3.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, time / duration);
-            time += Time.deltaTime;
+            sulphate3.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, ironTime / duration);
+            ironTime += Time.deltaTime;
             yield return null;
         }
         sulphate3.GetComponent<SpriteRenderer>().color = endColor;

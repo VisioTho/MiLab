@@ -12,12 +12,12 @@ public class magnesiumReaction : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("counter is " + counter);
+        // Debug.Log("counter is " + counter);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("triggered");
+        // Debug.Log("triggered");
 
         if (collision.gameObject.name == "magnesium metal")
         {

@@ -10,10 +10,10 @@ public class SpriteDrag : MonoBehaviour
     float distanceFromCamera;
     public Camera mainCamera;
 
-    private bool hasCollided= false;
+    private bool hasCollided = false;
 
     public bool canDrag;
-  
+
     private void Start()
     {
         canDrag = true;
@@ -31,21 +31,21 @@ public class SpriteDrag : MonoBehaviour
     }
 
     void OnMouseDrag()
-    {   
-        if(canDrag)
+    {
+        if (canDrag)
         {
             Vector3 pos = Input.mousePosition;
             pos.z = distanceFromCamera;
             pos = mainCamera.ScreenToWorldPoint(pos);
             gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
         }
-        
+
 
     }
 
     private void OnMouseUp()
     {
-        if(transform.GetChild(0).gameObject != null)
+        if (transform.GetChild(0).gameObject != null)
             transform.GetChild(0).gameObject.SetActive(false);
 
         transform.gameObject.GetComponent<Rigidbody2D>().simulated = true;
@@ -60,13 +60,13 @@ public class SpriteDrag : MonoBehaviour
         {
             this.hasCollided = true;
         }
-            
+
         if (collision.gameObject.name == "PetriDish" || collision.gameObject.name == "Capsule")
             this.hasCollided = false;
-        
+
     }
 
-   
+
 
     void Update()
     {
@@ -81,15 +81,15 @@ public class SpriteDrag : MonoBehaviour
                 tempScale.x -= V;
 
                 transform.localScale = tempScale;
-                
+
             }
-           
+
         }
-        if(transform.localScale.y <=0.001f)
+        if (transform.localScale.y <= 0.001f)
         {
             this.hasCollided = false;
         }
 
-        
+
     }
 }

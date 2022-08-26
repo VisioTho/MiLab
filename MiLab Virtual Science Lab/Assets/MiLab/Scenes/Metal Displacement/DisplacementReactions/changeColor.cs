@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class changeColor : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class changeColor : MonoBehaviour
 
     void Update()
     {
-       
+
     }
 
     public void defaultColor()
@@ -85,7 +86,7 @@ public class changeColor : MonoBehaviour
     public void resetTime()
     {
         time = 0;
-        StopAllCoroutines(); 
+        StopAllCoroutines();
     }
 
 }

@@ -8,7 +8,7 @@ public partial class TemperatureReaction
 
     private void SodiumHydroxideReaction()
     {
-        
+
         if (counter >= 1)
         {
             removeSoluteButton.interactable = true;
@@ -56,7 +56,7 @@ public partial class TemperatureReaction
         }
         else
         {
-            
+
         }
     }
 
@@ -83,4 +83,4 @@ public partial class TemperatureReaction
         }
     }
 }
-    
+

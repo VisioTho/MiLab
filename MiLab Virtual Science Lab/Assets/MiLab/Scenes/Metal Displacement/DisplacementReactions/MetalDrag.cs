@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class MetalDrag : MonoBehaviour
 {
@@ -9,10 +10,12 @@ public class MetalDrag : MonoBehaviour
     private Vector3 initialPos;
     float distanceFromCamera;
     public Camera mainCamera;
+    public SpriteRenderer metalPiece;
 
     private bool hasCollided = false;
 
     public static bool copperCollided, zincCollided, ironCollided, magnesiumCollided = false;
+    private float colorTransitionDuration = 120;
 
 
     private void Start()
@@ -57,24 +60,61 @@ public class MetalDrag : MonoBehaviour
         {
             this.hasCollided = true;
             copperCollided = true;
+            if (this.metalPiece.name == "magnesium metal")
+            {
+                metalPiece.DOColor(new Color32(41, 41, 41, 255), 110);
+            }
+            else if (this.metalPiece.name == "zinc metal")
+            {
+                metalPiece.DOColor(new Color32(41, 41, 41, 255), 120);
+            }
+            else if (this.metalPiece.name == "iron metal")
+            {
+                metalPiece.DOColor(new Color32(192, 119, 34, 255), 120);
+            }
+            else
+            {
+                metalPiece.DOColor(new Color32(255, 255, 255, 255), 0);
+            }
         }
         if (collision.gameObject.name == "BaseColliderZinc")
         {
             this.hasCollided = true;
             zincCollided = true;
+            if (this.metalPiece.name == "magnesium metal")
+            {
+                metalPiece.DOColor(new Color32(50, 50, 50, 255), 100);
+            }
+            else
+            {
+                metalPiece.DOColor(new Color32(255, 255, 255, 255), 0);
+            }
+
         }
         if (collision.gameObject.name == "BaseColliderIron")
         {
             this.hasCollided = true;
             ironCollided = true;
+            if (this.metalPiece.name == "magnesium metal")
+            {
+                metalPiece.DOColor(new Color32(128, 128, 128, 255), 105);
+            }
+            else if (this.metalPiece.name == "zinc metal")
+            {
+                metalPiece.DOColor(new Color32(128, 128, 128, 255), 120);
+            }
+            else
+            {
+                metalPiece.DOColor(new Color32(255, 255, 255, 255), 0);
+            }
+
+
         }
         if (collision.gameObject.name == "BaseColliderMagnesium")
         {
             this.hasCollided = true;
             magnesiumCollided = true;
         }
-
-
 
         if (collision.gameObject.name == "PetriDish" || collision.gameObject.name == "Capsule")
             this.hasCollided = false;
@@ -85,6 +125,12 @@ public class MetalDrag : MonoBehaviour
 
     void Update()
     {
+        if (MetalReaction.resetMetals)
+        {
+            metalPiece.DOColor(new Color32(255, 255, 255, 255), 0);
+            DOTween.CompleteAll();
+        }
+
         if (transform.localScale.y <= 0.001f)
         {
             this.hasCollided = false;
@@ -92,4 +138,9 @@ public class MetalDrag : MonoBehaviour
 
 
     }
+    public void resetMetalColor()
+    {
+        metalPiece.color = new Color32(255, 255, 255, 255);
+    }
+
 }
