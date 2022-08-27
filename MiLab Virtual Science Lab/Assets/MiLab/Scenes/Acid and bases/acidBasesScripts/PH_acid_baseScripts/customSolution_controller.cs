@@ -11,6 +11,8 @@ public class customSolution_controller : MonoBehaviour
     public Toggle[] beaker_toggle_buttons;
     public GameObject hydrochloric_acid_beaker, sodium_hydroxide_beaker, ammonium_solution_beaker, pippete, litmus_paper, ethanoic_acid_beaker, ethanoic_acid_label, ethanoic_acid;
     //public static Hashtable viewed_beakers = new Hashtable();//to be fetched from beaker_switcher;
+    public GameObject beakerButtonsPanel, dropperTip;
+    public GameObject[] solutionLabels;
     public TMP_Dropdown solutions_dd;
     public bool bk1_should_appear_by_default, bk2_should_appear_by_default, bk3_should_appear_by_default, bk4_should_appear_by_default;
     // Start is called before the first frame update
@@ -44,7 +46,7 @@ public class customSolution_controller : MonoBehaviour
         if (custom_solution_toggler.isOn)
         {
             solutions_dd.value = 0;
-            //   resetController.current_selected_beaker = "ethanoic_acid_beaker";//making ethanoic acid beaker the current selected beaker
+            resetController.current_selected_beaker = "ethanoic_acid_beaker";//making ethanoic acid beaker the current selected beaker
             StartCoroutine(LerpPosition(new Vector3(ethanoic_acid_beaker.transform.position.x, pippete.transform.position.y, 0f), 2f));
           //  StartCoroutine(Camera.main.GetComponent<selectorNdropper_position_controller>().LerpPosition(new Vector3(ethanoic_acid_beaker.transform.position.x, pippete.transform.position.y, 0f), 2f));
 
@@ -59,10 +61,12 @@ public class customSolution_controller : MonoBehaviour
              }*/
 
 
-           // hydrochloric_acid_beaker.SetActive(false);
-           // sodium_hydroxide_beaker.SetActive(false);
-            //ammonium_solution_beaker.SetActive(false);
+            hydrochloric_acid_beaker.SetActive(false);
+            sodium_hydroxide_beaker.SetActive(false);
+            ammonium_solution_beaker.SetActive(false);
             ethanoic_acid_label.SetActive(false);
+            beakerButtonsPanel.SetActive(false);
+            dropperTip.SetActive(false);
 
             pippete.transform.position = new Vector2(-3.5f, pippete.transform.position.y);
             litmus_paper.transform.position = new Vector2(ethanoic_acid_beaker.transform.position.x, litmus_paperYpos);
@@ -72,6 +76,11 @@ public class customSolution_controller : MonoBehaviour
                 beaker_tg_btn.isOn = false;
             }*/
             ethanoic_acid_beaker.SetActive(true);
+
+            foreach(GameObject label in solutionLabels)
+            {
+                label.SetActive(false);
+            }
 
         }
         else
@@ -88,16 +97,22 @@ public class customSolution_controller : MonoBehaviour
             bk1_should_appear_by_default = bk2_should_appear_by_default = bk3_should_appear_by_default = bk4_should_appear_by_default = false;
 
 
-            //sodium_hydroxide_beaker.SetActive(true);
-            // ammonium_solution_beaker.SetActive(true);
+             sodium_hydroxide_beaker.SetActive(true);
+             ammonium_solution_beaker.SetActive(true);
              ethanoic_acid_label.SetActive(true);
+             hydrochloric_acid_beaker.SetActive(true);
+       
+             beakerButtonsPanel.SetActive(true);
 
-
-          /*  foreach (Toggle beakerBTN in beaker_toggle_buttons)
+            /*  foreach (Toggle beakerBTN in beaker_toggle_buttons)
+              {
+                  beakerBTN.interactable = true;
+              }*/
+            foreach (GameObject label in solutionLabels)
             {
-                beakerBTN.interactable = true;
-            }*/
+                label.SetActive(true);
             }
+        }
     }
     public IEnumerator LerpPosition(Vector3 targetPos, float duration)
     {

@@ -15,12 +15,6 @@ public class resetController : MonoBehaviour
         transparent_color = GameObject.FindWithTag("hydrochloric_acid").GetComponent<SpriteRenderer>().color;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void reset_liquid_color()
     {
         //drop_controller.stopCoroutines();

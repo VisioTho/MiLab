@@ -21,9 +21,10 @@ public class LiquidControllerScript : MonoBehaviour
     public Slider sliderInstance;
     public bool pipetteDrop;
     private float valueHolder;
+    private float fillDifference;
 
     public TMP_Text analyteNotation;
-    public TMP_Dropdown titrantVariation, analyteVariation, indicatorVariation;
+    public TMP_Dropdown titrantVariation, analyteVariation, indicatorVariation, resetDropdown;
     public Button resetButton;
     public Toggle beakerToggle;
 
@@ -32,6 +33,7 @@ public class LiquidControllerScript : MonoBehaviour
     private bool isTransformed;
     public float time = 0;
     public float duration = 8;
+    // private bool hasTitrated;
 
     // public SpriteRenderer mat;
     public SpriteRenderer indicatorDrop;
@@ -94,9 +96,14 @@ public class LiquidControllerScript : MonoBehaviour
             indicatorDrop.GetComponent<SpriteRenderer>().color = new Color32(238, 218, 107, 255);
         }
 
-        
-        var fillDifference = valueHolder - fill.CurrentVal;
-
+        if (isTransformed == true)
+        {
+            fillDifference = 0;
+        }
+        if (isTransformed == false)
+        {
+            fillDifference = valueHolder - fill.CurrentVal;
+        }
         if (indicatorVariation.value == 0 && (sliderInstance.value == 1 || sliderInstance.value == 2)) // using phenophthlaine as indicator
         {
             if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
@@ -2378,31 +2385,79 @@ public class LiquidControllerScript : MonoBehaviour
 
     public void resetEverything()
     {
-        resetButton.interactable = false;
-        resetTime();
-        isTransformed = false;
-        fill.CurrentVal = 0;
-        DropParticle.Stop();
-        DropParticle.gameObject.SetActive(false);
-        liquidFlowParticle.SetActive(false);
-        stream.SetActive(false);
-        titrantVariation.interactable = true;
-        molesController.BMoles1.interactable = true;
-        molesController.BMoles2.interactable = true;
-        dropController.resetDrops();
-        titrantVariation.value = 0;
-        analyteVariation.value = 0;
-        indicatorVariation.value = 0;
-        sliderInstance.value = 0;
-        analyteVariation.interactable = true;
-        titrantVariation.interactable = true;
-        indicatorVariation.interactable = true;
-        beakerToggle.interactable = true;
-        ConicalFlaskVolume.volumeSlider.value = 10;
-        ConicalFlaskVolume.volumeSlider.interactable = true;
-        molesController.burette_moles = 1;
-        molesController.conicalFlaskMoles = 0;
-        ShakeEffectHandler.isShaking = false;
+
+        if (resetDropdown.value == 0)
+        {
+            resetButton.interactable = false;
+            resetTime();
+            isTransformed = false;
+            fill.CurrentVal = 0;
+            DropParticle.Stop();
+            DropParticle.gameObject.SetActive(false);
+            liquidFlowParticle.SetActive(false);
+            stream.SetActive(false);
+            titrantVariation.interactable = true;
+            molesController.BMoles1.interactable = true;
+            molesController.BMoles2.interactable = true;
+            dropController.resetDrops();
+            titrantVariation.value = 0;
+            analyteVariation.value = 0;
+            indicatorVariation.value = 0;
+            sliderInstance.value = 0;
+            analyteVariation.interactable = true;
+            titrantVariation.interactable = true;
+            indicatorVariation.interactable = true;
+            beakerToggle.interactable = true;
+            ConicalFlaskVolume.volumeSlider.value = 10;
+            ConicalFlaskVolume.volumeSlider.interactable = true;
+            molesController.burette_moles = 1;
+            molesController.conicalFlaskMoles = 0;
+            ShakeEffectHandler.isShaking = false;
+        }
+        if (resetDropdown.value == 1)
+        {
+            resetButton.interactable = true;
+            fill.CurrentVal = 0;
+            DropParticle.Stop();
+            DropParticle.gameObject.SetActive(false);
+            liquidFlowParticle.SetActive(false);
+            stream.SetActive(false);
+            titrantVariation.interactable = true;
+            molesController.BMoles1.interactable = true;
+            titrantVariation.value = 0;
+            sliderInstance.value = 0;
+            analyteVariation.interactable = true;
+            titrantVariation.interactable = true;
+            indicatorVariation.interactable = true;
+            beakerToggle.interactable = true;
+            ConicalFlaskVolume.volumeSlider.value = 10;
+            ConicalFlaskVolume.volumeSlider.interactable = true;
+            molesController.conicalFlaskMoles = 0;
+        }
+        if (resetDropdown.value == 2)
+        {
+            resetButton.interactable = true;
+            resetTime();
+            isTransformed = false;
+            //fill.CurrentVal = 0;
+            fillDifference = 0;
+            DropParticle.Stop();
+            DropParticle.gameObject.SetActive(false);
+            liquidFlowParticle.SetActive(false);
+            stream.SetActive(false);
+            dropController.resetDrops();
+            titrantVariation.value = 0;
+            analyteVariation.value = 0;
+            indicatorVariation.value = 0;
+            sliderInstance.value = 0;
+            analyteVariation.interactable = true;
+            indicatorVariation.interactable = true;
+            ConicalFlaskVolume.volumeSlider.value = 10;
+            ConicalFlaskVolume.volumeSlider.interactable = true;
+            ShakeEffectHandler.isShaking = false;
+
+        }
+
     }
 
     // slider that controls the titration liquid flow 
@@ -2450,7 +2505,7 @@ public class LiquidControllerScript : MonoBehaviour
             }
 
         }
-        else
+        else if (sliderInstance.value == 0)
         {
             var localReftoParticle = DropParticle.main;
             localReftoParticle.playOnAwake = false;
@@ -2460,6 +2515,8 @@ public class LiquidControllerScript : MonoBehaviour
             liquidFlowParticle.SetActive(false);
             StopCoroutine(enumerator);
             StopCoroutine(flowController);
+
+            valueHolder = fill.currentVal;
         }
     }
 
@@ -2468,25 +2525,25 @@ public class LiquidControllerScript : MonoBehaviour
     {
         if (titrantVariation.value == 0)
         {
-            content.GetComponent<Image>().color = new Color32(176, 142, 142, 129);
+            content.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
         }
         if (titrantVariation.value == 1)
         {
-            content.GetComponent<Image>().color = new Color32(94, 94, 94, 94);
+            content.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
         }
         if (titrantVariation.value == 2)
         {
-            content.GetComponent<Image>().color = new Color32(255, 255, 255, 94);
+            content.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
         }
         if (titrantVariation.value == 3)
         {
-            content.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            content.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
             fill.CurrentVal = 0;
             sliderInstance.value = 0;
         }
@@ -2499,24 +2556,24 @@ public class LiquidControllerScript : MonoBehaviour
         if (analyteVariation.value == 0)
         {
             // analyteNotation.text = "15ml NaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(94, 94, 94, 94);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
 
 
         }
         if (analyteVariation.value == 1)
         {
             // analyteNotation.text = "15ml CaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(176, 142, 142, 129);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
         }
         if (analyteVariation.value == 2)
         {
             // analyteNotation.text = "15ml CaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(255, 255, 255, 100);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
         }
         if (analyteVariation.value == 3)
         {
             // analyteNotation.text = "15ml CaOH";
-            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(255, 255, 255, 94);
+            dropController.sodium_hydroxide.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
         }
     }
 
@@ -2577,6 +2634,7 @@ public class LiquidControllerScript : MonoBehaviour
             titrantVariation.interactable = false;
             indicatorVariation.interactable = false;
             fill.CurrentVal -= 0.5f;
+            //if(sliderInstance.value == 0)
             if (fill.currentVal == 0)
             {
                 var localReftoParticle = DropParticle.main;
@@ -2627,18 +2685,22 @@ public class LiquidControllerScript : MonoBehaviour
     public void ColorlessTransition(float time_taken)
     {
         dropController.sodium_hydroxide.DOColor(new Color32(234, 234, 234, 109), time_taken);
+        isTransformed = true;
     }
     public void PhenopthleinToPinkTransition(float time_taken)
     {
         dropController.sodium_hydroxide.DOColor(new Color32(251, 0, 253, 243), time_taken);
+        isTransformed = true;
     }
     public void MethyToRedTransition(float time_taken)
     {
         dropController.sodium_hydroxide.DOColor(new Color32(226, 16, 109, 255), time_taken);
+        isTransformed = true;
     }
     public void MethyTYellowTransition(float time_taken)
     {
         dropController.sodium_hydroxide.DOColor(new Color32(237, 217, 40, 255), time_taken);
+        isTransformed = true;
     }
 
 }

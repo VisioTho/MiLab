@@ -5,6 +5,7 @@ using UnityEngine;
 public class PowderShakeController : MonoBehaviour
 {
     [SerializeField] private ParticleSystem powderParticles;
+    public GameObject powder;
     private bool spoonIsInPosition; // is in position to drop some nitrate
     private bool canEmitPowder;
 
@@ -21,6 +22,7 @@ public class PowderShakeController : MonoBehaviour
                     powderParticles.Emit(5);
                     TemperatureReaction.numberOfSpoons += 1;
                     canEmitPowder = false;
+                    powder.SetActive(false);
                 }
             }
         }
@@ -34,6 +36,7 @@ public class PowderShakeController : MonoBehaviour
         {
             canEmitPowder = true;
             Debug.Log("can emit");
+            powder.SetActive(true);
         }
     }
 

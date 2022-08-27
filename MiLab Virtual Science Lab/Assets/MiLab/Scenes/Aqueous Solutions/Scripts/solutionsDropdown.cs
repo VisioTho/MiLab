@@ -7,7 +7,7 @@ using TMPro;
 public class solutionsDropdown : MonoBehaviour
 {
     public TMP_Dropdown solutions_dd;
-    public GameObject solid_water, bulb, bulb_light_emu, anode, cathode;
+    public GameObject solid_water, bulb, bulb_light_emu, anode, cathode, water_back, water_back2;
     public TextMeshProUGUI solution_name;
     public Light bulb_light;
     public Button removeSolution;
@@ -168,6 +168,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(204, 98, 22, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(204, 98, 22, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(204, 98, 22, 200);
             solution_name.text = "Sugar solution";
             should_restart_observation = 0;
         }
@@ -175,6 +177,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(191, 158, 134, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(191, 158, 134, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(191, 158, 134, 200);
             solution_name.text = "Sodium Chloride solution";
             should_restart_observation = 1f;
         }
@@ -182,6 +186,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(217, 216, 216, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(217, 216, 216, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(217, 216, 216, 200);
             solution_name.text = "Concentrated Sulphuric acid solution";
             should_restart_observation = 2f;
         }
@@ -189,6 +195,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(0, 173, 255, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(0, 173, 255, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(0, 173, 255, 200);
             solution_name.text = "Copper Sulphate solution";
             should_restart_observation = 3f;
         }
@@ -196,6 +204,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(225, 225, 225, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(225, 225, 225, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(225, 225, 225, 200);
             solution_name.text = "Pure water";
             should_restart_observation = 0f;
         }
@@ -203,6 +213,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(90, 114, 123, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(90, 114, 123, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(90, 114, 123, 200);
             solution_name.text = "Acidified water";
             should_restart_observation = 4f;
         }
@@ -210,6 +222,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(227, 225, 0, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(227, 225, 0, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(227, 225, 0, 200);
             solution_name.text = "Lemon juice";
             should_restart_observation = 5f;
         }
@@ -217,6 +231,8 @@ public class solutionsDropdown : MonoBehaviour
         {
             solid_water.SetActive(true);
             solid_water.GetComponent<SpriteRenderer>().color = new Color32(189, 193, 158, 200);
+            water_back.GetComponent<SpriteRenderer>().color = new Color32(189, 193, 158, 200);
+            water_back2.GetComponent<SpriteRenderer>().color = new Color32(189, 193, 158, 200);
             solution_name.text = "Salt solution";should_restart_observation = 6f;
         }
     }

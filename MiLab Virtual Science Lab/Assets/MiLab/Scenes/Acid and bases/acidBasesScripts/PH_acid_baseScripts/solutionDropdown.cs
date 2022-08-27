@@ -8,33 +8,28 @@ public class solutionDropdownPH : MonoBehaviour
 {
     public TMP_Dropdown solutions_dd;
     public GameObject liquid, custom_solution_toggler, litmus_paper_b, litmus_paper_type_toggler;
+
+    Color defaultBlue = new Color32(17, 97, 137, 255);
+    Color defaultRed = new Color32(161, 80, 63, 255);
     // Start is called before the first frame update
-   void Start()
+    void Start()
     {
         solutions_dd.onValueChanged.AddListener(delegate {
             valueHasChanged(solutions_dd);
             ToggleValueChanged();
         });
-
-       /* litmus_paper_type_toggler.GetComponent<Toggle>().onValueChanged.AddListener(delegate
-        {
-            ToggleValueChanged();
-        });*/
     }
 
     public void ToggleValueChanged()
     {
-        Debug.Log("Litmus toggled");
 
         if (litmus_paper_type_toggler.GetComponent<Toggle>().isOn)//red
         {
-            //litmus_paper_a.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
-            litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(239, 73, 26, 255);
+            litmus_paper_b.GetComponent<SpriteRenderer>().color = defaultRed;
         }
         else //blue
         {
-           //litmus_paper_a.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
-            litmus_paper_b.GetComponent<SpriteRenderer>().color = new Color32(8, 135, 199, 255);
+            litmus_paper_b.GetComponent<SpriteRenderer>().color = defaultBlue;
         }
     }
 
@@ -58,13 +53,13 @@ public class solutionDropdownPH : MonoBehaviour
         else if(sender.value==1)//milk
         {
             liquid.SetActive(true);
-            liquid.GetComponent<SpriteRenderer>().color = new Color32(243, 241, 235, 255);
+            liquid.GetComponent<SpriteRenderer>().color = new Color32(243, 241, 235, 145);
             liquid.tag = "milk";
         }
         else if (sender.value == 2)//blood
         {
             liquid.SetActive(true);
-            liquid.GetComponent<SpriteRenderer>().color = new Color32(231, 28, 34, 255);
+            liquid.GetComponent<SpriteRenderer>().color = new Color32(231, 28, 34, 155);
             liquid.tag = "blood";
 
         }
@@ -77,7 +72,7 @@ public class solutionDropdownPH : MonoBehaviour
         else if (sender.value == 4)//tomato
         {
             liquid.SetActive(true);
-            liquid.GetComponent<SpriteRenderer>().color = new Color32(255, 16, 16, 255);
+            liquid.GetComponent<SpriteRenderer>().color = new Color32(255, 16, 16, 145);
             liquid.tag = "tomato";
         }
         else if (sender.value == 5)//vinegar
@@ -89,7 +84,7 @@ public class solutionDropdownPH : MonoBehaviour
         else if (sender.value == 6)//bleach
         {
             liquid.SetActive(true);
-            liquid.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            liquid.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 145);
             liquid.tag = "bleach";
         }
        

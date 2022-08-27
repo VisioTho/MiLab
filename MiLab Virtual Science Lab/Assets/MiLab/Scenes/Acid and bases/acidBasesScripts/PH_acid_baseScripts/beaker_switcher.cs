@@ -12,6 +12,7 @@ public class beaker_switcher : MonoBehaviour
     public float default_litmus_Y_pos;
     public float duration;
     public int current_visible_beakers;
+    public GameObject lb1, lb2, lb3, lb4;
     void Start()
     {
         gameObject.GetComponent<Toggle>().onValueChanged.AddListener(delegate
@@ -59,21 +60,25 @@ public class beaker_switcher : MonoBehaviour
                 beaker1_btn_bg.GetComponent<Image>().color = on_color;
                 if(!(beaker2.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { targetBeaker1(); }
                 beaker1.SetActive(true);
+                lb1.SetActive(true);
             }
             if (gameObject.tag == "beaker2_btn") { 
                 beaker2_btn_bg.GetComponent<Image>().color = on_color;
                 if (!(beaker1.activeSelf || beaker3.activeSelf || beaker4.activeSelf)) { targetBeaker2(); }
                 beaker2.SetActive(true);
+               lb2.SetActive(true);
             }
             if (gameObject.tag == "beaker3_btn") {
                 beaker3_btn_bg.GetComponent<Image>().color = on_color;
                 if (!(beaker2.activeSelf || beaker2.activeSelf || beaker4.activeSelf)) { targetBeaker3(); }
                 beaker3.SetActive(true);
+                lb3.SetActive(true);
             }
             if (gameObject.tag == "beaker4_btn") { 
                 beaker4_btn_bg.GetComponent<Image>().color = on_color;
                 if (!(beaker2.activeSelf || beaker3.activeSelf || beaker1.activeSelf)) { targetBeaker4(); }
                 beaker4.SetActive(true);
+                lb4.SetActive(true);
             }
 
         }
@@ -82,21 +87,25 @@ public class beaker_switcher : MonoBehaviour
             if (gameObject.tag == "beaker1_btn") { 
                 beaker1_btn_bg.GetComponent<Image>().color = off_color;
                 beaker1.SetActive(false);
+                lb1.SetActive(false);
                 beaker_hidden("beaker1");
             }
             if (gameObject.tag == "beaker2_btn") { 
                 beaker2_btn_bg.GetComponent<Image>().color = off_color;
                 beaker2.SetActive(false);
+                lb2.SetActive(false);
                 beaker_hidden("beaker2");
             }
             if (gameObject.tag == "beaker3_btn") { 
                 beaker3_btn_bg.GetComponent<Image>().color = off_color;
                 beaker3.SetActive(false);
+                lb3.SetActive(false);
                 beaker_hidden("beaker3");
             }
             if (gameObject.tag == "beaker4_btn") { 
                 beaker4_btn_bg.GetComponent<Image>().color = off_color;
                 beaker4.SetActive(false);
+                lb4.SetActive(false);
                 beaker_hidden("beaker4");
             }
         }
