@@ -8,6 +8,11 @@ public class PowderShakeController : MonoBehaviour
     public GameObject powder;
     private bool spoonIsInPosition; // is in position to drop some nitrate
     private bool canEmitPowder;
+    Vector3 initialPos;
+    private void Start()
+    {
+        initialPos = transform.position;
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,6 +28,7 @@ public class PowderShakeController : MonoBehaviour
                     TemperatureReaction.numberOfSpoons += 1;
                     canEmitPowder = false;
                     powder.SetActive(false);
+                    
                 }
             }
         }
@@ -37,6 +43,7 @@ public class PowderShakeController : MonoBehaviour
             canEmitPowder = true;
             Debug.Log("can emit");
             powder.SetActive(true);
+           
         }
     }
 

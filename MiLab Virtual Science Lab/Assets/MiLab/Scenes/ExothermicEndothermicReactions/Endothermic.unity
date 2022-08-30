@@ -2976,15 +2976,15 @@ MonoBehaviour:
   temperatureDropRate: 0.002
   tempReading: {fileID: 533223125}
   iceCubes:
-  - {fileID: 971915491}
-  - {fileID: 1124991420}
-  - {fileID: 157707112}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pellets:
   - {fileID: 1178219357}
   - {fileID: 1069798441}
   - {fileID: 2096565591}
   - {fileID: 393873708}
-  iceCube: {fileID: 1975888035}
+  iceCube: {fileID: 0}
   thermometer: {fileID: 2078915726}
   isImmersed: 0
   removeSoluteButton: {fileID: 114131513}
@@ -3639,12 +3639,12 @@ PrefabInstance:
     - target: {fileID: 2533869506340805405, guid: 4be8f27b5cc58074996415b41a04b6a0,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 9.546496
+      value: -10.241
       objectReference: {fileID: 0}
     - target: {fileID: 2533869506340805405, guid: 4be8f27b5cc58074996415b41a04b6a0,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 588.1601
+      value: 117
       objectReference: {fileID: 0}
     - target: {fileID: 2533869506544645680, guid: 4be8f27b5cc58074996415b41a04b6a0,
         type: 3}
@@ -5618,7 +5618,7 @@ ParticleSystem:
     startSpeed:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 3.16
+      scalar: 3
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -10284,7 +10284,7 @@ Transform:
   m_LocalScale: {x: 1.0965959, y: 0.57054895, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!61 &318445731
 BoxCollider2D:
@@ -10521,7 +10521,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.46112874, y: 0.6260987}
+  m_Offset: {x: 0.20564944, y: 0.6206167}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -10532,7 +10532,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8098572, y: 1.6837524}
+  m_Size: {x: 2.1434135, y: 1.6727884}
   m_EdgeRadius: 0
 --- !u!50 &344779954
 Rigidbody2D:
@@ -13220,7 +13220,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -2.159691, y: 0.4266678}
+  m_Offset: {x: -2.6547265, y: 0.46006104}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -13231,7 +13231,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1438336, y: 2.0783222}
+  m_Size: {x: 2.1339045, y: 2.1451082}
   m_EdgeRadius: 0
 --- !u!50 &569210140
 Rigidbody2D:
@@ -14637,9 +14637,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectsToStir:
-  - {fileID: 971915491}
-  - {fileID: 1124991420}
-  - {fileID: 157707112}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &693160890
 GameObject:
   m_ObjectHideFlags: 0
@@ -16906,6 +16906,7 @@ GameObject:
   - component: {fileID: 910194198}
   - component: {fileID: 910194199}
   - component: {fileID: 910194197}
+  - component: {fileID: 910194200}
   m_Layer: 0
   m_Name: PotassiumBottle
   m_TagString: Collidable
@@ -16952,7 +16953,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 06b84fcb77d9203409b8e56a5c510900, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -16972,7 +16973,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 910194193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.138, y: 3.0640001, z: 0}
+  m_LocalPosition: {x: 0.6, y: 0.84, z: 0}
   m_LocalScale: {x: 0.42653883, y: 0.43243632, z: 1}
   m_Children:
   - {fileID: 794220169}
@@ -17186,6 +17187,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainCamera: {fileID: 1646155412}
   canDrag: 0
+--- !u!114 &910194200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910194193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb151b8a3e6875499cc3f2a8b615242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &911203594
 GameObject:
   m_ObjectHideFlags: 0
@@ -19769,9 +19782,9 @@ MonoBehaviour:
   temperatureDropRate: 0.002
   tempReading: {fileID: 533223125}
   iceCubes:
-  - {fileID: 971915491}
-  - {fileID: 1124991420}
-  - {fileID: 157707112}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   pellets:
   - {fileID: 1178219357}
   - {fileID: 1069798441}
@@ -45103,7 +45116,7 @@ Transform:
   - {fileID: 1052766410}
   - {fileID: 1409444726}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1979834294
 GameObject:
@@ -47078,12 +47091,14 @@ GameObject:
   - component: {fileID: 2078915730}
   - component: {fileID: 2078915729}
   - component: {fileID: 2078915728}
+  - component: {fileID: 2078915734}
   - component: {fileID: 2078915727}
   - component: {fileID: 2078915731}
   - component: {fileID: 2078915732}
+  - component: {fileID: 2078915733}
   m_Layer: 0
   m_Name: Thermometer
-  m_TagString: Untagged
+  m_TagString: Collidable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47230,6 +47245,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a639257904add274bad93391a1605649, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2078915733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078915726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fb151b8a3e6875499cc3f2a8b615242, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2078915734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2078915726}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d45f9e2878a847e41bf7af25e2075db6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 1646155412}
 --- !u!1 &2081563551
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,6 +6,7 @@ public partial class TemperatureReaction
     
     private void PottasiumNitrateReaction()
     {
+        Debug.Log(stirTime + "is stirtime " + " pottasium nitrate change in temp is " + potassiumNitrate.changeInTemperature +" number of spoons is " +numberOfSpoons);
         if (numberOfSpoons >= 1)
         {
             removeSoluteButton.interactable = true;
@@ -13,7 +14,7 @@ public partial class TemperatureReaction
             chemicalProduct1.text = "K+ (Pottasium ions)";
             chemicalProduct2.text = "NO3- (Nitrate)";
 
-            if (ThermometerManager.isImmersed && numberOfSpoons >= 1) 
+            if (ThermometerManager.isImmersed && numberOfSpoons >= 1 && stirTime>=1.2f) 
                 CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
 
             if(!ThermometerManager.isImmersed)
@@ -28,10 +29,10 @@ public partial class TemperatureReaction
        
 
         if (stirTime > 1.2f)
-        {
+        {  
             if (numberOfSpoons == 1)
             {
-                Debug.Log("should assign");
+                
                 var tempChange = Random.Range(1.7f, 1.8f);
                 potassiumNitrate.changeInTemperature = tempChange;
 

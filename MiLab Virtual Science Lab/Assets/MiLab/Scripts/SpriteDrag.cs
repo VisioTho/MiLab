@@ -40,6 +40,7 @@ public class SpriteDrag : MonoBehaviour
             gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
         }
         
+     
 
     }
 
@@ -49,12 +50,21 @@ public class SpriteDrag : MonoBehaviour
             transform.GetChild(0).gameObject.SetActive(false);
 
         transform.gameObject.GetComponent<Rigidbody2D>().simulated = true;
-    }
 
+       
+    }
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        
+    }
+   
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag != "Collidable")
+        {
             transform.LeanMoveLocal(initialPos, 0.5f);
+        }
+           
 
         if (collision.gameObject.name == "BaseCollider" && gameObject.name == "Capsule")
         {
