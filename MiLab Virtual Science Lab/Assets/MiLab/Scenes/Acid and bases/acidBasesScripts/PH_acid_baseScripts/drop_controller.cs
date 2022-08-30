@@ -51,56 +51,60 @@ public class drop_controller : MonoBehaviour
             //incrementing number of drops in a liquid
              if(gameObject.tag== "hydrochloric_acid") {
                 hydrochrolic_acid_drops++;
-                if (hydrochrolic_acid_drops == 2) { StartCoroutine(hydrochloric_acid_color_changer());}
+                if (hydrochrolic_acid_drops == 2) {
+                    StartCoroutine(colorChanger(new Color32(231, 28, 36, 145), hydrochrolic_acid));
+                }
             }
              if(gameObject.tag== "ethanoic_acid") {
                 ethanoic_acid_drops++;
-                if (ethanoic_acid_drops == 2) { StartCoroutine(ethanoic_acid_color_changer()); }
+                if (ethanoic_acid_drops == 2) {
+                    StartCoroutine(colorChanger(new Color32(252, 201, 31, 145), ethanoic_acid));                           
+                }
             }
              if(gameObject.tag== "sodium_hydroxide") { 
                 sodium_hydroxide_drops++;
-                if (sodium_hydroxide_drops == 2) { StartCoroutine(sodium_hydroxide_color_changer()); }
+                if (sodium_hydroxide_drops == 2) { StartCoroutine(colorChanger(new Color32(73, 24, 178, 145), sodium_hydroxide)); }
             }
             if (gameObject.tag== "ammonium_solution") {     
                 ammonium_solution_drops++;
-                if (ammonium_solution_drops == 2) { StartCoroutine(ammonium_solution_color_changer()); }
+                if (ammonium_solution_drops == 2) { StartCoroutine(colorChanger(new Color32(8, 76, 199, 145), ammonium_solution)); }
             }
 
-            //---custom solution drops handler---//
+            //---[ETHANOIC ACID SPRITE IN USED AS A CUSTOM SOLUTION]---//
             if (gameObject.tag == "milk")
             {
                 milk_drops++;
-                if (milk_drops == 2) { StartCoroutine(milk_color_changer()); }
+                if (milk_drops == 2) { StartCoroutine(colorChanger(new Color32(73, 179, 16, 145), ethanoic_acid)); }
                 blood_drops = pure_water_drops = tomato_drops = vinegar_drops = bleach_drops = 0;
             }
             if (gameObject.tag == "blood")
             {
                 blood_drops++;
-                if (blood_drops == 2) { StartCoroutine(blood_color_changer()); }
+                if (blood_drops == 2) { StartCoroutine(colorChanger(new Color32(0, 165, 91, 145), ethanoic_acid)); }
                 milk_drops = pure_water_drops = tomato_drops = vinegar_drops = bleach_drops = 0;
             }
             if (gameObject.tag == "pure_water")
             {
                 pure_water_drops++;
-                if (pure_water_drops == 2) { StartCoroutine(pure_water_color_changer()); }
+                if (pure_water_drops == 2) { StartCoroutine(colorChanger(new Color32(0, 153, 24, 145), ethanoic_acid)); }
                 milk_drops = blood_drops = tomato_drops = vinegar_drops = bleach_drops = 0;
             }
             if (gameObject.tag == "tomato")
             {
                 tomato_drops++;
-                if (tomato_drops == 2) { StartCoroutine(tomato_color_changer()); }
+                if (tomato_drops == 2) { StartCoroutine(colorChanger(new Color32(220, 220, 47, 145), ethanoic_acid)); }
                 milk_drops = blood_drops = pure_water_drops = vinegar_drops = bleach_drops = 0;
             }
             if (gameObject.tag == "vinegar")
             {
                 vinegar_drops++;
-                if (vinegar_drops == 2) { StartCoroutine(vinegar_color_changer()); }
+                if (vinegar_drops == 2) { StartCoroutine(colorChanger(new Color32(252, 201, 31, 145), ethanoic_acid)); }
                 milk_drops = blood_drops = pure_water_drops = tomato_drops = bleach_drops = 0;
             }
             if (gameObject.tag == "bleach")
             {
                 bleach_drops++;
-                if (bleach_drops == 2) { StartCoroutine(bleach_color_changer()); }
+                if (bleach_drops == 2) { StartCoroutine(colorChanger(new Color32(52, 40, 178, 145), ethanoic_acid)); }
                 milk_drops = blood_drops = pure_water_drops = tomato_drops = vinegar_drops = 0;
             }
             //---ending custom solution drops handler---//
@@ -108,15 +112,32 @@ public class drop_controller : MonoBehaviour
         }
     }
 
-                 /*-------------------------------------------------------------------
-                  ----------------------------------COLOR CHANGERS--------------------
-                  -------------------------------------------------------------------*/
+    /*-------------------------------------------------------------------
+     ----------------------------------COLOR CHANGERS--------------------
+     -------------------------------------------------------------------*/
+    IEnumerator colorChanger(Color colorTo, GameObject spriteToChange)
+    {
+        turnOffCustomSolutionTogglerAndDropdown();
+        Color startColor = spriteToChange.GetComponent<SpriteRenderer>().color;
+        Color endColor = colorTo;
 
-    IEnumerator hydrochloric_acid_color_changer() //hydrochrolic color-changer
+        while (time < duration)
+        {
+            spriteToChange.GetComponent<SpriteRenderer>().color = Color.Lerp(startColor, endColor, time / duration);
+            time += Time.deltaTime;
+            yield return null;
+
+        }
+        resetTime();
+        spriteToChange.GetComponent<SpriteRenderer>().color = endColor;
+        turnOnCustomSolutionTogglerAndDropdown();
+    }
+
+    /*IEnumerator hydrochloric_acid_color_changer() //hydrochrolic color-changer
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = hydrochrolic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(231, 28, 36, 255);
+        Color endColor = new Color32(231, 28, 36, 145);
 
         while (time < duration)
         {
@@ -134,7 +155,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(252, 201, 31, 255);
+        Color endColor = new Color32(252, 201, 31, 145);
 
         while (time < duration)
         {
@@ -147,12 +168,11 @@ public class drop_controller : MonoBehaviour
         turnOnCustomSolutionTogglerAndDropdown();
     }
 
-
     IEnumerator sodium_hydroxide_color_changer() //sodium hydroxide color-changer
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = sodium_hydroxide.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(73, 24, 178, 255);
+        Color endColor = new Color32(73, 24, 178, 145);
 
         while (time < duration)
         {
@@ -169,7 +189,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown(); 
         Color startColor = ammonium_solution.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(8, 76, 199, 255);
+        Color endColor = new Color32(8, 76, 199, 145);
 
         while (time < duration)
         {
@@ -186,11 +206,11 @@ public class drop_controller : MonoBehaviour
        Ethanoic acid [GameObject] is being used a custom liquid
 
     ------------------------------------------------------------*/
-    IEnumerator milk_color_changer()//milk color-changer
+   /* IEnumerator milk_color_changer()//milk color-changer
     {
         turnOffCustomSolutionTogglerAndDropdown(); 
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(73, 179, 16, 255);
+        Color endColor = new Color32(73, 179, 16, 145);
         
         while (time < duration)
         {
@@ -207,7 +227,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown(); 
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(0, 165, 91, 255);
+        Color endColor = new Color32(0, 165, 91, 145);
 
         while (time < duration)
         {
@@ -224,7 +244,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(0, 153, 24, 255);
+        Color endColor = new Color32(0, 153, 24, 145);
 
         while (time < duration)
         {
@@ -242,7 +262,7 @@ public class drop_controller : MonoBehaviour
         turnOffCustomSolutionTogglerAndDropdown(); 
 
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(220, 220, 47, 255);
+        Color endColor = new Color32(220, 220, 47, 145);
       
         while(time < duration)
         {
@@ -259,7 +279,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(252, 201, 31, 255);
+        Color endColor = new Color32(252, 201, 31, 145);
 
         while (time < duration)
         {
@@ -276,7 +296,7 @@ public class drop_controller : MonoBehaviour
     {
         turnOffCustomSolutionTogglerAndDropdown();
         Color startColor = ethanoic_acid.GetComponent<SpriteRenderer>().color;
-        Color endColor = new Color32(52, 40, 178, 255);
+        Color endColor = new Color32(52, 40, 178, 145);
 
         while (time < duration)
         {
@@ -287,7 +307,7 @@ public class drop_controller : MonoBehaviour
         resetTime();
         ethanoic_acid.GetComponent<SpriteRenderer>().color = endColor;
         turnOnCustomSolutionTogglerAndDropdown(); 
-    }
+    }*/
 
     public void turnOffCustomSolutionTogglerAndDropdown()
     {

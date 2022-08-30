@@ -5,16 +5,10 @@ using UnityEngine.UI;
 
 public class ResetLitmus : MonoBehaviour
 {
-    // Start is called before the first frame update
     public GameObject litmus_a, litmus_b;
     public static bool isDipped;
     public Button reset_litmus_button;
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
     void Update()
     {
         isDipped = litmus_paper_controller.isDipped;
