@@ -4,13 +4,13 @@ using UnityEngine;
 
 public partial class TemperatureReaction
 {
-    public static int counter;
-    
+    public static int pelletsDroppedCounter;
+
 
     private void SodiumHydroxideReaction()
     {
-        
-        if (counter >= 1)
+        Debug.Log(pelletsDroppedCounter + " is number of dropped pellets");
+        if (pelletsDroppedCounter >= 1)
         {
             removeSoluteButton.interactable = true;
             chemicalDisplay.text = "NaOH (Sodium Hydroxide)";
@@ -27,38 +27,34 @@ public partial class TemperatureReaction
                 CollapseMercuryLevels(temperatureDropRate, initialTemperatureLevels.y);
         }
 
-        if (stirTime > 1.2f)
-        {
 
-            if (counter == 1)
+        if (stirTime >= 1.2)
+        {
+            if (pelletsDroppedCounter == 1)
             {
                 var tempChange = Random.Range(2.4f, 2.5f);
                 sodiumHydroxide.changeInTemperature = tempChange;
-          
+
             }
-            else if (counter == 2)
+            else if (pelletsDroppedCounter == 2)
             {
                 var tempChange = Random.Range(2.6f, 2.7f);
                 sodiumHydroxide.changeInTemperature = tempChange;
-               
+
             }
-            else if (counter == 3)
+            else if (pelletsDroppedCounter == 3)
             {
                 var tempChange = Random.Range(2.8f, 2.9f);
                 sodiumHydroxide.changeInTemperature = tempChange;
             }
-            else if (counter >= 4)
+            else if (pelletsDroppedCounter >= 4)
             {
                 var tempChange = Random.Range(3.0f, 3.1f);
                 sodiumHydroxide.changeInTemperature = tempChange;
             }
-
-            
         }
-        else
-        {
-            
-        }
+       
+      
 
        
     }

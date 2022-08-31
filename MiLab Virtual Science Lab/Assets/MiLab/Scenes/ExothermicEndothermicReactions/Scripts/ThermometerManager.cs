@@ -17,6 +17,7 @@ public class ThermometerManager : MonoBehaviour
         {
             Debug.Log("collided");
             isImmersed = true;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
         }
     }
 

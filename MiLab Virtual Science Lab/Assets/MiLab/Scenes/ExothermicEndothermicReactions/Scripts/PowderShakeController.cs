@@ -14,23 +14,15 @@ public class PowderShakeController : MonoBehaviour
         initialPos = transform.position;
     }
 
+    
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.name == "Spoon Area Pottasium")
         {
             spoonIsInPosition = true;
 
-            if (canEmitPowder && spoonIsInPosition)
-            {
-                if (!powderParticles.isPlaying)
-                {
-                    powderParticles.Emit(5);
-                    TemperatureReaction.numberOfSpoons += 1;
-                    canEmitPowder = false;
-                    powder.SetActive(false);
-                    
-                }
-            }
+            
         }
 
         
@@ -64,7 +56,18 @@ public class PowderShakeController : MonoBehaviour
     }
     private void OnMouseUp()
     {
-        
-        
+
+        if (canEmitPowder && spoonIsInPosition)
+        {
+            if (!powderParticles.isPlaying)
+            {
+                powderParticles.Emit(5);
+                TemperatureReaction.numberOfSpoons += 1;
+                canEmitPowder = false;
+                powder.SetActive(false);
+
+            }
+        }
+
     }
 }

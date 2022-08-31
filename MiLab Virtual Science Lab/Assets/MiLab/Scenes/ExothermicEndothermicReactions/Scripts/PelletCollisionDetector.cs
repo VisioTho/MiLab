@@ -11,19 +11,19 @@ public class PelletCollisionDetector : MonoBehaviour
         {
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
             collision.gameObject.GetComponent<CapsuleCollider2D>().enabled = false;
-            switch (TemperatureReaction.counter)
+            switch (TemperatureReaction.pelletsDroppedCounter)
             {
                 case 0:
-                    TemperatureReaction.counter = 1;
+                    TemperatureReaction.pelletsDroppedCounter = 1;
                     break;
                 case 1:
-                    TemperatureReaction.counter = 2;
+                    TemperatureReaction.pelletsDroppedCounter = 2;
                     break;
                 case 2:
-                    TemperatureReaction.counter = 3;
+                    TemperatureReaction.pelletsDroppedCounter = 3;
                     break;
                 case 3:
-                    TemperatureReaction.counter = 4;
+                    TemperatureReaction.pelletsDroppedCounter = 4;
                     break;
             }
             TemperatureReaction.stirTime = 0f;

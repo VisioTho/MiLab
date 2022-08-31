@@ -46,7 +46,7 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
     Substances sodiumHydroxide = new Substances();
     private void Start()
     {
-        counter = 0;
+        pelletsDroppedCounter = 0;
         stirTime = 0f;
 
         numberOfSpoons = 0;
@@ -105,7 +105,7 @@ public partial class TemperatureReaction : ThermometerBehaviour//, IMercury
             pellets[i].gameObject.GetComponent<CapsuleCollider2D>().enabled = true;
         }
         pellets[0].transform.position = initialPosition;
-        counter = 0;
+        pelletsDroppedCounter = 0;
 
         //water.transform.localScale = new Vector3(1f, 1f, 1f);
         

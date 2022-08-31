@@ -14,7 +14,7 @@ public partial class TemperatureReaction
             chemicalProduct1.text = "K+ (Pottasium ions)";
             chemicalProduct2.text = "NO3- (Nitrate)";
 
-            if (ThermometerManager.isImmersed && numberOfSpoons >= 1 && stirTime>=1.2f) 
+            if (ThermometerManager.isImmersed && potassiumNitrate.changeInTemperature!=0) 
                 CollapseMercuryLevels(temperatureDropRate, potassiumNitrate.changeInTemperature);
 
             if(!ThermometerManager.isImmersed)
