@@ -15,7 +15,7 @@ public class springConstant : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameObject.GetComponent<Slider>().value = Random.Range(1,4); //generating random constant on game launch
+       // gameObject.GetComponent<Slider>().value = Random.Range(1,4); //generating random constant on game launch
         
         constantChanged(); //in order to match randomly generated spring constant with the sprite to be used for that constant
 

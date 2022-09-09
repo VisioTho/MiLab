@@ -53,6 +53,10 @@ public class MetalReaction : MonoBehaviour
             magnesiumMetalToggle.interactable = false;
             resetMetals = false;
         }
+        if (resetMetals == true)
+        {
+            stopReaction();
+        }
     }
 
     public void resetEverything()
@@ -136,23 +140,19 @@ public class MetalReaction : MonoBehaviour
         if (MetalDrag.copperCollided == true && zincReaction.counter >= 1)
         {
             StartCoroutine(copperSulphateRColorTransition());
-            //sulphate.DOColor(new Color32(123, 149, 152, 105), reactionDuration);
-            Invoke("stopReaction", reactionDuration);
-            //  solutionNotation.text = "copper sulphate + zinc";
         }
         if (MetalDrag.copperCollided && ironReaction.counter >= 1)
         {
-            // ironColor.ironColorTransition();
             StartCoroutine(copperSulphateColorTransition2());
-            Invoke("stopReaction", reactionDuration);
-            //  solutionNotation.text = "copper sulphate + iron";
+
 
         }
         if (MetalDrag.copperCollided && magnesiumReaction.counter >= 1)
         {
+
             mag_copperSulphateParticles.SetActive(true);
             StartCoroutine(copperSulphateColorTransition3());
-            Invoke("stopReaction", reactionDuration);
+
         }
     }
 
@@ -162,7 +162,7 @@ public class MetalReaction : MonoBehaviour
         {
             mag_zincSulphateParticles.SetActive(true);
             StartCoroutine(zincSulphateTransition());
-            Invoke("stopReaction", reactionDuration);
+            //Invoke("stopReaction", reactionDuration);
         }
     }
 
@@ -174,7 +174,6 @@ public class MetalReaction : MonoBehaviour
         if (MetalDrag.ironCollided && zincReaction.counter >= 1)
         {
             StartCoroutine(ironSulphateZincTransition());
-            Invoke("stopReaction", reactionDuration);
         }
         if (MetalDrag.ironCollided && ironReaction.counter >= 1)
         {
@@ -184,7 +183,7 @@ public class MetalReaction : MonoBehaviour
         {
             mag_ironSuphateParticles.SetActive(true);
             StartCoroutine(ironSulphateMagTransition());
-            Invoke("stopReaction", reactionDuration);
+            //Invoke("stopReaction", reactionDuration);
         }
     }
 

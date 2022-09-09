@@ -23,6 +23,7 @@ public class load_collider : MonoBehaviour
 
     void Start()
     {
+        current_hanged_mass = null;
         render = ml_rb.GetComponent<Renderer>();
 
        //-------fetching from positions_controller-------//

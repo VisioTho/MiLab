@@ -42,11 +42,9 @@ public class drop_controller : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-       // Debug.Log(collision.gameObject.tag);
         if (collision.gameObject.tag == "drop_to_spawn")
         {
-            //Debug.Log("dropped");
-            Destroy(collision.gameObject, 0.02f);
+            Destroy(collision.gameObject, 0f);
           
             //incrementing number of drops in a liquid
              if(gameObject.tag== "hydrochloric_acid") {

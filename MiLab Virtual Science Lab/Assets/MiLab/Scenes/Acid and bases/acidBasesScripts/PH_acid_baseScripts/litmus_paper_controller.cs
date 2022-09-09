@@ -85,7 +85,7 @@ public class litmus_paper_controller : MonoBehaviour
                     //StartCoroutine(ToRedLitmusColorChangeMode());
                     if (gOtag == "hydrochloric_acid")
                     {
-                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(255, 0, 0, 255)));
+                        StartCoroutine(changeLitmusColor(litmus_paper_b, new Color32(164, 34, 29, 255)));
                     }
                     if (gOtag == "ethanoic_acid")
                     {
