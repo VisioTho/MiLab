@@ -13,12 +13,10 @@ public class zincReaction : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log("counter is " + counter);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("triggered");
         if (collision.gameObject.name == "zinc metal")
         {
             collision.gameObject.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;

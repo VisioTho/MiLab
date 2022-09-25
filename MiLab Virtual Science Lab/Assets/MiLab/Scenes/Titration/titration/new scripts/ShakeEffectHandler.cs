@@ -32,7 +32,7 @@ public class ShakeEffectHandler : MonoBehaviour
     {
         indicationArrowL.SetActive(false);
         indicationArrowR.SetActive(false);
-        if (liquidControllerScript.sliderInstance.value == 1 || liquidControllerScript.sliderInstance.value == 2)
+        if (liquidControllerScript.buretteKnob.value == 1 || liquidControllerScript.buretteKnob.value == 2)
         {
             isShaking = true;
         }

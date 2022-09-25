@@ -28,6 +28,15 @@ public class magnesiumReaction : MonoBehaviour
                 case 0:
                     counter = 1;
                     break;
+                case 1:
+                    counter = 2;
+                    break;
+                case 2:
+                    counter = 3;
+                    break;
+                case 3:
+                    counter = 4;
+                    break;
             }
 
         }

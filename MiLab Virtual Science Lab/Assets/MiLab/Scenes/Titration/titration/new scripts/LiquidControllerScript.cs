@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using DG.Tweening;
+//using System.Linq;
 
 public class LiquidControllerScript : MonoBehaviour
 {
@@ -17,8 +18,8 @@ public class LiquidControllerScript : MonoBehaviour
     public GameObject liquidFlowParticle, stream, phenopthalein, methyl; //flowStream;
     public ParticleSystem DropParticle;
 
-    IEnumerator enumerator, flowController, fillBurette;
-    public Slider sliderInstance;
+    IEnumerator dropSolution, flowController, fillBurette;
+    public Slider buretteKnob;
     public bool pipetteDrop;
     private float valueHolder;
     private float fillDifference;
@@ -28,7 +29,6 @@ public class LiquidControllerScript : MonoBehaviour
     public Button resetButton;
     public Toggle beakerToggle;
 
-    // public float[] molarityVariation;
 
     private bool isTransformed;
     public float time = 0;
@@ -41,7 +41,7 @@ public class LiquidControllerScript : MonoBehaviour
     private void Awake()
     {
         fill.Initialize();
-        enumerator = LiquidDrop();
+        dropSolution = LiquidDrop();
         fillBurette = LiquidFill();
         flowController = LiquidFlow();
     }
@@ -49,9 +49,9 @@ public class LiquidControllerScript : MonoBehaviour
     void Start()
     {
         isTransformed = false;
-        sliderInstance.minValue = 0;
-        sliderInstance.maxValue = 2;
-        sliderInstance.wholeNumbers = true;
+        buretteKnob.minValue = 0;
+        buretteKnob.maxValue = 2;
+        buretteKnob.wholeNumbers = true;
 
         fill.CurrentVal = 0;
         content.fillAmount = 0;
@@ -98,13 +98,14 @@ public class LiquidControllerScript : MonoBehaviour
 
         if (isTransformed == true)
         {
-            fillDifference = 0;
+            valueHolder = fill.currentVal;
         }
         if (isTransformed == false)
         {
             fillDifference = valueHolder - fill.CurrentVal;
         }
-        if (indicatorVariation.value == 0 && (sliderInstance.value == 1 || sliderInstance.value == 2)) // using phenophthlaine as indicator
+        Debug.Log("fill Difference is " + fillDifference);
+        if (indicatorVariation.value == 0 && (buretteKnob.value == 1 || buretteKnob.value == 2)) // using phenophthlaine as indicator
         {
             if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
             {
@@ -114,11 +115,11 @@ public class LiquidControllerScript : MonoBehaviour
                     {
                         if (ConicalFlaskVolume.volumeMin == Random.Range(10, 15))
                         {
-                            if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
+                            if ((fillDifference >= 7f && fillDifference <= 9f) && pipetteDrop && ShakeEffectHandler.isShaking == true)
                             {
                                 ColorlessTransition(5);
                             }
-                            else if ((fillDifference == 7.5f || fillDifference == 8f) && pipetteDrop)
+                            else if ((fillDifference >= 7f && fillDifference <= 9f) && pipetteDrop)
                             {
                                 if (ShakeEffectHandler.isShaking)
                                 {
@@ -1308,7 +1309,7 @@ public class LiquidControllerScript : MonoBehaviour
 
             }
         }
-        else if (indicatorVariation.value == 1 && (sliderInstance.value == 1 || sliderInstance.value == 2))
+        else if (indicatorVariation.value == 1 && (buretteKnob.value == 1 || buretteKnob.value == 2))
         {
             // acid to base
             if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
@@ -2403,7 +2404,7 @@ public class LiquidControllerScript : MonoBehaviour
             titrantVariation.value = 0;
             analyteVariation.value = 0;
             indicatorVariation.value = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
             analyteVariation.interactable = true;
             titrantVariation.interactable = true;
             indicatorVariation.interactable = true;
@@ -2425,7 +2426,7 @@ public class LiquidControllerScript : MonoBehaviour
             titrantVariation.interactable = true;
             molesController.BMoles1.interactable = true;
             titrantVariation.value = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
             analyteVariation.interactable = true;
             titrantVariation.interactable = true;
             indicatorVariation.interactable = true;
@@ -2449,7 +2450,7 @@ public class LiquidControllerScript : MonoBehaviour
             titrantVariation.value = 0;
             analyteVariation.value = 0;
             indicatorVariation.value = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
             analyteVariation.interactable = true;
             indicatorVariation.interactable = true;
             ConicalFlaskVolume.volumeSlider.value = 10;
@@ -2463,13 +2464,12 @@ public class LiquidControllerScript : MonoBehaviour
     // slider that controls the titration liquid flow 
     public void OnValueChanged(float value)
     {
-        if (sliderInstance.value == 1)
+        if (buretteKnob.value == 1)
         {
             if (fill.CurrentVal == 0)
             {
                 var localReftoParticle = DropParticle.main;
                 localReftoParticle.playOnAwake = false;
-                //DropParticle.Stop();
             }
             else
             {
@@ -2479,11 +2479,11 @@ public class LiquidControllerScript : MonoBehaviour
                 localReftoParticle.playOnAwake = true;
                 liquidFlowParticle.SetActive(false);
                 StopCoroutine(flowController);
-                StartCoroutine(enumerator);
+                StartCoroutine(dropSolution);
             }
 
         }
-        else if (sliderInstance.value == 2)
+        else if (buretteKnob.value == 2)
         {
             if (fill.CurrentVal == 0)
             {
@@ -2500,23 +2500,20 @@ public class LiquidControllerScript : MonoBehaviour
                 liquidFlowParticle.SetActive(true);
 
                 StartCoroutine(flowController);
-                StopCoroutine(enumerator);
+                StopCoroutine(dropSolution);
                 // StartCoroutine(colorTransition);
             }
 
         }
-        else if (sliderInstance.value == 0)
+        else if (buretteKnob.value == 0)
         {
             var localReftoParticle = DropParticle.main;
             localReftoParticle.playOnAwake = false;
             DropParticle.gameObject.SetActive(false);
-            //DropParticle.Stop();
 
             liquidFlowParticle.SetActive(false);
-            StopCoroutine(enumerator);
+            StopCoroutine(dropSolution);
             StopCoroutine(flowController);
-
-            valueHolder = fill.currentVal;
         }
     }
 
@@ -2527,25 +2524,25 @@ public class LiquidControllerScript : MonoBehaviour
         {
             content.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
             fill.CurrentVal = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
         }
         if (titrantVariation.value == 1)
         {
             content.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
             fill.CurrentVal = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
         }
         if (titrantVariation.value == 2)
         {
             content.GetComponent<Image>().color = new Color32(198, 198, 198, 121);
             fill.CurrentVal = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
         }
         if (titrantVariation.value == 3)
         {
             content.GetComponent<Image>().color = new Color32(216, 242, 255, 164);
             fill.CurrentVal = 0;
-            sliderInstance.value = 0;
+            buretteKnob.value = 0;
         }
     }
 
@@ -2594,7 +2591,7 @@ public class LiquidControllerScript : MonoBehaviour
             if (fill.currentVal == fill.MaxVal)
             {
                 stream.SetActive(false);
-                sliderInstance.enabled = true;
+                buretteKnob.enabled = true;
                 titrantVariation.enabled = true;
                 stopFlow();
 
@@ -2603,8 +2600,8 @@ public class LiquidControllerScript : MonoBehaviour
             {
                 resetButton.interactable = true;
                 titrantVariation.interactable = false;
-                sliderInstance.value = 0;
-                sliderInstance.enabled = false;
+                buretteKnob.value = 0;
+                buretteKnob.enabled = false;
                 if (titrantVariation.value == 0)
                 {
                     stream.GetComponent<Image>().color = new Color32(234, 234, 234, 90);
@@ -2634,7 +2631,7 @@ public class LiquidControllerScript : MonoBehaviour
             titrantVariation.interactable = false;
             indicatorVariation.interactable = false;
             fill.CurrentVal -= 0.5f;
-            //if(sliderInstance.value == 0)
+            //if(buretteKnob.value == 0)
             if (fill.currentVal == 0)
             {
                 var localReftoParticle = DropParticle.main;
@@ -2669,9 +2666,9 @@ public class LiquidControllerScript : MonoBehaviour
 
     public void stopFlow()
     {
-        sliderInstance.enabled = true;
+        buretteKnob.enabled = true;
         StopCoroutine(flowController);
-        StopCoroutine(enumerator);
+        StopCoroutine(dropSolution);
         StopCoroutine(fillBurette);
         stream.SetActive(false);
         valueHolder = fill.CurrentVal;

@@ -27,12 +27,12 @@ public class ConicalFlaskVolume : MonoBehaviour
 
         volumeNotation.text = volumeMin.ToString() + " ml";
 
-        if (liquidControllerScript.sliderInstance.value == 2 && liquidControllerScript.fill.CurrentVal > 0)
+        if (liquidControllerScript.buretteKnob.value == 2 && liquidControllerScript.fill.CurrentVal > 0)
         {
             //  volumeSlider.value += 0.0086f;
             volumeSlider.interactable = false;
         }
-        else if (liquidControllerScript.sliderInstance.value == 1 && liquidControllerScript.fill.CurrentVal > 0)
+        else if (liquidControllerScript.buretteKnob.value == 1 && liquidControllerScript.fill.CurrentVal > 0)
         {
             //   volumeSlider.value += 0.0022f;
             volumeSlider.interactable = false;

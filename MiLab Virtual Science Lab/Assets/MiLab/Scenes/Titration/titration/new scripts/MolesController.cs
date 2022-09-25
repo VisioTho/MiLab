@@ -28,30 +28,50 @@ public class MolesController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (burette_moles > 0)
+
+        if (liquidControllerScript.fill.CurrentVal == 0)
         {
+            if (Titration_Drop_Controller.sodium_hydroxide_drops > 0)
+            {
+                BMoles1.interactable = false;
+                BMoles2.interactable = false;
+                CMoles1.interactable = false;
+                CMoles2.interactable = false;
+            }
+            else
+            {
+                if (burette_moles == 0 && conicalFlaskMoles == 0)
+                {
+                    BMoles1.interactable = true;
+                    BMoles2.interactable = true;
+                    CMoles1.interactable = true;
+                    CMoles2.interactable = true;
+                }
+                else
+                {
+                    if (burette_moles > 0)
+                    {
+
+                        CMoles1.interactable = false;
+                        CMoles2.interactable = false;
+                    }
+                    if (conicalFlaskMoles > 0)
+                    {
+                        BMoles1.interactable = false;
+                        BMoles2.interactable = false;
+                    }
+
+                }
+            }
+
+        }
+        else
+        {
+            BMoles1.interactable = false;
+            BMoles2.interactable = false;
             CMoles1.interactable = false;
             CMoles2.interactable = false;
         }
-        if (conicalFlaskMoles > 0)
-        {
-            BMoles1.interactable = false;
-            BMoles2.interactable = false;
-        }
-        if (burette_moles > 0 && liquidControllerScript.fill.CurrentVal > 0)
-        {
-            BMoles1.interactable = false;
-            BMoles2.interactable = false;
-        }
-       
-        if (burette_moles == 0 && conicalFlaskMoles == 0)
-        {
-            BMoles1.interactable = true;
-            BMoles2.interactable = true;
-            CMoles1.interactable = true;
-            CMoles2.interactable = true;
-        }
-       
         buretteMolesCheck();
         conicalFlaskMolesCheck();
     }
