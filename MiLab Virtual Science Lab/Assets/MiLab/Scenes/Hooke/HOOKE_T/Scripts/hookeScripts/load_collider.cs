@@ -25,7 +25,7 @@ public class load_collider : MonoBehaviour
     {
         current_hanged_mass = null;
         render = ml_rb.GetComponent<Renderer>();
-
+        drag_detached = false;
        //-------fetching from positions_controller-------//
 
         load_dp = positions_controller.load_dp;
