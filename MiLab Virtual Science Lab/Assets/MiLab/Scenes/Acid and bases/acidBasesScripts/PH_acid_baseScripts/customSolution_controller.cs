@@ -48,19 +48,7 @@ public class customSolution_controller : MonoBehaviour
             solutions_dd.value = 0;
             resetController.current_selected_beaker = "ethanoic_acid_beaker";//making ethanoic acid beaker the current selected beaker
             StartCoroutine(LerpPosition(new Vector3(ethanoic_acid_beaker.transform.position.x, pippete.transform.position.y, 0f), 2f));
-          //  StartCoroutine(Camera.main.GetComponent<selectorNdropper_position_controller>().LerpPosition(new Vector3(ethanoic_acid_beaker.transform.position.x, pippete.transform.position.y, 0f), 2f));
-
-          /*  foreach (Toggle beakerBTN in beaker_toggle_buttons)
-             {
-                 string btn_tag = beakerBTN.tag;
-                 if (btn_tag == "beaker1_btn" && beakerBTN.isOn) { bk1_should_appear_by_default = true; } //else { bk1_should_appear_by_default = false; }
-                 if (btn_tag == "beaker2_btn" && beakerBTN.isOn) { bk2_should_appear_by_default = true; } //else { bk2_should_appear_by_default = false; }
-                 if (btn_tag == "beaker3_btn" && beakerBTN.isOn) { bk3_should_appear_by_default = true; } //else { bk3_should_appear_by_default = false; }
-                 if (btn_tag == "beaker4_btn" && beakerBTN.isOn) { bk4_should_appear_by_default = true; } //else { bk4_should_appear_by_default = false; }
-                beakerBTN.interactable = false;
-             }*/
-
-
+         
             hydrochloric_acid_beaker.SetActive(false);
             sodium_hydroxide_beaker.SetActive(false);
             ammonium_solution_beaker.SetActive(false);
@@ -71,10 +59,7 @@ public class customSolution_controller : MonoBehaviour
             pippete.transform.position = new Vector2(-3.5f, pippete.transform.position.y);
             litmus_paper.transform.position = new Vector2(ethanoic_acid_beaker.transform.position.x, litmus_paperYpos);
 
-           /* foreach(Toggle beaker_tg_btn in beaker_toggle_buttons)//turning off all the beaker toggle buttons
-            {
-                beaker_tg_btn.isOn = false;
-            }*/
+         
             ethanoic_acid_beaker.SetActive(true);
 
             foreach(GameObject label in solutionLabels)
@@ -87,13 +72,7 @@ public class customSolution_controller : MonoBehaviour
         {
 
             drop_controller.ethanoic_acid_drops = 0;
-            //updating viewed beakers Hashtag
-           // if (bk1_should_appear_by_default){ hydrochloric_acid_beaker.SetActive(true); } else { hydrochloric_acid_beaker.SetActive(false);}
-           // if (bk2_should_appear_by_default) { ethanoic_acid_label.SetActive(true); } else { ethanoic_acid_label.SetActive(false);}
-           // if (bk3_should_appear_by_default) { sodium_hydroxide_beaker.SetActive(true); } else { sodium_hydroxide_beaker.SetActive(false);}
-           // if (bk4_should_appear_by_default) { ammonium_solution_beaker.SetActive(true); } else { ammonium_solution_beaker.SetActive(false);}
-
-
+ 
             bk1_should_appear_by_default = bk2_should_appear_by_default = bk3_should_appear_by_default = bk4_should_appear_by_default = false;
 
 

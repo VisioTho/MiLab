@@ -13,8 +13,8 @@ public class positions_controller : MonoBehaviour
 
         stretchPointA_dp = stretchPointA.transform.position;
         stretchPointB_dp = stretchPointB.transform.position;
-        nl_rb_dp =nl_rb.transform.position;  //new Vector2(-338.9888f, -193.008f);
-        ml_rb_dp =  ml_rb.transform.position;//new Vector2(-338.9959f, -193.008f);
+        nl_rb_dp = nl_rb.transform.position;  //new Vector2(-338.9888f, -193.008f);
+        ml_rb_dp = ml_rb.transform.position;//new Vector2(-338.9959f, -193.008f);
         spring_dp = spring.transform.position;
 
         //deafult positions of the masses

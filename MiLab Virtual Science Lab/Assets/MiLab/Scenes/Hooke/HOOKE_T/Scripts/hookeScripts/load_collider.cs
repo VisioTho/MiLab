@@ -23,8 +23,9 @@ public class load_collider : MonoBehaviour
 
     void Start()
     {
+        current_hanged_mass = null;
         render = ml_rb.GetComponent<Renderer>();
-
+        drag_detached = false;
        //-------fetching from positions_controller-------//
 
         load_dp = positions_controller.load_dp;
@@ -53,9 +54,10 @@ public class load_collider : MonoBehaviour
         //----------------------------------------------//
     }
     //to run on update
-   void Update()
+    void Update()
     {
-        current_slider_mass_value=controller.current_slider_mass_value;
+       // Debug.Log("SPB"+ positions_controller.stretchPointB_dp);
+        current_slider_mass_value =controller.current_slider_mass_value;
 
         pointAposY = stretchPointA.transform.position.y;
         pointBposY = stretchPointB.transform.position.y;
@@ -71,7 +73,7 @@ public class load_collider : MonoBehaviour
         {
             //trying to work around the misbehaving stretchPointB and movable line
             ml_rb.transform.position = ml_rb_dp; //resetting the postion of ml line
-            stretchPointB.transform.position = stretchPointB_dp; //resetting position of stretchPointB
+            stretchPointB.transform.position = positions_controller.stretchPointB_dp; //resetting position of stretchPointB
         }       
   }
     void OnTriggerEnter2D(Collider2D collision)
@@ -191,7 +193,7 @@ public class load_collider : MonoBehaviour
             drag_detached = false;
             render.enabled = false; //hiding movable line
             ml_rb.transform.position = ml_rb_dp; //resetting the postion of ml line
-            stretchPointB.transform.position = stretchPointB_dp; //resetting position of stretchPointB
+            stretchPointB.transform.position = positions_controller.stretchPointB_dp; //resetting position of stretchPointB
             current_hanged_mass = null; //updating current active mass
         }
    }

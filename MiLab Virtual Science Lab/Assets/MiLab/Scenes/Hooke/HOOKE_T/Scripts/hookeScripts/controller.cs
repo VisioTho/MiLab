@@ -121,7 +121,7 @@ public class controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+       // Debug.Log("CHM " + current_hanged_mass);
         HandleCustomMass();
         current_slider_mass_value = _massSlider.value;
    

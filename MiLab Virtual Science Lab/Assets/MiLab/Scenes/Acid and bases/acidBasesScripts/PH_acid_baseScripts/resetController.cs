@@ -26,7 +26,6 @@ public class resetController : MonoBehaviour
                 GameObject.FindWithTag("sodium_hydroxide").GetComponent<SpriteRenderer>().color = transparent_color;
                 drop_controller.sodium_hydroxide_drops = 0;
             }
-
             if (current_selected_beaker == "ammonium_solution_beaker")
             {
                 GameObject.FindWithTag("ammonium_solution").GetComponent<SpriteRenderer>().color = transparent_color;
@@ -44,15 +43,15 @@ public class resetController : MonoBehaviour
             }
         }
          //Handling custom substances
-        if (customs_solution_toggler.GetComponent<Toggle>().isOn)//
+        if (customs_solution_toggler.GetComponent<Toggle>().isOn)
         {
             TMP_Dropdown solution_dropdown = custom_solution_dropdown.GetComponent<TMP_Dropdown>();
-            if (solution_dropdown.value == 1) { drop_controller.milk_drops = 0; GameObject.FindWithTag("milk").GetComponent<SpriteRenderer>().color = new Color32(243, 241, 235, 255); }
-            if (solution_dropdown.value == 2) { drop_controller.blood_drops = 0; GameObject.FindWithTag("blood").GetComponent<SpriteRenderer>().color = new Color32(231, 28, 34, 255); }
+            if (solution_dropdown.value == 1) { drop_controller.milk_drops = 0; GameObject.FindWithTag("milk").GetComponent<SpriteRenderer>().color = new Color32(243, 241, 235, 145); }
+            if (solution_dropdown.value == 2) { drop_controller.blood_drops = 0; GameObject.FindWithTag("blood").GetComponent<SpriteRenderer>().color = new Color32(231, 28, 34, 145); }
             if (solution_dropdown.value == 3) { drop_controller.pure_water_drops = 0; GameObject.FindWithTag("pure_water").GetComponent<SpriteRenderer>().color = new Color32(8, 7, 7, 47); }
-            if (solution_dropdown.value == 4) { drop_controller.tomato_drops = 0; GameObject.FindWithTag("tomato").GetComponent<SpriteRenderer>().color = new Color32(255, 16, 16, 255); }
+            if (solution_dropdown.value == 4) { drop_controller.tomato_drops = 0; GameObject.FindWithTag("tomato").GetComponent<SpriteRenderer>().color = new Color32(255, 16, 16, 145); }
             if (solution_dropdown.value == 5) { drop_controller.vinegar_drops = 0; GameObject.FindWithTag("vinegar").GetComponent<SpriteRenderer>().color = new Color32(8, 7, 7, 47); }
-            if (solution_dropdown.value == 6) { drop_controller.bleach_drops = 0; GameObject.FindWithTag("bleach").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255); }
+            if (solution_dropdown.value == 6) { drop_controller.bleach_drops = 0; GameObject.FindWithTag("bleach").GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 145); }
          }
     }
 }
