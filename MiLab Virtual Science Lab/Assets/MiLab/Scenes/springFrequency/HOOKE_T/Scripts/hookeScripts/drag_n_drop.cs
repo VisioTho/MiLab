@@ -17,12 +17,15 @@ public class drag_n_drop : MonoBehaviour
     public static string Lerping_mass;
     public GameObject udr;
     public Vector2 udrPos;
+    public static Vector3 loadTargertPos;
+    private GameObject tagertMassObject;
 
     // Start is called before the first frame update
     void Start()
     {
         //track of all the masses
          loads = controller.loads;
+         tagertMassObject = null;
              
         load_dp = positions_controller.load_dp;   //fetching from positions_controller class
 
@@ -43,6 +46,8 @@ public class drag_n_drop : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+if(tagertMassObject!=null){ loadTargertPos = tagertMassObject.transform.GetChild(0).gameObject.transform.position;}
+
         //drag_detached = load_collider.drag_detached;  //accessing variable from load_collider class
         current_hanged_mass = load_collider.current_hanged_mass;
         // Debug.Log(Lerping_mass);
@@ -115,7 +120,8 @@ public class drag_n_drop : MonoBehaviour
 
              //showing the tagert when the object is being dragged
              transform.GetChild(0).gameObject.SetActive(true);
-
+             tagertMassObject = gameObject; //assigning the current gameobject to the target
+             Debug.Log("drag_pos "+loadTargertPos);
 
                 
                 if ((gameObject.transform.position.y > -0.1627356f) && (gameObject.transform.position.x > -1.59f) && (gameObject.transform.position.x < 0.417f))
