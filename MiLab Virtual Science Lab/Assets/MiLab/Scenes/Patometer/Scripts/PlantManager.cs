@@ -6,10 +6,12 @@ public class PlantManager : MonoBehaviour
 {
     public bool isConnectedToTube;
     public Rigidbody2D plant;
+    Vector3 initialPosition;
     // Start is called before the first frame update
     void Start()
     {
         plant = GetComponent<Rigidbody2D>();
+        initialPosition = plant.position;
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -24,7 +26,7 @@ public class PlantManager : MonoBehaviour
     {
         if(isConnectedToTube)
         {
-            Vector2 newPosition = new Vector2(-2.95f, 1.5f);
+            Vector2 newPosition = new Vector3(2.78f, 1.83f, 0);
             WaterLevelManager.isReset = false;
             GetComponent<Rigidbody2D>().MovePosition(newPosition);
         }
@@ -33,7 +35,7 @@ public class PlantManager : MonoBehaviour
 
     public void ResetPlantPosition()
     {
-        Vector2 newPosition = new Vector3(-8.25f, 1.37f, 0f);
+        Vector2 newPosition = initialPosition;
         GetComponent<Rigidbody2D>().MovePosition(newPosition);
     }
 
@@ -50,5 +52,6 @@ public class PlantManager : MonoBehaviour
     {
         Debug.Log("state is " + isConnectedToTube);
         WaterLevelManager.AdjustWaterLevel(this);
+        
     }
 }
