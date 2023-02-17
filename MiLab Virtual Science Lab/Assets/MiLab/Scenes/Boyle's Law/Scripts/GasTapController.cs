@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GasTapController : MonoBehaviour
 {
-    
+    public float tapEndPoint;
     private Vector3 screenPoint;
     private Vector3 offset;
-    private Vector3 initialPos;
+    public Vector3 initialPos;
     public LineRenderer lineRenderer;
     private Color startColor;
     private Color endColor;
@@ -44,9 +45,9 @@ public class GasTapController : MonoBehaviour
             transform.position = new Vector2(transform.position.x, initialPos.y);
         }
 
-       if(transform.position.x < 1)
+       if(transform.position.x < tapEndPoint)
         {
-            transform.position = new Vector2(1f, initialPos.y);
+            transform.position = new Vector2(tapEndPoint, initialPos.y);
         }
        else if(transform.position.x > initialPos.x)
         {
@@ -57,9 +58,9 @@ public class GasTapController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x <= 1)
+        if (transform.position.x <= tapEndPoint)
         {
-            transform.position = new Vector2(1f, initialPos.y);
+            //transform.position = new Vector2(tapEndPoint, initialPos.y);
             lineRenderer.startColor = startColor;
             lineRenderer.endColor = endColor;
         }
