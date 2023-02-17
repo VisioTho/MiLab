@@ -1,0 +1,4 @@
+ral.github.com/api/deployments/desktop/desktop/latest/releases?version=3.1.2&env=production&guid=a34a08a1-d68c-43d1-b164-f4b43f36c80e&id=githubdesktop&localversion=3.1.2&arch=amd64
+[25/01/23 17:30:18] warn: IEnableLogger: Failed to download url: https://central.github.com/api/deployments/desktop/desktop/latest/releases?version=3.1.2&env=production&guid=a34a08a1-d68c-43d1-b164-f4b43f36c80e&id=githubdesktop&localversion=3.1.2&arch=amd64: System.Net.WebException: The remote name could not be resolved: 'central.github.com'
+   at System.Net.HttpWebRequest.EndGetResponse(IAsyncResult asyncResult)
+   at Syste
