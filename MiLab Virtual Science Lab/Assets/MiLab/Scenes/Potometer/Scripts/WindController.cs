@@ -6,21 +6,23 @@ using UnityEngine.UI;
 public class WindController : MonoBehaviour
 {
     public bool isBlowingWind;
+    public DialSwicth dialSwicth;
     
-    public void ToggleWind()
+    void ToggleWind()
     {
-        if (!GetComponent<Toggle>().isOn)
-        {
-            isBlowingWind = false;
-        }
-        else if(GetComponent<Toggle>().isOn)
+        if(dialSwicth.isRotated)
         {
             isBlowingWind = true;
+        }
+        else
+        {
+            isBlowingWind = false;
         }
     }
 
     private void Update()
     {
+        ToggleWind();
         WaterLevelManager.BlowWind(this);
     }
 }
