@@ -8,9 +8,9 @@ public class TranspirationManager : MonoBehaviour
     public bool isBlowingWind;
     public bool isCooling;
     
-    public TranspirationManager(PlantManager plant)
+    public TranspirationManager(BeakerController beaker)
     {
-        isConnectedToPatometer = plant.isConnectedToTube;
+        isConnectedToPatometer = beaker.isConnectedToTube;
        
     }
 

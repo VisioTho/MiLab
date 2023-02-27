@@ -17,7 +17,7 @@ public class TwentyFourHourTimer : MonoBehaviour
     }
     void Update()
     {
-        if(WaterLevelManager.patometerIsConnected)
+        if(BubbleController.patometerIsConnected)
         {
             timer += Time.deltaTime; // Increase timer
             if (timer >= 1f)

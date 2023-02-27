@@ -31,7 +31,7 @@ public class AirConController : MonoBehaviour
     {
         GetAirConSwitchState();
        
-        WaterLevelManager.CoolRoom(this);
+        BubbleController.CoolRoom(this);
         if(isCooling)
         {
             airConText.text = "14";

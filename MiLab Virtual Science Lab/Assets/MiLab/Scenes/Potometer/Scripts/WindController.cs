@@ -23,6 +23,6 @@ public class WindController : MonoBehaviour
     private void Update()
     {
         ToggleWind();
-        WaterLevelManager.BlowWind(this);
+        BubbleController.BlowWind(this);
     }
 }
