@@ -104,7 +104,7 @@ public class LiquidControllerScript : MonoBehaviour
         {
             fillDifference = valueHolder - fill.CurrentVal;
         }
-        Debug.Log("fill Difference is " + fillDifference);
+        
         if (indicatorVariation.value == 0 && (buretteKnob.value == 1 || buretteKnob.value == 2)) // using phenophthlaine as indicator
         {
             if (analyteVariation.value == 0 && titrantVariation.value == 0 && !isTransformed)
