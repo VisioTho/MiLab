@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Draggrable : MonoBehaviour
 {
     public delegate void DragEndedDelegate(Draggrable draggableObjects);
@@ -10,6 +11,7 @@ public class Draggrable : MonoBehaviour
     private bool isDragged = false;
     private Vector3 mouseDragStartPosition;
     private Vector3 spriteDragStartPosition;
+    private bool hasCollided = false;
     // public Camera mainCamera;
 
     private void OnMouseDown()
@@ -34,9 +36,13 @@ public class Draggrable : MonoBehaviour
         dragEndedCallback(this);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("triggered");
-        Destroy(collision.gameObject);
+        Debug.Log("Collision detected with: " + collision.gameObject.name);
+
     }
+
+
+
+
 }

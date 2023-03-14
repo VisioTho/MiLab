@@ -30,11 +30,14 @@ public class SnapController : MonoBehaviour
                 closeDistance = curretDistance;
                 snapEnabled = false;
             }
+
         }
+
         if (closestSnapPoint != null && closeDistance <= snapRange)
         {
             draggrable.transform.localPosition = closestSnapPoint.localPosition;
             snapEnabled = true;
         }
+
     }
 }
