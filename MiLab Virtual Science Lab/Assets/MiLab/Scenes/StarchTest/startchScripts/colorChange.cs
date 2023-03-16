@@ -28,11 +28,11 @@ public class colorChange : MonoBehaviour
                 eggDropCount+=1;
                 if (eggDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(eggSoakingAreaSmall, starchPresentColor, 3));
+                    StartCoroutine(changeFoodColor(eggSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (eggDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(eggSoakingAreaLarge, starchPresentColor, 6));
+                    StartCoroutine(changeFoodColor(eggSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }
             else if (gameObject.name == "bread")
@@ -40,22 +40,22 @@ public class colorChange : MonoBehaviour
                 breadDropCount += 1;
                 if (breadDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(breadSoakingAreaSmall, starchPresentColor, 3));
+                    StartCoroutine(changeFoodColor(breadSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (breadDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(breadSoakingAreaLarge, starchPresentColor, 6));
+                    StartCoroutine(changeFoodColor(breadSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }else if (gameObject.name == "tomato")
             {
                 tomatoDropCount += 1;
                 if (tomatoDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(tomatoSoakingAreaSmall, starchAbsentColor, 3));
+                    StartCoroutine(changeFoodColor(tomatoSoakingAreaSmall, starchAbsentColor, 0.5f));
                 }
                 if (tomatoDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(tomatoSoakingAreaLarge, starchAbsentColor, 6));
+                    StartCoroutine(changeFoodColor(tomatoSoakingAreaLarge, starchAbsentColor, 0.7f));
                 }
             }
             else if (gameObject.name == "cassava")
@@ -63,22 +63,22 @@ public class colorChange : MonoBehaviour
                 cassavaDropCount += 1;
                 if (cassavaDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(cassavaSoakingAreaSmall, starchPresentColor, 3));
+                    StartCoroutine(changeFoodColor(cassavaSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (cassavaDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(cassavaSoakingAreaLarge, starchPresentColor, 6));
+                    StartCoroutine(changeFoodColor(cassavaSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }else if (gameObject.name == "irish_potato")
             {
                 potatoDropCount += 1;
                 if (potatoDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(potatoSoakingAreaSmall, starchPresentColor, 3));
+                    StartCoroutine(changeFoodColor(potatoSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (potatoDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(potatoSoakingAreaLarge, starchPresentColor, 6));
+                    StartCoroutine(changeFoodColor(potatoSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }
         }
