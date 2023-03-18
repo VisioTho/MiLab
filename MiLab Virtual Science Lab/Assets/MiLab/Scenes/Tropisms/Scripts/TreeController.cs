@@ -67,7 +67,8 @@ public class TreeController : MonoBehaviour
 
         Debug.Log("Event Received");
             prevSpeed = -1;
-            rb2D.AddForce(transform.up * thrust);
+            //rb2D.AddForce(transform.up * thrust);
+            rb2D.velocity = transform.up * thrust * Time.deltaTime;
             JointAngleLimits2D limits = hingejoint.limits;
             limits.min = -16;
             limits.max = 16;
@@ -81,7 +82,8 @@ public class TreeController : MonoBehaviour
     public void DirectionRight()
     {
             prevSpeed = 1;
-            rb2D.AddForce(transform.up * thrust);
+            //rb2D.AddForce(transform.up * thrust);
+            rb2D.velocity = transform.up * thrust * Time.deltaTime;
             JointAngleLimits2D limits = hingejoint.limits;
             limits.min = -16;
             limits.max = 16;
@@ -96,7 +98,8 @@ public class TreeController : MonoBehaviour
             if (prevSpeed == -1)
             {
 
-                rb2D.AddForce(transform.up * thrust);
+                //rb2D.AddForce(transform.up * thrust);
+                rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = -16;
                 limits.max = 0;
@@ -109,7 +112,8 @@ public class TreeController : MonoBehaviour
             else if (prevSpeed == 1)
             {
 
-                rb2D.AddForce(transform.up * thrust);
+                //rb2D.AddForce(transform.up * thrust);
+                rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
                 limits.max = 16;

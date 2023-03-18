@@ -52,7 +52,7 @@ public class GeoBonesController : MonoBehaviour
             {
                 
                 
-                rb2D.AddForce(transform.up * thrust);
+                rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
                 limits.max = 0;
@@ -72,10 +72,10 @@ public class GeoBonesController : MonoBehaviour
                 motor.maxMotorTorque = maxMotorTorque;
                 hingejoint.motor = motor; */
                 float currentAngle = hingejoint.jointAngle;
-                rb2D.AddForce(transform.up * thrust);
+                rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
-                limits.max = 40;
+                limits.max = 25;
                 motor.motorSpeed = 1f;
                 motor.maxMotorTorque = 1000f;;
                 hingejoint.motor = motor;
@@ -88,7 +88,7 @@ public class GeoBonesController : MonoBehaviour
         }else if(_mouseOn != 3 && rayHit.rayName == null && boneKinematics.needsKinematic == true)
         {
             Debug.Log("Pausing Bone movement");
-            rb2D.AddForce(transform.up * thrust);
+            rb2D.velocity = transform.up * thrust * Time.deltaTime;
             JointAngleLimits2D limits = hingejoint.limits;
             limits.min = 0;
             limits.max = 0;
