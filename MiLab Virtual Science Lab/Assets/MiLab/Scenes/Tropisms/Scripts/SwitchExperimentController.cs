@@ -12,6 +12,7 @@ public class SwitchExperimentController : MonoBehaviour
    private GameObject SpotLightsContainer;
    private GameObject Geotropism_container;
    private GameObject ButtonContainer;
+   private GameObject GeoResetButton;
 
     void Start()
     {
@@ -21,8 +22,10 @@ public class SwitchExperimentController : MonoBehaviour
         SpotLightsContainer = GameObject.Find("SpotLightsContainer");
         Geotropism_container = GameObject.Find("Geotropism_container");
         ButtonContainer = GameObject.Find("ButtonContainer");
+        GeoResetButton = GameObject.Find("Reset");
 
         Geotropism_container.SetActive(false);
+        GeoResetButton.SetActive(false);
 
 
     }
@@ -36,6 +39,7 @@ public class SwitchExperimentController : MonoBehaviour
             SpotLightsContainer.SetActive(true);
             ButtonContainer.SetActive(true);
             Geotropism_container.SetActive(false);
+            GeoResetButton.SetActive(false);
             
    
         }
