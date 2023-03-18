@@ -7,4 +7,6 @@ using UnityEngine;
 public class GeoTropismScriptableObject : ScriptableObject
 {
     public bool needsKinematic;
+    public bool upperBoneTracking;
+    public bool lowerBoneTracking;
 }

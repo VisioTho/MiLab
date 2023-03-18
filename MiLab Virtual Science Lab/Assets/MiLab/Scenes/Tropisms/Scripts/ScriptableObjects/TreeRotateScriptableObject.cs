@@ -19,9 +19,11 @@ public class TreeRotateScriptableObject : ScriptableObject
 { 
     
     public int mouseOn;
+    public bool resetButton;
 
   [System.NonSerialized]
     public UnityEvent<int> treeClickedEvent;
+    public UnityEvent<bool> treeResetEvent;
 
     private void OnEnable()
     {
@@ -38,9 +40,11 @@ public class TreeRotateScriptableObject : ScriptableObject
             mouseOn = 0;
             treeClickedEvent.Invoke(mouseOn);
             Debug.Log("Mouse Clicked");
+
         }else if (Input.GetMouseButton(0))
         {
             mouseOn = 1;
+            resetButton = false;
             treeClickedEvent.Invoke(mouseOn);
             Debug.Log("Mouse Lifted");
         }else
@@ -53,6 +57,12 @@ public class TreeRotateScriptableObject : ScriptableObject
         
     
         
+    }
+
+    public void resetButtonGeo()
+    {
+        resetButton = true;
+        treeResetEvent.Invoke(resetButton);
     }
 
     

@@ -19,13 +19,24 @@ public class GeoBonesController : MonoBehaviour
     public float maxMotorTorque = 100.0f;
     private float thrust = 1f;
     private string boneName;
+    private GameObject plant; 
+    private BoxCollider2D collider; 
+    private BoxCollider2D boneCollider; 
+    private Vector3 targetPosition ; 
+    private bool reset ; 
+    private GameObject autoDropPoint;
 
     private void Start()
     {
+        plant = GameObject.Find("Geotropism_plant");
+        collider = plant.GetComponent<BoxCollider2D>();
         boneName = gameObject.name;
+        boneCollider = gameObject.GetComponent<BoxCollider2D>();
         hingejoint = GetComponent<HingeJoint2D>();
         rb2D = GetComponent<Rigidbody2D>();
         startingBodyType = rb2D.bodyType;
+        targetPosition = new Vector3(collider.transform.position.x, plant.transform.position.y, 0.976f);
+        reset = false;
       
     }
 
@@ -33,13 +44,16 @@ public class GeoBonesController : MonoBehaviour
     {
     
         mouseStatus.treeClickedEvent.AddListener(MoveBone);
+        mouseStatus.treeClickedEvent.AddListener(rotateToRestPoint);
+        //mouseStatus.treeResetEvent.AddListener(resetGeo);
 
     }
 
     private void Update()
     {
         
-        MoveBone(mouseStatus.mouseOn);
+        //MoveBone(mouseStatus.mouseOn);
+        //rotateToRestPoint();
         
     }
 
@@ -61,16 +75,11 @@ public class GeoBonesController : MonoBehaviour
                 motor.maxMotorTorque = 1000f;
                 hingejoint.limits = limits;
                 hingejoint.motor = motor;
-                Debug.Log(limits.max);
-                //Invoke("SetKinematic", 5.0f);
                 
 
             }else{
                 
                 Debug.Log("bones in motion");
-                /*motor.motorSpeed = motorSpeed;
-                motor.maxMotorTorque = maxMotorTorque;
-                hingejoint.motor = motor; */
                 float currentAngle = hingejoint.jointAngle;
                 rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
@@ -81,13 +90,28 @@ public class GeoBonesController : MonoBehaviour
                 hingejoint.motor = motor;
                 hingejoint.limits = limits;
                 hingejoint.motor = motor;
-                Debug.Log(boneName +" my current angle is "+currentAngle);
+
+                
             }
             
             
         }else if(_mouseOn != 3 && rayHit.rayName == null && boneKinematics.needsKinematic == true)
         {
             Debug.Log("Pausing Bone movement");
+            rb2D.velocity = transform.up * thrust * Time.deltaTime;
+
+            // Reset joint limits immediately
+            JointAngleLimits2D limits = hingejoint.limits;
+            limits.min = 0;
+            limits.max = 0;
+            hingejoint.limits = limits;
+
+            // Reset joint motor immediately
+            JointMotor2D motor = hingejoint.motor;
+            motor.motorSpeed = 1f;
+            motor.maxMotorTorque = 1000f;
+            hingejoint.motor = motor;
+           /* Debug.Log("Pausing Bone movement");
             rb2D.velocity = transform.up * thrust * Time.deltaTime;
             JointAngleLimits2D limits = hingejoint.limits;
             limits.min = 0;
@@ -97,18 +121,11 @@ public class GeoBonesController : MonoBehaviour
             motor.maxMotorTorque = 1000f;
             hingejoint.limits = limits;
             hingejoint.motor = motor;
+            */
+        
 
-            if(hingejoint.limits.max == 0)
-            {
-                rb2D.bodyType = RigidbodyType2D.Static;
-                Debug.Log("Rigid body reset");
-            }
                 
-        }else{
-                //rb2D.bodyType = startingBodyType;
-                Debug.Log("HEY");
         }
-
         
         
     }
@@ -124,4 +141,50 @@ public class GeoBonesController : MonoBehaviour
                 
             }
         }
+
+    public void rotateToRestPoint(int _mouseOn)
+    {
+        //autoDropPoint = GameObject.Find(rayHit.rayName);
+        //float autoDropPointAngle = autoDropPoint.transform.rotation.eulerAngles.z;
+
+        if(_mouseOn == 3 && rayHit.rayName == null)
+        {
+            Debug.Log("Rotate to rest");
+            float targetAngle = -0.566f;
+                    
+            // Calculate the current rotation angle in radians
+            float currentAngle = plant.transform.rotation.eulerAngles.z * Mathf.Deg2Rad;
+            // Define the speed of rotation in degrees per second
+            float rotationSpeed = 90f;
+
+            // Calculate the target rotation quaternion
+            Quaternion targetRotation = Quaternion.Euler(0, 0, targetAngle * Mathf.Rad2Deg);
+
+            // Calculate the maximum angle to rotate by in one frame based on the rotation speed
+            float maxAngle = rotationSpeed * Mathf.Deg2Rad * Time.deltaTime;
+
+            // Rotate towards the target rotation by the maximum angle
+            plant.transform.rotation = Quaternion.RotateTowards(plant.transform.rotation, targetRotation, maxAngle);
+            // Calculate the angle difference between the current angle and the target angle
+            float angleDiff = Mathf.Abs(targetAngle - plant.transform.rotation.eulerAngles.z);
+
+            // Define a small threshold for the angle difference
+            float angleThreshold = 0.01f;
+
+            // Check if the angle difference is below the threshold
+            if (angleDiff < angleThreshold)
+            {
+                reset = false;
+                Debug.Log("Reset Disabled");
+            }
+
+        }
+
+    }
+
+    public void resetTrigger()
+    {
+        reset = true;
+        Debug.Log(" reset is set to true");
+    }
 }
