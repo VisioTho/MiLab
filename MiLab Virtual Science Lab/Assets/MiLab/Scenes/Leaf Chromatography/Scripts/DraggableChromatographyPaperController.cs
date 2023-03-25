@@ -8,6 +8,8 @@ public class DraggableChromatographyPaperController : MonoBehaviour
     float distanceFromCamera;
     public Camera mainCamera;
 
+
+
     private bool hasCollided = false;
 
     public bool canDrag;
@@ -47,10 +49,7 @@ public class DraggableChromatographyPaperController : MonoBehaviour
 
     private void OnMouseUp()
     {
-
         transform.gameObject.GetComponent<Rigidbody2D>().simulated = true;
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -79,5 +78,15 @@ public class DraggableChromatographyPaperController : MonoBehaviour
     {
 
 
+    }
+
+    public void ResetObject()
+    {
+        transform.position = initialPos;
+        this.hasCollided = false;
+        Debug.Log("no more collision");
+        GetComponent<Rigidbody2D>().simulated = true;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+        gameObject.GetComponent<PolygonCollider2D>().enabled = true;
     }
 }

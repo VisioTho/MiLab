@@ -18,7 +18,7 @@ public class SnapController : MonoBehaviour
 
     private void onDragEnded(Draggrable draggrable)
     {
-        float closeDistance = -1;
+        float closeDistance = 100;
         Transform closestSnapPoint = null;
 
         foreach (Transform snapPoint in snapPoints)
