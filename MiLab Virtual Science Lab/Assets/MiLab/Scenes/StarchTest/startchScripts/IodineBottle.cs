@@ -15,13 +15,13 @@ public class IodineBottle : MonoBehaviour
 
         gameObject.GetComponent<Toggle>().onValueChanged.AddListener(delegate
         {
-            showHideIodineBottle();
+            ShowHideIodineBottle();
         });
     }
 
     // Update is called once per frame
  
-    public void showHideIodineBottle()
+    public void ShowHideIodineBottle()
     {
         if (gameObject.GetComponent<Toggle>().isOn)
         {

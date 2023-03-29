@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 //should be attached to the dropper
-public class colorChange : MonoBehaviour
+public class ColorChange : MonoBehaviour
 {
     public GameObject breadSoakingAreaSmall, breadSoakingAreaLarge, eggSoakingAreaSmall, eggSoakingAreaLarge, tomatoSoakingAreaSmall, tomatoSoakingAreaLarge, cassavaSoakingAreaSmall, cassavaSoakingAreaLarge, potatoSoakingAreaSmall, potatoSoakingAreaLarge;
     public GameObject ResetButton;
     Color starchPresentColor = new Color32(46, 50, 73, 100);
     Color starchAbsentColor = new Color32(238, 159, 46, 100);
-    public static int breadDropCount, eggDropCount, tomatoDropCount, cassavaDropCount, potatoDropCount;
+    public int breadDropCount, eggDropCount, tomatoDropCount, cassavaDropCount, potatoDropCount;
     float time = 0;
 
     void Start() {
@@ -28,11 +28,11 @@ public class colorChange : MonoBehaviour
                 eggDropCount+=1;
                 if (eggDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(eggSoakingAreaSmall, starchPresentColor, 0.5f));
+                    StartCoroutine(ChangeFoodColor(eggSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (eggDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(eggSoakingAreaLarge, starchPresentColor, 0.7f));
+                    StartCoroutine(ChangeFoodColor(eggSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }
             else if (gameObject.name == "bread")
@@ -40,22 +40,22 @@ public class colorChange : MonoBehaviour
                 breadDropCount += 1;
                 if (breadDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(breadSoakingAreaSmall, starchPresentColor, 0.5f));
+                    StartCoroutine(ChangeFoodColor(breadSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (breadDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(breadSoakingAreaLarge, starchPresentColor, 0.7f));
+                    StartCoroutine(ChangeFoodColor(breadSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }else if (gameObject.name == "tomato")
             {
                 tomatoDropCount += 1;
                 if (tomatoDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(tomatoSoakingAreaSmall, starchAbsentColor, 0.5f));
+                    StartCoroutine(ChangeFoodColor(tomatoSoakingAreaSmall, starchAbsentColor, 0.5f));
                 }
                 if (tomatoDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(tomatoSoakingAreaLarge, starchAbsentColor, 0.7f));
+                    StartCoroutine(ChangeFoodColor(tomatoSoakingAreaLarge, starchAbsentColor, 0.7f));
                 }
             }
             else if (gameObject.name == "cassava")
@@ -63,28 +63,28 @@ public class colorChange : MonoBehaviour
                 cassavaDropCount += 1;
                 if (cassavaDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(cassavaSoakingAreaSmall, starchPresentColor, 0.5f));
+                    StartCoroutine(ChangeFoodColor(cassavaSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (cassavaDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(cassavaSoakingAreaLarge, starchPresentColor, 0.7f));
+                    StartCoroutine(ChangeFoodColor(cassavaSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }else if (gameObject.name == "irish_potato")
             {
                 potatoDropCount += 1;
                 if (potatoDropCount == 1)
                 {
-                    StartCoroutine(changeFoodColor(potatoSoakingAreaSmall, starchPresentColor, 0.5f));
+                    StartCoroutine(ChangeFoodColor(potatoSoakingAreaSmall, starchPresentColor, 0.5f));
                 }
                 if (potatoDropCount == 2)
                 {
-                    StartCoroutine(changeFoodColor(potatoSoakingAreaLarge, starchPresentColor, 0.7f));
+                    StartCoroutine(ChangeFoodColor(potatoSoakingAreaLarge, starchPresentColor, 0.7f));
                 }
             }
         }
     }
 
-    IEnumerator changeFoodColor(GameObject spriteToChangeColor, Color colorTo, float changeDuration)
+    IEnumerator ChangeFoodColor(GameObject spriteToChangeColor, Color colorTo, float changeDuration)
     {
         ResetButton.GetComponent<Button>().interactable = false;
         Color startColor = spriteToChangeColor.GetComponent<SpriteRenderer>().color;

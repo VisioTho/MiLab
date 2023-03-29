@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class dropperSwitchController : MonoBehaviour
+public class DropperSwitchController : MonoBehaviour
 {
     public GameObject dropper;
     public Vector3 dropperDefaultPosition;
@@ -15,13 +15,13 @@ public class dropperSwitchController : MonoBehaviour
 
         gameObject.GetComponent<Toggle>().onValueChanged.AddListener(delegate
         {
-            showHideIodineDropper();
+            ShowHideIodineDropper();
         });
     }
 
     // Update is called once per frame
 
-    public void showHideIodineDropper()
+    public void ShowHideIodineDropper()
     {
         if (gameObject.GetComponent<Toggle>().isOn)
         {

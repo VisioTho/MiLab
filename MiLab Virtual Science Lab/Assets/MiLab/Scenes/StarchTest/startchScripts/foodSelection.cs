@@ -5,32 +5,34 @@ using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class foodSelection : MonoBehaviour
+public class FoodSelection : MonoBehaviour
 {
     public TMP_Dropdown foods_dd;
     public GameObject bread_plate, egg_plate, tomato_plate, cassava_plate, irish_potato_plate, dropper_spawn_pointA;
     GameObject onFocusNow = null;
     Vector3 hidden_posistion;
    // Start is called before the first frame update
+
+   ColorChange CC = new ColorChange();
     void Start()
     {
 
         hidden_posistion = egg_plate.transform.position;
 
         foods_dd.onValueChanged.AddListener(delegate {
-            foodValueHasChanged(foods_dd);
+            FoodValueHasChanged(foods_dd);
         });
 
         foods_dd.value = Random.Range(0, 5); //randomizing default food
         //putting the selected food on focus
-        if (foods_dd.value == 0) moveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 1) moveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 2) moveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 3) moveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 4) moveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 0) MoveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 1) MoveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 2) MoveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 3) MoveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 4) MoveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
     }
 
-   void foodValueHasChanged(TMP_Dropdown sender)
+   void FoodValueHasChanged(TMP_Dropdown sender)
     {
         //DROP_DOWN_LIST_ORDER :: egg, tomato, cassava, irish_potato, bread;
        // moveAPlate(onFocusNow, hidden_posistion, 0.5f); //moving another plate out of focus
@@ -40,34 +42,34 @@ public class foodSelection : MonoBehaviour
         if (selected_value == 0)
         {
             //onFocusNow = egg_plate;
-            moveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MoveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 1) {
             //onFocusNow = tomato_plate;
-            moveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MoveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 2)
         {
             //onFocusNow = cassava_plate;
-            moveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MoveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 3)
         {
             //onFocusNow = irish_potato_plate;
-            moveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MoveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else
         {
             //onFocusNow = bread_plate;
-            moveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MoveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
 
         //re-initialize drop counts
-        initializeDropCounts();
+        InitializeDropCounts();
     }
 
 
-    void moveAPlate(GameObject plateToMove, Vector3 positionTo, float duration)
+    void MoveAPlate(GameObject plateToMove, Vector3 positionTo, float duration)
     {
         if(onFocusNow!=null){ onFocusNow.transform.DOMove(hidden_posistion, 0.8f);}
        
@@ -76,7 +78,7 @@ public class foodSelection : MonoBehaviour
         onFocusNow = plateToMove;
     }
 
-    void initializeDropCounts(){
-        colorChange.breadDropCount = colorChange.eggDropCount = colorChange.tomatoDropCount = colorChange.cassavaDropCount = colorChange.potatoDropCount = 0;
+    void InitializeDropCounts(){
+        CC.breadDropCount = CC.eggDropCount = CC.tomatoDropCount = CC.cassavaDropCount = CC.potatoDropCount = 0;
     }
 }

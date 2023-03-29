@@ -5,12 +5,16 @@ using UnityEngine;
 public class ResetFoodColors : MonoBehaviour
 {
     public Color defaultColor = new Color32(255, 251, 251, 0);
-    public GameObject[] foodColorableAreas; 
+    public GameObject[] foodColorableAreas;
+
+    ColorChange CC = new ColorChange();
     
    public void ResetColors(){
     foreach(GameObject colorableArea in foodColorableAreas){
          colorableArea.GetComponent<SpriteRenderer>().color = defaultColor;
-         colorChange.breadDropCount = colorChange.eggDropCount = colorChange.tomatoDropCount = colorChange.cassavaDropCount = colorChange.potatoDropCount = 0;
+        // ColorChange.breadDropCount = ColorChange.eggDropCount = ColorChange.tomatoDropCount = ColorChange.cassavaDropCount = ColorChange.potatoDropCount = 0;
+       CC.breadDropCount = CC.eggDropCount = CC.tomatoDropCount = CC.cassavaDropCount = CC.potatoDropCount = 0;
+
     }
  }
 }
