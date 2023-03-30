@@ -17,10 +17,15 @@ public class SpriteDragBase: MonoBehaviour
 
     void OnMouseDrag()
     {
+        DragSprite();
+    }
+
+    public void DragSprite()
+    {
         Vector3 curScreenPoint = new Vector3(Input.mousePosition.x, Input.mousePosition.y, -Camera.main.transform.position.z);
         Vector3 curPosition = Camera.main.ScreenToWorldPoint(curScreenPoint) + offset;
         transform.position = curPosition;
-        if(isLimited)
+        if (isLimited)
         {
             if (transform.position.y <= minY)
                 transform.position = new Vector3(transform.position.x, minY, transform.position.z);
