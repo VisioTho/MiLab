@@ -50,6 +50,7 @@ public class SwitchExperimentController : MonoBehaviour
             SpotLightsContainer.SetActive(false);
             ButtonContainer.SetActive(false);
             Geotropism_container.SetActive(true);
+            GeoResetButton.SetActive(true);
             
         }
     }  

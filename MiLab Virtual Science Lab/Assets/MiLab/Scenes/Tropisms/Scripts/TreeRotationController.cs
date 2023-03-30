@@ -62,7 +62,7 @@ public class TreeRotationController : MonoBehaviour
             {
                 Vector3 vec3 = Input.mousePosition - screenPos;
                 float angle = Mathf.Atan2(vec3.y, vec3.x) * Mathf.Rad2Deg;
-                float clampedAngle = Mathf.Clamp(angle + angleOffset, -31.80f, 76f);
+                float clampedAngle = Mathf.Clamp(angle + angleOffset, 2.073f, 76f);
                 Quaternion newRotation = Quaternion.AngleAxis(clampedAngle, Vector3.forward);
                 transform.rotation = newRotation;
                 //transform.eulerAngles = new Vector3(0, 0, angle + angleOffset);

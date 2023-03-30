@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 public class GeoBonesController : MonoBehaviour
@@ -25,10 +26,19 @@ public class GeoBonesController : MonoBehaviour
     private Vector3 targetPosition ; 
     private bool reset ; 
     private GameObject autoDropPoint;
+    private GameObject DropPoint1;
+    private GameObject DropPoint2;
+    private GameObject DropPoint3;
+    private Vector3 startingPosition;
 
     private void Start()
     {
         plant = GameObject.Find("Geotropism_plant");
+        DropPoint1 = GameObject.Find("DropPoint1");
+        DropPoint2 = GameObject.Find("DropPoint2");
+        DropPoint3 = GameObject.Find("DropPoint3");
+        plant = GameObject.Find("Geotropism_plant");
+        startingPosition = plant.transform.position;
         collider = plant.GetComponent<BoxCollider2D>();
         boneName = gameObject.name;
         boneCollider = gameObject.GetComponent<BoxCollider2D>();
@@ -42,19 +52,8 @@ public class GeoBonesController : MonoBehaviour
 
     private void OnEnable()
     {
-    
         mouseStatus.treeClickedEvent.AddListener(MoveBone);
         mouseStatus.treeClickedEvent.AddListener(rotateToRestPoint);
-        //mouseStatus.treeResetEvent.AddListener(resetGeo);
-
-    }
-
-    private void Update()
-    {
-        
-        //MoveBone(mouseStatus.mouseOn);
-        //rotateToRestPoint();
-        
     }
 
     public void MoveBone(int _mouseOn)
@@ -64,8 +63,8 @@ public class GeoBonesController : MonoBehaviour
             rb2D.bodyType = startingBodyType;
             if(rayHit.rayName == "DropPoint4")
             {
-                
-                
+                DropPointsTurnON();
+                //colliderSwitchON();
                 rb2D.velocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
@@ -77,8 +76,23 @@ public class GeoBonesController : MonoBehaviour
                 hingejoint.motor = motor;
                 
 
+            }else if( rayHit.rayName == "DropPoint5")
+            {
+                colliderSwitchOFF();
+                Debug.Log("bones in motion");
+                float currentAngle = hingejoint.jointAngle;
+                rb2D.velocity = transform.up * thrust * Time.deltaTime;
+                JointAngleLimits2D limits = hingejoint.limits;
+                limits.min = -25;
+                limits.max = 0;
+                motor.motorSpeed = 1f;
+                motor.maxMotorTorque = 1000f;
+                hingejoint.motor = motor;
+                hingejoint.limits = limits;
+                hingejoint.motor = motor;
             }else{
-                
+
+                colliderSwitchOFF();
                 Debug.Log("bones in motion");
                 float currentAngle = hingejoint.jointAngle;
                 rb2D.velocity = transform.up * thrust * Time.deltaTime;
@@ -97,6 +111,7 @@ public class GeoBonesController : MonoBehaviour
             
         }else if(_mouseOn != 3 && rayHit.rayName == null && boneKinematics.needsKinematic == true)
         {
+
             Debug.Log("Pausing Bone movement");
             rb2D.velocity = transform.up * thrust * Time.deltaTime;
 
@@ -111,17 +126,7 @@ public class GeoBonesController : MonoBehaviour
             motor.motorSpeed = 1f;
             motor.maxMotorTorque = 1000f;
             hingejoint.motor = motor;
-           /* Debug.Log("Pausing Bone movement");
-            rb2D.velocity = transform.up * thrust * Time.deltaTime;
-            JointAngleLimits2D limits = hingejoint.limits;
-            limits.min = 0;
-            limits.max = 0;
-            motor.motorSpeed = 1f;
-            hingejoint.motor = motor;
-            motor.maxMotorTorque = 1000f;
-            hingejoint.limits = limits;
-            hingejoint.motor = motor;
-            */
+           
         
 
                 
@@ -137,15 +142,13 @@ public class GeoBonesController : MonoBehaviour
             {
                 Debug.Log("body is now kinematic");
                 rb2D.bodyType = RigidbodyType2D.Kinematic;
-                //this._mouseOn = 4; // to jump us out if the function
                 
             }
         }
 
     public void rotateToRestPoint(int _mouseOn)
     {
-        //autoDropPoint = GameObject.Find(rayHit.rayName);
-        //float autoDropPointAngle = autoDropPoint.transform.rotation.eulerAngles.z;
+        
 
         if(_mouseOn == 3 && rayHit.rayName == null)
         {
@@ -184,7 +187,48 @@ public class GeoBonesController : MonoBehaviour
 
     public void resetTrigger()
     {
-        reset = true;
+        DropPointsTurnOFF();
+        //plant.transform.position = startingPosition;
         Debug.Log(" reset is set to true");
     }
+
+    public void colliderSwitchON()
+    {
+        if (collider != null && collider.enabled == false)
+        {
+            collider.enabled = true;
+            boneCollider.enabled = true;
+            Debug.Log("colider ON");
+        }
+    }
+
+    public void colliderSwitchOFF()
+    {
+        if(collider != null && collider.enabled == true )
+        {
+            collider.enabled = false;
+            boneCollider.enabled = false;
+            Debug.Log("colider Off");
+        }
+    }
+
+    public void DropPointsTurnOFF()
+    {
+        
+        DropPoint1.SetActive(false);
+        DropPoint2.SetActive(false);
+        DropPoint3.SetActive(false);
+        
+    }
+
+    public void DropPointsTurnON()
+    {
+        
+        DropPoint1.SetActive(true);
+        DropPoint2.SetActive(true);
+        DropPoint3.SetActive(true);
+        Invoke("colliderSwitchON", 5.0f);
+        
+    }
+    
 }
