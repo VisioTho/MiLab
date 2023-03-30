@@ -7,7 +7,7 @@ public class ResetFoodColors : MonoBehaviour
     public Color defaultColor = new Color32(255, 251, 251, 0);
     public GameObject[] foodColorableAreas;
 
-    ColorChange CC = new ColorChange();
+    public ColorChange CC = new ColorChange();
     
    public void ResetColors(){
     foreach(GameObject colorableArea in foodColorableAreas){

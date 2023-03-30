@@ -20,19 +20,19 @@ public class FoodSelection : MonoBehaviour
         hidden_posistion = egg_plate.transform.position;
 
         foods_dd.onValueChanged.AddListener(delegate {
-            FoodValueHasChanged(foods_dd);
+         ShowSelectedFoodItem(foods_dd);
         });
 
         foods_dd.value = Random.Range(0, 5); //randomizing default food
         //putting the selected food on focus
-        if (foods_dd.value == 0) MoveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 1) MoveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 2) MoveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 3) MoveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
-        if (foods_dd.value == 4) MoveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 0) MovePlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 1) MovePlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 2) MovePlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 3) MovePlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+        if (foods_dd.value == 4) MovePlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
     }
 
-   void FoodValueHasChanged(TMP_Dropdown sender)
+   void ShowSelectedFoodItem(TMP_Dropdown sender)
     {
         //DROP_DOWN_LIST_ORDER :: egg, tomato, cassava, irish_potato, bread;
        // moveAPlate(onFocusNow, hidden_posistion, 0.5f); //moving another plate out of focus
@@ -42,34 +42,34 @@ public class FoodSelection : MonoBehaviour
         if (selected_value == 0)
         {
             //onFocusNow = egg_plate;
-            MoveAPlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MovePlate(egg_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 1) {
             //onFocusNow = tomato_plate;
-            MoveAPlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MovePlate(tomato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 2)
         {
             //onFocusNow = cassava_plate;
-            MoveAPlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MovePlate(cassava_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else if (selected_value == 3)
         {
             //onFocusNow = irish_potato_plate;
-            MoveAPlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MovePlate(irish_potato_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
         else
         {
             //onFocusNow = bread_plate;
-            MoveAPlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
+            MovePlate(bread_plate, new Vector3(dropper_spawn_pointA.transform.position.x, hidden_posistion.y, 0f), 1);
         }
 
         //re-initialize drop counts
-        InitializeDropCounts();
+        ResetDropCounts();
     }
 
 
-    void MoveAPlate(GameObject plateToMove, Vector3 positionTo, float duration)
+    void MovePlate(GameObject plateToMove, Vector3 positionTo, float duration)
     {
         if(onFocusNow!=null){ onFocusNow.transform.DOMove(hidden_posistion, 0.8f);}
        
@@ -78,7 +78,7 @@ public class FoodSelection : MonoBehaviour
         onFocusNow = plateToMove;
     }
 
-    void InitializeDropCounts(){
+    void ResetDropCounts(){
         CC.breadDropCount = CC.eggDropCount = CC.tomatoDropCount = CC.cassavaDropCount = CC.potatoDropCount = 0;
     }
 }

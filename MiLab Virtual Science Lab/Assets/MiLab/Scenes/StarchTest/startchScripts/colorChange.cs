@@ -20,7 +20,7 @@ public class ColorChange : MonoBehaviour
     {
         string gameObjectName = collision.gameObject.name;
     
-        if (gameObjectName == "drop_to_spawn(Clone)")
+        if (gameObjectName == "droplet(Clone)")
         {
             Destroy(collision.gameObject);
             if (gameObject.name == "egg")

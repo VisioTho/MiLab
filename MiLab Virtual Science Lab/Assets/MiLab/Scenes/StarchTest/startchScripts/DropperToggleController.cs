@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
 
-public class DropperSwitchController : MonoBehaviour
+public class DropperToggleController : MonoBehaviour
 {
     public GameObject dropper;
     public Vector3 dropperDefaultPosition;
