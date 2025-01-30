@@ -57,7 +57,7 @@ public class GasTapController : MonoBehaviour
 
     private void Update()
     {
-        if (transform.position.x <= 1)
+        if (transform.position.x <= 0)
         {
             transform.position = new Vector2(1f, initialPos.y);
             lineRenderer.startColor = startColor;
