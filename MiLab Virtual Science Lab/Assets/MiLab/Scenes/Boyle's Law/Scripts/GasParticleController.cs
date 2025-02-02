@@ -16,14 +16,14 @@ public class GasParticleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(thisrigidbody2D.velocity.magnitude<0.5f)
+        if(thisrigidbody2D.linearVelocity.magnitude<0.5f)
         {
             float f = Random.Range(-100f, 100f);
             thisrigidbody2D.AddForce(new Vector2(f, f), ForceMode2D.Force);
         }
-        else if(thisrigidbody2D.velocity.magnitude>=1f)
+        else if(thisrigidbody2D.linearVelocity.magnitude>=1f)
         {
-            thisrigidbody2D.velocity.Normalize();
+            thisrigidbody2D.linearVelocity.Normalize();
         }
     }
 }

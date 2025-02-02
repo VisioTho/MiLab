@@ -48,7 +48,7 @@ public class Timer : MonoBehaviour
         float speed = totalDistance / t;
         averageSpeed = speed;
         speedText.text = speed.ToString("f0");
-        float instantaneousSpeed = carbody.velocity.x;
+        float instantaneousSpeed = carbody.linearVelocity.x;
 
         if (instantaneousSpeed < 0)
         {

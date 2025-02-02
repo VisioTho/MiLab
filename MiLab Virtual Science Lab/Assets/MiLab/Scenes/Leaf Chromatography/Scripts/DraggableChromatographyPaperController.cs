@@ -40,7 +40,7 @@ public class DraggableChromatographyPaperController : MonoBehaviour
             Vector3 pos = Input.mousePosition;
             pos.z = distanceFromCamera;
             pos = mainCamera.ScreenToWorldPoint(pos);
-            gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
+            gameObject.GetComponent<Rigidbody2D>().linearVelocity = (pos - transform.position) * 15;
         }
 
 

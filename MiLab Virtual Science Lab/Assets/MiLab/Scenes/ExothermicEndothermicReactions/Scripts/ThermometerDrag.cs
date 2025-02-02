@@ -15,7 +15,7 @@ public class ThermometerDrag : MonoBehaviour
             Vector3 pos = new Vector3 (0, transform.position.y, transform.position.z);
             pos.z = distanceFromCamera;
             pos = mainCamera.ScreenToWorldPoint(pos);
-            gameObject.GetComponent<Rigidbody2D>().velocity = (pos - transform.position) * 15;
+            gameObject.GetComponent<Rigidbody2D>().linearVelocity = (pos - transform.position) * 15;
         }
     }
 

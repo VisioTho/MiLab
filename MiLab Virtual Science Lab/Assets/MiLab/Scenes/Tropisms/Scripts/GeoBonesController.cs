@@ -65,7 +65,7 @@ public class GeoBonesController : MonoBehaviour
             {
                 DropPointsTurnON();
                 //colliderSwitchON();
-                rb2D.velocity = transform.up * thrust * Time.deltaTime;
+                rb2D.linearVelocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
                 limits.max = 0;
@@ -81,7 +81,7 @@ public class GeoBonesController : MonoBehaviour
                 colliderSwitchOFF();
                 Debug.Log("bones in motion");
                 float currentAngle = hingejoint.jointAngle;
-                rb2D.velocity = transform.up * thrust * Time.deltaTime;
+                rb2D.linearVelocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = -25;
                 limits.max = 0;
@@ -95,7 +95,7 @@ public class GeoBonesController : MonoBehaviour
                 colliderSwitchOFF();
                 Debug.Log("bones in motion");
                 float currentAngle = hingejoint.jointAngle;
-                rb2D.velocity = transform.up * thrust * Time.deltaTime;
+                rb2D.linearVelocity = transform.up * thrust * Time.deltaTime;
                 JointAngleLimits2D limits = hingejoint.limits;
                 limits.min = 0;
                 limits.max = 25;
@@ -113,7 +113,7 @@ public class GeoBonesController : MonoBehaviour
         {
 
             Debug.Log("Pausing Bone movement");
-            rb2D.velocity = transform.up * thrust * Time.deltaTime;
+            rb2D.linearVelocity = transform.up * thrust * Time.deltaTime;
 
             // Reset joint limits immediately
             JointAngleLimits2D limits = hingejoint.limits;

@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 
 namespace TMPro.Examples
@@ -10,6 +11,7 @@ namespace TMPro.Examples
         public int SpawnType = 0;
         public int NumberOfNPC = 12;
 
+        public bool IsTextObjectScaleStatic;
         private TextMeshProFloatingText floatingText_Script;
 
 
@@ -33,15 +35,16 @@ namespace TMPro.Examples
 
                     textMeshPro.alignment = TextAlignmentOptions.Bottom;
                     textMeshPro.fontSize = 96;
-                    textMeshPro.enableKerning = false;
+                    textMeshPro.fontFeatures.Clear();
 
                     textMeshPro.color = new Color32(255, 255, 0, 255);
                     textMeshPro.text = "!";
-                    textMeshPro.isTextObjectScaleStatic = true;
+                    textMeshPro.isTextObjectScaleStatic = IsTextObjectScaleStatic;
 
                     // Spawn Floating Text
                     floatingText_Script = go.AddComponent<TextMeshProFloatingText>();
                     floatingText_Script.SpawnType = 0;
+                    floatingText_Script.IsTextObjectScaleStatic = IsTextObjectScaleStatic;
                 }
                 else if (SpawnType == 1)
                 {

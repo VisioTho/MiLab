@@ -171,7 +171,7 @@ The script also manages end-of-simulation assesment.
             float speed = float.Parse(tempD) / totalTime;
             string tempSpeed = speed.ToString("f2");
             averageSpeed = float.Parse(tempSpeed);
-            float instantaneousSpeed = carbody.velocity.x;
+            float instantaneousSpeed = carbody.linearVelocity.x;
 
             if (instantaneousSpeed < 0)
             {
