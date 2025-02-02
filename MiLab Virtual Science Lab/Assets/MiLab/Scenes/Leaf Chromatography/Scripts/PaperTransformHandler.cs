@@ -26,6 +26,7 @@ public class PaperTransformHandler : MonoBehaviour
             draggableScript.MoveToDefaultPosition(1);
             transformedPaper.SetActive(true);
             chromPaper.SetActive(false);
+            SnapController.snapEnabled = false;
             if (chromatographySimulation.dropdown.value == 1)
             {
                 dotPink.SetActive(true);
@@ -52,5 +53,6 @@ public class PaperTransformHandler : MonoBehaviour
     {
         chromPaper.SetActive(true);
         transformedPaper.SetActive(false);
+        SnapController.snapEnabled = false;
     }
 }
