@@ -17,6 +17,10 @@ public class ChromatographySimulation : MonoBehaviour
     public Sprite[] secondFilledImages; // array of different sprites for the second filled image
     public TMP_Dropdown dropdown; // reference to the dropdown UI element
 
+    public TMP_Text selectionText; // reference to the text UI element
+    public Image selectionImage; // reference to the image UI element
+    public Sprite[] selectionImages; // array of sprites for the dropdown selection
+
     private float fillTime;
     private bool isFilling;
 
@@ -32,11 +36,16 @@ public class ChromatographySimulation : MonoBehaviour
         filledImage.fillAmount = 0.0f;
         secondFilledImage.fillAmount = 0.0f;
         ChangeSecondFilledImage();
+
+        // Add listener to the dropdown's OnValueChanged event
+        dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
+
+        // Manually call the method to initialize the text and image for the default selection
+        OnDropdownValueChanged(dropdown.value);
     }
 
     private void LateUpdate()
     {
-
         if (isFilling && fillTime < fillDuration)
         {
             FillImage(filledImage, ref fillTime, fillDuration);
@@ -103,8 +112,33 @@ public class ChromatographySimulation : MonoBehaviour
         draggableChromatographyPaperController.ResetObject();
         dropBehaviour.resetButton.interactable = false;
         dropdown.interactable = true;
-
     }
 
-}
+    // Method to handle dropdown value changes
+    private void OnDropdownValueChanged(int index)
+    {
+        // Define behaviors based on the selected index
+        switch (index)
+        {
+            case 0:
+                selectionText.text = "Mango Extract";
+                selectionImage.sprite = selectionImages[0];
+                break;
+            case 1:
+                selectionText.text = "Hibiscus Extract";
+                selectionImage.sprite = selectionImages[1];
+                break;
+            case 2:
+                selectionText.text = "Cassava Extract";
+                selectionImage.sprite = selectionImages[2];
+                break;
+            // Add more cases as needed
+            default:
+                selectionText.text = "Default Selection";
+                selectionImage.sprite = selectionImages[0];
+                break;
+        }
 
+        // Optionally, you can call other methods or perform additional actions here
+    }
+}
