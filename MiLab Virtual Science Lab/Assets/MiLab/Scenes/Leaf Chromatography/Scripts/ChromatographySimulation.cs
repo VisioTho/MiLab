@@ -18,8 +18,7 @@ public class ChromatographySimulation : MonoBehaviour
     public TMP_Dropdown dropdown; // reference to the dropdown UI element
 
     public TMP_Text selectionText; // reference to the text UI element
-    public Image selectionImage; // reference to the image UI element
-    public Sprite[] selectionImages; // array of sprites for the dropdown selection
+    public GameObject[] selectionObjects; // array of GameObjects for the dropdown selection
 
     private float fillTime;
     private bool isFilling;
@@ -40,7 +39,7 @@ public class ChromatographySimulation : MonoBehaviour
         // Add listener to the dropdown's OnValueChanged event
         dropdown.onValueChanged.AddListener(OnDropdownValueChanged);
 
-        // Manually call the method to initialize the text and image for the default selection
+        // Manually call the method to initialize the text and object for the default selection
         OnDropdownValueChanged(dropdown.value);
     }
 
@@ -117,28 +116,21 @@ public class ChromatographySimulation : MonoBehaviour
     // Method to handle dropdown value changes
     private void OnDropdownValueChanged(int index)
     {
-        // Define behaviors based on the selected index
-        switch (index)
+        // Disable all selection objects first
+        foreach (var obj in selectionObjects)
         {
-            case 0:
-                selectionText.text = "Mango Extract";
-                selectionImage.sprite = selectionImages[0];
-                break;
-            case 1:
-                selectionText.text = "Hibiscus Extract";
-                selectionImage.sprite = selectionImages[1];
-                break;
-            case 2:
-                selectionText.text = "Cassava Extract";
-                selectionImage.sprite = selectionImages[2];
-                break;
-            // Add more cases as needed
-            default:
-                selectionText.text = "Default Selection";
-                selectionImage.sprite = selectionImages[0];
-                break;
+            obj.SetActive(false);
         }
 
-        // Optionally, you can call other methods or perform additional actions here
+        // Enable the selected object and set the text
+        if (index >= 0 && index < selectionObjects.Length)
+        {
+            selectionObjects[index].SetActive(true);
+            //selectionText.text = "Selection " + (index + 1); // Update text based on selection
+        }
+        else
+        {
+            Debug.LogWarning("Dropdown index out of range for selectionObjects array.");
+        }
     }
 }
